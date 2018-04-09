@@ -20,7 +20,8 @@ public class MainCharacterBehaviour : CBehaviour
 
 	public float dashCD;
 
-	[HideInInspector] public LineRenderer aimLine;
+
+    public SpriteRenderer aimLine;
 
 	public float linedis;
 
@@ -38,8 +39,7 @@ public class MainCharacterBehaviour : CBehaviour
 
 		dashNow = false;
 
-		aimLine = GetComponent<LineRenderer>();
-	}
+    }
 
 	//监听攻击
 	void Update()
@@ -56,7 +56,8 @@ public class MainCharacterBehaviour : CBehaviour
 
 		if (Input.GetMouseButtonUp(1))
 		{
-			aimLine.enabled = false;
+
+            aimLine.enabled = false;
 		}
 
 		if (Input.GetMouseButtonDown(0) && !isAttacking && !dashNow)
@@ -137,33 +138,41 @@ public class MainCharacterBehaviour : CBehaviour
 
 		if (Physics.Raycast(ray, out hit, 100f, mouseMask))
 		{
-			#region
-			//// 目标偏移  其中Y轴已归零
-			Vector3 offset = new Vector3((hit.point - transform.position).x, 0, (hit.point - transform.position).z);
+            #region
+            //// 目标偏移  其中Y轴已归零
 
-			////更新辅助瞄准器  值得注意的是这里transform.position的Y轴坐标极有可能是0 不过无伤大雅
-			//aimHelper.Draw(transform.position, offset);
 
-			//////根据当前面向，计算转到面向目标所需要的角度
-			//float angle = Vector3.Angle(transform.forward, offset);
-			////// 计算面向目标大约所需要的时间  
-			////float needTime = angle / 30;
-			////// 旋转进度（第三参数）  
-			////float v1 = 1;
-			//////如果所需要的时间接近0，则直接转到位，否则重新计算进度。  
-			////if (needTime > Mathf.Epsilon) v1 = Time.deltaTime / needTime;
-			////// 目标Rotation  
-			////Quaternion t = Quaternion.LookRotation(offset);
-			////// 进行旋转  
-			////transform.rotation = t;
-			////Quaternion.Slerp(transform.rotation, t, v1);
-			//transform.Rotate(0, angle, 0);
-			#endregion
+            ////更新辅助瞄准器  值得注意的是这里transform.position的Y轴坐标极有可能是0 不过无伤大雅
+            //aimHelper.Draw(transform.position, offset);
 
-			transform.forward = new Vector3(offset.x, transform.forward.y, offset.z).normalized;
-			aimLine.SetPosition(0, transform.position + (transform.forward * linedis));
-			aimLine.SetPosition(1, new Vector3(hit.point.x, transform.position.y, hit.point.z));
-			aimLine.enabled = true;
+            //////根据当前面向，计算转到面向目标所需要的角度
+            //float angle = Vector3.Angle(transform.forward, offset);
+            ////// 计算面向目标大约所需要的时间  
+            ////float needTime = angle / 30;
+            ////// 旋转进度（第三参数）  
+            ////float v1 = 1;
+            //////如果所需要的时间接近0，则直接转到位，否则重新计算进度。  
+            ////if (needTime > Mathf.Epsilon) v1 = Time.deltaTime / needTime;
+            ////// 目标Rotation  
+            ////Quaternion t = Quaternion.LookRotation(offset);
+            ////// 进行旋转  
+            ////transform.rotation = t;
+            ////Quaternion.Slerp(transform.rotation, t, v1);
+            //transform.Rotate(0, angle, 0);
+            #endregion
+
+
+            Vector3 offset = new Vector3((hit.point - transform.position).x, 0, (hit.point - transform.position).z);
+
+            if (offset.magnitude > 0.7)
+            {
+                transform.forward = new Vector3(offset.x, transform.forward.y, offset.z).normalized;
+            }
+
+
+
+            aimLine.size = new Vector2((hit.point - this.transform.position).magnitude, aimLine.size.y);
+            aimLine.enabled = true;
 
 
 
