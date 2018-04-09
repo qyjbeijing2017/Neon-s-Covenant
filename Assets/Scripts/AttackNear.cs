@@ -10,6 +10,7 @@ public class AttackNear : MonoBehaviour
 	public float attackValue;
 	public bool attackOther;
 	public GameObject otherObject;
+	public string 攻击目标;
 
 	public void SetProperty(int color, float value)
 	{
@@ -27,7 +28,7 @@ public class AttackNear : MonoBehaviour
 		//}
 		Debug.Log(attackColor);
 		Debug.Log(attackValue);
-		if (collider.tag =="enemy")
+		if (collider.tag ==攻击目标)
 		{
 			collider.GetComponent<CBehaviour>().GetHit(attackColor, attackValue, 0);
 		}

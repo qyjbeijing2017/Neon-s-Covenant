@@ -25,6 +25,8 @@ public class BossBehaviour : CBehaviour
 	[SerializeField] protected float 激光持续时间;
 	[SerializeField] protected float 激光跟踪速度;
 	public float 角度;
+	public AttackNear rightHand;
+	public AttackNear leftFoot;
 
 
 	//行动=行走、攻击、虚弱等
@@ -54,7 +56,7 @@ public class BossBehaviour : CBehaviour
 		else
 			m_Agent.isStopped = true;
 		//处于攻击距离中，且不在行动
-		if (IsNearCharacter() && !isAttacking)
+		if (IsNearCharacter() && !isAttacking && isChasing)
 		{
 			isChasing = false;
 			//Debug.Log("停止追击");
@@ -226,7 +228,8 @@ public class BossBehaviour : CBehaviour
 					}
 				}
 			}
-			else{
+			else
+			{
 				//Debug.Log("虚弱");
 			}
 
@@ -291,7 +294,9 @@ public class BossBehaviour : CBehaviour
 	{
 		//Debug.Log("近战第二段");
 		transform.forward = mainCharacter.transform.position - transform.position;
+		AttackNearReset();
 		anim.PlayAnim("NearAttack2");
+
 	}
 
 	/// <summary>
@@ -301,6 +306,7 @@ public class BossBehaviour : CBehaviour
 	{
 		//Debug.Log("近战第三段");
 		transform.forward = mainCharacter.transform.position - transform.position;
+		AttackNearReset();
 		anim.PlayAnim("NearAttack3");
 	}
 
@@ -324,13 +330,13 @@ public class BossBehaviour : CBehaviour
 		isChasing = false;
 		StopCoroutine("DecisionCR");
 		anim.PlayAnim("LaserAttack");
-		int a =0;
+		int a = 0;
 		switch (Random.Range(0, 2))
 		{
 			case 0: a = -1; break;
 			case 1: a = 1; break;
-
 		}
+		Debug.LogError(a);
 		StartCoroutine(激光(a));
 	}
 
@@ -342,6 +348,7 @@ public class BossBehaviour : CBehaviour
 		(property as BossProperty).shield = 2;
 		(property as BossProperty).shieldColor = color;
 		shield.SetActive(true);
+		StartCoroutine(DecisionCR());
 	}
 
 	/// <summary>
@@ -356,6 +363,7 @@ public class BossBehaviour : CBehaviour
 		//PlayAnimationHere
 		shield.SetActive(false);
 
+		StopAllCoroutines();
 		StartCoroutine(RecoverFromWeak());
 	}
 
@@ -403,10 +411,27 @@ public class BossBehaviour : CBehaviour
 		if (bSeparated)
 			DeSeparate();
 
+		AttackNearReset();
+	
 		StartCoroutine(DecisionCR());
 	}
 	#endregion
 
+	public virtual void AttackNearLaunch(int sec)
+	{
+		switch (sec)
+		{
+			case 0: rightHand.SetProperty(1, attackValueNear); break;
+			case 1: rightHand.SetProperty(-1, attackValueNear); break;
+			case 2: leftFoot.SetProperty(7, 50); break;
+		}
+	}
+
+	public void AttackNearReset()
+	{
+		rightHand.SetProperty(0, 0);
+		leftFoot.SetProperty(0, 0);
+	}
 	/// <summary>
 	/// DecisionC(o)R(outine)，需要在攻击相关的函数中关闭该协程
 	/// </summary>
@@ -529,12 +554,12 @@ public class BossBehaviour : CBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, 30f))
 			{
-				if (hit.collider.name == "player")
-					hit.collider.GetComponent<CBehaviour>().GetHit(color, attackValueDistant, 2);
+				if (hit.collider.tag == "MainCharacter")
+					hit.collider.GetComponent<CBehaviour>().GetHit(color, 激光DPS, 2);
 				laserLineRender.SetPosition(0, this.transform.position + (0.3f * transform.forward));
 
 				//print(hit.collider.gameObject.name);
-				if ((hit.point-transform.position).magnitude < (stalker-transform.position).magnitude)
+				if ((hit.point - transform.position).magnitude < (stalker - transform.position).magnitude)
 				{
 					laserLineRender.SetPosition(1, hit.point);
 				}
@@ -548,6 +573,7 @@ public class BossBehaviour : CBehaviour
 			yield return 0;
 		}
 
+		AttackEnd();
 		laserLineRender.enabled = false;
 	}
 }

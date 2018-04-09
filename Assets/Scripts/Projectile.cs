@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
                 GetComponent<Renderer>().material.color = Color.red; break;
             case -1:
                 GetComponent<Renderer>().material.color = Color.cyan; break;
-            case 6:
+            case 7:
                 GetComponent<Renderer>().material.color = Color.black; break;
         }
     }
@@ -36,6 +36,10 @@ public class Projectile : MonoBehaviour
 			Debug.Log(collider.name);
 			collider.GetComponent<CBehaviour>().GetHit(pColor, attackValue, 2);
 			Destroy(this.gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
 		}
 	}
 }

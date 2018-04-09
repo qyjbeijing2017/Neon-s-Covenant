@@ -25,6 +25,9 @@ public class MainCharacterBehaviour : CBehaviour
 
 	public float linedis;
 
+	public UnityEngine.UI.Slider sliderWhite;
+	public UnityEngine.UI.Slider sliderOther;
+	public UnityEngine.UI.Image img;
 
 	bool attacking;
 	bool dashNow;
@@ -39,6 +42,7 @@ public class MainCharacterBehaviour : CBehaviour
 
 		dashNow = false;
 
+		FlushUI();
     }
 
 	//监听攻击
@@ -122,7 +126,8 @@ public class MainCharacterBehaviour : CBehaviour
 			isAttacking = true;
 			dashNow = true;
 			StartCoroutine(Dashing());
-			//这个地方需要做一个插值的位移
+			tag = "InvincibleMainCharacter";
+
 			m_anim.PlayAnim("Roll");
 
 		}
@@ -224,11 +229,20 @@ public class MainCharacterBehaviour : CBehaviour
 		{
 			temp.GetComponent<Projectile>().SetProperty(m_property.otherColor, attackValueDistant, this.name);
 			m_property.otherColorValue -= 10;
+			FlushUI();
+		}
+		else if(m_property.otherColorValue >0)
+		{
+			temp.GetComponent<Projectile>().SetProperty(m_property.otherColor, attackValueDistant, name);
+			m_property.mainColorValue -= (10 - m_property.otherColorValue);
+			m_property.otherColorValue = 0;
+			
 		}
 		else
 		{
 			temp.GetComponent<Projectile>().SetProperty(m_property.mainColor, attackValueDistant, this.name);
 			m_property.mainColorValue -= 10;
+			FlushUI();
 		}
 		temp.GetComponent<Rigidbody>().velocity = transform.forward * attackFlySpeed;
 		Debug.Log("Launch to set false");
@@ -251,12 +265,14 @@ public class MainCharacterBehaviour : CBehaviour
 			{
 				m_property.otherColorValue -= value;
 				Debug.Log("MainC: " + property.mainColor + "  MainV: " + property.mainColorValue + "  OtherC: " + property.otherColor + "  OtherV: " + property.otherColorValue);
+				FlushUI();
 			}
 			else
 			{
 				m_property.mainColorValue -= (value - m_property.otherColorValue);
 				m_property.otherColorValue = 0;
 
+				FlushUI();
 				Debug.Log("MainC: " + property.mainColor + "  MainV: " + property.mainColorValue + "  OtherC: " + property.otherColor + "  OtherV: " + property.otherColorValue);
 			}
 		}
@@ -265,7 +281,9 @@ public class MainCharacterBehaviour : CBehaviour
 			if (m_property.mainColorValue > value)
 			{
 				m_property.mainColorValue -= value;
+				m_property.otherColorValue += value;
 				Debug.Log("MainC: " + property.mainColor + "  MainV: " + property.mainColorValue + "  OtherC: " + property.otherColor + "  OtherV: " + property.otherColorValue);
+				FlushUI();
 			}
 			else
 				Die();
@@ -277,6 +295,7 @@ public class MainCharacterBehaviour : CBehaviour
 				m_property.otherColorValue -= value;
 				m_property.mainColorValue += value;
 				Debug.Log("MainC: " + property.mainColor + "  MainV: " + property.mainColorValue + "  OtherC: " + property.otherColor + "  OtherV: " + property.otherColorValue);
+				FlushUI();
 			}
 			else
 			{
@@ -285,6 +304,7 @@ public class MainCharacterBehaviour : CBehaviour
 				m_property.otherColor = color;
 
 				Debug.Log("MainC: " + property.mainColor + "  MainV: " + property.mainColorValue + "  OtherC: " + property.otherColor + "  OtherV: " + property.otherColorValue);
+				FlushUI();
 			}
 		}
 	}
@@ -293,7 +313,15 @@ public class MainCharacterBehaviour : CBehaviour
 	{
 		base.Die();
 		Debug.Log("MainCharacter dies");
-		Destroy(this.gameObject);
+		Time.timeScale = 0.0f;
+		//Destroy(this.gameObject);
+	}
+
+	protected void FlushUI()
+	{
+		sliderWhite.value = property.mainColorValue;
+		sliderOther.value = property.mainColorValue + property.otherColorValue;
+		img.color = property.otherColor == -1 ? Color.cyan : Color.red;
 	}
 
 	//翻滚位移
@@ -305,7 +333,7 @@ public class MainCharacterBehaviour : CBehaviour
 			transform.position += transform.forward * DashSpeed * Time.deltaTime;
 			yield return 0;
 		}
-
+		tag = "MainCharacter";
 		yield return new WaitForSeconds(dashCD);
 		dashNow = false;
 	}
