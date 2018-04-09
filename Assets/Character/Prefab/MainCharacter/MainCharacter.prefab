@@ -1138,7 +1138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1703266890273870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.118425, y: 0.25, z: -5.136902}
+  m_LocalPosition: {x: -8.52, y: 0.25, z: -5.136902}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4490554901581964}
@@ -1742,7 +1742,7 @@ MonoBehaviour:
   typeOfObject: 
   interactable: 0
   mainColor: 0
-  mainColorValue: 15
+  mainColorValue: 150
   otherColor: 0
   otherColorValue: 0
   isAlive: 1
@@ -1772,6 +1772,7 @@ MonoBehaviour:
   attackNear: {fileID: 114481052383453998}
   dashCD: 0.3
   aimLine: {fileID: 0}
+  linedis: 0
 --- !u!114 &114481052383453998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1838,7 +1839,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.3
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1848,9 +1849,15 @@ LineRenderer:
         inSlope: 0
         outSlope: 0
         tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 4
+      m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
