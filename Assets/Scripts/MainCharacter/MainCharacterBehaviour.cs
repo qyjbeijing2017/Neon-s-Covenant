@@ -24,6 +24,7 @@ public class MainCharacterBehaviour : CBehaviour
     public SpriteRenderer aimLine;
 
 	public float linedis;
+	[SerializeField] private float 硬直时间;  // yingzhiShijian;
 
 	public UnityEngine.UI.Slider sliderWhite;
 	public UnityEngine.UI.Slider sliderOther;
@@ -307,6 +308,9 @@ public class MainCharacterBehaviour : CBehaviour
 				FlushUI();
 			}
 		}
+
+		StopCoroutine("硬直");
+		StartCoroutine("硬直");
 	}
 
 	public override void Die()
@@ -322,6 +326,7 @@ public class MainCharacterBehaviour : CBehaviour
 		sliderWhite.value = property.mainColorValue;
 		sliderOther.value = property.mainColorValue + property.otherColorValue;
 		img.color = property.otherColor == -1 ? Color.cyan : Color.red;
+
 	}
 
 	//翻滚位移
@@ -336,6 +341,15 @@ public class MainCharacterBehaviour : CBehaviour
 		tag = "MainCharacter";
 		yield return new WaitForSeconds(dashCD);
 		dashNow = false;
+	}
+
+	IEnumerator 硬直()
+	{
+		anim.PlayAnim("硬直");
+		isAttacking = true;
+		yield return new WaitForSeconds(硬直时间);
+		isAttacking = false;
+		anim.PlayAnim("Idle");
 	}
 
 	//攻击伤害

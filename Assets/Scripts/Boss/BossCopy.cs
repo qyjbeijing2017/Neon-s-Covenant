@@ -59,6 +59,7 @@ public class BossCopy : BossBehaviour
 	protected override void DeSeparate()
 	{
 		(property as BossProperty).real.GetComponent<BossProperty>().mainColorValue = property.mainColorValue;
+		(property as BossProperty).real.GetComponent<BossProperty>().shield = ((property as BossProperty).real.GetComponent<BossProperty>().shield > (property as BossProperty).shield) ? (property as BossProperty).real.GetComponent<BossProperty>().shield : (property as BossProperty).shield;
 		Debug.LogError("DeSeparate");
 		Destroy(this.gameObject);
 
@@ -73,6 +74,13 @@ public class BossCopy : BossBehaviour
 		isChasing = false;
 		StopCoroutine("DecisionCR");
 		anim.PlayAnim("RangeAttack");
+		int a = 0;
+		switch (Random.Range(0, 2))
+		{
+			case 0: a = -1; break;
+			case 1: a = 1; break;
+		}
+		StartCoroutine(激光(a));
 	}
 
 	/// <summary>

@@ -73,6 +73,8 @@ public class BossBehaviour : CBehaviour
 			Decide();
 		}
 
+		shield.GetComponent<Renderer>().material.color = ((property as BossProperty).shieldColor == 1) ? Color.red : Color.cyan;
+
 	}
 	public override void GetHit(int color, float value, int typeOfAttack)
 	{
@@ -87,8 +89,8 @@ public class BossBehaviour : CBehaviour
 					switch (typeOfAttack)
 					{
 						//反色近战
-						case 0: if (color == -(property as BossProperty).shieldColor) GetWeak(); break;  //注意，这个地方意味着需要将攻击的颜色存储在shieldColor变量中，才能进行这样的判断
-																										 //远程攻击
+						case 0: if (color == 7 || color == -(property as BossProperty).shieldColor) GetWeak(); break;  //注意，这个地方意味着需要将攻击的颜色存储在shieldColor变量中，才能进行这样的判断
+																													   //远程攻击
 						case 2:
 							{
 								property.mainColorValue -= value * (property as BossProperty).reductionOfDamageDistant;
@@ -278,11 +280,14 @@ public class BossBehaviour : CBehaviour
 	{
 		//进入无敌状态
 		//Debug.Log("进入无敌状态，并开始近战第一段");
+
+		shield.GetComponent<Renderer>().enabled = false;
 		isAttacking = true;
 		StopCoroutine("DecisionCR");
 		transform.forward = mainCharacter.transform.position - transform.position;
 		isAttackingNear = true;
 		anim.PlayAnim("NearAttack1");
+
 		(property as BossProperty).shieldColor = 1;
 
 	}
@@ -296,6 +301,7 @@ public class BossBehaviour : CBehaviour
 		transform.forward = mainCharacter.transform.position - transform.position;
 		AttackNearReset();
 		anim.PlayAnim("NearAttack2");
+		(property as BossProperty).shieldColor = -1;
 
 	}
 
@@ -347,7 +353,7 @@ public class BossBehaviour : CBehaviour
 	{
 		(property as BossProperty).shield = 2;
 		(property as BossProperty).shieldColor = color;
-		shield.SetActive(true);
+		shield.GetComponent<Renderer>().enabled = true;
 		StartCoroutine(DecisionCR());
 	}
 
@@ -361,7 +367,7 @@ public class BossBehaviour : CBehaviour
 		isWeak = true;
 		isChasing = false;
 		//PlayAnimationHere
-		shield.SetActive(false);
+		shield.GetComponent<Renderer>().enabled = false;
 
 		StopAllCoroutines();
 		StartCoroutine(RecoverFromWeak());
@@ -381,17 +387,10 @@ public class BossBehaviour : CBehaviour
 
 		b = Instantiate(bullet, spawnPlace.position, Quaternion.identity).GetComponent<Projectile>();
 		transform.localEulerAngles += new Vector3(0, 角度, 0);
-
-		//###########################################################
-		//###########################################################
-		//###########################################################
-		//#################黑色的数字是几来着..###########################
-		//###########################################################
-		//###########################################################
-		//###########################################################
-
 		b.SetProperty(7, attackValueDistant, this.name);
 		b.GetComponent<Rigidbody>().velocity = transform.forward * attackFlySpeed;
+
+		(property as BossProperty).shieldColor = -(property as BossProperty).shieldColor;
 	}
 
 	public void AttackLaserLaunch()
@@ -412,7 +411,21 @@ public class BossBehaviour : CBehaviour
 			DeSeparate();
 
 		AttackNearReset();
-	
+
+		StartCoroutine(DecisionCR());
+	}
+
+	public virtual void AttackEnd(bool a)
+	{
+		//Debug.Log("Attack end");
+		isActing = false;
+		isAttacking = false;
+		isAttackingNear = false;
+		if (bSeparated)
+			DeSeparate();
+
+		AttackNearReset();
+		shield.GetComponent<Renderer>().enabled = true;
 		StartCoroutine(DecisionCR());
 	}
 	#endregion
@@ -421,16 +434,25 @@ public class BossBehaviour : CBehaviour
 	{
 		switch (sec)
 		{
-			case 0: rightHand.SetProperty(1, attackValueNear); break;
-			case 1: rightHand.SetProperty(-1, attackValueNear); break;
-			case 2: leftFoot.SetProperty(7, 50); break;
+			case 0:
+				{
+					rightHand.SetProperty(1, attackValueNear);
+					rightHand.GetComponent<Collider>().enabled = true;
+				}
+				break;
+			case 1: { rightHand.SetProperty(-1, attackValueNear); rightHand.GetComponent<Collider>().enabled = true; } break;
+			//介里是jio的攻击力
+			case 2: { leftFoot.SetProperty(7, 50); leftFoot.GetComponent<Collider>().enabled = true; } break;
 		}
 	}
 
 	public void AttackNearReset()
 	{
 		rightHand.SetProperty(0, 0);
+		rightHand.GetComponent<Collider>().enabled = false;
+
 		leftFoot.SetProperty(0, 0);
+		leftFoot.GetComponent<Collider>().enabled = false;
 	}
 	/// <summary>
 	/// DecisionC(o)R(outine)，需要在攻击相关的函数中关闭该协程
@@ -494,6 +516,7 @@ public class BossBehaviour : CBehaviour
 	protected virtual void DeSeparate()
 	{
 		transform.position = property.level.savedBossPosition;
+		
 	}
 
 	/// <summary>
@@ -539,7 +562,7 @@ public class BossBehaviour : CBehaviour
 	/// <param name="trans"></param>
 	protected override void Move(Vector3 trans) { m_Agent.SetDestination(trans); }
 
-	IEnumerator 激光(int color)
+	protected IEnumerator 激光(int color)
 	{
 		Vector3 stalker = mainCharacter.transform.position;
 		float timer = 激光持续时间;
@@ -554,14 +577,16 @@ public class BossBehaviour : CBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, 30f))
 			{
-				if (hit.collider.tag == "MainCharacter")
-					hit.collider.GetComponent<CBehaviour>().GetHit(color, 激光DPS, 2);
+
+				(property as BossProperty).shieldColor = color;
 				laserLineRender.SetPosition(0, this.transform.position + (0.3f * transform.forward));
 
 				//print(hit.collider.gameObject.name);
 				if ((hit.point - transform.position).magnitude < (stalker - transform.position).magnitude)
 				{
 					laserLineRender.SetPosition(1, hit.point);
+					if (hit.collider.tag == "MainCharacter")
+						hit.collider.GetComponent<CBehaviour>().GetHit(color, 激光DPS, 2);
 				}
 				else
 				{
@@ -575,5 +600,6 @@ public class BossBehaviour : CBehaviour
 
 		AttackEnd();
 		laserLineRender.enabled = false;
+
 	}
 }

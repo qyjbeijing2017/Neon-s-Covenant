@@ -26,8 +26,7 @@ public class AttackNear : MonoBehaviour
 		//{
 		//	collider.GetComponent<CBehaviour>().GetHit(attackColor, attackValue, 0);
 		//}
-		Debug.Log(attackColor);
-		Debug.Log(attackValue);
+		Debug.Log("color: "+attackColor+" value: " +attackValue + name);
 		if (collider.tag ==攻击目标)
 		{
 			collider.GetComponent<CBehaviour>().GetHit(attackColor, attackValue, 0);
