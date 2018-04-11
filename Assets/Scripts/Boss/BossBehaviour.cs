@@ -25,8 +25,10 @@ public class BossBehaviour : CBehaviour
 	[SerializeField] protected float 激光持续时间;
 	[SerializeField] protected float 激光跟踪速度;
 	public float 角度;
+
+	public AttackNear leftHand;
 	public AttackNear rightHand;
-	public AttackNear leftFoot;
+
 
 
 	//行动=行走、攻击、虚弱等
@@ -73,9 +75,10 @@ public class BossBehaviour : CBehaviour
 			Decide();
 		}
 
-		shield.GetComponent<Renderer>().material.color = ((property as BossProperty).shieldColor == 1) ? Color.red : Color.cyan;
+		shield.GetComponent<Renderer>().material.color = ((property as BossProperty).shieldColor == 1) ? new Color(1, 0, 0, (float)0.4) : new Color(0, 1, 1, (float)0.4);
 
 	}
+
 	public override void GetHit(int color, float value, int typeOfAttack)
 	{
 		//检查是否处于状态Ⅰ
@@ -319,7 +322,7 @@ public class BossBehaviour : CBehaviour
 	/// <summary>
 	/// 远程攻击
 	/// </summary>
-	protected virtual void AttackDistant()
+	protected override void AttackDistant()
 	{
 		//Debug.Log("远程攻击");
 		isChasing = false;
@@ -335,15 +338,7 @@ public class BossBehaviour : CBehaviour
 		//Debug.Log("激光攻击");
 		isChasing = false;
 		StopCoroutine("DecisionCR");
-		anim.PlayAnim("LaserAttack");
-		int a = 0;
-		switch (Random.Range(0, 2))
-		{
-			case 0: a = -1; break;
-			case 1: a = 1; break;
-		}
-		Debug.LogError(a);
-		StartCoroutine(激光(a));
+		anim.PlayAnim("Boss_laser_start");
 	}
 
 	/// <summary>
@@ -366,7 +361,7 @@ public class BossBehaviour : CBehaviour
 		(property as BossProperty).shield = 0;
 		isWeak = true;
 		isChasing = false;
-		//PlayAnimationHere
+		anim.PlayAnim("weak");
 		shield.GetComponent<Renderer>().enabled = false;
 
 		StopAllCoroutines();
@@ -395,7 +390,14 @@ public class BossBehaviour : CBehaviour
 
 	public void AttackLaserLaunch()
 	{
-
+		int a = 0;
+		switch (Random.Range(0, 2))
+		{
+			case 0: a = -1; break;
+			case 1: a = 1; break;
+		}
+		anim.SetLaserLooping(true);
+		StartCoroutine(激光(a));
 	}
 
 	/// <summary>
@@ -411,13 +413,12 @@ public class BossBehaviour : CBehaviour
 			DeSeparate();
 
 		AttackNearReset();
-
 		StartCoroutine(DecisionCR());
 	}
 
-	public virtual void AttackEnd(bool a)
+	public virtual void AttackEndWithShield()
 	{
-		//Debug.Log("Attack end");
+		Debug.Log("Shield Up");
 		isActing = false;
 		isAttacking = false;
 		isAttackingNear = false;
@@ -440,9 +441,19 @@ public class BossBehaviour : CBehaviour
 					rightHand.GetComponent<Collider>().enabled = true;
 				}
 				break;
-			case 1: { rightHand.SetProperty(-1, attackValueNear); rightHand.GetComponent<Collider>().enabled = true; } break;
+			case 1:
+				{
+					leftHand.SetProperty(-1, attackValueNear); 
+					leftHand.GetComponent<Collider>().enabled = true;
+				}
+				break;
 			//介里是jio的攻击力
-			case 2: { leftFoot.SetProperty(7, 50); leftFoot.GetComponent<Collider>().enabled = true; } break;
+			case 2:
+				{
+					leftHand.SetProperty(7, 25); leftHand.GetComponent<Collider>().enabled = true;
+					rightHand.SetProperty(7, 25); rightHand.GetComponent<Collider>().enabled = true;
+				}
+				break;
 		}
 	}
 
@@ -451,8 +462,8 @@ public class BossBehaviour : CBehaviour
 		rightHand.SetProperty(0, 0);
 		rightHand.GetComponent<Collider>().enabled = false;
 
-		leftFoot.SetProperty(0, 0);
-		leftFoot.GetComponent<Collider>().enabled = false;
+		leftHand.SetProperty(0, 0);
+		leftHand.GetComponent<Collider>().enabled = false;
 	}
 	/// <summary>
 	/// DecisionC(o)R(outine)，需要在攻击相关的函数中关闭该协程
@@ -516,7 +527,7 @@ public class BossBehaviour : CBehaviour
 	protected virtual void DeSeparate()
 	{
 		transform.position = property.level.savedBossPosition;
-		
+
 	}
 
 	/// <summary>
@@ -600,6 +611,6 @@ public class BossBehaviour : CBehaviour
 
 		AttackEnd();
 		laserLineRender.enabled = false;
-
+		anim.SetLaserLooping(false);
 	}
 }
