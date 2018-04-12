@@ -31,30 +31,93 @@ public class MonsterBehaviour : CBehaviour
 
 	void Update()
 	{
-		if (isLooking && !isAttacking)
+		//if (isChasing)
+		//{
+		//	if (IsNearCharacter())
+		//	{
+		//		anim.PlayAnim("Attack");
+		//		isChasing = false;
+		//	}
+		//	else
+		//	{
+		//		Move(mainCharacter.transform.position);
+		//		anim.SetMovingAnim(true);
+		//	}
+		//}
+
+
+
+		if (!isAttacking)
 		{
-			Move(mainCharacter.transform.position);
+			if (IsNearCharacter())
+			{
+				anim.PlayAnim("Attack");
+				isChasing = false;
+			}
+			else
+			{
+				Move(mainCharacter.transform.position);
+			}
 		}
+		anim.SetMovingAnim(isChasing);
+
+	}
+
+	public override void GetHit(int color, float value, int typeOfAttack)
+	{
+		if (property.mainColor != color)
+		{
+			property.mainColorValue -= value;
+			if (typeOfAttack == 0)
+				anim.PlayAnim("Delay");
+		}
+	}
+
+	public void AttackDistant()
+	{
+		isAttacking = true;
+		GameObject t = Instantiate(bullet, spawnPlace.position, Quaternion.identity);
+		t.GetComponent<Rigidbody>().velocity = attackFlySpeed * transform.forward;
+
+	}
+
+	public void AttackNear()
+	{
+		weapon.GetComponent<AttackNear>().SetProperty(property.mainColor, attackValueNear);
+	}
+
+	public void AttackReset()
+	{
+		weapon.GetComponent<AttackNear>().SetProperty(property.mainColor, attackValueNear);
+	}
+
+	public void AttackEnd()
+	{
+		isChasing = true;
+	}
+
+	public void Move(Vector3 trans)
+	{
+		m_Agent.SetDestination(trans);
+	}
+
+	bool IsNearCharacter()
+	{
+		if ((transform.position - mainCharacter.transform.position).magnitude < (property as BossProperty).attackRange)
+			return true;
+		else
+			return false;
 	}
 
 	//进入监视范围
 	void OnTriggerEnter()
 	{
-		isLooking = true;
+		isChasing = true;
 	}
-	//
+
+	//可以跑出监视范围
 	void OnTriggerExit()
 	{
 		isChasing = false;
-	}
-
-	protected override void Move(Vector3 trans)
-	{
-		m_Agent.SetDestination(trans);
-	}
-
-	public void Test()
-	{
-		Debug.Log("Here's a function! Don't forget to delete me!");
 	}
 }

@@ -12,8 +12,12 @@ public class MonsterProperty : CProperty
 	{
 		base.Awake();
 		level.MonsterRegister();
+	}
 
-		//巨瘠薄强
-		(behaviour as MonsterBehaviour).Test();
+	void Update()
+	{
+		if (mainColorValue <= 0)
+			anim.PlayAnim("Die");
+		Debug.LogError("小怪死了");
 	}
 }

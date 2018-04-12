@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 135966413066558386}
   - component: {fileID: 23420133034720784}
   m_Layer: 0
-  m_Name: Shilder
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1960,7 +1960,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572877427161220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.42, z: 0.76}
+  m_LocalPosition: {x: 0.01, y: 0.42, z: 1.473}
   m_LocalScale: {x: 0.2089447, y: 0.24963894, z: 0.24963894}
   m_Children: []
   m_Father: {fileID: 4116701654319918}
@@ -2561,7 +2561,7 @@ MonoBehaviour:
   attackValue: 0
   attackOther: 0
   otherObject: {fileID: 0}
-  "\u653B\u51FB\u76EE\u6807": RightHandCollider
+  "\u653B\u51FB\u76EE\u6807": MainCharacter
 --- !u!114 &114775341159422316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2589,7 +2589,7 @@ MonoBehaviour:
   attackValue: 0
   attackOther: 0
   otherObject: {fileID: 0}
-  "\u653B\u51FB\u76EE\u6807": RightHandCollider
+  "\u653B\u51FB\u76EE\u6807": MainCharacter
 --- !u!114 &114959434892630974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2627,9 +2627,9 @@ MonoBehaviour:
   "\u6FC0\u5149\u6301\u7EED\u65F6\u95F4": 10
   "\u6FC0\u5149\u8DDF\u8E2A\u901F\u5EA6": 1
   "\u89D2\u5EA6": 15
+  leftHand: {fileID: 114518025084309102}
   rightHand: {fileID: 114955279853349578}
-  leftFoot: {fileID: 114518025084309102}
-  bossCopy: {fileID: 1568010055369390, guid: 435123a4e7643e041bb32a3e998ab74e, type: 2}
+  bossCopy: {fileID: 1372199977237088, guid: 2897d3bba47ae6f43a2e383df6d36b0a, type: 2}
 --- !u!120 &120450106352419808
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -2725,8 +2725,8 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1490952011838082}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -2737,7 +2737,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667437538342904}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
