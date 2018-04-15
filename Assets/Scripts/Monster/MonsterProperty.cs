@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class MonsterProperty : CProperty
 {
-
+	public float sensorRange;
 	void Awake()
 	{
 		base.Awake();
@@ -17,7 +17,9 @@ public class MonsterProperty : CProperty
 	void Update()
 	{
 		if (mainColorValue <= 0)
+		{
 			anim.PlayAnim("Die");
-		Debug.LogError("小怪死了");
+			Debug.LogError("小怪死了");
+		}
 	}
 }

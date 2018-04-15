@@ -32,6 +32,7 @@ public class BossProperty : CProperty
 		base.Awake();
 		atStateOne = true;
 		isFake = false;
+		level.BossRegister();
 	}
 
 	public void SetProperty(float mColorValue, bool alive, int s, int sColor, bool stateOne, bool fake, GameObject realOne)

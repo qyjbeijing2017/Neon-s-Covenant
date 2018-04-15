@@ -291,7 +291,7 @@ public class MainCharacterBehaviour : CBehaviour
 		}
 		else
 		{
-			if (m_property.otherColorValue > value)
+			if (m_property.otherColorValue >= value)			//一个等号引发的血案emmmm
 			{
 				m_property.otherColorValue -= value;
 				m_property.mainColorValue += value;

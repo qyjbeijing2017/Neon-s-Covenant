@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossBehaviour : CBehaviour
 {
-	UnityEngine.AI.NavMeshAgent m_Agent;
+	protected UnityEngine.AI.NavMeshAgent m_Agent;
 	private GameObject mainCharacter;
 	[SerializeField] protected bool isChasing = false;
 	[SerializeField] protected bool isLooking = false;
@@ -57,6 +57,7 @@ public class BossBehaviour : CBehaviour
 		}
 		else
 			m_Agent.isStopped = true;
+		print(m_Agent.isStopped);
 		//处于攻击距离中，且不在行动
 		if (IsNearCharacter() && !isAttacking && isChasing)
 		{
@@ -344,10 +345,10 @@ public class BossBehaviour : CBehaviour
 	/// <summary>
 	/// 护盾
 	/// </summary>
-	private void ShielUp(int color)
+	public void ShieldUp()
 	{
 		(property as BossProperty).shield = 2;
-		(property as BossProperty).shieldColor = color;
+		(property as BossProperty).shieldColor = (Random.Range(0, 2) > 1) ? 1 : -1;
 		shield.GetComponent<Renderer>().enabled = true;
 		StartCoroutine(DecisionCR());
 	}
@@ -482,12 +483,7 @@ public class BossBehaviour : CBehaviour
 	{
 		yield return new WaitForSeconds(weakCD);
 		isWeak = false;
-		if (Random.Range(0, 2) > 1)
-		{
-			ShielUp(-1);
-		}
-		else
-			ShielUp(1);
+		anim.PlayAnim("ShieldUp");
 	}
 
 
@@ -573,9 +569,10 @@ public class BossBehaviour : CBehaviour
 	/// <param name="trans"></param>
 	protected override void Move(Vector3 trans) { m_Agent.SetDestination(trans); }
 
-	protected IEnumerator 激光(int color)
+	public IEnumerator 激光(int color)
 	{
 		Vector3 stalker = mainCharacter.transform.position;
+		print(stalker);
 		float timer = 激光持续时间;
 		LineRenderer laserLineRender = GetComponent<LineRenderer>();
 		laserLineRender.enabled = true;

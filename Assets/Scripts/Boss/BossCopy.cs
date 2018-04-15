@@ -7,9 +7,12 @@ public class BossCopy : BossBehaviour
 
 	void Awake()
 	{
-		base.Awake();
 		anim = gameObject.AddComponent<BossAnim>();
-		Debug.LogError(anim);
+	}
+
+	void Update()
+	{
+
 	}
 
 	public override void GetHit(int color, float value, int typeOfAttack)
@@ -69,17 +72,6 @@ public class BossCopy : BossBehaviour
 	/// </summary>
 	protected override void AttackDistant()
 	{
-		//Debug.Log("远程攻击");
-		//isChasing = false;
-		//StopCoroutine("DecisionCR");
-		//anim.PlayAnim("RangeAttack");
-		//int a = 0;
-		//switch (Random.Range(0, 2))
-		//{
-		//	case 0: a = -1; break;
-		//	case 1: a = 1; break;
-		//}
-		//StartCoroutine(激光(a));
 
 		isChasing = false;
 		StopCoroutine("DecisionCR");

@@ -103,7 +103,7 @@ public class MonsterBehaviour : CBehaviour
 
 	bool IsNearCharacter()
 	{
-		if ((transform.position - mainCharacter.transform.position).magnitude < (property as BossProperty).attackRange)
+		if ((transform.position - mainCharacter.transform.position).magnitude < (property as MonsterProperty).sensorRange)
 			return true;
 		else
 			return false;
