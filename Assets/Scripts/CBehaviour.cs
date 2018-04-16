@@ -21,7 +21,7 @@ public class CBehaviour : MonoBehaviour
 
 	//Other
 	[SerializeField] protected GameObject bullet;
-	public GameObject weapon;
+	public AttackNear weapon;
 	[SerializeField] protected Transform spawnPlace;
 
 	protected CProperty property;

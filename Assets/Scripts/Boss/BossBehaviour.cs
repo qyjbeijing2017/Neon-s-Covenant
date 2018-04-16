@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBehaviour : CBehaviour
 {
 	protected UnityEngine.AI.NavMeshAgent m_Agent;
-	private GameObject mainCharacter;
+	public GameObject mainCharacter;
 	[SerializeField] protected bool isChasing = false;
 	[SerializeField] protected bool isLooking = false;
 	[SerializeField] protected bool isAttacking = false;
@@ -29,7 +29,7 @@ public class BossBehaviour : CBehaviour
 	public AttackNear leftHand;
 	public AttackNear rightHand;
 
-
+	[HideInInspector] public BossCopy bCopy;
 
 	//行动=行走、攻击、虚弱等
 	protected bool isActing = false;
@@ -57,7 +57,6 @@ public class BossBehaviour : CBehaviour
 		}
 		else
 			m_Agent.isStopped = true;
-		print(m_Agent.isStopped);
 		//处于攻击距离中，且不在行动
 		if (IsNearCharacter() && !isAttacking && isChasing)
 		{
@@ -123,22 +122,25 @@ public class BossBehaviour : CBehaviour
 			}
 			else//有盾
 			{
-				if ((property as BossProperty).shieldColor == color)
+				if (typeOfAttack == 2)
 				{
-					//Debug.Log("盾满");
-					(property as BossProperty).shield = 2;
-				}
-				else
-				{
-					if ((property as BossProperty).shield == 1)
+					if ((property as BossProperty).shieldColor != color && color != 0)
 					{
-						//Debug.Log("破盾");
-						GetWeak();
+						if ((property as BossProperty).shield == 1)
+						{
+							//Debug.Log("破盾");
+							GetWeak();
+						}
+						else
+						{
+							//Debug.Log("盾-1");
+							(property as BossProperty).shield = 1;
+						}
 					}
 					else
 					{
-						//Debug.Log("盾-1");
-						(property as BossProperty).shield = 1;
+						//Debug.Log("盾满");
+						(property as BossProperty).shield = 2;
 					}
 				}
 			}
@@ -356,7 +358,7 @@ public class BossBehaviour : CBehaviour
 	/// <summary>
 	/// 进入虚弱状态
 	/// </summary>
-	protected virtual void GetWeak()
+	public virtual void GetWeak()
 	{
 		//护盾清空
 		(property as BossProperty).shield = 0;
@@ -364,7 +366,11 @@ public class BossBehaviour : CBehaviour
 		isChasing = false;
 		anim.PlayAnim("weak");
 		shield.GetComponent<Renderer>().enabled = false;
-
+		if (bSeparated)
+		{
+			Destroy(bCopy.gameObject);
+			bSeparated = false;
+		}
 		StopAllCoroutines();
 		StartCoroutine(RecoverFromWeak());
 	}
@@ -410,8 +416,8 @@ public class BossBehaviour : CBehaviour
 		isActing = false;
 		isAttacking = false;
 		isAttackingNear = false;
-		if (bSeparated)
-			DeSeparate();
+		//if (bSeparated)
+		//	DeSeparate();
 
 		AttackNearReset();
 		StartCoroutine(DecisionCR());
@@ -423,8 +429,8 @@ public class BossBehaviour : CBehaviour
 		isActing = false;
 		isAttacking = false;
 		isAttackingNear = false;
-		if (bSeparated)
-			DeSeparate();
+		//if (bSeparated)
+		//	DeSeparate();
 
 		AttackNearReset();
 		shield.GetComponent<Renderer>().enabled = true;
@@ -444,7 +450,7 @@ public class BossBehaviour : CBehaviour
 				break;
 			case 1:
 				{
-					leftHand.SetProperty(-1, attackValueNear); 
+					leftHand.SetProperty(-1, attackValueNear);
 					leftHand.GetComponent<Collider>().enabled = true;
 				}
 				break;
@@ -458,8 +464,9 @@ public class BossBehaviour : CBehaviour
 		}
 	}
 
-	public void AttackNearReset()
+	public virtual void AttackNearReset()
 	{
+		print(rightHand);
 		rightHand.SetProperty(0, 0);
 		rightHand.GetComponent<Collider>().enabled = false;
 
@@ -502,28 +509,36 @@ public class BossBehaviour : CBehaviour
 	protected void Seperate(string type)
 	{
 		property.level.savedBossPosition = transform.position;
-		BossProperty temp = Instantiate(bossCopy, transform.position + transform.forward * 3, Quaternion.identity).GetComponent<BossProperty>();
-		BossCopy tempb = temp.GetComponent<BossCopy>();
+		Transform tempT = mainCharacter.transform;
+		tempT.Rotate(0, 90, 0);
+		//副本出现在主角的左右中的一侧
+		BossProperty temp = Instantiate(bossCopy, mainCharacter.transform.position + tempT.forward* 3, Quaternion.identity).GetComponent<BossProperty>();
+		temp.transform.forward = -tempT.forward;
+		tempT.Rotate(0, -180, 0);
+		transform.position = mainCharacter.transform.position + tempT.forward * 3;
+		transform.forward = -tempT.forward;
+
+
+		bCopy = temp.GetComponent<BossCopy>();
 		temp.SetProperty(
 			property.mainColorValue, true,
 					(property as BossProperty).shield,
 							(property as BossProperty).shieldColor, false, true, this.gameObject
 			);
-		tempb.bActivated = true;
-		tempb.isChasing = true;
+		bCopy.bActivated = true;
+		bCopy.isChasing = true;
 		bSeparated = true;
-		tempb.bSeparated = true;
+		bCopy.bSeparated = true;
 		if (type == "laser")
-			tempb.AttackLaser();
+			bCopy.AttackLaser();
 		else
-			tempb.AttackDistant();
+			bCopy.AttackDistant();
 		//嘤嘤嘤我要师妹
 	}
 
-	protected virtual void DeSeparate()
+	protected virtual void DeSeparate(bool getWeak)
 	{
 		transform.position = property.level.savedBossPosition;
-
 	}
 
 	/// <summary>
@@ -571,6 +586,7 @@ public class BossBehaviour : CBehaviour
 
 	public IEnumerator 激光(int color)
 	{
+		Debug.LogError(gameObject.name);
 		Vector3 stalker = mainCharacter.transform.position;
 		print(stalker);
 		float timer = 激光持续时间;

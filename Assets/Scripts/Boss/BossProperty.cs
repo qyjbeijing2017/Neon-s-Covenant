@@ -27,6 +27,7 @@ public class BossProperty : CProperty
 	//虚弱状态下受伤害倍乘因数
 	public float onWeakMultiplier;
 
+	public UnityEngine.UI.Text text;
 	void Awake()
 	{
 		base.Awake();
@@ -45,6 +46,5 @@ public class BossProperty : CProperty
 		isFake = fake;
 		real = realOne;
 	}
-
 
 }

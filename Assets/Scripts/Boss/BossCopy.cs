@@ -7,12 +7,16 @@ public class BossCopy : BossBehaviour
 
 	void Awake()
 	{
+		property = GetComponent<CProperty>();
+		anim = GetComponent<CAnim>();
 		anim = gameObject.AddComponent<BossAnim>();
+		mainCharacter = GameObject.FindGameObjectWithTag("MainCharacter");
+
 	}
 
 	void Update()
 	{
-
+		shield.GetComponent<Renderer>().material.color = ((property as BossProperty).shieldColor == 1) ? new Color(1, 0, 0, (float)0.4) : new Color(0, 1, 1, (float)0.4);
 	}
 
 	public override void GetHit(int color, float value, int typeOfAttack)
@@ -36,33 +40,62 @@ public class BossCopy : BossBehaviour
 		}
 		else
 		{
-			if ((property as BossProperty).shieldColor == color)
+			//if ((property as BossProperty).shieldColor == color)
+			//{
+			//	(property as BossProperty).shield = 2;
+			//}
+			//else
+			//{
+			//	if ((property as BossProperty).shield == 1)
+			//	{
+			//		GetWeak();
+			//	}
+			//	else
+			//		(property as BossProperty).shield = 1;
+			//}
+			if (typeOfAttack == 2)
 			{
-				(property as BossProperty).shield = 2;
-			}
-			else
-			{
-				if ((property as BossProperty).shield == 1)
+				if ((property as BossProperty).shieldColor != color && color != 0)
 				{
-					GetWeak();
+					if ((property as BossProperty).shield == 1)
+					{
+						//Debug.Log("破盾");
+						GetWeak();
+					}
+					else
+					{
+						//Debug.Log("盾-1");
+						(property as BossProperty).shield = 1;
+					}
 				}
 				else
-					(property as BossProperty).shield = 1;
+				{
+					//Debug.Log("盾满");
+					(property as BossProperty).shield = 2;
+				}
 			}
 		}
 	}
 
-	protected override void GetWeak()
+	public override void GetWeak()
 	{
 		Debug.LogError("分身虚弱 번선흐로");
-		DeSeparate();
+		DeSeparate(true);
 	}
 
-	protected override void DeSeparate()
+	protected override void DeSeparate(bool getWeak)
 	{
 		(property as BossProperty).real.GetComponent<BossProperty>().mainColorValue = property.mainColorValue;
-		(property as BossProperty).real.GetComponent<BossProperty>().shield = ((property as BossProperty).real.GetComponent<BossProperty>().shield > (property as BossProperty).shield) ? (property as BossProperty).real.GetComponent<BossProperty>().shield : (property as BossProperty).shield;
-		Debug.LogError("DeSeparate");
+		if (getWeak)
+		{
+			(property as BossProperty).real.GetComponent<BossBehaviour>().GetWeak();
+		}
+		else
+		{
+			(property as BossProperty).real.GetComponent<BossProperty>().shield =
+((property as BossProperty).real.GetComponent<BossProperty>().shield > (property as BossProperty).shield) ?
+(property as BossProperty).real.GetComponent<BossProperty>().shield : (property as BossProperty).shield;
+		}
 		Destroy(this.gameObject);
 
 	}
@@ -92,7 +125,50 @@ public class BossCopy : BossBehaviour
 	public override void AttackEnd()
 	{
 		base.AttackEnd();
-		DeSeparate();
+		DeSeparate(false);
 	}
 
+	public override void AttackNearReset()
+	{
+
+	}
+
+	public IEnumerator 激光(int color)
+	{
+		Debug.LogError(gameObject.name);
+		Vector3 stalker = mainCharacter.transform.position;
+		print(stalker);
+		float timer = 激光持续时间;
+		LineRenderer laserLineRender = GetComponent<LineRenderer>();
+		laserLineRender.enabled = true;
+		while (timer >= 0)
+		{
+			stalker += (mainCharacter.transform.position - stalker).normalized * 激光跟踪速度 * Time.deltaTime;
+			transform.forward = stalker - transform.position;
+			timer -= Time.deltaTime;
+			Ray ray = new Ray(transform.position, stalker - transform.position);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit, 30f))
+			{
+
+				(property as BossProperty).shieldColor = color;
+				laserLineRender.SetPosition(0, this.transform.position + (0.3f * transform.forward));
+
+				//print(hit.collider.gameObject.name);
+				if ((hit.point - transform.position).magnitude < (stalker - transform.position).magnitude)
+				{
+					laserLineRender.SetPosition(1, hit.point);
+					if (hit.collider.tag == "MainCharacter")
+						hit.collider.GetComponent<CBehaviour>().GetHit(color, 激光DPS, 2);
+				}
+				else
+				{
+					laserLineRender.SetPosition(1, stalker);
+				}
+				//print(hit.collider.name);
+			}
+
+			yield return 0;
+		}
+	}
 }

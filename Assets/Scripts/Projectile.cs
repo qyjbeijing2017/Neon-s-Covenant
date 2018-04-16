@@ -31,6 +31,7 @@ public class Projectile : MonoBehaviour
 	//子弹本身没有碰撞，只有一个trigger
 	void OnTriggerEnter(Collider collider)
 	{
+		Debug.Log(collider.name);
 		if (collider.tag == "MainCharacter" &&collider.name != launcherName|| collider.tag == "Enemy" && collider.name != launcherName)
 		{
 			Debug.Log(collider.name);

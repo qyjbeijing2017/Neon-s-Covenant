@@ -14,10 +14,12 @@ public class MonsterBehaviour : CBehaviour
 	/// 攻击冷却时间以秒计算，可能由动画控制代替
 	/// </summary>
 	[SerializeField] private float attackCD = 1;
+	[SerializeField] private float anti_ColorMultiplier = 1.5f;
 
 	[SerializeField] private bool isChasing = false;
 	[SerializeField] private bool isLooking = false;
 	[SerializeField] private bool isAttacking = false;
+
 
 	// Use this for initialization
 	void Awake()
@@ -46,17 +48,18 @@ public class MonsterBehaviour : CBehaviour
 		//}
 
 
-
-		if (!isAttacking)
-		{
-			if (IsNearCharacter())
+		if (isChasing) {
+			if (!isAttacking)
 			{
-				anim.PlayAnim("Attack");
-				isChasing = false;
-			}
-			else
-			{
-				Move(mainCharacter.transform.position);
+				if (IsNearCharacter())
+				{
+					anim.PlayAnim("Attack");
+					isChasing = false;
+				}
+				else
+				{
+					Move(mainCharacter.transform.position);
+				}
 			}
 		}
 		anim.SetMovingAnim(isChasing);
@@ -83,12 +86,13 @@ public class MonsterBehaviour : CBehaviour
 
 	public void AttackNear()
 	{
-		weapon.GetComponent<AttackNear>().SetProperty(property.mainColor, attackValueNear);
+		weapon.SetProperty(property.mainColor, attackValueNear);
 	}
 
 	public void AttackReset()
 	{
-		weapon.GetComponent<AttackNear>().SetProperty(property.mainColor, attackValueNear);
+		if (weapon)
+			weapon.GetComponent<AttackNear>().SetProperty(property.mainColor, attackValueNear);
 	}
 
 	public void AttackEnd()
@@ -103,7 +107,7 @@ public class MonsterBehaviour : CBehaviour
 
 	bool IsNearCharacter()
 	{
-		if ((transform.position - mainCharacter.transform.position).magnitude < (property as MonsterProperty).sensorRange)
+		if ((transform.position - mainCharacter.transform.position).magnitude <attackRange)
 			return true;
 		else
 			return false;
@@ -118,6 +122,6 @@ public class MonsterBehaviour : CBehaviour
 	//可以跑出监视范围
 	void OnTriggerExit()
 	{
-		isChasing = false;
+		//isChasing = false;
 	}
 }

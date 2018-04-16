@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 23440610221563180}
   - component: {fileID: 114518025084309102}
   m_Layer: 0
-  m_Name: LeftHandCollider
+  m_Name: RightHandCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 23763286074725714}
   - component: {fileID: 114955279853349578}
   m_Layer: 0
-  m_Name: RightHandCollider
+  m_Name: LeftHandCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,7 +855,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4081307709631480}
   - component: {fileID: 33261533995751288}
-  - component: {fileID: 135966413066558386}
   - component: {fileID: 23420133034720784}
   m_Layer: 0
   m_Name: Shield
@@ -2545,6 +2544,7 @@ MonoBehaviour:
   reductionOfDamageNear: 0
   reductionOfDamageDistant: 0
   onWeakMultiplier: 3
+  text: {fileID: 0}
 --- !u!114 &114518025084309102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2611,6 +2611,7 @@ MonoBehaviour:
   bullet: {fileID: 1448822005458950, guid: 9f71bc323e7219348a454a65bd6c4191, type: 2}
   weapon: {fileID: 0}
   spawnPlace: {fileID: 4656498109203442}
+  mainCharacter: {fileID: 0}
   isChasing: 0
   isLooking: 0
   isAttacking: 0
@@ -2627,8 +2628,9 @@ MonoBehaviour:
   "\u6FC0\u5149\u6301\u7EED\u65F6\u95F4": 10
   "\u6FC0\u5149\u8DDF\u8E2A\u901F\u5EA6": 1
   "\u89D2\u5EA6": 15
-  leftHand: {fileID: 114518025084309102}
-  rightHand: {fileID: 114955279853349578}
+  leftHand: {fileID: 114955279853349578}
+  rightHand: {fileID: 114518025084309102}
+  bCopy: {fileID: 0}
   bossCopy: {fileID: 1372199977237088, guid: 2897d3bba47ae6f43a2e383df6d36b0a, type: 2}
 --- !u!120 &120450106352419808
 LineRenderer:
@@ -2736,18 +2738,6 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1667437538342904}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135966413066558386
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1736214048934408}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
