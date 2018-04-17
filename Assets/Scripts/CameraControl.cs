@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraControl : MonoBehaviour
 {
 
-    MainCharacterBehaviour mainCharacterBehaviour;
+    public Player_new player;
     Vector3 targetPoint;
     public float deadR;
     public float maxR;
@@ -14,19 +14,25 @@ public class CameraControl : MonoBehaviour
 
     void Start()
     {
-        mainCharacterBehaviour = FindObjectOfType<MainCharacterBehaviour>();
-        starVector = transform.position - mainCharacterBehaviour.transform.position;
-        targetPoint = mainCharacterBehaviour.transform.position + starVector + targetPointOffset;
+        
+        starVector = transform.position - player.transform.position;
+        targetPoint = player.transform.position + starVector + targetPointOffset;
+
 
     }
 
     private void Update()
     {
+
+    }
+
+    public void cameraMove()
+    {
         if (Vector3.Magnitude(transform.position - targetPoint) > deadR)
         {
-            
 
-            float speedCamera = (Vector3.Magnitude(transform.position - targetPoint) - deadR) / (maxR - deadR) * Mathf.Cos(45 * Mathf.PI / 180) * mainCharacterBehaviour.moveSpeed;
+
+            float speedCamera = (Vector3.Magnitude(transform.position - targetPoint) - deadR) / (maxR - deadR) * Mathf.Cos(45 * Mathf.PI / 180) * player.moveSpeed;
 
 
             this.transform.position += (targetPoint - transform.position).normalized * speedCamera;
@@ -34,6 +40,6 @@ public class CameraControl : MonoBehaviour
 
         }
 
-        targetPoint = mainCharacterBehaviour.transform.position + starVector + targetPointOffset;
+        targetPoint = player.transform.position + starVector + targetPointOffset;
     }
 }
