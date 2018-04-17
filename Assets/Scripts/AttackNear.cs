@@ -22,11 +22,9 @@ public class AttackNear : MonoBehaviour
 
 	void OnTriggerEnter(Collider collider)
 	{
-		//if (collider.name != "Ground" && collider.tag != "woodenStick")
-		//{
-		//	collider.GetComponent<CBehaviour>().GetHit(attackColor, attackValue, 0);
-		//}
-		Debug.Log("color: "+attackColor+" value: " +attackValue + name);
+
+		//Debug.Log("color: "+attackColor+" value: " +attackValue + name);
+		Debug.LogError("Near");
 		if (collider.tag ==攻击目标)
 		{
 			collider.GetComponent<CBehaviour>().GetHit(attackColor, attackValue, 0);

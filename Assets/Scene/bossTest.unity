@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1453,6 +1453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253533053}
   - component: {fileID: 1253533052}
+  - component: {fileID: 1253533054}
   m_Layer: 0
   m_Name: LevelControl
   m_TagString: Untagged
@@ -1486,6 +1487,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1253533054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1253533051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef1546f0af456d4a8015b087fa6e728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1303927320
 Prefab:
   m_ObjectHideFlags: 0
@@ -2053,6 +2065,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100068, guid: e7c68cfbe9ff34a4e9080ea15c3119e2, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7c68cfbe9ff34a4e9080ea15c3119e2, type: 3}
   m_IsPrefabParent: 0
@@ -2116,7 +2132,7 @@ MonoBehaviour:
   attackValueDistant: 0
   attackValueNear: 0
   attackFreq: 0
-  attackFlySpeed: 0
+  attackFlySpeed: 3
   bullet: {fileID: 1448822005458950, guid: 9f71bc323e7219348a454a65bd6c4191, type: 2}
   weapon: {fileID: 0}
   spawnPlace: {fileID: 792931340}

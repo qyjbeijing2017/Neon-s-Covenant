@@ -40,19 +40,6 @@ public class BossCopy : BossBehaviour
 		}
 		else
 		{
-			//if ((property as BossProperty).shieldColor == color)
-			//{
-			//	(property as BossProperty).shield = 2;
-			//}
-			//else
-			//{
-			//	if ((property as BossProperty).shield == 1)
-			//	{
-			//		GetWeak();
-			//	}
-			//	else
-			//		(property as BossProperty).shield = 1;
-			//}
 			if (typeOfAttack == 2)
 			{
 				if ((property as BossProperty).shieldColor != color && color != 0)
@@ -136,8 +123,11 @@ public class BossCopy : BossBehaviour
 	public IEnumerator 激光(int color)
 	{
 		Debug.LogError(gameObject.name);
-		Vector3 stalker = mainCharacter.transform.position;
-		print(stalker);
+		
+		Transform tempT = mainCharacter.transform;//获取主角的位置
+
+		Vector3 stalker = mainCharacter.transform.position - tempT.forward*激光起始偏移因数;
+
 		float timer = 激光持续时间;
 		LineRenderer laserLineRender = GetComponent<LineRenderer>();
 		laserLineRender.enabled = true;

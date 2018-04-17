@@ -48,21 +48,26 @@ public class MonsterBehaviour : CBehaviour
 		//}
 
 
-		if (isChasing) {
+		if (isChasing)
+		{
 			if (!isAttacking)
 			{
 				if (IsNearCharacter())
 				{
-					anim.PlayAnim("Attack");
 					isChasing = false;
+					isAttacking = true;
+					anim.PlayAnim("Attack");
+					anim.SetMovingAnim(isChasing);
+					m_Agent.isStopped = true;
 				}
 				else
 				{
+					m_Agent.isStopped = false ;
 					Move(mainCharacter.transform.position);
+					anim.SetMovingAnim(isChasing);
 				}
 			}
 		}
-		anim.SetMovingAnim(isChasing);
 
 	}
 
@@ -78,25 +83,29 @@ public class MonsterBehaviour : CBehaviour
 
 	public void AttackDistant()
 	{
-		isAttacking = true;
+		Debug.LogError("AttackDistant");
 		GameObject t = Instantiate(bullet, spawnPlace.position, Quaternion.identity);
-		t.GetComponent<Rigidbody>().velocity = attackFlySpeed * transform.forward;
+		t.GetComponent<Projectile>().launcherName = name;
+		t.GetComponent<Rigidbody>().velocity = attackFlySpeed * (mainCharacter.transform.position - transform.position).normalized;
 
 	}
 
 	public void AttackNear()
 	{
+		Debug.LogError("AttackNear");
 		weapon.SetProperty(property.mainColor, attackValueNear);
 	}
 
 	public void AttackReset()
 	{
+		Debug.LogError("AttackReset");
 		if (weapon)
 			weapon.GetComponent<AttackNear>().SetProperty(property.mainColor, attackValueNear);
 	}
 
 	public void AttackEnd()
 	{
+		isAttacking = false;
 		isChasing = true;
 	}
 
@@ -107,7 +116,7 @@ public class MonsterBehaviour : CBehaviour
 
 	bool IsNearCharacter()
 	{
-		if ((transform.position - mainCharacter.transform.position).magnitude <attackRange)
+		if ((transform.position - mainCharacter.transform.position).magnitude < attackRange)
 			return true;
 		else
 			return false;

@@ -24,7 +24,8 @@ public class BossBehaviour : CBehaviour
 	[SerializeField] protected float 激光DPS;
 	[SerializeField] protected float 激光持续时间;
 	[SerializeField] protected float 激光跟踪速度;
-	public float 角度;
+	[SerializeField] private float 角度;  //这个地方应该用几个空物体来设定位置，会更科学
+	[SerializeField] protected float 激光起始偏移因数;
 
 	public AttackNear leftHand;
 	public AttackNear rightHand;
@@ -512,7 +513,7 @@ public class BossBehaviour : CBehaviour
 		Transform tempT = mainCharacter.transform;
 		tempT.Rotate(0, 90, 0);
 		//副本出现在主角的左右中的一侧
-		BossProperty temp = Instantiate(bossCopy, mainCharacter.transform.position + tempT.forward* 3, Quaternion.identity).GetComponent<BossProperty>();
+		BossProperty temp = Instantiate(bossCopy, mainCharacter.transform.position + tempT.forward * 3, Quaternion.identity).GetComponent<BossProperty>();
 		temp.transform.forward = -tempT.forward;
 		tempT.Rotate(0, -180, 0);
 		transform.position = mainCharacter.transform.position + tempT.forward * 3;
@@ -587,8 +588,11 @@ public class BossBehaviour : CBehaviour
 	public IEnumerator 激光(int color)
 	{
 		Debug.LogError(gameObject.name);
-		Vector3 stalker = mainCharacter.transform.position;
-		print(stalker);
+
+		Transform tempT = mainCharacter.transform;//获取主角的位置
+
+		Vector3 stalker = tempT.position + tempT.forward * 激光起始偏移因数;
+
 		float timer = 激光持续时间;
 		LineRenderer laserLineRender = GetComponent<LineRenderer>();
 		laserLineRender.enabled = true;

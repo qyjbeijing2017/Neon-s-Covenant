@@ -309,7 +309,7 @@ public class MainCharacterBehaviour : CBehaviour
 			}
 		}
 
-		if (typeOfAttack != 2)
+		if (typeOfAttack ==1)
 		{
 			StopCoroutine("硬直");
 			StartCoroutine("硬直");

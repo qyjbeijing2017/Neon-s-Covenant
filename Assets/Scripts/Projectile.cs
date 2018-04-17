@@ -34,11 +34,11 @@ public class Projectile : MonoBehaviour
 		Debug.Log(collider.name);
 		if (collider.tag == "MainCharacter" &&collider.name != launcherName|| collider.tag == "Enemy" && collider.name != launcherName)
 		{
-			Debug.Log(collider.name);
+			Debug.LogError(collider.name);
 			collider.GetComponent<CBehaviour>().GetHit(pColor, attackValue, 2);
 			Destroy(this.gameObject);
 		}
-		else
+		else if(collider.tag =="Building")
 		{
 			Destroy(gameObject);
 		}
