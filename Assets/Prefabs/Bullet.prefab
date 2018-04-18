@@ -112,15 +112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 1
-  damage: 0
-  colorType: 0
+  damageHP: 0
+  damagePower: 0
+  colorType: 1
   speed: 10
   destoryTime: 10
-  white: {r: 0.29104194, g: 0.08401815, b: 0.8161765, a: 1}
-  black: {r: 0, g: 0, b: 0, a: 1}
-  red: {r: 1, g: 0, b: 0, a: 0.978}
-  cyan: {r: 0, g: 0.83448267, b: 1, a: 1}
-  material: {fileID: 2100000, guid: 6051845a3aa4c6449bd39592bcbcc5bf, type: 2}
+  stopTime: 0
   bulletVelocity: 8
 --- !u!135 &135560035898945104
 SphereCollider:

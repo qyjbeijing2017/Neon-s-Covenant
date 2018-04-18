@@ -1142,7 +1142,7 @@ GameObject:
   - component: {fileID: 114797449537294618}
   m_Layer: 0
   m_Name: bossCopy_new
-  m_TagString: Untagged
+  m_TagString: BossCopy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

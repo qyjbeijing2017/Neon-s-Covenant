@@ -55,8 +55,12 @@ public class Boss_new : MonoBehaviour
     int laserType;
     bool laserDamaged;
     bool mode2;
+    [HideInInspector]public bool specialAttack;
+    int specialType;
+    GameObject boss1;
+    GameObject boss2;
 
-    public int bossCopyNub;
+    [SerializeField] public int bossCopyNub;
 
     void hideMesh()
     {
@@ -66,6 +70,19 @@ public class Boss_new : MonoBehaviour
             renderer[i].enabled = false;
         }
         collider.enabled = false;
+        clearAnimator();
+    }
+    void clearAnimator()
+    {
+        animator.SetBool("nearAttack", false);
+        animator.SetBool("moving", false);
+        animator.SetBool("laser", false);
+        animator.SetBool("weak", false);
+        animator.SetBool("stop", false);
+        animator.SetBool("rangeAttack", false);
+        animator.SetBool("laserEnd", false);
+        animator.SetBool("nowWeak", false);
+        laser.enabled = false;
     }
     void showMesh()
     {
@@ -88,10 +105,21 @@ public class Boss_new : MonoBehaviour
         laser.enabled = false;
         mode2 = false;
         bossCopyNub = 0;
+        specialType = 3;
+        specialAttack = false;
     }
 
-    public void injured(float damage, int damageType)
+    public void injured(int damage, int damageType)
     {
+        if (specialAttack && specialType != 3)
+        {
+            if (damageType != specialType)
+            {
+                boss_stopImmediately();
+                boss_weakStop();
+                StartCoroutine(weakNow());
+            }
+        }
 
         if (shield > 0)
         {
@@ -127,20 +155,30 @@ public class Boss_new : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-            StartCoroutine(boss_rangeAttack1());
+            specialType = 2;
+            specialAttack = true;
+            injured(0, 1);
+            specialAttack = false;
         }
         if (Input.GetKeyDown("r"))
         {
-            StartCoroutine(boss_laser1());
+            specialType = 1;
+            specialAttack = true;
+            injured(0, 2);
+            specialAttack = false;
 
         }
 
-        if (HP < mode2Hp)
+        if (HP < mode2Hp && !mode2)
         {
             mode2 = true;
             boss_stopImmediately();
             boss_weakStop();
             boss_start();
+        }
+        if (animator.GetBool("moving") && animator.GetBool("nearAttack"))
+        {
+            animator.SetBool("moving", false);
         }
 
 
@@ -148,18 +186,18 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_move()
     {
-
+        clearAnimator();
         while (true)
         {
 
             nav.isStopped = false;
             if (attack && !animator.GetBool("nearAttack"))
             {
-
+                boss_weakStop();
+                clearAnimator();
                 nav.isStopped = true;
-                StopCoroutine("boss_Detect");
                 yield return StartCoroutine(boss_nearAttack());
-                StartCoroutine("boss_Detect");
+
             }
 
             if (follow)
@@ -183,11 +221,12 @@ public class Boss_new : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(detectTime);
+            clearAnimator();
             StopCoroutine("boss_move");
             boss_stopImmediately();
 
             int a = Random.Range(0, 3);
-
+            boss_weakStop();
             if (a == 0)
             {
                 if (mode2)
@@ -198,10 +237,10 @@ public class Boss_new : MonoBehaviour
             else if (a == 1)
             {
                 if (mode2)
-                    yield return StartCoroutine(boss_nearAttack1());
+                    yield return StartCoroutine(boss_rangeAttack1());
                 else
                 {
-                    yield return StartCoroutine(boss_rangeAttack1());
+                    yield return StartCoroutine(boss_rangeAttack());
                 }
             }
             else
@@ -219,7 +258,6 @@ public class Boss_new : MonoBehaviour
     {
         StartCoroutine("boss_move");
         StartCoroutine("boss_Detect");
-        animator.Play("Idle");
     }
 
     public void boss_stopImmediately()
@@ -244,7 +282,6 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_nearAttack()
     {
-
         animator.SetBool("nearAttack", true);
         boss_stopImmediately();
         transform.position = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
@@ -258,7 +295,7 @@ public class Boss_new : MonoBehaviour
     }
     IEnumerator boss_nearAttack1()
     {
-
+        clearAnimator();
         animator.SetBool("nearAttack", true);
         boss_stopImmediately();
         transform.position = player.transform.position + player.transform.forward * nearFlashDis;
@@ -267,31 +304,37 @@ public class Boss_new : MonoBehaviour
         {
             yield return 0;
         }
-
+        boss_start();
 
     }
     public void nearAttack1_start()
     {
+        specialAttack = true;
+        specialType = 1;
         bossRightHand.GetComponent<Collider>().enabled = true;
         bossRightHand.attackValue = nearDamage;
         bossRightHand.attackPower = nearPowerDamage;
         bossRightHand.stopTime = stoptimeDamage;
-        bossRightHand.attackType = 1;
+        bossRightHand.attackType = specialType;
     }
     public void nearAttack1_end()
     {
+        specialAttack = false;
         bossRightHand.GetComponent<Collider>().enabled = false;
     }
     public void nearAttack2_start()
     {
+        specialAttack = true;
+        specialType = 2;
         bossLeftHand.GetComponent<Collider>().enabled = true;
         bossLeftHand.attackValue = nearDamage;
         bossLeftHand.attackPower = nearPowerDamage;
         bossLeftHand.stopTime = stoptimeDamage;
-        bossLeftHand.attackType = 2;
+        bossLeftHand.attackType = specialType;
     }
     public void nearAttack2_end()
     {
+        specialAttack = false;
         bossLeftHand.GetComponent<Collider>().enabled = false;
     }
     public void nearAttack3_start()
@@ -317,7 +360,7 @@ public class Boss_new : MonoBehaviour
     {
         animator.SetBool("nearAttack", false);
         animator.SetBool("moving", true);
-
+        boss_start();
     }
 
 
@@ -335,10 +378,10 @@ public class Boss_new : MonoBehaviour
 
         hideMesh();
         bossCopyNub = 0;
-        GameObject boss1 = Instantiate(bossCopy.gameObject);
+        boss1 = Instantiate(bossCopy.gameObject);
         boss1.transform.position = player.transform.position + (player.transform.forward * flashDisBoss2);
         boss1.transform.forward = player.transform.position - boss1.transform.position;
-        GameObject boss2 = Instantiate(bossCopy.gameObject);
+        boss2 = Instantiate(bossCopy.gameObject);
         boss2.transform.position = player.transform.position - (player.transform.forward * flashDisBoss2);
         boss2.transform.forward = player.transform.position - boss2.transform.position;
         boss1.GetComponent<Boss_copy>().boss = this;
@@ -351,7 +394,7 @@ public class Boss_new : MonoBehaviour
             yield return 0;
         }
         shield = Mathf.Max(boss1.GetComponent<Boss_copy>().shield, boss2.GetComponent<Boss_copy>().shield);
-        if(boss1.GetComponent<Boss_copy>().shieldType == boss2.GetComponent<Boss_copy>().shieldType)
+        if (boss1.GetComponent<Boss_copy>().shieldType == boss2.GetComponent<Boss_copy>().shieldType)
         {
             shieldType = boss1.GetComponent<Boss_copy>().shieldType;
         }
@@ -363,6 +406,7 @@ public class Boss_new : MonoBehaviour
         showMesh();
         Destroy(boss1);
         Destroy(boss2);
+        boss_start();
     }
     public void rangeAttack_shoot()
     {
@@ -385,6 +429,7 @@ public class Boss_new : MonoBehaviour
     public void rangeAttack_end()
     {
         animator.SetBool("rangeAttack", false);
+        boss_start();
     }
 
     IEnumerator boss_laser()
@@ -435,10 +480,10 @@ public class Boss_new : MonoBehaviour
     {
         hideMesh();
         bossCopyNub = 0;
-        GameObject boss1 = Instantiate(bossCopy.gameObject);
+        boss1 = Instantiate(bossCopy.gameObject);
         boss1.transform.position = player.transform.position + (player.transform.right * flashDisBoss2);
         boss1.transform.forward = player.transform.position - boss1.transform.position;
-        GameObject boss2 = Instantiate(bossCopy.gameObject);
+        boss2 = Instantiate(bossCopy.gameObject);
         boss2.transform.position = player.transform.position - (player.transform.right * flashDisBoss2);
         boss2.transform.forward = player.transform.position - boss2.transform.position;
         boss1.GetComponent<Boss_copy>().boss = this;
@@ -463,6 +508,7 @@ public class Boss_new : MonoBehaviour
         showMesh();
         Destroy(boss1);
         Destroy(boss2);
+        boss_start();
     }
 
     public void laser_start()
@@ -498,6 +544,7 @@ public class Boss_new : MonoBehaviour
     {
         animator.SetBool("laserEnd", false);
         animator.SetBool("laser", false);
+        boss_start();
     }
 
 
@@ -532,6 +579,16 @@ public class Boss_new : MonoBehaviour
     public void nowWeak()
     {
         animator.SetBool("nowWeak", false);
+    }
+
+    public void weakCopy()
+    {
+        showMesh();
+        Destroy(boss1);
+        Destroy(boss2);
+        boss_stopImmediately();
+        boss_weakStop();
+        StartCoroutine(weakNow());
     }
 
 }

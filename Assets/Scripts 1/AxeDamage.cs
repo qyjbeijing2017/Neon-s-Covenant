@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AxeDamage : MonoBehaviour {
 
-    public float axeDamege;
+    public int axeDamege;
+    public int axeType;
 
 	// Use this for initialization
 	void Start () {
@@ -19,9 +20,12 @@ public class AxeDamage : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy" || other.tag == "Boss")
+        if(other.tag == "Boss")
         {
-
+            if (other.GetComponent<Boss_new>().shield <= 0 || other.GetComponent<Boss_new>().specialAttack)
+            {
+                other.GetComponent<Boss_new>().injured(axeDamege, axeType);
+            }
         }
     }
 

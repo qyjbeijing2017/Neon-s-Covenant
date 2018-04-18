@@ -9,6 +9,7 @@ TagManager:
   - woodenStick
   - InvincibleMainCharacter
   - Boss
+  - BossCopy
   layers:
   - Default
   - TransparentFX

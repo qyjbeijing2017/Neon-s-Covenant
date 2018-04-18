@@ -31,7 +31,7 @@ public class Boss_copy : MonoBehaviour
     int laserType;
     bool laserDamaged;
 
-    public void injured(float damage, int damageType)
+    public void injured(int damage, int damageType)
     {
 
         if (shield > 0)
@@ -51,7 +51,8 @@ public class Boss_copy : MonoBehaviour
             if (shield <= 0)
             {
 
-
+                boss.bossCopyNub += 2;
+                boss.weakCopy();
             }
         }
 
@@ -89,11 +90,13 @@ public class Boss_copy : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-            //StartCoroutine(boss_rangeAttack());
+            shield = 1;
+            shieldType = 1;
+            injured(0, 2);
         }
         if (Input.GetKeyDown("r"))
         {
-            //StartCoroutine(boss_laser());
+
         }
 
     }
@@ -161,6 +164,7 @@ public class Boss_copy : MonoBehaviour
                         {
                             player.inJured(laserDamage, laserPowerDamage, laserType, laserStopTime);
                             laserDamaged = false;
+                            print(laserType);
                         }
                         laser.SetPosition(1, hit.point);
                     }

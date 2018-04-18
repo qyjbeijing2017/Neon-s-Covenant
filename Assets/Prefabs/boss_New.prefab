@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 120888045635925976}
   m_Layer: 0
   m_Name: boss_New
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2642,8 +2642,12 @@ MonoBehaviour:
   weakDamageDeep: 0
   mode2Hp: 0
   flashDisBoss2: 0
+  bossCopy: {fileID: 0}
+  renderer: []
+  collider: {fileID: 0}
   follow: 0
   attack: 0
+  bossCopyNub: 0
 --- !u!114 &114610472331067334
 MonoBehaviour:
   m_ObjectHideFlags: 1

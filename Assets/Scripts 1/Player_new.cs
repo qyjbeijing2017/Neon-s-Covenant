@@ -22,8 +22,13 @@ public class Player_new : MonoBehaviour
     [SerializeField] private float dodgeSpeed;
 
     [SerializeField] private AxeDamage axeDamage;
+    [SerializeField] private int axeValue;
     [SerializeField] private SpriteRenderer aimLine;
-    [SerializeField] private BulletAll bulletPlayer;
+
+    [SerializeField] private BulletAll bulletPlayer_red;
+    [SerializeField] private BulletAll bulletPlayer_cyan;
+    [SerializeField] private BulletAll bulletPlayer_white;
+
     [SerializeField] private Transform shootPoint;
     [SerializeField] private float shootPower;
     [SerializeField] private Camera cameraControl;
@@ -137,12 +142,13 @@ public class Player_new : MonoBehaviour
         aimLine.enabled = false;
         cameraPoint = cameraControl.transform.position - transform.position;
         StartCoroutine(player_move());
+        axeDamage.axeDamege = axeValue;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        axeDamage.axeType = powerType;
     }
 
 
@@ -267,6 +273,7 @@ public class Player_new : MonoBehaviour
     public void startNearDamage()
     {
         axeDamage.GetComponent<Collider>().enabled = true;
+
     }
     public void endNearDamage()
     {
@@ -293,12 +300,37 @@ public class Player_new : MonoBehaviour
     public void shoot()
     {
 
-        GameObject bullet = Instantiate(bulletPlayer.gameObject);
-        bullet.transform.localEulerAngles = shootPoint.localEulerAngles;
-        bullet.transform.position = shootPoint.position;
-        bullet.GetComponent<Rigidbody>().velocity = bullet.GetComponent<BulletAll>().speed * shootPoint.forward;
-        bullet.GetComponent<BulletAll>().colorType = powerType;
-        inJured(0, shootPower, 3, 0);
+        GameObject bullet;
+
+        if(powerType == 0)
+        {
+            bullet = Instantiate(bulletPlayer_white.gameObject);
+            bullet.transform.localEulerAngles = shootPoint.localEulerAngles;
+            bullet.transform.position = shootPoint.position;
+            bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward;
+            bullet.GetComponent<BulletAll>().colorType = powerType;
+            inJured(0, shootPower, 3, 0);
+        }
+        else if (powerType == 1)
+        {
+            bullet = Instantiate(bulletPlayer_red.gameObject);
+            bullet.transform.localEulerAngles = shootPoint.localEulerAngles;
+            bullet.transform.position = shootPoint.position;
+            bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward;
+            bullet.GetComponent<BulletAll>().colorType = powerType;
+            inJured(0, shootPower, 3, 0);
+        }
+        else if(powerType == 2)
+        {
+            bullet = Instantiate(bulletPlayer_cyan.gameObject);
+            bullet.transform.localEulerAngles = shootPoint.localEulerAngles;
+            bullet.transform.position = shootPoint.position;
+            bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward;
+            bullet.GetComponent<BulletAll>().colorType = powerType;
+            inJured(0, shootPower, 3, 0);
+        }
+
+
 
     }
     public void shootEnd()

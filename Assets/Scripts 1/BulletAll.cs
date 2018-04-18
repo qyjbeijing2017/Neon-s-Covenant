@@ -15,36 +15,16 @@ public class BulletAll : MonoBehaviour {
     }
 
     public type myType;
-    public float damage;
+    public int damageHP;
+    public float damagePower;
     public int colorType;
     public float speed;
     public float destoryTime;
-    [SerializeField] private Color white;
-    [SerializeField] private Color black;
-    [SerializeField] private Color red;
-    [SerializeField] private Color cyan;
-    [SerializeField] private Material material;
+    public float stopTime;
     [SerializeField] private float bulletVelocity;
 
     void Start () {
 
-        //Debug.Break();
-        if (colorType == 0)
-        {
-            material.color = white;
-        }
-        else if(colorType == 1)
-        {
-            material.color = red;
-        }
-        else if (colorType == 2)
-        {
-            material.color = cyan;
-        }
-        else if (colorType == 3)
-        {
-            material.color = black;
-        }
         Destroy(gameObject, destoryTime);
         GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * bulletVelocity;
 
@@ -58,7 +38,22 @@ public class BulletAll : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        //if(other.)
-        //Destroy(gameObject);
+        if(other.tag == "BossCopy")
+        {
+            other.GetComponent<Boss_copy>().injured(damageHP, colorType);
+            Destroy(gameObject);
+        }
+        if (other.tag == "Boss")
+        {
+            other.GetComponent<Boss_new>().injured(damageHP, colorType);
+            Destroy(gameObject);
+        }
+        if (other.tag == "MainCharacter")
+        {
+            other.GetComponent<Player_new>().inJured(damageHP, damagePower, colorType, stopTime);
+            Destroy(gameObject);
+        }
+        
+
     }
 }
