@@ -121,7 +121,7 @@ MonoBehaviour:
   red: {r: 1, g: 0, b: 0, a: 0.978}
   cyan: {r: 0, g: 0.83448267, b: 1, a: 1}
   material: {fileID: 2100000, guid: 6051845a3aa4c6449bd39592bcbcc5bf, type: 2}
-  bulletVelocity: 1
+  bulletVelocity: 8
 --- !u!135 &135560035898945104
 SphereCollider:
   m_ObjectHideFlags: 1

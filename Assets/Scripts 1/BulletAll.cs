@@ -27,7 +27,7 @@ public class BulletAll : MonoBehaviour {
     [SerializeField] private float bulletVelocity;
 
     void Start () {
-        print(1);
+
         //Debug.Break();
         if (colorType == 0)
         {
