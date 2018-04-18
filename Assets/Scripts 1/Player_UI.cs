@@ -15,7 +15,6 @@ public class Player_UI : MonoBehaviour {
 	void Start () {
         for(int i = 0; i < HP.Length; i++)
         {
-            print(1);
             HP[i].enabled = false;
         }
         for (int i = 0; i < player.HP; i++)

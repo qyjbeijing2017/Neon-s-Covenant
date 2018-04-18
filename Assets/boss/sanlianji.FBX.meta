@@ -180,21 +180,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.58821523
-        functionName: AttackNearLaunch
+        functionName: nearAttack1_start
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.7817551
-        functionName: AttackNearReset
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: AttackNear2
+        functionName: nearAttack1_end
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -229,21 +222,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.49340397
-        functionName: AttackNearLaunch
+        functionName: nearAttack2_start
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
       - time: 0.9134378
-        functionName: AttackNearReset
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 1
-        messageOptions: 0
-      - time: 0.9961734
-        functionName: AttackNear3
+        functionName: nearAttack2_end
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -278,25 +264,25 @@ ModelImporter:
       curves: []
       events:
       - time: 0.57356894
-        functionName: AttackNearLaunch
+        functionName: nearAttack3_start
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
       - time: 0.6870982
-        functionName: AttackNearReset
+        functionName: nearAttack3_end
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.99851525
-        functionName: AttackEndWithShield
+      - time: 1
+        functionName: nearAttack_end
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 2
         messageOptions: 0
       transformMask: []
       maskType: 3

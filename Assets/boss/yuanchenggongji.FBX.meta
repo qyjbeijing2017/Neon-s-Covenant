@@ -178,14 +178,14 @@ ModelImporter:
       curves: []
       events:
       - time: 0.75055075
-        functionName: AttackDistantLaunch
+        functionName: rangeAttack_shoot
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.99360216
-        functionName: AttackEnd
+        functionName: rangeAttack_end
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

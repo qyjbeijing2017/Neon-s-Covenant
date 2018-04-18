@@ -24,9 +24,12 @@ public class BulletAll : MonoBehaviour {
     [SerializeField] private Color red;
     [SerializeField] private Color cyan;
     [SerializeField] private Material material;
+    [SerializeField] private float bulletVelocity;
 
     void Start () {
-        if(colorType == 0)
+        print(1);
+        //Debug.Break();
+        if (colorType == 0)
         {
             material.color = white;
         }
@@ -43,6 +46,8 @@ public class BulletAll : MonoBehaviour {
             material.color = black;
         }
         Destroy(gameObject, destoryTime);
+        GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * bulletVelocity;
+
 
     }
 	
@@ -53,7 +58,7 @@ public class BulletAll : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-
-        Destroy(gameObject);
+        //if(other.)
+        //Destroy(gameObject);
     }
 }
