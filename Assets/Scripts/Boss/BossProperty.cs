@@ -28,12 +28,19 @@ public class BossProperty : CProperty
 	public float onWeakMultiplier;
 
 	public UnityEngine.UI.Text text;
+	[SerializeField] private UnityEngine.UI.Slider bossSlider;
 	void Awake()
 	{
 		base.Awake();
 		atStateOne = true;
 		isFake = false;
 		level.BossRegister();
+	}
+
+	private void Update()
+	{
+		if (!GetComponent<BossCopy>())
+			bossSlider.value = mainColorValue;
 	}
 
 	public void SetProperty(float mColorValue, bool alive, int s, int sColor, bool stateOne, bool fake, GameObject realOne)

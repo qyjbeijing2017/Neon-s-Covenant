@@ -6,8 +6,7 @@ public class LevelControl : MonoBehaviour
 {
 	public int monsterCount = 0;
 	public int bossCount = 0;
-
-	public Vector3 savedBossPosition { get; set; }
+	public Vector3 savedBossPosition;
 
 	/// <summary>
 	/// Monster及Boss初始化时在关卡管理类中注册该对象

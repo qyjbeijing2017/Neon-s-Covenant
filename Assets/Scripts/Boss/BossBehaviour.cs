@@ -32,6 +32,7 @@ public class BossBehaviour : CBehaviour
 
 	[HideInInspector] public BossCopy bCopy;
 
+
 	//行动=行走、攻击、虚弱等
 	protected bool isActing = false;
 
@@ -77,7 +78,6 @@ public class BossBehaviour : CBehaviour
 		}
 
 		shield.GetComponent<Renderer>().material.color = ((property as BossProperty).shieldColor == 1) ? new Color(1, 0, 0, (float)0.4) : new Color(0, 1, 1, (float)0.4);
-
 	}
 
 	public override void GetHit(int color, float value, int typeOfAttack)
@@ -369,7 +369,9 @@ public class BossBehaviour : CBehaviour
 		shield.GetComponent<Renderer>().enabled = false;
 		if (bSeparated)
 		{
-			Destroy(bCopy.gameObject);
+
+			if (bCopy.gameObject)
+				Destroy(bCopy.gameObject);
 			bSeparated = false;
 		}
 		StopAllCoroutines();

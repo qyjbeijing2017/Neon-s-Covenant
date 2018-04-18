@@ -123,8 +123,10 @@ public class BossCopy : BossBehaviour
 	public IEnumerator 激光(int color)
 	{
 		Debug.LogError(gameObject.name);
-		
-		Transform tempT = mainCharacter.transform;//获取主角的位置
+
+		Transform tempT;
+
+		tempT= mainCharacter.transform;//获取主角的位置
 
 		Vector3 stalker = mainCharacter.transform.position - tempT.forward*激光起始偏移因数;
 
