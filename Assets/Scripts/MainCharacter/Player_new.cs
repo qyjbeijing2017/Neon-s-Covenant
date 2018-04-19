@@ -151,6 +151,11 @@ public class Player_new : MonoBehaviour
     void Update()
     {
         axeDamage.axeType = powerType;
+
+        if (HP < 0)
+        {
+            player_stopImmediately();
+        }
     }
 
     public void player_stopImmediately()
@@ -396,5 +401,10 @@ public class Player_new : MonoBehaviour
 
 
 
+    }
+
+    void player_dead()
+    {
+        player_stopImmediately();
     }
 }

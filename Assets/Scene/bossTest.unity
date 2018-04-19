@@ -558,6 +558,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &154704355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154704348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745a9a9a370af9e4ebf88d6f3404e900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss_weaponEmpty: {fileID: 8300000, guid: f18817987f4b1d64e9dea8e1fa59a7f3, type: 3}
+  emptyVolume: 0.549
+  boss_weaponPowerfulEmpty: {fileID: 8300000, guid: f1120591acaded74ea7388b85178b243,
+    type: 3}
+  powerfulEmptyVolume: 0.718
+  boss_weaponPlayer: {fileID: 8300000, guid: c8ea7f1a9507c3e4eb12ea617e1e7e97, type: 3}
+  playerVolume: 0.636
+  boss_laser: {fileID: 8300000, guid: c83e0cbc85fe9ff41b2b319d50d150ea, type: 3}
+  laserVolume: 0.698
+  boss_range: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
+  rangeVolume: 0.518
+  bossAudio: {fileID: 154704349}
 --- !u!1 &183851440
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +846,7 @@ Prefab:
       objectReference: {fileID: 1778357006}
     - target: {fileID: 1637745329379206, guid: 717588aeda50f9649b389543e899b6a9, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114008538954503324, guid: 717588aeda50f9649b389543e899b6a9,
         type: 2}
@@ -2109,7 +2132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1280758501733030, guid: 0d4506c012a98fb479486577b0253801, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
         type: 2}
@@ -2151,6 +2174,16 @@ Prefab:
       propertyPath: laserStopTime
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114054864948537630, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: bossAudio
+      value: 
+      objectReference: {fileID: 154704355}
+    - target: {fileID: 114078941140446316, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: bossAudio
+      value: 
+      objectReference: {fileID: 154704355}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d4506c012a98fb479486577b0253801, type: 2}
   m_IsPrefabParent: 0

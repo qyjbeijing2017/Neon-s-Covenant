@@ -174,6 +174,7 @@ public class Boss_new : MonoBehaviour
         if (HP <= 0)
         {
             Dead = true;
+            boss_dead();
         }
 
 
@@ -550,6 +551,7 @@ public class Boss_new : MonoBehaviour
     }
     IEnumerator laser_time()
     {
+        print(1);
         yield return new WaitForSeconds(laserTime);
         laserStart = false;
         laser.enabled = false;
@@ -607,9 +609,17 @@ public class Boss_new : MonoBehaviour
         StartCoroutine(weakNow());
     }
 
+    public void boss_dead()
+    {
+        boss_stopImmediately();
+
+    }
+
 
     public void test_bossLaser()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         if (mode2)
             StartCoroutine(boss_laser1());
         else
@@ -617,6 +627,8 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossNearAttack()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         if (mode2)
             StartCoroutine(boss_nearAttack1());
         else
@@ -624,6 +636,8 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossRangeAttack()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         if (mode2)
             StartCoroutine(boss_rangeAttack1());
         else
@@ -633,6 +647,8 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossWeak()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         shield = 0;
         boss_stopImmediately();
         boss_weakStop();
@@ -640,6 +656,8 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossMode2()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         if (mode2)
         {
             HP = maxHP;
@@ -652,4 +670,6 @@ public class Boss_new : MonoBehaviour
             mode2 = !mode2;
         }
     }
+
+
 }

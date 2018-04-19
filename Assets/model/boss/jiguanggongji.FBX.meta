@@ -180,11 +180,11 @@ ModelImporter:
       curves: []
       events:
       - time: 1
-        functionName: laser_start
+        functionName: bossAudio_play
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 4
         messageOptions: 0
       transformMask: []
       maskType: 3
@@ -244,6 +244,13 @@ ModelImporter:
       events:
       - time: 1
         functionName: laser_end
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: bossAudio_stop
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
