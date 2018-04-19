@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
 
     public void injured(int damage, int damageType, float stopTime)
     {
+        sword.enabled = false;
         if (specialDamage)
         {
             if (damageType == 1 || damageType == 2)
@@ -217,6 +218,7 @@ public class Enemy : MonoBehaviour
     }
     public void enemy_stopImmediately()
     {
+        sword.enabled = false;
         nav.isStopped = true;
         StopAllCoroutines();
         animator.SetBool("moving", false);

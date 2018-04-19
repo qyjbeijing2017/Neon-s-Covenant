@@ -569,6 +569,8 @@ public class Boss_new : MonoBehaviour
     {
 
         boss_stopImmediately();
+        bossLeftHand.enabled = false;
+        bossRightHand.enabled = false;
         animator.SetBool("weak", true);
         animator.SetBool("nowWeak", true);
         yield return new WaitForSeconds(weakTime);
