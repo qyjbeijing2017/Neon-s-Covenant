@@ -220,14 +220,28 @@ public class Player_new : MonoBehaviour
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
+                    
                     yield return StartCoroutine(player_attackRange());
                 }
             }
             else
             {
+
+
                 aimLine.enabled = false;
                 if (Input.GetMouseButtonDown(0))
                 {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    LayerMask mouseMask = 1 << 9;
+                    if (Physics.Raycast(ray, out hit, 100f, mouseMask))
+                    {
+                        Vector3 offset = new Vector3((hit.point - transform.position).x, 0, (hit.point - transform.position).z);
+                        if (offset.magnitude > 0.7)
+                        {
+                            transform.forward = new Vector3(offset.x, transform.forward.y, offset.z).normalized;
+                        }
+                    }
                     yield return StartCoroutine(player_attackNear());
                 }
             }
