@@ -18,6 +18,7 @@ public class Boss_new : MonoBehaviour
     [SerializeField] int nearDamagePowerful;
     [SerializeField] float nearPowerDamagePowerful;
     [SerializeField] float stoptimeDamagePowerful;
+    [SerializeField] float flashWaitTime;
     [SerializeField] float detectTime;
     [SerializeField] float nearFlashDis;
     public BulletAll boss_red;
@@ -46,6 +47,7 @@ public class Boss_new : MonoBehaviour
     [HideInInspector] public bool follow;
     [HideInInspector] public bool attack;
     [HideInInspector] UnityEngine.AI.NavMeshAgent nav;
+    [HideInInspector] public bool Dead;
 
     LineRenderer laser;
     Animator animator;
@@ -107,6 +109,7 @@ public class Boss_new : MonoBehaviour
         bossCopyNub = 0;
         specialType = 3;
         specialAttack = false;
+        Dead = false;
     }
 
     public void injured(int damage, int damageType)
@@ -167,6 +170,10 @@ public class Boss_new : MonoBehaviour
         if (animator.GetBool("moving") && animator.GetBool("nearAttack"))
         {
             animator.SetBool("moving", false);
+        }
+        if (HP <= 0)
+        {
+            Dead = true;
         }
 
 
@@ -270,10 +277,13 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_nearAttack()
     {
-        animator.SetBool("nearAttack", true);
+
         boss_stopImmediately();
         transform.position = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
         transform.forward = player.transform.position - transform.position;
+
+        yield return new WaitForSeconds(flashWaitTime);
+        animator.SetBool("nearAttack", true);
         while (animator.GetBool("nearAttack"))
         {
             yield return 0;
@@ -284,10 +294,13 @@ public class Boss_new : MonoBehaviour
     IEnumerator boss_nearAttack1()
     {
         clearAnimator();
-        animator.SetBool("nearAttack", true);
+
         boss_stopImmediately();
         transform.position = player.transform.position + player.transform.forward * nearFlashDis;
         transform.forward = player.transform.position - transform.position;
+
+        yield return new WaitForSeconds(flashWaitTime);
+        animator.SetBool("nearAttack", true);
         while (animator.GetBool("nearAttack"))
         {
             yield return 0;

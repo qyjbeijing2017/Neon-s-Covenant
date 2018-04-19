@@ -1318,6 +1318,8 @@ MonoBehaviour:
   damageDeep: 0
   player: {fileID: 0}
   shootPoint: {fileID: 4586294248636242}
+  sword: {fileID: 0}
+  dead: 0
   attack: 0
 --- !u!114 &114850924596026270
 MonoBehaviour:
@@ -1352,7 +1354,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 14.87
+  m_Radius: 14
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135556936813822542
 SphereCollider:

@@ -51,7 +51,7 @@ public class Player_new : MonoBehaviour
             if (powerType == 0)
             {
                 power -= powerDamage;
-                
+
                 if (type == 1 || type == 2)
                 {
                     powerType = type;
@@ -153,6 +153,19 @@ public class Player_new : MonoBehaviour
         axeDamage.axeType = powerType;
     }
 
+    public void player_stopImmediately()
+    {
+        StopAllCoroutines();
+        animatorPlayer.SetBool("moving", false);
+        animatorPlayer.SetBool("nearAttack", false);
+        animatorPlayer.SetBool("rangeAttack", false);
+        animatorPlayer.SetBool("stop", false);
+        animatorPlayer.Play("Idle");
+    }
+    public void player_start()
+    {
+        StartCoroutine(player_move());
+    }
 
     IEnumerator player_move()
     {
@@ -220,7 +233,7 @@ public class Player_new : MonoBehaviour
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
-                    
+
                     yield return StartCoroutine(player_attackRange());
                 }
             }
@@ -318,7 +331,7 @@ public class Player_new : MonoBehaviour
 
         GameObject bullet;
 
-        if(powerType == 0)
+        if (powerType == 0)
         {
             bullet = Instantiate(bulletPlayer_white.gameObject);
             bullet.transform.localEulerAngles = shootPoint.localEulerAngles;
@@ -336,7 +349,7 @@ public class Player_new : MonoBehaviour
             bullet.GetComponent<BulletAll>().colorType = powerType;
             inJured(0, shootPower, 3, 0);
         }
-        else if(powerType == 2)
+        else if (powerType == 2)
         {
             bullet = Instantiate(bulletPlayer_cyan.gameObject);
             bullet.transform.localEulerAngles = shootPoint.localEulerAngles;

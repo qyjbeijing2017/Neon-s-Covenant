@@ -36,10 +36,7 @@ public class AxeDamage : MonoBehaviour {
             other.GetComponent<Enemy>().injured(axeDamege, axeType, stopTime);
             playerAudio.playerAudio_weaponEnemy();
         }
-        else
-        {
-            playerAudio.playerAudio_weaponOther();
-        }
+
     }
 
 }

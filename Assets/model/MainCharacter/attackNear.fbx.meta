@@ -170,6 +170,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.5308311
+        functionName: playerAudio_weaponEmpty
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.5681074
         functionName: startNearDamage
         data: 
@@ -186,13 +193,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.996136
         functionName: endNearAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0
-        functionName: playerAudio_weaponEmpty
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
