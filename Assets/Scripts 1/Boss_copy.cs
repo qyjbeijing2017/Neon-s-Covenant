@@ -28,7 +28,7 @@ public class Boss_copy : MonoBehaviour
     bool laserStart;
     Vector3 laserTargetPoint;
     Vector3 laserdir;
-    int laserType;
+    public int laserType;
     bool laserDamaged;
 
     public void injured(int damage, int damageType)
@@ -197,7 +197,7 @@ public class Boss_copy : MonoBehaviour
         laserTargetPoint = player.transform.position - transform.right * laserdis;
         laserdir = transform.right;
         laser.enabled = true;
-        if (Random.Range(0, 1) > 0.5)
+        if (laserType == 1)
         {
             laser.material.color = laserRed;
             laserType = 1;

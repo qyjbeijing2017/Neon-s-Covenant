@@ -23,6 +23,7 @@ public class Player_new : MonoBehaviour
 
     [SerializeField] private AxeDamage axeDamage;
     [SerializeField] private int axeValue;
+    [SerializeField] private float axeStopTime;
     [SerializeField] private SpriteRenderer aimLine;
 
     [SerializeField] private BulletAll bulletPlayer_red;
@@ -143,6 +144,7 @@ public class Player_new : MonoBehaviour
         cameraPoint = cameraControl.transform.position - transform.position;
         StartCoroutine(player_move());
         axeDamage.axeDamege = axeValue;
+        axeDamage.stopTime = axeStopTime;
     }
 
     // Update is called once per frame

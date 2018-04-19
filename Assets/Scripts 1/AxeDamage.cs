@@ -6,6 +6,7 @@ public class AxeDamage : MonoBehaviour {
 
     public int axeDamege;
     public int axeType;
+    public float stopTime;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,10 @@ public class AxeDamage : MonoBehaviour {
             {
                 other.GetComponent<Boss_new>().injured(axeDamege, axeType);
             }
+        }
+        else if(other.tag == "Enemy")
+        {
+            other.GetComponent<Enemy>().injured(axeDamege, axeType, stopTime);
         }
     }
 

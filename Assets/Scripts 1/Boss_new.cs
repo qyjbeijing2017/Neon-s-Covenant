@@ -155,17 +155,13 @@ public class Boss_new : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
-            specialType = 2;
-            specialAttack = true;
-            injured(0, 1);
-            specialAttack = false;
+            StopAllCoroutines();
+            boss_stopImmediately();
+            StartCoroutine(boss_laser());
         }
         if (Input.GetKeyDown("r"))
         {
-            specialType = 1;
-            specialAttack = true;
-            injured(0, 2);
-            specialAttack = false;
+
 
         }
 
@@ -434,6 +430,7 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_laser()
     {
+        laserDamaged = false;
         animator.SetBool("laser", true);
         boss_stopImmediately();
         while (animator.GetBool("laser"))
@@ -450,7 +447,9 @@ public class Boss_new : MonoBehaviour
                         if (hit.collider.gameObject.tag == "MainCharacter" && !laserDamaged)
                         {
                             player.inJured(laserDamage, laserPowerDamage, laserType, laserStopTime);
-                            laserDamaged = false;
+                            print(laserType);   
+                            laserDamaged = true;
+
                         }
                         laser.SetPosition(1, hit.point);
                     }
@@ -490,6 +489,17 @@ public class Boss_new : MonoBehaviour
         boss2.GetComponent<Boss_copy>().boss = this;
         boss1.GetComponent<Boss_copy>().star_laserAttack();
         boss2.GetComponent<Boss_copy>().star_laserAttack();
+        if (Random.Range(0.0f, 1.0f) > 0.5)
+        {
+            boss1.GetComponent<Boss_copy>().laserType = 1;
+            boss2.GetComponent<Boss_copy>().laserType = 2;
+        }
+        else
+        {
+            boss1.GetComponent<Boss_copy>().laserType = 2;
+            boss2.GetComponent<Boss_copy>().laserType = 1;
+        }
+
         while (bossCopyNub < 1)
         {
 
@@ -517,7 +527,7 @@ public class Boss_new : MonoBehaviour
         laserTargetPoint = player.transform.position - transform.right * laserdis;
         laserdir = transform.right;
         laser.enabled = true;
-        if (Random.Range(0, 1) > 0.5)
+        if (Random.Range(0.0f, 1.0f) > 0.5)
         {
             laser.material.color = laserRed;
             laserType = 1;
@@ -544,6 +554,7 @@ public class Boss_new : MonoBehaviour
     {
         animator.SetBool("laserEnd", false);
         animator.SetBool("laser", false);
+        laserDamaged = false;
         boss_start();
     }
 
