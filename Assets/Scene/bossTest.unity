@@ -334,6 +334,11 @@ Prefab:
       propertyPath: m_Size.z
       value: 7.101231
       objectReference: {fileID: 0}
+    - target: {fileID: 114636646892413506, guid: 9a8ba458e902568439151d32b052464d,
+        type: 2}
+      propertyPath: HP
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a8ba458e902568439151d32b052464d, type: 2}
   m_IsPrefabParent: 0
@@ -2606,9 +2611,9 @@ MonoBehaviour:
   hurtkey: 0
   boss_laser: 0
   boss_nearAttack: 0
-  boss_rangeAttack: 0
+  boss_rangeAttack: 101
   boss_mode2: 0
-  boss_weak: 101
+  boss_weak: 0
   enemy_attack: 0
   stopTime: 0.25
   damageType: 0

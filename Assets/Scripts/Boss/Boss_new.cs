@@ -551,7 +551,6 @@ public class Boss_new : MonoBehaviour
     }
     IEnumerator laser_time()
     {
-        print(1);
         yield return new WaitForSeconds(laserTime);
         laserStart = false;
         laser.enabled = false;

@@ -34,7 +34,7 @@ public class Boss_attack1 : MonoBehaviour
         if(other.tag == "MainCharacter")
         {
             other.GetComponent<Player_new>().inJured(attackValue, attackPower, attackType, stopTime);
-            bossAudio.bossAudio_play(BossAudio.powerful.GetHashCode());
+            bossAudio.bossAudio_play(BossAudio.weapon.GetHashCode());
         }
     }
 }
