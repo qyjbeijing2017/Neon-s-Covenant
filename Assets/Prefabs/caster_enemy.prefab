@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 136313083710610466}
   - component: {fileID: 195655816467022190}
   - component: {fileID: 114799078643070438}
+  - component: {fileID: 114942257009826174}
   m_Layer: 0
   m_Name: caster_enemy
   m_TagString: Enemy
@@ -1318,6 +1319,8 @@ MonoBehaviour:
   damageDeep: 0
   player: {fileID: 0}
   shootPoint: {fileID: 4586294248636242}
+  sword: {fileID: 0}
+  dead: 0
   attack: 0
 --- !u!114 &114850924596026270
 MonoBehaviour:
@@ -1330,6 +1333,26 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114942257009826174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321404936067248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ad9c2cd85988b4899d8c6e6b0d51bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponAttack: {fileID: 0}
+  weaponAttackVolume: 0
+  weaponPlay: {fileID: 0}
+  weaponPlayVolume: 0
+  rangeAttack: {fileID: 0}
+  rangeAttackVolume: 0
+  dead: {fileID: 0}
+  deadVolume: 0
+  audioSource: {fileID: 0}
 --- !u!135 &135007297912632450
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1352,7 +1375,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 14.87
+  m_Radius: 14
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135556936813822542
 SphereCollider:

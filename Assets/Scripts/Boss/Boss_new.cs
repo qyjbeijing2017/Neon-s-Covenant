@@ -18,6 +18,7 @@ public class Boss_new : MonoBehaviour
     [SerializeField] int nearDamagePowerful;
     [SerializeField] float nearPowerDamagePowerful;
     [SerializeField] float stoptimeDamagePowerful;
+    [SerializeField] float flashWaitTime;
     [SerializeField] float detectTime;
     [SerializeField] float nearFlashDis;
     public BulletAll boss_red;
@@ -46,6 +47,7 @@ public class Boss_new : MonoBehaviour
     [HideInInspector] public bool follow;
     [HideInInspector] public bool attack;
     [HideInInspector] UnityEngine.AI.NavMeshAgent nav;
+    [HideInInspector] public bool Dead;
 
     LineRenderer laser;
     Animator animator;
@@ -107,14 +109,18 @@ public class Boss_new : MonoBehaviour
         bossCopyNub = 0;
         specialType = 3;
         specialAttack = false;
+        Dead = false;
     }
 
     public void injured(int damage, int damageType)
     {
         if (specialAttack && specialType != 3)
         {
+            print(1);
             if (damageType != specialType)
             {
+                specialAttack = false;
+                specialType = 3;
                 boss_stopImmediately();
                 boss_weakStop();
                 StartCoroutine(weakNow());
@@ -164,6 +170,11 @@ public class Boss_new : MonoBehaviour
         if (animator.GetBool("moving") && animator.GetBool("nearAttack"))
         {
             animator.SetBool("moving", false);
+        }
+        if (HP <= 0)
+        {
+            Dead = true;
+            boss_dead();
         }
 
 
@@ -267,10 +278,13 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_nearAttack()
     {
-        animator.SetBool("nearAttack", true);
+
         boss_stopImmediately();
         transform.position = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
         transform.forward = player.transform.position - transform.position;
+
+        yield return new WaitForSeconds(flashWaitTime);
+        animator.SetBool("nearAttack", true);
         while (animator.GetBool("nearAttack"))
         {
             yield return 0;
@@ -281,10 +295,13 @@ public class Boss_new : MonoBehaviour
     IEnumerator boss_nearAttack1()
     {
         clearAnimator();
-        animator.SetBool("nearAttack", true);
+
         boss_stopImmediately();
         transform.position = player.transform.position + player.transform.forward * nearFlashDis;
         transform.forward = player.transform.position - transform.position;
+
+        yield return new WaitForSeconds(flashWaitTime);
+        animator.SetBool("nearAttack", true);
         while (animator.GetBool("nearAttack"))
         {
             yield return 0;
@@ -552,6 +569,8 @@ public class Boss_new : MonoBehaviour
     {
 
         boss_stopImmediately();
+        bossLeftHand.enabled = false;
+        bossRightHand.enabled = false;
         animator.SetBool("weak", true);
         animator.SetBool("nowWeak", true);
         yield return new WaitForSeconds(weakTime);
@@ -591,9 +610,17 @@ public class Boss_new : MonoBehaviour
         StartCoroutine(weakNow());
     }
 
+    public void boss_dead()
+    {
+        boss_stopImmediately();
+
+    }
+
 
     public void test_bossLaser()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         if (mode2)
             StartCoroutine(boss_laser1());
         else
@@ -601,6 +628,8 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossNearAttack()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         if (mode2)
             StartCoroutine(boss_nearAttack1());
         else
@@ -608,6 +637,8 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossRangeAttack()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         if (mode2)
             StartCoroutine(boss_rangeAttack1());
         else
@@ -617,6 +648,8 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossWeak()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         shield = 0;
         boss_stopImmediately();
         boss_weakStop();
@@ -624,6 +657,8 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossMode2()
     {
+        StopAllCoroutines();
+        boss_stopImmediately();
         if (mode2)
         {
             HP = maxHP;
@@ -636,4 +671,6 @@ public class Boss_new : MonoBehaviour
             mode2 = !mode2;
         }
     }
+
+
 }
