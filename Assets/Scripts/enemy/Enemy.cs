@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
 
 
 
-    [HideInInspector] public bool dead;
+
     [HideInInspector] public bool attack;
 
 
@@ -40,13 +40,11 @@ public class Enemy : MonoBehaviour
             sword.GetComponent<Enemy_weapon>().damagePower = damagePower;
             sword.GetComponent<Enemy_weapon>().damageStop = damageStop;
         }
-        dead = false;
 
     }
 
     public void injured(int damage, int damageType, float stopTime)
     {
-        sword.enabled = false;
         if (specialDamage)
         {
             if (damageType == 1 || damageType == 2)
@@ -80,10 +78,7 @@ public class Enemy : MonoBehaviour
 
         if (HP <= 0)
         {
-            dead = true;
-            enemy_stopImmediately();
-            animator.SetBool("die", true);
-            animator.SetBool("isDie", true);
+
         }
         else if (HP >= HPmax)
         {
@@ -94,13 +89,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HP<= 0)
-        {
-            dead = true;
-            enemy_stopImmediately();
-            animator.SetBool("die", true);
-            animator.SetBool("isDie", true);
-        }
+
     }
 
     IEnumerator enemy_move()
@@ -218,7 +207,6 @@ public class Enemy : MonoBehaviour
     }
     public void enemy_stopImmediately()
     {
-        sword.enabled = false;
         nav.isStopped = true;
         StopAllCoroutines();
         animator.SetBool("moving", false);
@@ -226,15 +214,5 @@ public class Enemy : MonoBehaviour
         animator.SetBool("die", false);
         animator.SetBool("delay", false);
         animator.SetBool("delayStop", false);
-    }
-
-
-    public void enemy_dead()
-    {
-        Destroy(this.gameObject, 0.3f);
-    }
-    public void enemy_isDead()
-    {
-        animator.SetBool("isDie", false);
     }
 }

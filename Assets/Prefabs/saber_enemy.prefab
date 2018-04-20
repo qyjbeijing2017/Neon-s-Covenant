@@ -466,14 +466,13 @@ GameObject:
   - component: {fileID: 136674703972743848}
   - component: {fileID: 114008538954503324}
   - component: {fileID: 195421217993227066}
-  - component: {fileID: 114982867521359556}
   m_Layer: 0
   m_Name: saber_enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1643214838849392
 GameObject:
   m_ObjectHideFlags: 1
@@ -1296,7 +1295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 50
   HPmax: 100
-  damage: 10
+  damage: 3
   damagePower: 2
   damageStop: 0.3
   rangeEnemy: 0
@@ -1308,7 +1307,6 @@ MonoBehaviour:
   player: {fileID: 0}
   shootPoint: {fileID: 0}
   sword: {fileID: 65176147298655068}
-  dead: 0
   attack: 0
 --- !u!114 &114211376279161070
 MonoBehaviour:
@@ -1325,7 +1323,6 @@ MonoBehaviour:
   damagePower: 0
   damageType: 0
   damageStop: 0
-  enemyAudio: {fileID: 114982867521359556}
 --- !u!114 &114580758843007234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1350,26 +1347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114008538954503324}
---- !u!114 &114982867521359556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1637745329379206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ad9c2cd85988b4899d8c6e6b0d51bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponAttack: {fileID: 0}
-  weaponAttackVolume: 0
-  weaponPlay: {fileID: 0}
-  weaponPlayVolume: 0
-  rangeAttack: {fileID: 0}
-  rangeAttackVolume: 0
-  dead: {fileID: 0}
-  deadVolume: 0
-  audioSource: {fileID: 0}
 --- !u!135 &135604618046088260
 SphereCollider:
   m_ObjectHideFlags: 1

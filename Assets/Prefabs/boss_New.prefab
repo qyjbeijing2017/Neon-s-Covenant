@@ -342,15 +342,13 @@ GameObject:
   - component: {fileID: 195809273091990246}
   - component: {fileID: 114308115167751192}
   - component: {fileID: 120888045635925976}
-  - component: {fileID: 82516539626472834}
-  - component: {fileID: 114255456532908542}
   m_Layer: 0
   m_Name: boss_New
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1324464744233008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,86 +2549,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!82 &82516539626472834
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1280758501733030}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &95629169106184434
 Animator:
   serializedVersion: 3
@@ -2663,7 +2581,6 @@ MonoBehaviour:
   attackType: 0
   attackPower: 0
   stopTime: 0
-  bossAudio: {fileID: 114255456532908542}
 --- !u!114 &114078941140446316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2679,30 +2596,6 @@ MonoBehaviour:
   attackType: 0
   attackPower: 0
   stopTime: 0
-  bossAudio: {fileID: 114255456532908542}
---- !u!114 &114255456532908542
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1280758501733030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 745a9a9a370af9e4ebf88d6f3404e900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boss_weaponEmpty: {fileID: 8300000, guid: f18817987f4b1d64e9dea8e1fa59a7f3, type: 3}
-  emptyVolume: 0.549
-  boss_weaponPowerfulEmpty: {fileID: 8300000, guid: f1120591acaded74ea7388b85178b243,
-    type: 3}
-  powerfulEmptyVolume: 0.718
-  boss_weaponPlayer: {fileID: 8300000, guid: c8ea7f1a9507c3e4eb12ea617e1e7e97, type: 3}
-  playerVolume: 0.636
-  boss_laser: {fileID: 8300000, guid: c83e0cbc85fe9ff41b2b319d50d150ea, type: 3}
-  laserVolume: 0.698
-  boss_range: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
-  rangeVolume: 0.518
-  bossAudio: {fileID: 82516539626472834}
 --- !u!114 &114308115167751192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2715,8 +2608,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  HP: 51
-  maxHP: 100
+  HP: 100
+  maxHP: 0
   shield: 2
   shieldMax: 2
   shieldType: 1
@@ -2728,7 +2621,6 @@ MonoBehaviour:
   nearDamagePowerful: 2
   nearPowerDamagePowerful: 30
   stoptimeDamagePowerful: 0.3
-  flashWaitTime: 0
   detectTime: 3
   nearFlashDis: 1.5
   boss_red: {fileID: 114780530967675552, guid: 9f71bc323e7219348a454a65bd6c4191, type: 2}
@@ -2741,26 +2633,21 @@ MonoBehaviour:
   laserTime: 0.5
   laserSpeed: 6
   laserdis: 0.3
-  laserDamage: 1
-  laserPowerDamage: 50
+  laserDamage: 0
+  laserPowerDamage: 0
   laserRed: {r: 1, g: 0, b: 0, a: 0.978}
   laserCyan: {r: 0, g: 0.95862055, b: 1, a: 0.959}
-  laserStopTime: 0.3
+  laserStopTime: 0
   weakTime: 1
   weakDamageDeep: 0
-  mode2Hp: 50
-  flashDisBoss2: 5
-  bossCopy: {fileID: 114797449537294618, guid: fa98ca7c6979197488a38725ae473fc4, type: 2}
-  renderer:
-  - {fileID: 137735651673239250}
-  - {fileID: 137542800603487170}
-  - {fileID: 137315833239480920}
-  collider: {fileID: 136324556921918592}
+  mode2Hp: 0
+  flashDisBoss2: 0
+  bossCopy: {fileID: 0}
+  renderer: []
+  collider: {fileID: 0}
   follow: 0
   attack: 0
-  Dead: 0
-  specialAttack: 0
-  bossCopyNub: 2
+  bossCopyNub: 0
 --- !u!114 &114610472331067334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2799,7 +2686,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22129ab93480341d990e9c54cbcfef76, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2883,7 +2770,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.9
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135171067599319578
 SphereCollider:
@@ -2907,7 +2794,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 23.13
+  m_Radius: 20.36
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135403678071197938
 SphereCollider:
