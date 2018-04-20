@@ -8,9 +8,9 @@ public class BulletAll : MonoBehaviour {
 
     public enum type
     {
-        player = 0,
-        boss = 1,
-        enemy = 2
+        MainCharacter = 0,
+        Boss = 1,
+        Enemy = 2
 
     }
 
@@ -42,23 +42,29 @@ public class BulletAll : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         print(other.name);
-        if(other.tag == "BossCopy")
+        if (myType.ToString() != other.tag)
         {
-            other.GetComponent<Boss_copy>().injured(damageHP, colorType);
-            Destroy(gameObject);
-        }
-        if (other.tag == "Boss")
-        {
-            other.GetComponent<Boss_new>().injured(damageHP, colorType);
-            Destroy(gameObject);
-        }
-        if (other.tag == "MainCharacter")
-        {
-            other.GetComponent<Player_new>().inJured(damageHP, damagePower, colorType, stopTime);
-            Destroy(gameObject);
-        }
+            if (other.tag == "BossCopy")
+            {
+                other.GetComponent<Boss_copy>().injured(damageHP, colorType);
+                Destroy(gameObject);
+            }
+            if (other.tag == "Boss")
+            {
+                other.GetComponent<Boss_new>().injured(damageHP, colorType);
+                Destroy(gameObject);
+            }
+            if (other.tag == "MainCharacter")
+            {
+                other.GetComponent<Player_new>().inJured(damageHP, damagePower, colorType, stopTime);
+                Destroy(gameObject);
+            }
+            if(other.tag == "scene")
+            {
+                Destroy(gameObject);
+            }
 
-        Destroy(gameObject);
-
+            
+        }
     }
 }

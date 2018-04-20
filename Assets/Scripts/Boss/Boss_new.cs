@@ -41,6 +41,8 @@ public class Boss_new : MonoBehaviour
     [SerializeField] Boss_copy bossCopy;
     [SerializeField] Renderer[] renderer;
     [SerializeField] Collider collider;
+    [SerializeField] Material laserMaterialCyan;
+    [SerializeField] Material laserMaterialRed;
 
 
 
@@ -535,13 +537,13 @@ public class Boss_new : MonoBehaviour
         laser.enabled = true;
         if (Random.Range(0.0f, 1.0f) > 0.5)
         {
-            laser.material.color = laserRed;
+            laser.material = laserMaterialRed;
             laserType = 1;
             shieldType = 1;
         }
         else
         {
-            laser.material.color = laserCyan;
+            laser.material = laserMaterialCyan;
             laserType = 2;
             shieldType = 2;
         }

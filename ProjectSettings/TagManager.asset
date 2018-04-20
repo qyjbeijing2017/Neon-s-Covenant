@@ -10,6 +10,7 @@ TagManager:
   - InvincibleMainCharacter
   - Boss
   - BossCopy
+  - scene
   layers:
   - Default
   - TransparentFX

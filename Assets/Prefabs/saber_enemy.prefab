@@ -969,7 +969,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637745329379206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.51, y: -1.47, z: 39.21}
+  m_LocalPosition: {x: 7.8060327, y: -0.28306177, z: 9.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4095318389123578}
@@ -1390,6 +1390,10 @@ MonoBehaviour:
   shootPoint: {fileID: 0}
   sword: {fileID: 65176147298655068}
   attackCD: 1
+  normalMaterial: {fileID: 2100000, guid: ac9209e92b56c4441aa54333a10c4af9, type: 2}
+  redMaterial: {fileID: 2100000, guid: d9a496ae64e9043eebc69d95f8c48ed6, type: 2}
+  cyanMaterial: {fileID: 2100000, guid: e50b80a753f598a4ead5062c40813111, type: 2}
+  meshRenderer: {fileID: 137619618642284394}
   dead: 0
   attack: 0
 --- !u!114 &114211376279161070
@@ -1503,7 +1507,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+  - {fileID: 2100000, guid: ac9209e92b56c4441aa54333a10c4af9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

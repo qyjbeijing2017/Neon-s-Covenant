@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 135985747045047816}
   - component: {fileID: 23866890523030008}
   - component: {fileID: 114748954552715902}
+  - component: {fileID: 54323733107908356}
   m_Layer: 0
   m_Name: boss_attack_red
   m_TagString: Untagged
@@ -87,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 1579452876390970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -174.94261, y: 168.87209, z: -51.351387}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4792911048691692}
   m_Father: {fileID: 0}
@@ -216,6 +217,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169598527221456}
   m_Mesh: {fileID: 0}
+--- !u!54 &54323733107908356
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1579452876390970}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114191111316739090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -984,14 +1000,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db441d7c05c160b45b5912381f4b9319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myType: 0
+  myType: 1
   damageHP: 0
   damagePower: 0
   colorType: 0
   speed: 0
-  destoryTime: 0
+  destoryTime: 10
   stopTime: 0
-  bulletVelocity: 0
+  bulletVelocity: 10
 --- !u!135 &135985747045047816
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -999,7 +1015,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1579452876390970}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

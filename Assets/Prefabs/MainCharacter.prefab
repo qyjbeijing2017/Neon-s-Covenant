@@ -1055,7 +1055,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052052995673056}
   m_LocalRotation: {x: -0, y: 0.65880334, z: -0, w: 0.75231516}
-  m_LocalPosition: {x: -4.95, y: -0.85, z: -15.01}
+  m_LocalPosition: {x: -7.54, y: 1.12, z: -56.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4835380878759328}
@@ -1865,8 +1865,8 @@ MonoBehaviour:
   HpMax: 8
   power: 100
   powerMax: 100
-  powerColor: 1
-  powerType: 1
+  powerColor: 0
+  powerType: 0
   up: 119
   down: 115
   right: 100
@@ -1882,13 +1882,13 @@ MonoBehaviour:
     type: 2}
   bulletPlayer_cyan: {fileID: 114013059114664904, guid: 0fef33cdc578148dc98f9c6e999e0367,
     type: 2}
-  bulletPlayer_white: {fileID: 114290888801417504, guid: d55881a28e64f4ee29d3c10a9e831139,
+  bulletPlayer_white: {fileID: 114996591121035170, guid: 650db1cc65c8b47498a541f9c7aa7208,
     type: 2}
   shootPoint: {fileID: 4169626731600548}
   shootPower: 5
   cameraControl: {fileID: 0}
-  dieCamerDis: 2
-  MaxCamerDis: 7
+  dieCamerDis: 1
+  MaxCamerDis: 3
 --- !u!114 &114652138854945430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1921,7 +1921,7 @@ SphereCollider:
   m_GameObject: {fileID: 1727374349961268}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1934,10 +1934,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.49251652
+  m_Radius: 0.38461474
   m_Height: 1.8651049
   m_Direction: 1
-  m_Center: {x: 0.15984344, y: 0.8825525, z: 0}
+  m_Center: {x: 0.15984382, y: 0.8825525, z: -0.10790178}
 --- !u!137 &137045067898832644
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

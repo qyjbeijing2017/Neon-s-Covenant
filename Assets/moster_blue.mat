@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: lighting
-  m_Shader: {fileID: 4800000, guid: 971f859632d3f4c4bba67ab1c3f68219, type: 3}
+  m_Name: moster_blue
+  m_Shader: {fileID: 4800000, guid: 0dd1ee78f216a47909894c15e8ad530f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -54,8 +54,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _node_8764:
-        m_Texture: {fileID: 2800000, guid: 3b8cdcb2b6fa0244a8027f37f8acbb6a, type: 3}
+    - _node_4054:
+        m_Texture: {fileID: 2800000, guid: f6b9e4f69e13647dcb8535129896a378, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -75,7 +75,8 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - _node_5046: 1.59
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 0.978}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _node_5757: {r: 1.808, g: 0.70458823, b: 0.70458823, a: 1}
+    - _node_5972: {r: 0.6341603, g: 0.36102208, b: 1.327, a: 1}

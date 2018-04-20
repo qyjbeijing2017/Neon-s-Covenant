@@ -1402,6 +1402,10 @@ MonoBehaviour:
   shootPoint: {fileID: 4586294248636242}
   sword: {fileID: 0}
   attackCD: 1
+  normalMaterial: {fileID: 2100000, guid: ac9209e92b56c4441aa54333a10c4af9, type: 2}
+  redMaterial: {fileID: 2100000, guid: d9a496ae64e9043eebc69d95f8c48ed6, type: 2}
+  cyanMaterial: {fileID: 2100000, guid: e50b80a753f598a4ead5062c40813111, type: 2}
+  meshRenderer: {fileID: 137764420208734118}
   dead: 0
   attack: 0
 --- !u!114 &114850924596026270

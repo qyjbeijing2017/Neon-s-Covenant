@@ -397,7 +397,7 @@ Prefab:
     - target: {fileID: 54103601964678282, guid: 9a8ba458e902568439151d32b052464d,
         type: 2}
       propertyPath: m_Constraints
-      value: 80
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 54103601964678282, guid: 9a8ba458e902568439151d32b052464d,
         type: 2}
@@ -1706,6 +1706,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -45
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5d18c4421af3dc4419c58794b8cc73c4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d18c4421af3dc4419c58794b8cc73c4, type: 3}
   m_IsPrefabParent: 0
@@ -2420,15 +2424,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4866667313368252, guid: 0d4506c012a98fb479486577b0253801, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.1
+      value: -1.46
       objectReference: {fileID: 0}
     - target: {fileID: 4866667313368252, guid: 0d4506c012a98fb479486577b0253801, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.49
+      value: 4.97
       objectReference: {fileID: 0}
     - target: {fileID: 4866667313368252, guid: 0d4506c012a98fb479486577b0253801, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -7.6
+      value: 3.57
       objectReference: {fileID: 0}
     - target: {fileID: 4866667313368252, guid: 0d4506c012a98fb479486577b0253801, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2455,6 +2459,78 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 574702428}
+    - target: {fileID: 1280758501733030, guid: 0d4506c012a98fb479486577b0253801, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135222924252057062, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: m_Radius
+      value: 8.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647967639583084, guid: 0d4506c012a98fb479486577b0253801, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647967639583084, guid: 0d4506c012a98fb479486577b0253801, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: boss_red
+      value: 
+      objectReference: {fileID: 114748954552715902, guid: b103c3160ae3640e3b935043ddfb0cd2,
+        type: 2}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: boss_black
+      value: 
+      objectReference: {fileID: 114824452004002794, guid: ea0cf9718c8f24b4890fee05ffc91f50,
+        type: 2}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: boss_cyan
+      value: 
+      objectReference: {fileID: 114194462115581894, guid: 5f4f77ac1e6c149459f80a8c529f3a88,
+        type: 2}
+    - target: {fileID: 1324464744233008, guid: 0d4506c012a98fb479486577b0253801, type: 2}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778504811807128, guid: 0d4506c012a98fb479486577b0253801, type: 2}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797964178471468, guid: 0d4506c012a98fb479486577b0253801, type: 2}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: laserMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 22129ab93480341d990e9c54cbcfef76, type: 2}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: laserMaterialRed
+      value: 
+      objectReference: {fileID: 2100000, guid: 26ec1684fa1ad46a19bfb442415a4d3e, type: 2}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: laserMaterialCyan
+      value: 
+      objectReference: {fileID: 2100000, guid: 54b093536c1d948b2aa71e30504f8072, type: 2}
+    - target: {fileID: 120888045635925976, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: HP
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d4506c012a98fb479486577b0253801, type: 2}
   m_IsPrefabParent: 0
@@ -2917,9 +2993,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtEnemy: 0
   hurtkey: 0
-  boss_laser: 0
+  boss_laser: 101
   boss_nearAttack: 0
-  boss_rangeAttack: 101
+  boss_rangeAttack: 0
   boss_mode2: 0
   boss_weak: 0
   enemy_attack: 0

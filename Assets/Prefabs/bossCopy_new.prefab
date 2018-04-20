@@ -2338,7 +2338,10 @@ MonoBehaviour:
   laserRed: {r: 0, g: 0, b: 0, a: 0}
   laserCyan: {r: 0, g: 0, b: 0, a: 0}
   laserStopTime: 0
+  laserMaterialCyan: {fileID: 2100000, guid: 54b093536c1d948b2aa71e30504f8072, type: 2}
+  laserMaterialRed: {fileID: 2100000, guid: 26ec1684fa1ad46a19bfb442415a4d3e, type: 2}
   animator: {fileID: 95406028541226376}
+  laserType: 0
 --- !u!120 &120435607073458610
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -17,13 +17,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform shootPoint;
     [SerializeField] Collider sword;
     [SerializeField] float attackCD;
-
+    [SerializeField] Material normalMaterial;
+    [SerializeField] Material redMaterial;
+    [SerializeField] Material cyanMaterial;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
 
 
     [HideInInspector] public bool dead;
     [HideInInspector] public bool attack;
 
-
+    int myType;
     bool specialDamage;
     float specialType;
     Animator animator;
@@ -150,6 +153,24 @@ public class Enemy : MonoBehaviour
         animator.SetBool("moving", false);
         animator.SetBool("attack", true);
         nav.isStopped = true;
+        if (Random.Range(0, 1) <= 0.5)
+        {
+
+                meshRenderer.material = redMaterial;
+
+
+            myType = 1;
+        }
+        else
+        {
+
+            meshRenderer.material = cyanMaterial;
+
+
+            myType = 2;
+        }
+
+
         while (animator.GetBool("attack"))
         {
             yield return 0;
@@ -164,6 +185,23 @@ public class Enemy : MonoBehaviour
         animator.SetBool("moving", false);
         animator.SetBool("attack", true);
         nav.isStopped = true;
+
+        if (Random.Range(0, 1) <= 0.5)
+        {
+
+            meshRenderer.material = redMaterial;
+
+
+            myType = 1;
+        }
+        else
+        {
+
+            meshRenderer.material = cyanMaterial;
+
+            myType = 2;
+        }
+
         while (animator.GetBool("attack"))
         {
             yield return 0;
@@ -173,7 +211,7 @@ public class Enemy : MonoBehaviour
 
     public void enemy_rangeAttack()
     {
-        if (Random.Range(0, 1) <= 0.5)
+        if (myType == 1)
         {
             GameObject bullet1 = Instantiate(bullet_red.gameObject);
             bullet1.transform.position = shootPoint.position;
@@ -181,17 +219,28 @@ public class Enemy : MonoBehaviour
             bullet1.GetComponent<Rigidbody>().velocity = transform.forward;
         }
         else
-            Instantiate(bullet_cyan.gameObject, shootPoint).GetComponent<Rigidbody>().velocity = transform.forward;
+        {
+            GameObject bullet1 = Instantiate(bullet_cyan.gameObject);
+            bullet1.transform.position = shootPoint.position;
+            bullet1.transform.rotation = bullet1.transform.rotation;
+            bullet1.GetComponent<Rigidbody>().velocity = transform.forward;
+        }
+
     }
 
     public void enemy_attackend()
     {
         animator.SetBool("attack", false);
+        for (int i = 0; i < GetComponentsInChildren<MeshRenderer>().Length; i++)
+        {
+            GetComponentsInChildren<MeshRenderer>()[i].material = normalMaterial;
+        }
+
     }
 
     public void attack_start()
     {
-        if (Random.Range(0.0f, 1.0f) > 0.5)
+        if (myType == 1)
         {
             sword.GetComponent<Enemy_weapon>().damageType = 1;
 

@@ -22,6 +22,9 @@ public class Boss_copy : MonoBehaviour
     [HideInInspector] public Color laserRed;
     [HideInInspector] public Color laserCyan;
     [HideInInspector] public float laserStopTime;
+    [SerializeField] public Material laserMaterialCyan;
+    [SerializeField] public Material laserMaterialRed;
+
 
     LineRenderer laser;
     [SerializeField]Animator animator;
@@ -199,13 +202,13 @@ public class Boss_copy : MonoBehaviour
         laser.enabled = true;
         if (laserType == 1)
         {
-            laser.material.color = laserRed;
+            laser.material = laserMaterialRed;
             laserType = 1;
             shieldType = 1;
         }
         else
         {
-            laser.material.color = laserCyan;
+            laser.material = laserMaterialCyan;
             laserType = 2;
             shieldType = 2;
         }
