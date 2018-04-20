@@ -376,17 +376,21 @@ public class Player_new : MonoBehaviour
 
     IEnumerator stop(float stopTime)
     {
+        print(stopTime);
         cameraMove();
-        animatorPlayer.Play("injured");
+        animatorPlayer.SetBool("stop", true);
         animatorPlayer.SetBool("rangeAttack", false);
         animatorPlayer.SetBool("rolling", false);
         animatorPlayer.SetBool("nearAttack", false);
         animatorPlayer.SetBool("moving", false);
-        animatorPlayer.SetBool("stop", true);
+        animatorPlayer.Play("injured");
+
+
         yield return new WaitForSeconds(stopTime);
 
-        StartCoroutine(player_move());
+
         animatorPlayer.SetBool("stop", false);
+        StartCoroutine(player_move());
     }
 
     void cameraMove()
@@ -406,5 +410,12 @@ public class Player_new : MonoBehaviour
     void player_dead()
     {
         player_stopImmediately();
+    }
+
+
+
+    void player_pasue()
+    {
+        Debug.Break();
     }
 }

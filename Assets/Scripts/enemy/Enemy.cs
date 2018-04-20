@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Player_new player;
     [SerializeField] Transform shootPoint;
     [SerializeField] Collider sword;
+    [SerializeField] float attackCD;
 
 
 
@@ -35,7 +36,8 @@ public class Enemy : MonoBehaviour
         nav.isStopped = true;
         animator = GetComponent<Animator>();
         player = GameObject.Find("MainCharacter").GetComponent<Player_new>();
-        if(!rangeEnemy){
+        if (!rangeEnemy)
+        {
             sword.GetComponent<Enemy_weapon>().damage = damage;
             sword.GetComponent<Enemy_weapon>().damagePower = damagePower;
             sword.GetComponent<Enemy_weapon>().damageStop = damageStop;
@@ -94,7 +96,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HP<= 0)
+        if (HP <= 0)
         {
             dead = true;
             enemy_stopImmediately();
@@ -152,7 +154,7 @@ public class Enemy : MonoBehaviour
         {
             yield return 0;
         }
-
+        yield return new WaitForSeconds(attackCD);
 
     }
 
@@ -166,6 +168,7 @@ public class Enemy : MonoBehaviour
         {
             yield return 0;
         }
+        yield return new WaitForSeconds(attackCD);
     }
 
     public void enemy_rangeAttack()
@@ -191,12 +194,12 @@ public class Enemy : MonoBehaviour
         if (Random.Range(0.0f, 1.0f) > 0.5)
         {
             sword.GetComponent<Enemy_weapon>().damageType = 1;
-            print(1);
+
         }
         else
         {
             sword.GetComponent<Enemy_weapon>().damageType = 2;
-            print(2);
+
 
         }
 
@@ -218,7 +221,8 @@ public class Enemy : MonoBehaviour
     }
     public void enemy_stopImmediately()
     {
-        sword.enabled = false;
+        if (!rangeEnemy)
+            sword.enabled = false;
         nav.isStopped = true;
         StopAllCoroutines();
         animator.SetBool("moving", false);

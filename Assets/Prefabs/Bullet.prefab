@@ -118,7 +118,7 @@ MonoBehaviour:
   speed: 10
   destoryTime: 10
   stopTime: 0
-  bulletVelocity: 8
+  bulletVelocity: 10
 --- !u!135 &135560035898945104
 SphereCollider:
   m_ObjectHideFlags: 1

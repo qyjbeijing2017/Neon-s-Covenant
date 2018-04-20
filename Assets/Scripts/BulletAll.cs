@@ -14,6 +14,9 @@ public class BulletAll : MonoBehaviour {
 
     }
 
+    private void Awake()
+    {
+    }
     public type myType;
     public int damageHP;
     public float damagePower;
@@ -24,11 +27,11 @@ public class BulletAll : MonoBehaviour {
     [SerializeField] private float bulletVelocity;
 
     void Start () {
-
+        
         Destroy(gameObject, destoryTime);
         GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * bulletVelocity;
-
-
+        transform.right = -GetComponent<Rigidbody>().velocity;
+        //print(GetComponent<Rigidbody>().velocity);
     }
 	
 	// Update is called once per frame
@@ -38,6 +41,7 @@ public class BulletAll : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        print(other.name);
         if(other.tag == "BossCopy")
         {
             other.GetComponent<Boss_copy>().injured(damageHP, colorType);
@@ -53,7 +57,8 @@ public class BulletAll : MonoBehaviour {
             other.GetComponent<Player_new>().inJured(damageHP, damagePower, colorType, stopTime);
             Destroy(gameObject);
         }
-        
+
+        Destroy(gameObject);
 
     }
 }
