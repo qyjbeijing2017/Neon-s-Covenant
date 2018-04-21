@@ -472,8 +472,6 @@ GameObject:
   - component: {fileID: 195809273091990246}
   - component: {fileID: 114308115167751192}
   - component: {fileID: 120888045635925976}
-  - component: {fileID: 82516539626472834}
-  - component: {fileID: 114255456532908542}
   m_Layer: 0
   m_Name: boss_New
   m_TagString: Boss
@@ -3399,6 +3397,7 @@ MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1566317108579722}
   m_Enabled: 1
   m_CastShadows: 0
@@ -3464,6 +3463,21 @@ MeshRenderer:
   m_SortingOrder: 0
 --- !u!23 &23418597412971390
 MeshRenderer:
+=======
+  m_GameObject: {fileID: 1280758501733030}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!95 &95629169106184434
+Animator:
+  serializedVersion: 3
+>>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -3503,6 +3517,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1038949238382830}
   m_Enabled: 1
+<<<<<<< HEAD
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3532,11 +3547,24 @@ MeshRenderer:
   m_SortingOrder: 0
 --- !u!23 &23559997297092434
 MeshRenderer:
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbba9aa77c89bcf45a9bfe2c3169ca58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackValue: 0
+  attackType: 0
+  attackPower: 0
+  stopTime: 0
+--- !u!114 &114078941140446316
+MonoBehaviour:
+>>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844827242186088}
   m_Enabled: 1
+<<<<<<< HEAD
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4584,6 +4612,8 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1938580513274144}
   m_Enabled: 1
+=======
+>>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbba9aa77c89bcf45a9bfe2c3169ca58, type: 3}
   m_Name: 
@@ -4592,6 +4622,7 @@ MonoBehaviour:
   attackType: 0
   attackPower: 0
   stopTime: 0
+<<<<<<< HEAD
   bossAudio: {fileID: 114255456532908542}
 --- !u!114 &114098321313013224
 MonoBehaviour:
@@ -11857,6 +11888,9 @@ MonoBehaviour:
   Owner: {fileID: 114252923037612898}
   mStopped: 0
 --- !u!114 &114812683139184502
+=======
+--- !u!114 &114308115167751192
+>>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -11867,6 +11901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e31838b0476f14ea97697da6957b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   MyVersion: 4.4.1
   LifeTime: -1
   IgnoreTimeScale: 0
@@ -11905,6 +11940,50 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
 --- !u!114 &114816936453364436
+=======
+  player: {fileID: 0}
+  HP: 100
+  maxHP: 0
+  shield: 2
+  shieldMax: 2
+  shieldType: 1
+  bossLeftHand: {fileID: 114054864948537630}
+  bossRightHand: {fileID: 114078941140446316}
+  nearDamage: 1
+  nearPowerDamage: 10
+  stoptimeDamage: 0.1
+  nearDamagePowerful: 2
+  nearPowerDamagePowerful: 30
+  stoptimeDamagePowerful: 0.3
+  detectTime: 3
+  nearFlashDis: 1.5
+  boss_red: {fileID: 114780530967675552, guid: 9f71bc323e7219348a454a65bd6c4191, type: 2}
+  boss_black: {fileID: 114780530967675552, guid: 9f71bc323e7219348a454a65bd6c4191,
+    type: 2}
+  boss_cyan: {fileID: 114780530967675552, guid: 9f71bc323e7219348a454a65bd6c4191,
+    type: 2}
+  rangeDispersed: 30
+  shootPoint: {fileID: 4012526677404240}
+  laserTime: 0.5
+  laserSpeed: 6
+  laserdis: 0.3
+  laserDamage: 0
+  laserPowerDamage: 0
+  laserRed: {r: 1, g: 0, b: 0, a: 0.978}
+  laserCyan: {r: 0, g: 0.95862055, b: 1, a: 0.959}
+  laserStopTime: 0
+  weakTime: 1
+  weakDamageDeep: 0
+  mode2Hp: 0
+  flashDisBoss2: 0
+  bossCopy: {fileID: 0}
+  renderer: []
+  collider: {fileID: 0}
+  follow: 0
+  attack: 0
+  bossCopyNub: 0
+--- !u!114 &114610472331067334
+>>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -12651,7 +12730,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22129ab93480341d990e9c54cbcfef76, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12735,7 +12814,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.9
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135171067599319578
 SphereCollider:
@@ -12759,6 +12838,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
   m_Radius: 8.43
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135252266508950868
@@ -12772,6 +12852,9 @@ SphereCollider:
   m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
+=======
+  m_Radius: 20.36
+>>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135403678071197938
 SphereCollider:
