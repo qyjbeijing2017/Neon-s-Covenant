@@ -43,6 +43,14 @@ public class Boss_new : MonoBehaviour
     [SerializeField] Collider collider;
     [SerializeField] Material laserMaterialCyan;
     [SerializeField] Material laserMaterialRed;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
+    [SerializeField] Material bossRed;
+    [SerializeField] Material bossCyan;
+    [SerializeField] Material bossNormal;
+
+    [SerializeField] GameObject shield_red;
+    [SerializeField] GameObject shield_blue;
+
 
 
 
@@ -51,6 +59,7 @@ public class Boss_new : MonoBehaviour
     [HideInInspector] UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector] public bool Dead;
 
+    bool boss_copy;
     LineRenderer laser;
     Animator animator;
     bool laserStart;
@@ -63,6 +72,7 @@ public class Boss_new : MonoBehaviour
     int specialType;
     GameObject boss1;
     GameObject boss2;
+
 
     [SerializeField] public int bossCopyNub;
 
@@ -112,6 +122,7 @@ public class Boss_new : MonoBehaviour
         specialType = 3;
         specialAttack = false;
         Dead = false;
+        boss_copy = false;
     }
 
     public void injured(int damage, int damageType)
@@ -179,6 +190,31 @@ public class Boss_new : MonoBehaviour
             boss_dead();
         }
 
+        if (shield > 0 && !specialAttack && !boss_copy)
+        {
+            if(shieldType == 1)
+            {
+                shield_red.SetActive(true);
+                shield_blue.SetActive(false);
+
+            }
+            else if(shieldType == 2)
+            {
+                shield_red.SetActive(false);
+                shield_blue.SetActive(true);
+            }
+            else
+            {
+                shield_red.SetActive(false);
+                shield_blue.SetActive(false);
+            }
+        }
+        else
+        {
+            shield_red.SetActive(false);
+            shield_blue.SetActive(false);
+        }
+
 
     }
 
@@ -228,14 +264,20 @@ public class Boss_new : MonoBehaviour
             if (a == 0)
             {
                 if (mode2)
+                {
                     yield return StartCoroutine(boss_nearAttack1());
+                }
                 else
                     yield return StartCoroutine(boss_nearAttack());
             }
             else if (a == 1)
             {
                 if (mode2)
+                {
+                    boss_copy = true;
                     yield return StartCoroutine(boss_rangeAttack1());
+                    boss_copy = false;
+                }
                 else
                 {
                     yield return StartCoroutine(boss_rangeAttack());
@@ -244,7 +286,11 @@ public class Boss_new : MonoBehaviour
             else
             {
                 if (mode2)
+                {
+                    boss_copy = true;
                     yield return StartCoroutine(boss_laser1());
+                    boss_copy = false;
+                }
                 else
                     yield return StartCoroutine(boss_laser());
             }
@@ -320,11 +366,14 @@ public class Boss_new : MonoBehaviour
         bossRightHand.attackPower = nearPowerDamage;
         bossRightHand.stopTime = stoptimeDamage;
         bossRightHand.attackType = specialType;
+
+        meshRenderer.material = bossRed;
     }
     public void nearAttack1_end()
     {
         specialAttack = false;
         bossRightHand.GetComponent<Collider>().enabled = false;
+        meshRenderer.material = bossNormal;
     }
     public void nearAttack2_start()
     {
@@ -335,11 +384,13 @@ public class Boss_new : MonoBehaviour
         bossLeftHand.attackPower = nearPowerDamage;
         bossLeftHand.stopTime = stoptimeDamage;
         bossLeftHand.attackType = specialType;
+        meshRenderer.material = bossCyan;
     }
     public void nearAttack2_end()
     {
         specialAttack = false;
         bossLeftHand.GetComponent<Collider>().enabled = false;
+        meshRenderer.material = bossNormal;
     }
     public void nearAttack3_start()
     {
@@ -410,6 +461,7 @@ public class Boss_new : MonoBehaviour
         showMesh();
         Destroy(boss1);
         Destroy(boss2);
+        boss_copy = false;
         boss_start();
     }
     public void rangeAttack_shoot()
@@ -526,6 +578,7 @@ public class Boss_new : MonoBehaviour
         showMesh();
         Destroy(boss1);
         Destroy(boss2);
+        boss_copy = false;
         boss_start();
     }
 

@@ -153,7 +153,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool("moving", false);
         animator.SetBool("attack", true);
         nav.isStopped = true;
-        if (Random.Range(0, 1) <= 0.5)
+        if (Random.Range(0.0f, 1.0f) <= 0.5)
         {
 
                 meshRenderer.material = redMaterial;
@@ -186,7 +186,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool("attack", true);
         nav.isStopped = true;
 
-        if (Random.Range(0, 1) <= 0.5)
+        if (Random.Range(0.0f, 1.0f) <= 0.5)
         {
 
             meshRenderer.material = redMaterial;
@@ -231,10 +231,9 @@ public class Enemy : MonoBehaviour
     public void enemy_attackend()
     {
         animator.SetBool("attack", false);
-        for (int i = 0; i < GetComponentsInChildren<MeshRenderer>().Length; i++)
-        {
-            GetComponentsInChildren<MeshRenderer>()[i].material = normalMaterial;
-        }
+
+            meshRenderer.material = normalMaterial;
+
 
     }
 

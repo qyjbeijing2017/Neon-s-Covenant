@@ -580,9 +580,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 0
-  damageHP: 0
+  damageHP: 20
   damagePower: 0
-  colorType: 0
+  colorType: 2
   speed: 0
   destoryTime: 10
   stopTime: 0

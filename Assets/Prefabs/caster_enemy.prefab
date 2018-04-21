@@ -1393,11 +1393,11 @@ MonoBehaviour:
   damagePower: 2
   damageStop: 0.1
   rangeEnemy: 1
-  bullet_red: {fileID: 114780530967675552, guid: 9f71bc323e7219348a454a65bd6c4191,
+  bullet_red: {fileID: 114748954552715902, guid: b103c3160ae3640e3b935043ddfb0cd2,
     type: 2}
-  bullet_cyan: {fileID: 114780530967675552, guid: 9f71bc323e7219348a454a65bd6c4191,
+  bullet_cyan: {fileID: 114194462115581894, guid: 5f4f77ac1e6c149459f80a8c529f3a88,
     type: 2}
-  damageDeep: 0
+  damageDeep: 3
   player: {fileID: 0}
   shootPoint: {fileID: 4586294248636242}
   sword: {fileID: 0}

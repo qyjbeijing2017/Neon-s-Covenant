@@ -10,6 +10,8 @@ public class IntObject : MonoBehaviour
 	[SerializeField] string content;
 	enum TypeOfGizmo { 告示牌, 机关, 其他 };
 	[SerializeField] TypeOfGizmo 物体类型;
+    private Player_new p;
+    bool isStopped=false;
 	bool trigger;
 
 	bool mCharIn = false;   //主角是否在控制范围中
@@ -55,7 +57,21 @@ public class IntObject : MonoBehaviour
 		{
 			switch (物体类型)
 			{
-				case TypeOfGizmo.告示牌: { CanvasEffect.Diffuse(); CanvasEffect.DisplayNotice(); } break;
+				case TypeOfGizmo.告示牌: { CanvasEffect.Diffuse(); CanvasEffect.DisplayNotice();
+                        if (!isStopped)
+                        {
+                            print(2);
+                            FindObjectOfType<Player_new>().player_stopImmediately();
+                            isStopped = true;
+                        }
+                        else
+                        {
+                            print(1);
+                            FindObjectOfType<Player_new>().player_start();
+                            isStopped = false;
+                        }
+
+                    } break;
 				case TypeOfGizmo.机关:; break;
 				case TypeOfGizmo.其他:; break;
 			}

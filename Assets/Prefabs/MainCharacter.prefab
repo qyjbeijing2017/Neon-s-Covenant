@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 136381282225297404}
   - component: {fileID: 114636646892413506}
   - component: {fileID: 114652138854945430}
+  - component: {fileID: 143529379224507200}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: MainCharacter
@@ -1055,7 +1056,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052052995673056}
   m_LocalRotation: {x: -0, y: 0.65880334, z: -0, w: 0.75231516}
-  m_LocalPosition: {x: -7.54, y: 1.12, z: -56.61}
+  m_LocalPosition: {x: -2.65, y: 3.41, z: 4.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4835380878759328}
@@ -1643,7 +1644,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1b3e3335808a22948abb3e00bb3fce12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1736,8 +1737,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.4900966, y: 0.6082594, z: 4.862126}
-  m_Center: {x: -1.2450477, y: -0.37477672, z: -2.120615}
+  m_Size: {x: 3.4900966, y: 1.0684469, z: 7.101231}
+  m_Center: {x: -1.2450472, y: -0.60487163, z: -1.0010674}
 --- !u!82 &82377713724476832
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1861,21 +1862,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097c36c8e74290c4794b1d286774d473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 3
+  HP: 8
   HpMax: 8
   power: 100
   powerMax: 100
   powerColor: 0
   powerType: 0
-  up: 119
-  down: 115
-  right: 100
-  left: 97
+  up: 115
+  down: 119
+  right: 97
+  left: 100
   dodgeKey: 32
   moveSpeed: 3
   dodgeSpeed: 5
   axeDamage: {fileID: 114218309378435862}
-  axeValue: 5
+  axeValue: 20
   axeStopTime: 1
   aimLine: {fileID: 212924930299360010}
   bulletPlayer_red: {fileID: 114290888801417504, guid: d55881a28e64f4ee29d3c10a9e831139,
@@ -1889,6 +1890,10 @@ MonoBehaviour:
   cameraControl: {fileID: 0}
   dieCamerDis: 1
   MaxCamerDis: 3
+  meshRenderer: {fileID: 137045067898832644}
+  redMaterial: {fileID: 2100000, guid: 1b3e3335808a22948abb3e00bb3fce12, type: 2}
+  cyanMaterial: {fileID: 2100000, guid: b0566409963c60c4eb7dae39d731b4aa, type: 2}
+  normalMaterial: {fileID: 2100000, guid: c44499a18ae2aaa48a747fdd48737771, type: 2}
 --- !u!114 &114652138854945430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1900,7 +1905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c621077bef9bd478c320a2c1471344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponEmpty: {fileID: 8300000, guid: 5f1876dc91ca5f94fa55d9be5cd91535, type: 3}
+  weaponEmpty: {fileID: 8300000, guid: 0835fcae1921cac44bc99af80f4d297e, type: 3}
   emptyVolume: 0.457
   weaponBoss: {fileID: 8300000, guid: e01ceda3f47826443b654b90b8a09e2d, type: 3}
   bossVolume: 0.477
@@ -1934,10 +1939,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.38461474
-  m_Height: 1.8651049
+  m_Radius: 0.49
+  m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0.15984382, y: 0.8825525, z: -0.10790178}
+  m_Center: {x: 0.15, y: 0.88, z: -0.10790178}
 --- !u!137 &137045067898832644
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1952,7 +1957,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0740a5744f67e344da0a3de0d1676cfe, type: 3}
+  - {fileID: 2100000, guid: 1b3e3335808a22948abb3e00bb3fce12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2119,6 +2124,23 @@ SkinnedMeshRenderer:
     m_Center: {x: -370.72284, y: -267.43234, z: 0.012283325}
     m_Extent: {x: 694.82745, y: 450.1288, z: 358.0869}
   m_DirtyAABB: 0
+--- !u!143 &143529379224507200
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052052995673056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Height: 1.8
+  m_Radius: 0.49
+  m_SlopeLimit: 3
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0.15, y: 0.88, z: 0}
 --- !u!212 &212924930299360010
 SpriteRenderer:
   m_ObjectHideFlags: 1

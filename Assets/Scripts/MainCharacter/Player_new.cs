@@ -35,6 +35,12 @@ public class Player_new : MonoBehaviour
     [SerializeField] private Camera cameraControl;
     [SerializeField] private float dieCamerDis;
     [SerializeField] private float MaxCamerDis;
+    [SerializeField] private SkinnedMeshRenderer meshRenderer;
+    [SerializeField] private Material redMaterial;
+    [SerializeField] private Material cyanMaterial;
+    [SerializeField] private Material normalMaterial;
+
+
 
 
     private Animator animatorPlayer;
@@ -156,6 +162,21 @@ public class Player_new : MonoBehaviour
         {
             player_stopImmediately();
         }
+
+
+        if (powerType == 1)
+        {
+            meshRenderer.material = redMaterial;
+        }
+        else if (powerType == 2)
+        {
+            meshRenderer.material = cyanMaterial;
+        }
+        else
+        {
+            meshRenderer.material = normalMaterial;
+        }
+
     }
 
     public void player_stopImmediately()
@@ -169,6 +190,7 @@ public class Player_new : MonoBehaviour
     }
     public void player_start()
     {
+
         StartCoroutine(player_move());
     }
 
@@ -376,7 +398,6 @@ public class Player_new : MonoBehaviour
 
     IEnumerator stop(float stopTime)
     {
-        print(stopTime);
         cameraMove();
         animatorPlayer.SetBool("stop", true);
         animatorPlayer.SetBool("rangeAttack", false);
