@@ -7,6 +7,7 @@ public class Enemy_weapon : MonoBehaviour {
     public float damagePower;
     public int damageType;
     public float damageStop;
+    public Enemy_audio enemyAudio;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class Enemy_weapon : MonoBehaviour {
         if(other.tag == "MainCharacter")
         {
             other.GetComponent<Player_new>().inJured(damage, damagePower, damageType, damageStop);
+            enemyAudio.enemy_Audio(2);
         }
     }
 }

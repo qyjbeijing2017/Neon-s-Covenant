@@ -203,11 +203,8 @@ GameObject:
   - component: {fileID: 136313083710610466}
   - component: {fileID: 195655816467022190}
   - component: {fileID: 114799078643070438}
-<<<<<<< HEAD
   - component: {fileID: 114942257009826174}
   - component: {fileID: 82440434377891948}
-=======
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   m_Layer: 0
   m_Name: caster_enemy
   m_TagString: Enemy
@@ -1403,7 +1400,6 @@ MonoBehaviour:
   damageDeep: 3
   player: {fileID: 0}
   shootPoint: {fileID: 4586294248636242}
-<<<<<<< HEAD
   sword: {fileID: 0}
   attackCD: 1
   normalMaterial: {fileID: 2100000, guid: ac9209e92b56c4441aa54333a10c4af9, type: 2}
@@ -1411,8 +1407,6 @@ MonoBehaviour:
   cyanMaterial: {fileID: 2100000, guid: e50b80a753f598a4ead5062c40813111, type: 2}
   meshRenderer: {fileID: 137764420208734118}
   dead: 0
-=======
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   attack: 0
 --- !u!114 &114850924596026270
 MonoBehaviour:
@@ -1425,7 +1419,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!114 &114942257009826174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1446,8 +1439,6 @@ MonoBehaviour:
   dead: {fileID: 8300000, guid: 6d7ae7a264b876147b07a9d735470b1b, type: 3}
   deadVolume: 0.472
   audioSource: {fileID: 82440434377891948}
-=======
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
 --- !u!135 &135007297912632450
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1470,11 +1461,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-<<<<<<< HEAD
   m_Radius: 4.5
-=======
-  m_Radius: 14.87
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135556936813822542
 SphereCollider:

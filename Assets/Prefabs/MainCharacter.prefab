@@ -54,11 +54,8 @@ GameObject:
   - component: {fileID: 54103601964678282}
   - component: {fileID: 136381282225297404}
   - component: {fileID: 114636646892413506}
-<<<<<<< HEAD
   - component: {fileID: 114652138854945430}
   - component: {fileID: 143529379224507200}
-=======
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: MainCharacter
@@ -590,6 +587,7 @@ GameObject:
   - component: {fileID: 65119430279937638}
   - component: {fileID: 23547574152778128}
   - component: {fileID: 114218309378435862}
+  - component: {fileID: 82377713724476832}
   m_Layer: 9
   m_Name: AxeCollider
   m_TagString: Untagged
@@ -1739,7 +1737,6 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-<<<<<<< HEAD
   m_Size: {x: 3.4900966, y: 1.0684469, z: 7.101231}
   m_Center: {x: -1.2450472, y: -0.60487163, z: -1.0010674}
 --- !u!82 &82377713724476832
@@ -1822,10 +1819,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-=======
-  m_Size: {x: 3.4900966, y: 0.73910856, z: 5.116987}
-  m_Center: {x: -1.2450491, y: -0.44020024, z: -1.9931717}
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
 --- !u!95 &95448318129603452
 Animator:
   serializedVersion: 3
@@ -1856,6 +1849,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axeDamege: 0
   axeType: 0
+  stopTime: 0
+  playerAudio: {fileID: 114652138854945430}
 --- !u!114 &114636646892413506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1881,12 +1876,8 @@ MonoBehaviour:
   moveSpeed: 3
   dodgeSpeed: 5
   axeDamage: {fileID: 114218309378435862}
-<<<<<<< HEAD
   axeValue: 20
   axeStopTime: 1
-=======
-  axeValue: 0
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   aimLine: {fileID: 212924930299360010}
   bulletPlayer_red: {fileID: 114290888801417504, guid: d55881a28e64f4ee29d3c10a9e831139,
     type: 2}
@@ -1897,7 +1888,6 @@ MonoBehaviour:
   shootPoint: {fileID: 4169626731600548}
   shootPower: 5
   cameraControl: {fileID: 0}
-<<<<<<< HEAD
   dieCamerDis: 1
   MaxCamerDis: 3
   meshRenderer: {fileID: 137045067898832644}
@@ -1928,22 +1918,6 @@ MonoBehaviour:
   rolling: {fileID: 8300000, guid: e5cc8ce93fd9643429256a7c30dea6c1, type: 3}
   rollingVolume: 0
   weaponAudio: {fileID: 82377713724476832}
-=======
-  dieCamerDis: 2
-  MaxCamerDis: 7
---- !u!135 &135960800851077748
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1606009369083222}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
 --- !u!135 &135976328082408082
 SphereCollider:
   m_ObjectHideFlags: 1

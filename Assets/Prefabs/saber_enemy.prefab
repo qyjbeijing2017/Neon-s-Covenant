@@ -466,11 +466,8 @@ GameObject:
   - component: {fileID: 136674703972743848}
   - component: {fileID: 114008538954503324}
   - component: {fileID: 195421217993227066}
-<<<<<<< HEAD
   - component: {fileID: 114982867521359556}
   - component: {fileID: 82130835186290818}
-=======
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   m_Layer: 0
   m_Name: saber_enemy
   m_TagString: Enemy
@@ -1380,15 +1377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 50
   HPmax: 100
-<<<<<<< HEAD
   damage: 1
   damagePower: 10
   damageStop: 0.2
-=======
-  damage: 3
-  damagePower: 2
-  damageStop: 0.3
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   rangeEnemy: 0
   bullet_red: {fileID: 114780530967675552, guid: 9f71bc323e7219348a454a65bd6c4191,
     type: 2}
@@ -1398,15 +1389,12 @@ MonoBehaviour:
   player: {fileID: 0}
   shootPoint: {fileID: 0}
   sword: {fileID: 65176147298655068}
-<<<<<<< HEAD
   attackCD: 1
   normalMaterial: {fileID: 2100000, guid: ac9209e92b56c4441aa54333a10c4af9, type: 2}
   redMaterial: {fileID: 2100000, guid: d9a496ae64e9043eebc69d95f8c48ed6, type: 2}
   cyanMaterial: {fileID: 2100000, guid: e50b80a753f598a4ead5062c40813111, type: 2}
   meshRenderer: {fileID: 137619618642284394}
   dead: 0
-=======
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
   attack: 0
 --- !u!114 &114211376279161070
 MonoBehaviour:
@@ -1423,6 +1411,7 @@ MonoBehaviour:
   damagePower: 0
   damageType: 0
   damageStop: 0
+  enemyAudio: {fileID: 114982867521359556}
 --- !u!114 &114580758843007234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1447,7 +1436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 114008538954503324}
-<<<<<<< HEAD
 --- !u!114 &114982867521359556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1468,8 +1456,6 @@ MonoBehaviour:
   dead: {fileID: 8300000, guid: 6d7ae7a264b876147b07a9d735470b1b, type: 3}
   deadVolume: 0.472
   audioSource: {fileID: 82130835186290818}
-=======
->>>>>>> 1351abd25d82ee847e36a3090ccf7ea6f4c79922
 --- !u!135 &135604618046088260
 SphereCollider:
   m_ObjectHideFlags: 1
