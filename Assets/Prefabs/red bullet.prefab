@@ -22,8 +22,6 @@ GameObject:
   - component: {fileID: 33576000252718370}
   - component: {fileID: 135092969961567116}
   - component: {fileID: 23377969153495256}
-  - component: {fileID: 54316705717384914}
-  - component: {fileID: 114290888801417504}
   m_Layer: 0
   m_Name: red bullet
   m_TagString: Untagged
@@ -329,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 1155449362241048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.64, y: 1.6, z: -5.85}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.1068863, y: 0.106886275, z: 0.106886275}
   m_Children:
   - {fileID: 4808124713980220}
   m_Father: {fileID: 0}
@@ -553,21 +551,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1552632191791098}
   m_Mesh: {fileID: 0}
---- !u!54 &54316705717384914
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1155449362241048}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &114021877106151790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1896,25 +1879,6 @@ MonoBehaviour:
   LastClientPos: {x: -9.167387, y: 0.7058884, z: -5.85}
   Owner: {fileID: 114925221257131172}
   mStopped: 0
---- !u!114 &114290888801417504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1155449362241048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db441d7c05c160b45b5912381f4b9319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myType: 0
-  damageHP: 20
-  damagePower: 0
-  colorType: 1
-  speed: 0
-  destoryTime: 10
-  stopTime: 0
-  bulletVelocity: 10
 --- !u!114 &114423271770610540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3929,8 +3893,8 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155449362241048}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.5
+  m_Radius: 2.5659816
   m_Center: {x: 0, y: 0, z: -2.0659814}
