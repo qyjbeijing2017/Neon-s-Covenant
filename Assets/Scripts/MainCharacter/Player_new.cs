@@ -122,11 +122,12 @@ public class Player_new : MonoBehaviour
 
 
 
-
         //规范血量与蓝量
         if (power < 0)
         {
+            powerColor += power;
             power = 0;
+
         }
         if (powerColor > powerMax)
         {

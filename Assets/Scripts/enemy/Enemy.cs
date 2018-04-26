@@ -51,7 +51,8 @@ public class Enemy : MonoBehaviour
 
     public void injured(int damage, int damageType, float stopTime)
     {
-        sword.enabled = false;
+        if (sword != null)
+            sword.enabled = false;
         if (specialDamage)
         {
             if (damageType == 1 || damageType == 2)
@@ -156,7 +157,7 @@ public class Enemy : MonoBehaviour
         if (Random.Range(0.0f, 1.0f) <= 0.5)
         {
 
-                meshRenderer.material = redMaterial;
+            meshRenderer.material = redMaterial;
 
 
             myType = 1;
@@ -232,7 +233,7 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("attack", false);
 
-            meshRenderer.material = normalMaterial;
+        meshRenderer.material = normalMaterial;
 
 
     }

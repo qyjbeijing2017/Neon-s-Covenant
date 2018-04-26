@@ -55,7 +55,7 @@ public class Boss_new : MonoBehaviour
 
 
     [HideInInspector] public bool follow;
-    [HideInInspector] public bool attack;
+    public bool attack;
     [HideInInspector] UnityEngine.AI.NavMeshAgent nav;
     [HideInInspector] public bool Dead;
 
@@ -134,6 +134,7 @@ public class Boss_new : MonoBehaviour
             {
                 specialAttack = false;
                 specialType = 3;
+                shield = 0;
                 boss_stopImmediately();
                 boss_weakStop();
                 StartCoroutine(weakNow());
@@ -227,10 +228,12 @@ public class Boss_new : MonoBehaviour
             nav.isStopped = false;
             if (attack && !animator.GetBool("nearAttack"))
             {
+                StopAllCoroutines();
                 boss_weakStop();
                 clearAnimator();
                 nav.isStopped = true;
                 yield return StartCoroutine(boss_nearAttack());
+
 
             }
 
@@ -260,40 +263,50 @@ public class Boss_new : MonoBehaviour
             boss_stopImmediately();
 
             int a = Random.Range(0, 3);
-            boss_weakStop();
-            if (a == 0)
+            StopAllCoroutines();
+            if (!attack)
             {
-                if (mode2)
+                if (a == 0)
                 {
-                    yield return StartCoroutine(boss_nearAttack1());
+                    if (mode2)
+                    {
+                        yield return StartCoroutine(boss_nearAttack1());
+                    }
+                    else
+                    {
+                        yield return StartCoroutine(boss_nearAttack());
+                    }
+
+                }
+                else if (a == 1)
+                {
+                    if (mode2)
+                    {
+                        boss_copy = true;
+                        yield return StartCoroutine(boss_rangeAttack1());
+                        boss_copy = false;
+                    }
+                    else
+                    {
+                        yield return StartCoroutine(boss_rangeAttack());
+                    }
                 }
                 else
-                    yield return StartCoroutine(boss_nearAttack());
-            }
-            else if (a == 1)
-            {
-                if (mode2)
                 {
-                    boss_copy = true;
-                    yield return StartCoroutine(boss_rangeAttack1());
-                    boss_copy = false;
-                }
-                else
-                {
-                    yield return StartCoroutine(boss_rangeAttack());
+                    if (mode2)
+                    {
+                        boss_copy = true;
+                        yield return StartCoroutine(boss_laser1());
+                        boss_copy = false;
+                    }
+                    else
+                    {
+                        yield return StartCoroutine(boss_laser());
+                    }
+
                 }
             }
-            else
-            {
-                if (mode2)
-                {
-                    boss_copy = true;
-                    yield return StartCoroutine(boss_laser1());
-                    boss_copy = false;
-                }
-                else
-                    yield return StartCoroutine(boss_laser());
-            }
+ 
             StartCoroutine("boss_move");
         }
     }
@@ -322,17 +335,25 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("nowWeak", false);
         animator.Play("Idle");
         laser.enabled = false;
+        meshRenderer.material = bossNormal;
     }
 
     IEnumerator boss_nearAttack()
     {
-
         boss_stopImmediately();
-        transform.position = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
+        if (!attack)
+        {
+            transform.position = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
+        }
+
         transform.forward = player.transform.position - transform.position;
 
+        //Debug.Break();
         yield return new WaitForSeconds(flashWaitTime);
+        //Debug.Break();
         animator.SetBool("nearAttack", true);
+        transform.forward = player.transform.position - transform.position;
+        //Debug.Break();
         while (animator.GetBool("nearAttack"))
         {
             yield return 0;
@@ -343,7 +364,6 @@ public class Boss_new : MonoBehaviour
     IEnumerator boss_nearAttack1()
     {
         clearAnimator();
-
         boss_stopImmediately();
         transform.position = player.transform.position + player.transform.forward * nearFlashDis;
         transform.forward = player.transform.position - transform.position;

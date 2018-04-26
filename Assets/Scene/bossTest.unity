@@ -160,10 +160,15 @@ Prefab:
     - target: {fileID: 114636646892413506, guid: 9a8ba458e902568439151d32b052464d,
         type: 2}
       propertyPath: HP
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1664186140258966, guid: 9a8ba458e902568439151d32b052464d, type: 2}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114636646892413506, guid: 9a8ba458e902568439151d32b052464d,
+        type: 2}
+      propertyPath: axeValue
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2424,6 +2429,26 @@ Prefab:
       propertyPath: shield_red
       value: 
       objectReference: {fileID: 1638201048}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: weakTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: nearDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: nearDamagePowerful
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308115167751192, guid: 0d4506c012a98fb479486577b0253801,
+        type: 2}
+      propertyPath: laserDamage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d4506c012a98fb479486577b0253801, type: 2}
   m_IsPrefabParent: 0

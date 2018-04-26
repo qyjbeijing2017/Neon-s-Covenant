@@ -567,7 +567,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 688502771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: -1.97, z: 46}
+  m_LocalPosition: {x: 6.2, y: -1.97, z: 94.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 613113632}
@@ -1597,6 +1597,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1637745329379206, guid: 717588aeda50f9649b389543e899b6a9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 717588aeda50f9649b389543e899b6a9, type: 2}
   m_IsPrefabParent: 0
@@ -1645,7 +1649,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1637745329379206, guid: 717588aeda50f9649b389543e899b6a9, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114982867521359556, guid: 717588aeda50f9649b389543e899b6a9,
         type: 2}
@@ -1707,6 +1711,10 @@ Prefab:
     - target: {fileID: 1637745329379206, guid: 717588aeda50f9649b389543e899b6a9, type: 2}
       propertyPath: m_Name
       value: saber_enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637745329379206, guid: 717588aeda50f9649b389543e899b6a9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 717588aeda50f9649b389543e899b6a9, type: 2}
@@ -1949,7 +1957,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1321404936067248, guid: 6cdd08d040752b0498dceb7afcbb2df5, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799078643070438, guid: 6cdd08d040752b0498dceb7afcbb2df5,
+        type: 2}
+      propertyPath: bullet_red
+      value: 
+      objectReference: {fileID: 114464630073337776, guid: b103c3160ae3640e3b935043ddfb0cd2,
+        type: 2}
+    - target: {fileID: 114799078643070438, guid: 6cdd08d040752b0498dceb7afcbb2df5,
+        type: 2}
+      propertyPath: bullet_cyan
+      value: 
+      objectReference: {fileID: 114879432314088188, guid: 5f4f77ac1e6c149459f80a8c529f3a88,
+        type: 2}
+    - target: {fileID: 4586294248636242, guid: 6cdd08d040752b0498dceb7afcbb2df5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.093
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586294248636242, guid: 6cdd08d040752b0498dceb7afcbb2df5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6cdd08d040752b0498dceb7afcbb2df5, type: 2}

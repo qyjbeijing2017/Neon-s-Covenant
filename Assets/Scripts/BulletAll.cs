@@ -41,29 +41,37 @@ public class BulletAll : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.name);
         if (myType.ToString() != other.tag)
         {
             if (other.tag == "BossCopy")
             {
                 other.GetComponent<Boss_copy>().injured(damageHP, colorType);
+
                 Destroy(gameObject);
             }
             if (other.tag == "Boss")
             {
                 other.GetComponent<Boss_new>().injured(damageHP, colorType);
+ 
                 Destroy(gameObject);
             }
             if (other.tag == "MainCharacter")
             {
                 other.GetComponent<Player_new>().inJured(damageHP, damagePower, colorType, stopTime);
+
                 Destroy(gameObject);
             }
             if(other.tag == "scene")
             {
                 Destroy(gameObject);
-            }
 
+            }
+            if(other.tag == "Enemy")
+            {
+                other.GetComponent<Enemy>().injured(damageHP, colorType, stopTime);
+
+                Destroy(gameObject);
+            }
             
         }
     }
