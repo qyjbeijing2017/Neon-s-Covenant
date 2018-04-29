@@ -40,6 +40,9 @@ public class Player_new : MonoBehaviour
     [SerializeField] private Material cyanMaterial;
     [SerializeField] private Material normalMaterial;
 
+    [SerializeField] private float whitePowerToHp;
+    [SerializeField] private KeyCode whitePowerToHPKey;
+
 
 
 
@@ -113,7 +116,6 @@ public class Player_new : MonoBehaviour
 
             if (stopTime > 0)
             {
-                StopAllCoroutines();
                 StartCoroutine(stop(stopTime));
 
             }
@@ -176,6 +178,20 @@ public class Player_new : MonoBehaviour
         else
         {
             meshRenderer.material = normalMaterial;
+        }
+
+        if (powerMax < (power + powerColor))
+        {
+            if (powerColor > powerMax)
+                powerColor = powerMax;
+            else
+                power = powerMax - powerColor;
+
+        }
+
+        if (HP > HpMax)
+        {
+            HP = HpMax;
         }
 
     }
@@ -287,7 +303,19 @@ public class Player_new : MonoBehaviour
                 }
             }
 
+            if (Input.GetKeyDown(whitePowerToHPKey))
+            {
+                if (whitePowerToHp < power && HP < HpMax)
+                {
+                    HP++;
+                    power -= whitePowerToHp;
 
+                }
+                else
+                {
+                    print("无法转换血量");
+                }
+            }
 
             yield return 0;
         }
@@ -432,6 +460,7 @@ public class Player_new : MonoBehaviour
     void player_dead()
     {
         player_stopImmediately();
+        GetComponent<AudioStart>().audio_start();
     }
 
 

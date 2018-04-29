@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114636646892413506}
   - component: {fileID: 114652138854945430}
   - component: {fileID: 143529379224507200}
+  - component: {fileID: 114483315646671852}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: MainCharacter
@@ -588,7 +589,7 @@ GameObject:
   - component: {fileID: 23547574152778128}
   - component: {fileID: 114218309378435862}
   - component: {fileID: 82377713724476832}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: AxeCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1056,7 +1057,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052052995673056}
   m_LocalRotation: {x: -0, y: 0.65880334, z: -0, w: 0.75231516}
-  m_LocalPosition: {x: -2.65, y: 3.41, z: 4.32}
+  m_LocalPosition: {x: -11.09, y: 1.12, z: -105.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4835380878759328}
@@ -1851,6 +1852,21 @@ MonoBehaviour:
   axeType: 0
   stopTime: 0
   playerAudio: {fileID: 114652138854945430}
+--- !u!114 &114483315646671852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052052995673056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2abc3a4aef1dd89498f5107ed52973ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  clip: {fileID: 0}
+  Volume: 0.374
+  again: 0
 --- !u!114 &114636646892413506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1868,10 +1884,10 @@ MonoBehaviour:
   powerMax: 100
   powerColor: 0
   powerType: 0
-  up: 115
-  down: 119
-  right: 97
-  left: 100
+  up: 119
+  down: 115
+  right: 100
+  left: 97
   dodgeKey: 32
   moveSpeed: 3
   dodgeSpeed: 5
@@ -1879,10 +1895,8 @@ MonoBehaviour:
   axeValue: 20
   axeStopTime: 1
   aimLine: {fileID: 212924930299360010}
-  bulletPlayer_red: {fileID: 114290888801417504, guid: d55881a28e64f4ee29d3c10a9e831139,
-    type: 2}
-  bulletPlayer_cyan: {fileID: 114013059114664904, guid: 0fef33cdc578148dc98f9c6e999e0367,
-    type: 2}
+  bulletPlayer_red: {fileID: 0}
+  bulletPlayer_cyan: {fileID: 0}
   bulletPlayer_white: {fileID: 114996591121035170, guid: 650db1cc65c8b47498a541f9c7aa7208,
     type: 2}
   shootPoint: {fileID: 4169626731600548}
@@ -1894,6 +1908,8 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 1b3e3335808a22948abb3e00bb3fce12, type: 2}
   cyanMaterial: {fileID: 2100000, guid: b0566409963c60c4eb7dae39d731b4aa, type: 2}
   normalMaterial: {fileID: 2100000, guid: c44499a18ae2aaa48a747fdd48737771, type: 2}
+  whitePowerToHp: 0
+  whitePowerToHPKey: 102
 --- !u!114 &114652138854945430
 MonoBehaviour:
   m_ObjectHideFlags: 1

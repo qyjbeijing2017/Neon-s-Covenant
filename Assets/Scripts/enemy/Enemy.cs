@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Material redMaterial;
     [SerializeField] Material cyanMaterial;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
+    [SerializeField] float fallPower;//掉落能量值
 
 
     [HideInInspector] public bool dead;
@@ -106,6 +107,7 @@ public class Enemy : MonoBehaviour
             enemy_stopImmediately();
             animator.SetBool("die", true);
             animator.SetBool("isDie", true);
+
         }
     }
 
@@ -285,6 +287,7 @@ public class Enemy : MonoBehaviour
     public void enemy_dead()
     {
         Destroy(this.gameObject, 0.3f);
+        FindObjectOfType<Player_new>().power += fallPower;
     }
     public void enemy_isDead()
     {
