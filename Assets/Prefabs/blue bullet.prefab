@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 135747593784653290}
   - component: {fileID: 23833017231128508}
   - component: {fileID: 54801870333259942}
-  - component: {fileID: 114513767865905688}
+  - component: {fileID: 114619663167674188}
   m_Layer: 0
   m_Name: blue bullet
   m_TagString: Untagged
@@ -1259,20 +1259,6 @@ MonoBehaviour:
   LastClientPos: {x: -10.067544, y: 1.57, z: -3.72}
   Owner: {fileID: 114144974876094088}
   mStopped: 0
---- !u!114 &114513767865905688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447017801501872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7640d061de822964ea13c4e4b098e476, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pColor: 0
-  attackValue: 0
-  launcherName: 
 --- !u!114 &114563355081925956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1922,6 +1908,25 @@ MonoBehaviour:
   LastClientPos: {x: -9.167386, y: 0.6758884, z: -3.72}
   Owner: {fileID: 114144974876094088}
   mStopped: 0
+--- !u!114 &114619663167674188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447017801501872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db441d7c05c160b45b5912381f4b9319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 0
+  damageHP: 0
+  damagePower: 0
+  colorType: 0
+  speed: 0
+  destoryTime: 5
+  stopTime: 0
+  bulletVelocity: 10
 --- !u!114 &114807314899135470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3924,7 +3929,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447017801501872}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

@@ -10,7 +10,8 @@ public class BulletAll : MonoBehaviour {
     {
         MainCharacter = 0,
         Boss = 1,
-        Enemy = 2
+        Enemy = 2,
+        BossCopy = 3
 
     }
 
@@ -49,7 +50,7 @@ public class BulletAll : MonoBehaviour {
 
                 Destroy(gameObject);
             }
-            if (other.tag == "Boss")
+            if (other.tag == "Boss" && myType.ToString() != "BossCopy")
             {
                 other.GetComponent<Boss_new>().injured(damageHP, colorType);
  

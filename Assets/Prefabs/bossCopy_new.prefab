@@ -1140,6 +1140,7 @@ GameObject:
   - component: {fileID: 54127625916977668}
   - component: {fileID: 120435607073458610}
   - component: {fileID: 114797449537294618}
+  - component: {fileID: 114335032167647226}
   m_Layer: 0
   m_Name: bossCopy_new
   m_TagString: BossCopy
@@ -2309,6 +2310,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114335032167647226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990072674358612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745a9a9a370af9e4ebf88d6f3404e900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss_weaponEmpty: {fileID: 8300000, guid: f18817987f4b1d64e9dea8e1fa59a7f3, type: 3}
+  emptyVolume: 0.549
+  boss_weaponPowerfulEmpty: {fileID: 8300000, guid: f1120591acaded74ea7388b85178b243,
+    type: 3}
+  powerfulEmptyVolume: 0.718
+  boss_weaponPlayer: {fileID: 8300000, guid: c8ea7f1a9507c3e4eb12ea617e1e7e97, type: 3}
+  playerVolume: 0.636
+  boss_laser: {fileID: 8300000, guid: c83e0cbc85fe9ff41b2b319d50d150ea, type: 3}
+  laserVolume: 0.698
+  boss_range: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
+  rangeVolume: 0.518
+  bossAudio: {fileID: 82516539626472834, guid: 0d4506c012a98fb479486577b0253801, type: 2}
 --- !u!114 &114797449537294618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2325,9 +2349,11 @@ MonoBehaviour:
   shield: 0
   shieldMax: 0
   shieldType: 0
-  boss_red: {fileID: 0}
-  boss_black: {fileID: 0}
-  boss_cyan: {fileID: 0}
+  boss_red: {fileID: 114464630073337776, guid: 7cd83fb7b8122324d870890ac57a0a41, type: 2}
+  boss_black: {fileID: 114566291943828904, guid: b320c5b21bb20774099df6838fbb857c,
+    type: 2}
+  boss_cyan: {fileID: 114879432314088188, guid: b5bb22e085b3e1149b127869f5c4bd18,
+    type: 2}
   rangeDispersed: 0
   shootPoint: {fileID: 4055660080205332}
   laserTime: 0

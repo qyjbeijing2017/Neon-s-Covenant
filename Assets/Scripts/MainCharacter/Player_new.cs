@@ -114,8 +114,12 @@ public class Player_new : MonoBehaviour
 
             }
 
+
+
             if (stopTime > 0)
             {
+
+				player_stopImmediately();
                 StartCoroutine(stop(stopTime));
 
             }

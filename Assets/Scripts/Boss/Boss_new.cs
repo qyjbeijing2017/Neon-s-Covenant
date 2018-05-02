@@ -66,7 +66,7 @@ public class Boss_new : MonoBehaviour
     Vector3 laserTargetPoint;
     Vector3 laserdir;
     int laserType;
-    bool laserDamaged;
+    [SerializeField] bool laserDamaged;
     bool mode2;
     [HideInInspector] public bool specialAttack;
     int specialType;
@@ -100,7 +100,6 @@ public class Boss_new : MonoBehaviour
     }
     void showMesh()
     {
-        boss_start();
         for (int i = 0; i < renderer.Length; i++)
         {
             renderer[i].enabled = true;
@@ -177,9 +176,7 @@ public class Boss_new : MonoBehaviour
         if (HP < mode2Hp && !mode2)
         {
             mode2 = true;
-            boss_stopImmediately();
-            boss_weakStop();
-            boss_start();
+
         }
         if (animator.GetBool("moving") && animator.GetBool("nearAttack"))
         {
@@ -193,13 +190,13 @@ public class Boss_new : MonoBehaviour
 
         if (shield > 0 && !specialAttack && !boss_copy)
         {
-            if(shieldType == 1)
+            if (shieldType == 1)
             {
                 shield_red.SetActive(true);
                 shield_blue.SetActive(false);
 
             }
-            else if(shieldType == 2)
+            else if (shieldType == 2)
             {
                 shield_red.SetActive(false);
                 shield_blue.SetActive(true);
@@ -214,6 +211,26 @@ public class Boss_new : MonoBehaviour
         {
             shield_red.SetActive(false);
             shield_blue.SetActive(false);
+        }
+
+
+        if (!follow)
+        {
+            animator.Play("Idle");
+            clearAnimator();
+            GetComponent<AudioSource>().Stop();
+            meshRenderer.material = bossNormal;
+            shield = 2;
+            bossCopyNub = 0;
+            showMesh();
+            if (boss1 != null && boss2 != null)
+            {
+                shield = Mathf.Max(boss1.GetComponent<Boss_copy>().shield, boss2.GetComponent<Boss_copy>().shield);
+                Destroy(boss1);
+                Destroy(boss2);
+            }
+
+            boss_copy = false;
         }
 
 
@@ -259,7 +276,6 @@ public class Boss_new : MonoBehaviour
         {
             yield return new WaitForSeconds(detectTime);
             clearAnimator();
-            StopCoroutine("boss_move");
             boss_stopImmediately();
 
             int a = Random.Range(0, 3);
@@ -306,13 +322,22 @@ public class Boss_new : MonoBehaviour
 
                 }
             }
- 
-            StartCoroutine("boss_move");
+
         }
     }
 
     public void boss_start()
     {
+        bossCopyNub = 0;
+        showMesh();
+        if (boss1 != null && boss2 != null)
+        {
+            shield = Mathf.Max(boss1.GetComponent<Boss_copy>().shield, boss2.GetComponent<Boss_copy>().shield);
+            Destroy(boss1);
+            Destroy(boss2);
+        }
+
+        boss_copy = false;
         StartCoroutine("boss_move");
         StartCoroutine("boss_Detect");
     }
@@ -450,7 +475,7 @@ public class Boss_new : MonoBehaviour
     }
     IEnumerator boss_rangeAttack1()
     {
-
+        boss_copy = true;
         hideMesh();
         bossCopyNub = 0;
         boss1 = Instantiate(bossCopy.gameObject);
@@ -461,11 +486,12 @@ public class Boss_new : MonoBehaviour
         boss2.transform.forward = player.transform.position - boss2.transform.position;
         boss1.GetComponent<Boss_copy>().boss = this;
         boss2.GetComponent<Boss_copy>().boss = this;
+        boss1.GetComponent<Boss_copy>().shield = shield;
+        boss2.GetComponent<Boss_copy>().shield = shield;
         boss1.GetComponent<Boss_copy>().star_rangeAttack();
         boss2.GetComponent<Boss_copy>().star_rangeAttack();
-        while (bossCopyNub < 1)
+        while (bossCopyNub < 2)
         {
-            print(bossCopyNub);
             yield return 0;
         }
         shield = Mathf.Max(boss1.GetComponent<Boss_copy>().shield, boss2.GetComponent<Boss_copy>().shield);
@@ -527,7 +553,6 @@ public class Boss_new : MonoBehaviour
                         if (hit.collider.gameObject.tag == "MainCharacter" && !laserDamaged)
                         {
                             player.inJured(laserDamage, laserPowerDamage, laserType, laserStopTime);
-                            print(laserType);
                             laserDamaged = true;
 
                         }
@@ -558,6 +583,7 @@ public class Boss_new : MonoBehaviour
     IEnumerator boss_laser1()
     {
         hideMesh();
+        boss_copy = true;
         bossCopyNub = 0;
         boss1 = Instantiate(bossCopy.gameObject);
         boss1.transform.position = player.transform.position + (player.transform.right * flashDisBoss2);
@@ -567,6 +593,8 @@ public class Boss_new : MonoBehaviour
         boss2.transform.forward = player.transform.position - boss2.transform.position;
         boss1.GetComponent<Boss_copy>().boss = this;
         boss2.GetComponent<Boss_copy>().boss = this;
+        boss1.GetComponent<Boss_copy>().shield = shield;
+        boss2.GetComponent<Boss_copy>().shield = shield;
         boss1.GetComponent<Boss_copy>().star_laserAttack();
         boss2.GetComponent<Boss_copy>().star_laserAttack();
         if (Random.Range(0.0f, 1.0f) > 0.5)
@@ -580,11 +608,12 @@ public class Boss_new : MonoBehaviour
             boss2.GetComponent<Boss_copy>().laserType = 1;
         }
 
-        while (bossCopyNub < 1)
+        while (bossCopyNub < 2)
         {
 
             yield return 0;
         }
+
         shield = Mathf.Max(boss1.GetComponent<Boss_copy>().shield, boss2.GetComponent<Boss_copy>().shield);
         if (boss1.GetComponent<Boss_copy>().shieldType == boss2.GetComponent<Boss_copy>().shieldType)
         {
@@ -643,9 +672,11 @@ public class Boss_new : MonoBehaviour
     IEnumerator weakNow()
     {
 
+
         boss_stopImmediately();
-        bossLeftHand.enabled = false;
-        bossRightHand.enabled = false;
+        bossLeftHand.GetComponent<Collider>().enabled = false;
+        bossRightHand.GetComponent<Collider>().enabled = false;
+        meshRenderer.material = bossNormal;
         animator.SetBool("weak", true);
         animator.SetBool("nowWeak", true);
         yield return new WaitForSeconds(weakTime);

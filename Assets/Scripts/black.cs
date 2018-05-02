@@ -32,5 +32,12 @@ public class black : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag== "MainCharacter")
+        {
+            Black.SetActive(true);
+        }
+    }
 
 }

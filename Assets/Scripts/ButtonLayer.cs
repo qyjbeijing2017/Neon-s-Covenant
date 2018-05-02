@@ -8,7 +8,6 @@ public class ButtonLayer : MonoBehaviour
 
 	public void NextScene()
 	{
-		Debug.LogError("Yo");
 		SceneManager.LoadScene("video");
 	}
 

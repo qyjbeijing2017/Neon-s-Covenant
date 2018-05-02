@@ -6,8 +6,9 @@ public class AllPause : MonoBehaviour
 {
     bool pause;
     [SerializeField] KeyCode pauseKey;
-    [SerializeField]AudioSource theOtherSaid;
-    
+    [SerializeField] AudioSource theOtherSaid;
+    [SerializeField] GameObject 毛玻璃;
+
 
     // Use this for initialization
     void Start()
@@ -25,6 +26,14 @@ public class AllPause : MonoBehaviour
             pause = !pause;
 
 
+        }
+        if (pause)
+        {
+            毛玻璃.SetActive(true);
+        }
+        else
+        {
+            毛玻璃.SetActive(false);
         }
     }
 

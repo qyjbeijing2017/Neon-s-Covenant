@@ -22,7 +22,6 @@ public class AxeDamage : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-		print(other.name);
         if(other.tag == "Boss")
         {
             if (other.GetComponent<Boss_new>().shield <= 0 || other.GetComponent<Boss_new>().specialAttack)

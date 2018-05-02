@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114879432314088188}
   - component: {fileID: 54373318728147440}
   m_Layer: 0
-  m_Name: boss_attack_blue
+  m_Name: boss_attack_blue 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db441d7c05c160b45b5912381f4b9319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myType: 1
+  myType: 3
   damageHP: 0
   damagePower: 0
   colorType: 2

@@ -952,10 +952,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db441d7c05c160b45b5912381f4b9319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myType: 2
+  myType: 1
   damageHP: 0
   damagePower: 0
-  colorType: 0
+  colorType: 1
   speed: 0
   destoryTime: 5
   stopTime: 0

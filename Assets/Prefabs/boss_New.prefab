@@ -3760,9 +3760,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.518
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7534,11 +7534,9 @@ MonoBehaviour:
   flashWaitTime: 0.5
   detectTime: 3
   nearFlashDis: 1.5
-  boss_red: {fileID: 114748954552715902, guid: b103c3160ae3640e3b935043ddfb0cd2, type: 2}
-  boss_black: {fileID: 114824452004002794, guid: ea0cf9718c8f24b4890fee05ffc91f50,
-    type: 2}
-  boss_cyan: {fileID: 114194462115581894, guid: 5f4f77ac1e6c149459f80a8c529f3a88,
-    type: 2}
+  boss_red: {fileID: 0}
+  boss_black: {fileID: 0}
+  boss_cyan: {fileID: 0}
   rangeDispersed: 30
   shootPoint: {fileID: 4012526677404240}
   laserTime: 0.5
@@ -7570,6 +7568,7 @@ MonoBehaviour:
   follow: 0
   attack: 0
   Dead: 0
+  laserDamaged: 0
   specialAttack: 0
   bossCopyNub: 2
 --- !u!114 &114349162267835710

@@ -9,9 +9,9 @@ public class Boss_copy : MonoBehaviour
     public int shield;
     [HideInInspector] public int shieldMax;
     public int shieldType;
-    [HideInInspector] public BulletAll boss_red;
-    [HideInInspector] public BulletAll boss_black;
-    [HideInInspector] public BulletAll boss_cyan;
+    public BulletAll boss_red;
+    public BulletAll boss_black;
+    public BulletAll boss_cyan;
     [HideInInspector] public float rangeDispersed;
     public Transform shootPoint;
     [HideInInspector] public float laserTime;
@@ -27,7 +27,7 @@ public class Boss_copy : MonoBehaviour
 
 
     LineRenderer laser;
-    [SerializeField]Animator animator;
+    [SerializeField] Animator animator;
     bool laserStart;
     Vector3 laserTargetPoint;
     Vector3 laserdir;
@@ -37,27 +37,27 @@ public class Boss_copy : MonoBehaviour
     public void injured(int damage, int damageType)
     {
 
-        if (shield > 0)
-        {
-            if (shieldType == damageType || damageType == 0)
-            {
-                shield = shieldMax;
-            }
-            else
-            {
-                shield--;
-                if (shieldType == 1)
-                    shieldType = 2;
-                else if (shieldType == 2)
-                    shieldType = 1;
-            }
-            if (shield <= 0)
-            {
+        //if (shield > 0)
+        //{
+        //    if (shieldType == damageType || damageType == 0)
+        //    {
+        //        shield = shieldMax;
+        //    }
+        //    else
+        //    {
+        //        shield--;
+        //        if (shieldType == 1)
+        //            shieldType = 2;
+        //        else if (shieldType == 2)
+        //            shieldType = 1;
+        //    }
+        //    if (shield <= 0)
+        //    {
 
-                boss.bossCopyNub += 2;
-                boss.weakCopy();
-            }
-        }
+        //        boss.bossCopyNub += 2;
+        //        boss.weakCopy();
+        //    }
+        //}
 
 
     }
@@ -70,9 +70,6 @@ public class Boss_copy : MonoBehaviour
         shield = boss.shield;
         shieldMax = boss.shieldMax;
         shieldType = boss.shieldType;
-        boss_red = boss.boss_red;
-        boss_cyan = boss.boss_cyan;
-        boss_black = boss.boss_black;
         rangeDispersed = boss.rangeDispersed;
         laserTime = boss.laserTime;
         laserSpeed = boss.laserSpeed;
@@ -150,6 +147,7 @@ public class Boss_copy : MonoBehaviour
     }
     IEnumerator boss_laser()
     {
+        laserDamaged = false;
         animator.Play("Boss_laser_start");
         animator.SetBool("laser", true);
         while (animator.GetBool("laser"))
@@ -167,7 +165,6 @@ public class Boss_copy : MonoBehaviour
                         {
                             player.inJured(laserDamage, laserPowerDamage, laserType, laserStopTime);
                             laserDamaged = false;
-                            print(laserType);
                         }
                         laser.SetPosition(1, hit.point);
                     }
