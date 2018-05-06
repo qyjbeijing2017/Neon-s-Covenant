@@ -128,7 +128,6 @@ public class Boss_new : MonoBehaviour
     {
         if (specialAttack && specialType != 3)
         {
-            print(1);
             if (damageType != specialType)
             {
                 specialAttack = false;
