@@ -42,10 +42,12 @@ public class Player_new : MonoBehaviour
 
     [SerializeField] private float whitePowerToHp;
     [SerializeField] private KeyCode whitePowerToHPKey;
+    [SerializeField] private bool combo;
 
 
 
 
+    private bool comboL;
     private Animator animatorPlayer;
     private Vector3 cameraPoint;
 
@@ -370,6 +372,7 @@ public class Player_new : MonoBehaviour
     }
     public void endNearAttack()
     {
+   
         animatorPlayer.SetBool("nearAttack", false);
         StopCoroutine(player_attackNear());
     }
@@ -467,10 +470,64 @@ public class Player_new : MonoBehaviour
         GetComponent<AudioStart>().audio_start();
     }
 
-
-
     void player_pasue()
     {
         Debug.Break();
     }
+
+    public void comboStart()
+    {
+
+        if (combo)
+        {
+            comboL = true;
+            animatorPlayer.SetBool("combo", false);
+            StartCoroutine(comboLi());
+        }
+        else
+        {
+            comboL = false;
+        }
+
+    }
+
+    public void comboNex()
+    {
+        animatorPlayer.SetBool("combo", false);
+    }
+
+    public void comboEnd()
+    {
+
+        if (!combo)
+        {
+            endNearAttack();
+            return;
+        }
+
+        if (comboL != false)
+        {
+            comboL = false;
+            endNearAttack();
+            return;
+        }
+
+    }
+
+    IEnumerator comboLi()
+    {
+        while (comboL)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                animatorPlayer.SetBool("combo", true);
+                comboL = false;
+    
+            }
+            yield return 0;
+        }
+
+    }
+
+
 }
