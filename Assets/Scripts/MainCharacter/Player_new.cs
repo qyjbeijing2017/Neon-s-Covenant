@@ -121,7 +121,7 @@ public class Player_new : MonoBehaviour
             if (stopTime > 0)
             {
 
-				player_stopImmediately();
+                player_stopImmediately();
                 StartCoroutine(stop(stopTime));
 
             }
@@ -200,6 +200,41 @@ public class Player_new : MonoBehaviour
             HP = HpMax;
         }
 
+        if (Input.GetKeyDown(dodgeKey) && !animatorPlayer.GetBool("rolling"))
+        {
+            player_stopImmediately();
+            Vector3 movingSpeed = Vector3.zero;
+            if (Input.GetKey(up))
+            {
+                movingSpeed += new Vector3(0, 0, 1);
+            }
+            if (Input.GetKey(down))
+            {
+                movingSpeed += new Vector3(0, 0, -1);
+            }
+            if (Input.GetKey(left))
+            {
+                movingSpeed += new Vector3(-1, 0, 0);
+            }
+            if (Input.GetKey(right))
+            {
+                movingSpeed += new Vector3(1, 0, 0);
+            }
+
+            if (movingSpeed == Vector3.zero)
+            {
+            }
+            else
+            {
+                this.transform.forward = movingSpeed.normalized;
+            }
+
+
+            StartCoroutine(player_Dodge());
+
+        }
+
+
     }
 
     public void player_stopImmediately()
@@ -224,11 +259,7 @@ public class Player_new : MonoBehaviour
         {
             cameraMove();
             //闪避
-            if (Input.GetKey(dodgeKey))
-            {
-                yield return StartCoroutine(player_Dodge());
 
-            }
 
 
             //移动
@@ -338,6 +369,7 @@ public class Player_new : MonoBehaviour
             transform.position += transform.forward * dodgeSpeed * Time.deltaTime;
             yield return 0;
         }
+        StartCoroutine(player_move());
 
     }
     public void DodgeEnd()
@@ -372,7 +404,7 @@ public class Player_new : MonoBehaviour
     }
     public void endNearAttack()
     {
-   
+
         animatorPlayer.SetBool("nearAttack", false);
         StopCoroutine(player_attackNear());
     }
@@ -522,7 +554,7 @@ public class Player_new : MonoBehaviour
             {
                 animatorPlayer.SetBool("combo", true);
                 comboL = false;
-    
+
             }
             yield return 0;
         }
