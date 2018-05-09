@@ -229,8 +229,7 @@ public class Player_new : MonoBehaviour
                 this.transform.forward = movingSpeed.normalized;
             }
 
-
-            StartCoroutine("player_move");
+            StartCoroutine("player_Dodge");
 
         }
 
@@ -371,13 +370,13 @@ public class Player_new : MonoBehaviour
             transform.position += transform.forward * dodgeSpeed * Time.deltaTime;
             yield return 0;
         }
-        StartCoroutine(player_move());
+        player_start();
 
     }
     public void DodgeEnd()
     {
         animatorPlayer.SetBool("rolling", false);
-        StopCoroutine(player_Dodge());
+
     }
 
 
