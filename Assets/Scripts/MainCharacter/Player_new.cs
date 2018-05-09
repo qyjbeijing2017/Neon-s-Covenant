@@ -157,7 +157,7 @@ public class Player_new : MonoBehaviour
         HpMax = HP;
         aimLine.enabled = false;
         cameraPoint = cameraControl.transform.position - transform.position;
-        StartCoroutine(player_move());
+        StartCoroutine("player_move");
         axeDamage.axeDamege = axeValue;
         axeDamage.stopTime = axeStopTime;
     }
@@ -230,7 +230,7 @@ public class Player_new : MonoBehaviour
             }
 
 
-            StartCoroutine(player_Dodge());
+            StartCoroutine("player_move");
 
         }
 
@@ -249,14 +249,14 @@ public class Player_new : MonoBehaviour
     public void player_start()
     {
 
-        StartCoroutine(player_move());
+        StartCoroutine("player_move");
     }
 
     IEnumerator player_move()
     {
-
         while (true)
         {
+            
             cameraMove();
             //闪避
 
@@ -336,7 +336,9 @@ public class Player_new : MonoBehaviour
                             transform.forward = new Vector3(offset.x, transform.forward.y, offset.z).normalized;
                         }
                     }
-                    yield return StartCoroutine(player_attackNear());
+                    StopCoroutine("player_move");
+                    player_attackNear();
+
                 }
             }
 
@@ -380,17 +382,10 @@ public class Player_new : MonoBehaviour
 
 
 
-    IEnumerator player_attackNear()
+    void player_attackNear()
     {
         animatorPlayer.SetBool("nearAttack", true);
         animatorPlayer.Play("AttackNear");
-
-
-        while (animatorPlayer.GetBool("nearAttack"))
-        {
-            cameraMove();
-            yield return 0;
-        }
 
     }
     public void startNearDamage()
@@ -404,9 +399,8 @@ public class Player_new : MonoBehaviour
     }
     public void endNearAttack()
     {
-
         animatorPlayer.SetBool("nearAttack", false);
-        StopCoroutine(player_attackNear());
+        StartCoroutine("player_move");
     }
 
 
@@ -513,6 +507,7 @@ public class Player_new : MonoBehaviour
         if (combo)
         {
             comboL = true;
+            
             animatorPlayer.SetBool("combo", false);
             StartCoroutine(comboLi());
         }
@@ -549,7 +544,7 @@ public class Player_new : MonoBehaviour
             return;
         }
 
-        if (comboL != false)
+        if (comboL != false && !animatorPlayer.GetBool("combo"))
         {
             comboL = false;
             endNearAttack();

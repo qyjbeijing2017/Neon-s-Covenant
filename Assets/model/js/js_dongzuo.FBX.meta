@@ -125,6 +125,9 @@ ModelImporter:
     7400016: new_player_range
     7400018: new_player_attack
     7400020: new_player_run
+    7400022: new_player_near1_end
+    7400024: new_player_near2_end
+    7400026: new_player_near3_end
     9500000: //RootNode
     13700000: Sphere001
     13700002: Sphere002
@@ -216,7 +219,7 @@ ModelImporter:
       name: new_player_near1
       takeName: Take 001
       firstFrame: 52
-      lastFrame: 70
+      lastFrame: 66
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -236,36 +239,29 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.20280156
+      - time: 0.20821114
         functionName: comboStart
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5933572
+      - time: 0.73579043
         functionName: playerAudio_weaponEmpty
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.64096856
+      - time: 0.80120593
         functionName: startNearDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.77330244
-        functionName: endNearDamage
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 1
-        functionName: comboEnd
+        functionName: endNearDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -279,7 +275,7 @@ ModelImporter:
       name: new_player_near2
       takeName: Take 001
       firstFrame: 70
-      lastFrame: 90
+      lastFrame: 83
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -301,13 +297,6 @@ ModelImporter:
       events:
       - time: 0
         functionName: comboNex
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.3372434
-        functionName: comboStart
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -334,8 +323,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
-        functionName: comboEnd
+      - time: 0.08128605
+        functionName: comboStart
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -349,7 +338,7 @@ ModelImporter:
       name: new_player_near3
       takeName: Take 001
       firstFrame: 90
-      lastFrame: 110
+      lastFrame: 96
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -376,36 +365,29 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.070263684
+      - time: 0.040499974
         functionName: comboStart
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.13294812
+      - time: 0.37033683
         functionName: playerAudio_weaponEmpty
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.18127176
+      - time: 0.56109375
         functionName: startNearDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.28258297
+      - time: 0.9621082
         functionName: endNearDamage
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: comboEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -418,7 +400,7 @@ ModelImporter:
     - serializedVersion: 16
       name: new_player_near4
       takeName: Take 001
-      firstFrame: 110
+      firstFrame: 105
       lastFrame: 138
       wrapMode: 0
       orientationOffsetY: 0
@@ -642,6 +624,111 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: new_player_near1_end
+      takeName: Take 001
+      firstFrame: 66
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.97626114
+        functionName: comboEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: new_player_near2_end
+      takeName: Take 001
+      firstFrame: 84
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 1
+        functionName: comboEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: new_player_near3_end
+      takeName: Take 001
+      firstFrame: 96
+      lastFrame: 104
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 1
+        functionName: comboEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
