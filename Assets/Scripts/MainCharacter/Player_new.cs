@@ -43,7 +43,7 @@ public class Player_new : MonoBehaviour
     [SerializeField] private float whitePowerToHp;
     [SerializeField] private KeyCode whitePowerToHPKey;
     [SerializeField] private bool combo;
-
+    [SerializeField] private float m_nearattackMove;
 
 
 
@@ -200,7 +200,7 @@ public class Player_new : MonoBehaviour
             HP = HpMax;
         }
 
-        if (Input.GetKeyDown(dodgeKey) && !animatorPlayer.GetBool("rolling"))
+        if (Input.GetKeyDown(dodgeKey) && !animatorPlayer.GetBool("rolling") && !animatorPlayer.GetBool("stop"))
         {
             player_stopImmediately();
             Vector3 movingSpeed = Vector3.zero;
@@ -502,7 +502,6 @@ public class Player_new : MonoBehaviour
 
     public void comboStart()
     {
-
         if (combo)
         {
             comboL = true;
@@ -534,16 +533,20 @@ public class Player_new : MonoBehaviour
         animatorPlayer.SetBool("combo", false);
     }
 
+    public void nearAttackMove()
+    {
+        this.transform.position += transform.forward * m_nearattackMove;
+    }
+
     public void comboEnd()
     {
-
-        if (!combo)
+        if (!animatorPlayer.GetBool("combo"))
         {
             endNearAttack();
             return;
         }
 
-        if (comboL != false && !animatorPlayer.GetBool("combo"))
+        if (comboL && !animatorPlayer.GetBool("combo"))
         {
             comboL = false;
             endNearAttack();

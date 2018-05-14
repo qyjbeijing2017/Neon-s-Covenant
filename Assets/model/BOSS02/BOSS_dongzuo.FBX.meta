@@ -173,6 +173,10 @@ ModelImporter:
     7400018: new_boss_range
     7400020: new_boss_idle
     7400022: Take 001
+    7400024: new_boss_near2_start
+    7400026: new_boss_near1_start
+    7400028: new_boss_near3_start
+    7400030: Take 001 (1)
     9500000: //RootNode
     13700000: Plane001
     13700002: sdfsdfg
@@ -188,15 +192,57 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: <Root Transform>
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\n\t'Bip001 L Finger0' has translation animation
+      that will be discarded.\n\t'Bip001 L Finger01' has translation animation that
+      will be discarded.\n\t'Bip001 L Finger02' has translation animation that will
+      be discarded.\n\t'Bip001 L Finger1' has translation animation that will be discarded.\n\t'Bip001
+      L Finger11' has translation animation that will be discarded.\n\t'Bip001 L Finger12'
+      has translation animation that will be discarded.\n\t'Bip001 L Finger2' has
+      translation animation that will be discarded.\n\t'Bip001 L Finger21' has translation
+      animation that will be discarded.\n\t'Bip001 L Finger22' has translation animation
+      that will be discarded.\n\t'Bip001 L Finger3' has translation animation that
+      will be discarded.\n\t'Bip001 L Finger31' has translation animation that will
+      be discarded.\n\t'Bip001 L Finger32' has translation animation that will be
+      discarded.\n\t'Bip001 L Finger4' has translation animation that will be discarded.\n\t'Bip001
+      L Finger41' has translation animation that will be discarded.\n\t'Bip001 L Finger42'
+      has translation animation that will be discarded.\n\t'Bip001 R Finger0' has
+      translation animation that will be discarded.\n\t'Bip001 R Finger01' has translation
+      animation that will be discarded.\n\t'Bip001 R Finger02' has translation animation
+      that will be discarded.\n\t'Bip001 R Finger1' has translation animation that
+      will be discarded.\n\t'Bip001 R Finger11' has translation animation that will
+      be discarded.\n\t'Bip001 R Finger12' has translation animation that will be
+      discarded.\n\t'Bip001 R Finger2' has translation animation that will be discarded.\n\t'Bip001
+      R Finger21' has translation animation that will be discarded.\n\t'Bip001 R Finger22'
+      has translation animation that will be discarded.\n\t'Bip001 R Finger3' has
+      translation animation that will be discarded.\n\t'Bip001 R Finger31' has translation
+      animation that will be discarded.\n\t'Bip001 R Finger32' has translation animation
+      that will be discarded.\n\t'Bip001 R Finger4' has translation animation that
+      will be discarded.\n\t'Bip001 R Finger41' has translation animation that will
+      be discarded.\n\t'Bip001 R Finger42' has translation animation that will be
+      discarded.\n"
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tLeftLowerLeg
+      average position error 31.6 mm and maximum position error 162.8 mm at time 10:
+      1 (54.7%) Frame 301\n\tLeftFoot average position error 31.6 mm and maximum position
+      error 162.8 mm at time 10: 1 (54.7%) Frame 301\n\tRightLowerLeg average position
+      error 33.0 mm and maximum position error 103.4 mm at time 10: 1 (54.7%) Frame
+      301\n\tRightFoot average position error 33.0 mm and maximum position error 103.4
+      mm at time 10: 1 (54.7%) Frame 301\n\tLeftUpperArm average position error 35.8
+      mm and maximum position error 63.4 mm at time 13:10 (72.7%) Frame 400\n\tLeftLowerArm
+      average position error 35.8 mm and maximum position error 63.4 mm at time 13:10
+      (72.7%) Frame 400\n\tLeftHand average position error 35.8 mm and maximum position
+      error 63.5 mm at time 13:10 (72.7%) Frame 400\n\tRightUpperArm average position
+      error 36.0 mm and maximum position error 63.4 mm at time 13:10 (72.7%) Frame
+      400\n\tRightLowerArm average position error 36.0 mm and maximum position error
+      63.4 mm at time 13:10 (72.7%) Frame 400\n\tRightHand average position error
+      36.3 mm and maximum position error 63.5 mm at time 14: 4 (77.1%) Frame 424\n"
+    animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -319,8 +365,8 @@ ModelImporter:
     - serializedVersion: 16
       name: new_boss_near1
       takeName: Take 001
-      firstFrame: 150
-      lastFrame: 172
+      firstFrame: 161
+      lastFrame: 169
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -329,7 +375,7 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
@@ -340,22 +386,29 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.489858
+      - time: 0.00012193109
         functionName: bossAudio_play
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.5518167
+      - time: 0.06794573
         functionName: nearAttack1_start
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.86660606
+      - time: 0.98097557
         functionName: nearAttack1_end
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.04247908
+        functionName: nearAttack_flash
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -368,7 +421,7 @@ ModelImporter:
     - serializedVersion: 16
       name: new_boss_near2
       takeName: Take 001
-      firstFrame: 172
+      firstFrame: 180
       lastFrame: 190
       wrapMode: 0
       orientationOffsetY: 0
@@ -378,7 +431,7 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
@@ -389,14 +442,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.49860048
+      - time: 0.026392963
         functionName: bossAudio_play
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.5287906
+      - time: 0.12208837
+        functionName: nearAttack_flash
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.22967036
         functionName: nearAttack2_start
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -417,17 +477,17 @@ ModelImporter:
     - serializedVersion: 16
       name: new_boss_near3
       takeName: Take 001
-      firstFrame: 190
+      firstFrame: 217
       lastFrame: 240
       wrapMode: 0
-      orientationOffsetY: 0
+      orientationOffsetY: 1.68
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
@@ -438,29 +498,29 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.55559635
+      - time: 0
         functionName: bossAudio_play
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.6124424
+      - time: 0.09513793
+        functionName: bossAudio_play
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.12563886
         functionName: nearAttack3_start
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
-      - time: 0.66505164
+      - time: 0.46563816
         functionName: nearAttack3_end
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 2
-        messageOptions: 0
-      - time: 0.67871565
-        functionName: bossAudio_play
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -468,6 +528,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.9824047
         functionName: nearAttack_end
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.045010097
+        functionName: nearAttack_flash
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -592,12 +659,33 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5130322
+      - time: 0.16574466
+        functionName: bossAudio_play
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 5
+        messageOptions: 0
+      - time: 0.28157818
         functionName: rangeAttack_shoot
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.46844906
+        functionName: rangeAttack_shoot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.67208034
+        functionName: rangeAttack_shoot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
         messageOptions: 0
       - time: 1
         functionName: rangeAttack_end
@@ -605,13 +693,6 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
-        messageOptions: 0
-      - time: 0.4891868
-        functionName: bossAudio_play
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 5
         messageOptions: 0
       transformMask: []
       maskType: 3
@@ -647,6 +728,118 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 550
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: new_boss_near1_start
+      takeName: Take 001
+      firstFrame: 150
+      lastFrame: 160
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: new_boss_near2_start
+      takeName: Take 001
+      firstFrame: 170
+      lastFrame: 179
+      wrapMode: 0
+      orientationOffsetY: 90
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: new_boss_near3_start
+      takeName: Take 001
+      firstFrame: 190
+      lastFrame: 216
+      wrapMode: 0
+      orientationOffsetY: -30
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Take 001 (1)
       takeName: Take 001
       firstFrame: 0
       lastFrame: 550

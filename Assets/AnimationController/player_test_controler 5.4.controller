@@ -914,7 +914,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Roll
-  m_Speed: 1.8
+  m_Speed: 2.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101696149295476858}
@@ -1025,7 +1025,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: new_player_near3
-  m_Speed: 0.8
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101185929844736166}
@@ -1089,7 +1089,7 @@ AnimatorStateMachine:
     m_Position: {x: 492, y: 336, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102227097103799328}
-    m_Position: {x: -552, y: -396, z: 0}
+    m_Position: {x: -552, y: -408, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102546642257115984}
     m_Position: {x: 1392, y: -12, z: 0}

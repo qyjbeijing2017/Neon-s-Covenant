@@ -24,6 +24,7 @@ public class Boss_copy : MonoBehaviour
     [HideInInspector] public float laserStopTime;
     [SerializeField] public Material laserMaterialCyan;
     [SerializeField] public Material laserMaterialRed;
+    int nubRangeAttack;
 
 
     LineRenderer laser;
@@ -83,6 +84,7 @@ public class Boss_copy : MonoBehaviour
         laser = GetComponent<LineRenderer>();
         laserStart = false;
         laser.enabled = false;
+        int nubRangeAttack = boss.nubRangeAttack;
     }
 
     // Update is called once per frame
@@ -117,17 +119,31 @@ public class Boss_copy : MonoBehaviour
         }
     }
 
-    public void rangeAttack_shoot()
+    public void rangeAttack_shoot(int typeRange)
     {
-        transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
-        GameObject bullet = Instantiate(boss_red.gameObject, shootPoint.position, shootPoint.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+        int nubRangeAttack = boss.nubRangeAttack;
 
-        transform.localEulerAngles -= new Vector3(0, rangeDispersed, 0) * 2;
-        Instantiate(boss_cyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+        for (int i = 0; i < nubRangeAttack; i++)
+        {
+            float M_angle = 360 / nubRangeAttack;
+            if (typeRange == 1)
+                Instantiate(boss_red.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            else if (typeRange == 2)
+                Instantiate(boss_cyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            else if (typeRange == 3)
+                Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            transform.localEulerAngles += new Vector3(0, M_angle, 0);
+        }
 
-        transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
-        Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+        //transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
+        //GameObject bullet = Instantiate(boss_red.gameObject, shootPoint.position, shootPoint.rotation);
+        //bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+
+        //transform.localEulerAngles -= new Vector3(0, rangeDispersed, 0) * 2;
+        //Instantiate(boss_cyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+
+        //transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
+        //Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
 
         if (shieldType == 1)
             shieldType = 2;
@@ -194,7 +210,7 @@ public class Boss_copy : MonoBehaviour
     public void laser_start()
     {
         laserStart = true;
-        laserTargetPoint = player.transform.position - transform.right * laserdis;
+        laserTargetPoint = player.transform.position - transform.right * laserdis + transform.forward * laserdis;
         laserdir = transform.right;
         laser.enabled = true;
         if (laserType == 1)

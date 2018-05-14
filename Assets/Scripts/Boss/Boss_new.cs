@@ -50,6 +50,7 @@ public class Boss_new : MonoBehaviour
 
     [SerializeField] GameObject shield_red;
     [SerializeField] GameObject shield_blue;
+    public int nubRangeAttack;
 
 
 
@@ -271,58 +272,57 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_Detect()
     {
-        while (true)
+        yield return new WaitForSeconds(detectTime);
+        print(1);
+        clearAnimator();
+        boss_stopImmediately();
+
+        int a = Random.Range(0, 3);
+        StopAllCoroutines();
+        if (!attack)
         {
-            yield return new WaitForSeconds(detectTime);
-            clearAnimator();
-            boss_stopImmediately();
-
-            int a = Random.Range(0, 3);
-            StopAllCoroutines();
-            if (!attack)
+            if (a == 0)
             {
-                if (a == 0)
+                if (mode2)
                 {
-                    if (mode2)
-                    {
-                        yield return StartCoroutine(boss_nearAttack1());
-                    }
-                    else
-                    {
-                        yield return StartCoroutine(boss_nearAttack());
-                    }
-
-                }
-                else if (a == 1)
-                {
-                    if (mode2)
-                    {
-                        boss_copy = true;
-                        yield return StartCoroutine(boss_rangeAttack1());
-                        boss_copy = false;
-                    }
-                    else
-                    {
-                        yield return StartCoroutine(boss_rangeAttack());
-                    }
+                    yield return StartCoroutine(boss_nearAttack());
                 }
                 else
                 {
-                    if (mode2)
-                    {
-                        boss_copy = true;
-                        yield return StartCoroutine(boss_laser1());
-                        boss_copy = false;
-                    }
-                    else
-                    {
-                        yield return StartCoroutine(boss_laser());
-                    }
+                    yield return StartCoroutine(boss_nearAttack());
+                }
 
+            }
+            else if (a == 1)
+            {
+                if (mode2)
+                {
+                    boss_copy = true;
+                    yield return StartCoroutine(boss_rangeAttack1());
+                    boss_copy = false;
+                }
+                else
+                {
+                    yield return StartCoroutine(boss_rangeAttack());
                 }
             }
+            else
+            {
+                if (mode2)
+                {
+                    boss_copy = true;
+                    yield return StartCoroutine(boss_laser1());
+                    boss_copy = false;
+                }
+                else
+                {
+                    yield return StartCoroutine(boss_laser());
+                }
 
+            }
         }
+
+
     }
 
     public void boss_start()
@@ -365,19 +365,7 @@ public class Boss_new : MonoBehaviour
     IEnumerator boss_nearAttack()
     {
         boss_stopImmediately();
-        if (!attack)
-        {
-            transform.position = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
-        }
-
-        transform.forward = player.transform.position - transform.position;
-
-        //Debug.Break();
-        yield return new WaitForSeconds(flashWaitTime);
-        //Debug.Break();
         animator.SetBool("nearAttack", true);
-        transform.forward = player.transform.position - transform.position;
-        //Debug.Break();
         while (animator.GetBool("nearAttack"))
         {
             yield return 0;
@@ -390,7 +378,7 @@ public class Boss_new : MonoBehaviour
         clearAnimator();
         boss_stopImmediately();
         transform.position = player.transform.position + player.transform.forward * nearFlashDis;
-        transform.forward = player.transform.position - transform.position;
+        transform.forward = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
 
         yield return new WaitForSeconds(flashWaitTime);
         animator.SetBool("nearAttack", true);
@@ -403,6 +391,7 @@ public class Boss_new : MonoBehaviour
     }
     public void nearAttack1_start()
     {
+
         specialAttack = true;
         specialType = 1;
         bossRightHand.GetComponent<Collider>().enabled = true;
@@ -421,6 +410,7 @@ public class Boss_new : MonoBehaviour
     }
     public void nearAttack2_start()
     {
+
         specialAttack = true;
         specialType = 2;
         bossLeftHand.GetComponent<Collider>().enabled = true;
@@ -438,6 +428,7 @@ public class Boss_new : MonoBehaviour
     }
     public void nearAttack3_start()
     {
+
         bossRightHand.GetComponent<Collider>().enabled = true;
         bossLeftHand.GetComponent<Collider>().enabled = true;
         bossRightHand.attackValue = nearDamagePowerful / 2;
@@ -460,6 +451,14 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("nearAttack", false);
         animator.SetBool("moving", true);
         boss_start();
+    }
+
+    public void nearAttack_flash()
+    {
+        Vector3 positionNew = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
+        transform.position = new Vector3(positionNew.x, transform.position.y, positionNew.z);
+        transform.forward = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
+
     }
 
 
@@ -509,17 +508,27 @@ public class Boss_new : MonoBehaviour
         boss_copy = false;
         boss_start();
     }
-    public void rangeAttack_shoot()
+    public void rangeAttack_shoot(int typeRange)
     {
-        transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
-        GameObject bullet = Instantiate(boss_red.gameObject, shootPoint.position, shootPoint.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+        for (int i = 0; i < nubRangeAttack; i++)
+        {
+            float M_angle = 360 / nubRangeAttack;
+            if (typeRange == 1)
+                Instantiate(boss_red.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            else if (typeRange == 2)
+                Instantiate(boss_cyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            else if (typeRange == 3)
+                Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            transform.localEulerAngles += new Vector3(0, M_angle, 0);
+        }
 
-        transform.localEulerAngles -= new Vector3(0, rangeDispersed, 0) * 2;
-        Instantiate(boss_cyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
 
-        transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
-        Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+
+        //transform.localEulerAngles -= new Vector3(0, rangeDispersed, 0) * 2;
+        //Instantiate(boss_cyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+
+        //transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
+        //Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
         if (shieldType == 1)
             shieldType = 2;
         else if (shieldType == 2)
@@ -633,7 +642,7 @@ public class Boss_new : MonoBehaviour
     public void laser_start()
     {
         laserStart = true;
-        laserTargetPoint = player.transform.position - transform.right * laserdis;
+        laserTargetPoint = player.transform.position - transform.right * laserdis + transform.forward * laserdis;
         laserdir = transform.right;
         laser.enabled = true;
         if (Random.Range(0.0f, 1.0f) > 0.5)
