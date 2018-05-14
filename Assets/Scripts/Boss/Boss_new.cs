@@ -544,6 +544,7 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_laser()
     {
+
         laserDamaged = false;
         animator.SetBool("laser", true);
         boss_stopImmediately();
@@ -584,6 +585,7 @@ public class Boss_new : MonoBehaviour
                 transform.forward = laserTargetPoint - transform.position;
 
             }
+ 
             yield return 0;
         }
 
