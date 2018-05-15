@@ -156,9 +156,7 @@ public class Boss_new : MonoBehaviour
             }
             if (shield <= 0)
             {
-                boss_stopImmediately();
-                boss_weakStop();
-                StartCoroutine(weakNow());
+                boss_weakNow();
 
             }
         }
@@ -168,6 +166,16 @@ public class Boss_new : MonoBehaviour
         }
 
     }
+
+
+    public void boss_weakNow()
+    {
+        boss_stopImmediately();
+        boss_weakStop();
+        StartCoroutine(weakNow());
+
+    }
+
 
     // Update is called once per frame
     void Update()
