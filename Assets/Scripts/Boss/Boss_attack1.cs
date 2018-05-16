@@ -16,6 +16,7 @@ public class Boss_attack1 : MonoBehaviour
     [HideInInspector] public int attackType;
     [HideInInspector] public float attackPower;
     [HideInInspector] public float stopTime;
+    [SerializeField] Collider colliderPlayer;
     public Boss_audio bossAudio;
     // Use this for initialization
     void Start()
@@ -31,10 +32,22 @@ public class Boss_attack1 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "MainCharacter")
+        if (other.tag == "MainCharacter")
         {
-            other.GetComponent<Player_new>().inJured(attackValue, attackPower, attackType, stopTime);
-            bossAudio.bossAudio_play(BossAudio.weapon.GetHashCode());
+
+            if (FindObjectOfType<Player_new>().weakBoss && FindObjectOfType<Player_new>().powerType != attackType && FindObjectOfType<Player_new>().powerType != 0)
+            {
+
+                FindObjectOfType<Boss_new>().boss_weakNow();
+
+            }
+            else
+            {
+                if (other.GetComponent<Player_new>().inJured(attackValue, attackPower, attackType, stopTime))
+                    bossAudio.bossAudio_play(BossAudio.weapon.GetHashCode());
+
+            }
+
         }
     }
 }

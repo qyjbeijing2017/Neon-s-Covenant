@@ -239,7 +239,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.20821114
+      - time: 0
+        functionName: startWeakBoss
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.017459694
         functionName: comboStart
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -262,6 +269,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.80120593
         functionName: startNearDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9779686
+        functionName: endWeakBoss
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -344,6 +358,20 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.02213386
+        functionName: startWeakBoss
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.99048984
+        functionName: endWeakBoss
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -414,6 +442,20 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.030349486
+        functionName: startWeakBoss
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9145198
+        functionName: endWeakBoss
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -449,6 +491,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.024770834
+        functionName: startWeakBoss
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.04641954
         functionName: playerAudio_weaponEmpty
         data: 
@@ -458,6 +507,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.10301829
         functionName: startNearDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.24127203
+        functionName: nearAttackMove
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -477,8 +533,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.24127203
-        functionName: nearAttackMove
+      - time: 0.64919174
+        functionName: endWeakBoss
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

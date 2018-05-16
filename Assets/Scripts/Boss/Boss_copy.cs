@@ -17,6 +17,7 @@ public class Boss_copy : MonoBehaviour
     [HideInInspector] public float laserTime;
     [HideInInspector] public float laserSpeed;
     [HideInInspector] public float laserdis;
+    [HideInInspector] public float laserdis1;
     [HideInInspector] public int laserDamage;
     [HideInInspector] public float laserPowerDamage;
     [HideInInspector] public Color laserRed;
@@ -24,6 +25,7 @@ public class Boss_copy : MonoBehaviour
     [HideInInspector] public float laserStopTime;
     [SerializeField] public Material laserMaterialCyan;
     [SerializeField] public Material laserMaterialRed;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
     int nubRangeAttack;
 
 
@@ -37,29 +39,18 @@ public class Boss_copy : MonoBehaviour
 
     public void injured(int damage, int damageType)
     {
-
-        //if (shield > 0)
-        //{
-        //    if (shieldType == damageType || damageType == 0)
-        //    {
-        //        shield = shieldMax;
-        //    }
-        //    else
-        //    {
-        //        shield--;
-        //        if (shieldType == 1)
-        //            shieldType = 2;
-        //        else if (shieldType == 2)
-        //            shieldType = 1;
-        //    }
-        //    if (shield <= 0)
-        //    {
-
-        //        boss.bossCopyNub += 2;
-        //        boss.weakCopy();
-        //    }
-        //}
-
+        if (damageType == shieldType && damageType != 0 && damageType != 3)
+        {
+            boss.HP -= boss.colorDamagede * damage;
+        }
+        else if (damageType != shieldType && damageType != 0 && damageType != 3)
+        {
+            boss.HP -= boss.colorDamagein * damage;
+        }
+        else
+        {
+            boss.HP -= damage;
+        }
 
     }
 
@@ -75,6 +66,7 @@ public class Boss_copy : MonoBehaviour
         laserTime = boss.laserTime;
         laserSpeed = boss.laserSpeed;
         laserdis = boss.laserdis;
+        laserdis1 = boss.laserdis1;
         laserDamage = boss.laserDamage;
         laserPowerDamage = boss.laserPowerDamage;
         laserRed = boss.laserRed;
@@ -85,6 +77,8 @@ public class Boss_copy : MonoBehaviour
         laserStart = false;
         laser.enabled = false;
         int nubRangeAttack = boss.nubRangeAttack;
+        laserMaterialCyan = boss.laserMaterialCyan;
+        laserMaterialRed = boss.laserMaterialRed;
     }
 
     // Update is called once per frame
@@ -100,6 +94,30 @@ public class Boss_copy : MonoBehaviour
         {
 
         }
+
+        if (laserType == 1)
+        {
+            laser.material = laserMaterialRed;
+            laserType = 1;
+            shieldType = 1;
+        }
+        else
+        {
+            laser.material = laserMaterialCyan;
+            laserType = 2;
+            shieldType = 2;
+        }
+
+
+        if (laserType == 1)
+            meshRenderer.material = boss.bossRed;
+        else if (laserType == 2)
+            meshRenderer.material = boss.bossCyan;
+        else
+            meshRenderer.material = boss. bossNormal;
+
+
+        shieldType = laserType;
 
     }
 
@@ -163,9 +181,14 @@ public class Boss_copy : MonoBehaviour
     }
     IEnumerator boss_laser()
     {
+        laserMaterialCyan = boss.laserMaterialCyan;
+        laserMaterialRed = boss.laserMaterialRed;
+
+        laser = GetComponent<LineRenderer>();
         laserDamaged = false;
         animator.Play("Boss_laser_start");
         animator.SetBool("laser", true);
+
         while (animator.GetBool("laser"))
         {
             if (laserStart)
@@ -210,21 +233,10 @@ public class Boss_copy : MonoBehaviour
     public void laser_start()
     {
         laserStart = true;
-        laserTargetPoint = player.transform.position - transform.right * laserdis + transform.forward * laserdis;
+        laserTargetPoint = player.transform.position - transform.right * laserdis + transform.forward * laserdis1;
         laserdir = transform.right;
         laser.enabled = true;
-        if (laserType == 1)
-        {
-            laser.material = laserMaterialRed;
-            laserType = 1;
-            shieldType = 1;
-        }
-        else
-        {
-            laser.material = laserMaterialCyan;
-            laserType = 2;
-            shieldType = 2;
-        }
+
         laserDamaged = false;
         StartCoroutine(laser_time());
 

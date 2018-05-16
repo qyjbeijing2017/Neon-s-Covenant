@@ -51,10 +51,12 @@ public class Player_new : MonoBehaviour
     private Animator animatorPlayer;
     private Vector3 cameraPoint;
 
+    public bool weakBoss;
 
 
 
-    public void inJured(int HpDamage, float powerDamage, int type, float stopTime)
+
+    public bool inJured(int HpDamage, float powerDamage, int type, float stopTime)
     {
         if (!animatorPlayer.GetBool("rolling"))
         {
@@ -127,6 +129,10 @@ public class Player_new : MonoBehaviour
             }
 
         }
+        else
+        {
+            return false;
+        }
 
 
 
@@ -147,11 +153,16 @@ public class Player_new : MonoBehaviour
             powerColor = 0;
         }
 
+        return true;
+
     }
 
     // Use this for initialization
     void Start()
     {
+        weakBoss = false;
+
+
         animatorPlayer = GetComponent<Animator>();
         powerMax = power;
         HpMax = HP;
@@ -238,6 +249,7 @@ public class Player_new : MonoBehaviour
 
     public void player_stopImmediately()
     {
+        weakBoss = false;
         StopAllCoroutines();
         animatorPlayer.SetBool("moving", false);
         animatorPlayer.SetBool("nearAttack", false);
@@ -459,6 +471,7 @@ public class Player_new : MonoBehaviour
 
     IEnumerator stop(float stopTime)
     {
+        weakBoss = false;
         cameraMove();
         animatorPlayer.SetBool("stop", true);
         animatorPlayer.SetBool("rangeAttack", false);
@@ -568,6 +581,16 @@ public class Player_new : MonoBehaviour
             yield return 0;
         }
 
+    }
+
+
+    public void startWeakBoss()
+    {
+        weakBoss = true;
+    }
+    public void endWeakBoss()
+    {
+        weakBoss = false;
     }
 
 
