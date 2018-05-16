@@ -366,6 +366,7 @@ public class Boss_new : MonoBehaviour
     IEnumerator boss_nearAttack()
     {
         boss_stopImmediately();
+        StopAllCoroutines();
         animator.SetBool("nearAttack", true);
         while (animator.GetBool("nearAttack"))
         {

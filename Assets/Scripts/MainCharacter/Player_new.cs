@@ -265,9 +265,9 @@ public class Player_new : MonoBehaviour
 
     IEnumerator player_move()
     {
+
         while (true)
         {
-            
             cameraMove();
             //闪避
 
@@ -348,6 +348,7 @@ public class Player_new : MonoBehaviour
                         }
                     }
                     StopCoroutine("player_move");
+                    StopAllCoroutines();
                     player_attackNear();
 
                 }
@@ -553,11 +554,11 @@ public class Player_new : MonoBehaviour
 
     public void comboEnd()
     {
-        if (!animatorPlayer.GetBool("combo"))
-        {
-            endNearAttack();
-            return;
-        }
+        //if (!animatorPlayer.GetBool("combo"))
+        //{
+        //    endNearAttack();
+        //    return;
+        //}
 
         if (comboL && !animatorPlayer.GetBool("combo"))
         {
