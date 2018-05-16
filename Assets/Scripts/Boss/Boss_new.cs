@@ -187,31 +187,6 @@ public class Boss_new : MonoBehaviour
             boss_dead();
         }
 
-        //if (shield > 0 && !specialAttack && !boss_copy)
-        //{
-        //    if (shieldType == 1)
-        //    {
-        //        shield_red.SetActive(true);
-        //        shield_blue.SetActive(false);
-
-        //    }
-        //    else if (shieldType == 2)
-        //    {
-        //        shield_red.SetActive(false);
-        //        shield_blue.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        shield_red.SetActive(false);
-        //        shield_blue.SetActive(false);
-        //    }
-        //}
-        //else
-        //{
-        //    shield_red.SetActive(false);
-        //    shield_blue.SetActive(false);
-        //}
-
 
 
         if (shieldType == 1)
