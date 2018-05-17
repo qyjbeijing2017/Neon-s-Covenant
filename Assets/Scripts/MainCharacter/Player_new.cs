@@ -256,6 +256,7 @@ public class Player_new : MonoBehaviour
         animatorPlayer.SetBool("rangeAttack", false);
         animatorPlayer.SetBool("stop", false);
         animatorPlayer.Play("Idle");
+        axeDamage.GetComponent<Collider>().enabled = false;
     }
     public void player_start()
     {

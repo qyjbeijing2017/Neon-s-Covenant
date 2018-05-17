@@ -998,7 +998,7 @@ Prefab:
     - target: {fileID: 114365269017828364, guid: 5e11f976d89578c46adf56ca7d7f527a,
         type: 2}
       propertyPath: axeValue
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 65236949452175268, guid: 5e11f976d89578c46adf56ca7d7f527a,
         type: 2}
@@ -3382,7 +3382,7 @@ Prefab:
     - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
         type: 2}
       propertyPath: HP
-      value: 500
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
         type: 2}
@@ -3392,7 +3392,7 @@ Prefab:
     - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
         type: 2}
       propertyPath: maxHP
-      value: 500
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
         type: 2}
@@ -3426,7 +3426,7 @@ Prefab:
     - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
         type: 2}
       propertyPath: angleRange
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
         type: 2}
@@ -3452,6 +3452,16 @@ Prefab:
         type: 2}
       propertyPath: m_Center.z
       value: -0.8308087
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
+        type: 2}
+      propertyPath: nubRangeAttack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
+        type: 2}
+      propertyPath: weakTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0, type: 2}

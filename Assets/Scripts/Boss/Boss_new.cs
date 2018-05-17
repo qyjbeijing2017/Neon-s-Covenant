@@ -699,8 +699,9 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("weak", true);
         animator.SetBool("nowWeak", true);
         yield return new WaitForSeconds(weakTime);
-        shieldType = 0;
+        
         animator.SetBool("weak", false);
+        shieldType = 0;
 
 
     }

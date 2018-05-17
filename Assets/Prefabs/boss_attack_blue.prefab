@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myType: 1
   damageHP: 1
-  damagePower: 10
+  damagePower: 15
   colorType: 2
   speed: 0
   destoryTime: 5
