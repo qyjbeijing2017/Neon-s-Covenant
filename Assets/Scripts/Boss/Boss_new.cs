@@ -84,6 +84,8 @@ public class Boss_new : MonoBehaviour
     int specialType;
     GameObject boss1;
     GameObject boss2;
+    public Tornado tornado_red;
+    public Tornado tornado_cyan;
 
 
 
@@ -314,7 +316,9 @@ public class Boss_new : MonoBehaviour
                 else
                 {
                     lastAttack = 2;
-                    yield return StartCoroutine(boss_laser());
+                    changeColorRandom();
+                    animator.SetBool("tornado", true);
+                    changeColorRandom();
 
                 }
 
@@ -460,6 +464,27 @@ public class Boss_new : MonoBehaviour
         transform.position = new Vector3(positionNew.x, transform.position.y, positionNew.z);
         transform.forward = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
 
+    }
+
+
+
+
+    void tornadoShoot()
+    {
+        animator.SetBool("tornado", false);
+        if(shieldType == 1)
+        {
+            Instantiate(tornado_red, shootPoint.position, shootPoint.rotation);
+        }
+        else if(shieldType == 2)
+        {
+            Instantiate(tornado_cyan, shootPoint.position, shootPoint.rotation);
+        }
+
+    }
+    void tornadoEnd()
+    {
+        boss_start();
     }
 
 
@@ -623,8 +648,8 @@ public class Boss_new : MonoBehaviour
         boss2.GetComponent<Boss_copy>().boss = this;
         boss1.GetComponent<Boss_copy>().shield = shield;
         boss2.GetComponent<Boss_copy>().shield = shield;
-        boss1.GetComponent<Boss_copy>().star_laserAttack();
-        boss2.GetComponent<Boss_copy>().star_laserAttack();
+        boss1.GetComponent<Boss_copy>().tornadoStart();
+        boss2.GetComponent<Boss_copy>().tornadoStart();
         if (Random.Range(0.0f, 1.0f) > 0.5)
         {
             boss1.GetComponent<Boss_copy>().laserType = 1;
@@ -699,7 +724,7 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("weak", true);
         animator.SetBool("nowWeak", true);
         yield return new WaitForSeconds(weakTime);
-        
+
         animator.SetBool("weak", false);
         shieldType = 0;
 

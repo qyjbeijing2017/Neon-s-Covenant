@@ -26,6 +26,8 @@ public class Boss_copy : MonoBehaviour
     [SerializeField] public Material laserMaterialCyan;
     [SerializeField] public Material laserMaterialRed;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
+    public Tornado tornado_red;
+    public Tornado tornado_cyan;
     int nubRangeAttack;
 
 
@@ -114,7 +116,7 @@ public class Boss_copy : MonoBehaviour
         else if (laserType == 2)
             meshRenderer.material = boss.bossCyan;
         else
-            meshRenderer.material = boss. bossNormal;
+            meshRenderer.material = boss.bossNormal;
 
 
         shieldType = laserType;
@@ -252,6 +254,33 @@ public class Boss_copy : MonoBehaviour
     {
         animator.SetBool("laserEnd", false);
         animator.SetBool("laser", false);
+        boss.bossCopyNub++;
+    }
+
+
+    public void tornadoStart()
+    {
+        laserMaterialCyan = boss.laserMaterialCyan;
+        laserMaterialRed = boss.laserMaterialRed;
+        animator.Play("tornadoStart");
+    }
+
+
+    void tornadoShoot()
+    {
+        if (shieldType == 1)
+        {
+            Instantiate(tornado_red, shootPoint.position, shootPoint.rotation);
+        }
+        else if (shieldType == 2)
+        {
+            Instantiate(tornado_cyan, shootPoint.position, shootPoint.rotation);
+        }
+
+    }
+
+    void tornadoEnd()
+    {
         boss.bossCopyNub++;
     }
 

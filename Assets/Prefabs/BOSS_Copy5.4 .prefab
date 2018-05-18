@@ -2368,6 +2368,10 @@ MonoBehaviour:
   laserMaterialCyan: {fileID: 2100000, guid: 54b093536c1d948b2aa71e30504f8072, type: 2}
   laserMaterialRed: {fileID: 2100000, guid: 26ec1684fa1ad46a19bfb442415a4d3e, type: 2}
   meshRenderer: {fileID: 137254121812064582}
+  tornado_red: {fileID: 114151892327455216, guid: 1e2c35f26cd9b2e4481706fc1fd96630,
+    type: 2}
+  tornado_cyan: {fileID: 114151892327455216, guid: 6121bdd1f95326f4c835930750c73375,
+    type: 2}
   animator: {fileID: 95646605657904510}
   laserType: 0
 --- !u!120 &120630044687869150

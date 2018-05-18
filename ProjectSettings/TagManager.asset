@@ -11,6 +11,8 @@ TagManager:
   - Boss
   - BossCopy
   - scene
+  - Fx
+  - tornado
   layers:
   - Default
   - TransparentFX
