@@ -254,6 +254,7 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_Detect()
     {
+        Debug.Break();
         yield return new WaitForSeconds(detectTime);
         clearAnimator();
         boss_stopImmediately();
@@ -668,7 +669,7 @@ public class Boss_new : MonoBehaviour
         laser.enabled = true;
 
         laserDamaged = false;
-        StartCoroutine(laser_time());
+        StartCoroutine(boss_laser());
 
     }
     IEnumerator laser_time()
