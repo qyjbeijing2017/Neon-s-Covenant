@@ -2087,7 +2087,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1015630434600080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.91, y: 5.01, z: 8.83}
+  m_LocalPosition: {x: -4.436236, y: 3.9694777, z: 8.998191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4982682530233740}
@@ -2349,10 +2349,10 @@ MonoBehaviour:
   shield: 0
   shieldMax: 0
   shieldType: 0
-  boss_red: {fileID: 114464630073337776, guid: 7cd83fb7b8122324d870890ac57a0a41, type: 2}
-  boss_black: {fileID: 114566291943828904, guid: b320c5b21bb20774099df6838fbb857c,
+  boss_red: {fileID: 114514587945866024, guid: 6cc64ca0626599e40a23a8857dda43a6, type: 2}
+  boss_black: {fileID: 114786244378097590, guid: f0d870a5e1fe73848970d47d60c71921,
     type: 2}
-  boss_cyan: {fileID: 114879432314088188, guid: b5bb22e085b3e1149b127869f5c4bd18,
+  boss_cyan: {fileID: 114200428630732620, guid: 0bfab3f6e3036634588ba5b84815336f,
     type: 2}
   rangeDispersed: 0
   shootPoint: {fileID: 4811983557530806}

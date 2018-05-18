@@ -2495,7 +2495,7 @@ Prefab:
     - target: {fileID: 114965480539450296, guid: 704be600237da8a45b21b6f51f5bfe84,
         type: 2}
       propertyPath: pauseKey
-      value: 0
+      value: 101
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 704be600237da8a45b21b6f51f5bfe84, type: 2}
@@ -3463,6 +3463,24 @@ Prefab:
       propertyPath: weakTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
+        type: 2}
+      propertyPath: boss_red
+      value: 
+      objectReference: {fileID: 114514587945866024, guid: 27376a946310242bd8f63aeabb3a7dba,
+        type: 2}
+    - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
+        type: 2}
+      propertyPath: boss_black
+      value: 
+      objectReference: {fileID: 114786244378097590, guid: 579baf383a8b54e8ca0e51a81e0c3f1c,
+        type: 2}
+    - target: {fileID: 114124486922965890, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0,
+        type: 2}
+      propertyPath: boss_cyan
+      value: 
+      objectReference: {fileID: 114200428630732620, guid: 6498fd5eab5d44a04861b5633be95daa,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24edbe1b6fed6c14e91e4fc8eee7ffa0, type: 2}
   m_IsPrefabParent: 0
