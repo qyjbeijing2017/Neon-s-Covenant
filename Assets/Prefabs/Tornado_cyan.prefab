@@ -101,7 +101,8 @@ MonoBehaviour:
   existTime: 50
   powerDamage: 2
   stopTime: 0.1
-  damageType: 1
+  damageType: 2
+  otherTornado: []
 --- !u!135 &135083576398713892
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -109,7 +110,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676896323891314}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.6
@@ -133,5 +134,5 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 3
   m_ObstacleAvoidanceType: 4

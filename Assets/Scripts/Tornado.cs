@@ -21,7 +21,7 @@ public class Tornado : MonoBehaviour
     [SerializeField] float powerDamage;
     [SerializeField] float stopTime;
     [SerializeField] colorType1 damageType;
-
+    [SerializeField] Tornado[] otherTornado;
     bool inDamage;
     Transform playerTrs;
     float timer;
@@ -53,18 +53,28 @@ public class Tornado : MonoBehaviour
         timer += Time.deltaTime;
         inDamage = false;
 
+        otherTornado = FindObjectsOfType<Tornado>();
+ 
+
+        //for (int i = 0; i < otherTornado.Length; i++)
+        //{
+        //    if (otherTornado[i].damageType != damageType && GetComponent<SphereCollider>().radius*2 > (otherTornado[i].transform.position - transform.position).magnitude)
+        //    {
+        //        Destroy(gameObject, 0);
+        //    }
+        //}
+
     }
 
     private void OnTriggerStay(Collider other)
     {
-        print(other.name);
         if (other.tag == "MainCharacter")
         {
             inDamage = true;
         }
         if (other.tag == "tornado")
         {
-            print(1);
+
             Destroy(gameObject);
         }
 
@@ -74,7 +84,6 @@ public class Tornado : MonoBehaviour
     {
         if (collision.gameObject.tag == "MainCharacter")
         {
-            print(1);
             inDamage = true;
         }
         if (collision.gameObject.tag == "tornado")
