@@ -145,6 +145,7 @@ public class Boss_copy : MonoBehaviour
 
         for (int i = 0; i < nubRangeAttack; i++)
         {
+            transform.localEulerAngles += new Vector3(0, boss.angleRange * typeRange, 0);
             float M_angle = 360 / nubRangeAttack;
             if (typeRange == 1)
                 Instantiate(boss_red.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
@@ -153,6 +154,7 @@ public class Boss_copy : MonoBehaviour
             else if (typeRange == 3)
                 Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
             transform.localEulerAngles += new Vector3(0, M_angle, 0);
+            transform.localEulerAngles -= new Vector3(0, boss.angleRange * typeRange, 0);
         }
 
         //transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);

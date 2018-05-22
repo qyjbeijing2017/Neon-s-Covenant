@@ -32,7 +32,7 @@ public class Tornado : MonoBehaviour
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         playerTrs = FindObjectOfType<Player_new>().transform;
-        timer = 0;
+        timer = 1000;
         inDamage = false;
         Destroy(gameObject, existTime);
 
@@ -46,7 +46,10 @@ public class Tornado : MonoBehaviour
         if (timer > dTime)
         {
             if (inDamage)
+            {
                 playerTrs.GetComponent<Player_new>().inJured(damage, powerDamage, damageType.GetHashCode(), stopTime);
+            }
+
             timer = 0;
         }
 
@@ -54,15 +57,15 @@ public class Tornado : MonoBehaviour
         inDamage = false;
 
         otherTornado = FindObjectsOfType<Tornado>();
- 
 
-        //for (int i = 0; i < otherTornado.Length; i++)
-        //{
-        //    if (otherTornado[i].damageType != damageType && GetComponent<SphereCollider>().radius*2 > (otherTornado[i].transform.position - transform.position).magnitude)
-        //    {
-        //        Destroy(gameObject, 0);
-        //    }
-        //}
+
+        for (int i = 0; i < otherTornado.Length; i++)
+        {
+            if (otherTornado[i].damageType != damageType && GetComponent<SphereCollider>().radius * 2 > (otherTornado[i].transform.position - transform.position).magnitude)
+            {
+                Destroy(gameObject, 0);
+            }
+        }
 
     }
 
