@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossALL : MonoBehaviour {
 
     public int HP;
-    public colorType color;
+    public NSC_Color.colorType color;
     public Attack near1 = new Attack();
 
 

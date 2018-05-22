@@ -1,21 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum colorType
-{
-    white = 0,
-    red = 1,
-    cyan = 2,
-    black = 3,
-}
-
+[RequireComponent(typeof(NSC_Color))]
 public class Attack : MonoBehaviour {
+    [Header("伤害")]
+    [Tooltip("造成多少伤害")]
     public int damage;
-    public float powerDamage;
-    public colorType damageType;
-
-
+    [Tooltip("能量伤害、或者对怪物伤害类型")]
+    public NSC_Color powerDamage;
 
 
     // Use this for initialization
