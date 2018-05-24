@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NSC_Color : MonoBehaviour
+[System.Serializable]
+public class NSC_Color
 {
 
     // Use this for initialization
+    
     public enum colorType
     {
         white = 0,
@@ -19,52 +21,45 @@ public class NSC_Color : MonoBehaviour
     public colorType m_colorType;
 
 
-    //public static NSC_Color operator +(NSC_Color a, NSC_Color b)
-    //{
-    //    NSC_Color newColor = new NSC_Color();
-    //    if (a.m_colorType == b.m_colorType)
-    //    {
-    //        newColor.m_colorType = a.m_colorType;
-    //        newColor.colorValue = a.colorValue + b.colorValue;
-    //    }
-    //    else
-    //    {
-    //        if (((a.m_colorType == colorType.black && b.m_colorType == colorType.white) ||
-    //            (a.m_colorType == colorType.white && b.m_colorType == colorType.black)) ||
-    //            ((a.m_colorType == colorType.red && b.m_colorType == colorType.cyan) ||
-    //            (a.m_colorType == colorType.cyan && b.m_colorType == colorType.red)))
-    //        {
-    //            if (a.colorValue >= b.colorValue)
-    //            {
-    //                newColor.m_colorType = a.m_colorType;
-    //                newColor.colorValue = a.colorValue - b.colorValue;
-    //            }
-    //            else
-    //            {
-    //                newColor.m_colorType = b.m_colorType;
-    //                newColor.colorValue = 0;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            if (a.colorValue >= b.colorValue)
-    //            {
 
-    //            }
-    //        }
-    //    }
-    //    return newColor;
-    //}
-
-
-    void Start()
+/// <summary>
+/// 用于计算a、b是否同类型，白色、黑色也计算在内。
+/// </summary>
+/// <param name="a"></param>
+/// <param name="b"></param>
+/// <returns></returns>
+    public static bool colorSame(NSC_Color a, NSC_Color b)
     {
+        if(a.m_colorType == b.m_colorType)
+        {
+            return true;
+        }
+        return false;
+    }
+
+/// <summary>
+/// 只用于计算a、b分别为青、红，或者红、青的状况。
+/// </summary>
+/// <param name="a"></param>
+/// <param name="b"></param>
+/// <returns></returns>
+
+    public static bool colorContrary(NSC_Color a, NSC_Color b)
+    {
+        if(a.m_colorType == colorType.red && b.m_colorType == colorType.cyan)
+        {
+            return true;
+        }
+        else if(a.m_colorType == colorType.cyan && b.m_colorType == colorType.red)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }
