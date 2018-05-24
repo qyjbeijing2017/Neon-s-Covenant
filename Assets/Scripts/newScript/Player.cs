@@ -2,34 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
-public class Player : NSC_Character {
+public class Player : NSC_Character
+{
     [Space(20)]
     [Header("角色移动")]
     [Tooltip("移动速度")]
     public float speed;
     [Tooltip("翻滚速度")]
     public float rollingSpeed;
-
+    [Tooltip("翻滚CD")]
+    public float rollCD;
+    [Tooltip("攻击移动")]
+    public float m_nearattackMove;
     [Header("特殊状态")]
-    [Tooltip("其他颜色槽")]
-    public NSC_Color otherPower;
+    [Tooltip("白颜色槽")]
+    public NSC_Color whitePower;
+    [Header("需求组件")]
+    [Tooltip("射击准线")]
+    [SerializeField] private SpriteRenderer aimLine;
+    [Tooltip("鼠标射线物理层")]
+    [SerializeField] int layerMouse;
 
     CharacterController characterController;
     bool move;//角色是否可移动
-
+    bool rollingCD;
+    bool comboNow;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         characterController = GetComponent<CharacterController>();
         move = true;
-	}
-
+        rollingCD = false;
+        aimLine.enabled = false;
+        comboNow = false;
+    }
+    /// <summary>
+    /// 角色受伤重写
+    /// </summary>
+    /// <param name="attack"></param>
+    /// <returns></returns>
     public override bool injured(Attack attack)
     {
+
         if (!animator.GetBool("rolling"))
         {
-            
+            move = false;
             HP -= attack.damage;
+            powerInjured(attack);
             HPNormal();
             if (!dead && characterType != CharacterType.boss && attack.stopTime > 0.0f)
             {
@@ -40,10 +60,110 @@ public class Player : NSC_Character {
         }
         return false;
     }
+    /// <summary>
+    /// 角色能量遭到伤害。
+    /// </summary>
+    /// <param name="attack"></param>
+    void powerInjured(Attack attack)
+    {
+        if (NSC_Color.colorSame(attack.powerDamage, power) && power.m_colorType != NSC_Color.colorType.white)
+        {
+            if (attack.powerDamage.colorValue > whitePower.colorValue)
+            {
+                power.colorValue += whitePower.colorValue;
+                whitePower.colorValue = 0;
+            }
+            else
+            {
+                power.colorValue += attack.powerDamage.colorValue;
+                whitePower.colorValue -= attack.powerDamage.colorValue;
+            }
+        }
+        else if (NSC_Color.colorContrary(attack.powerDamage, power))
+        {
+            if (attack.powerDamage.colorValue < power.colorValue)
+            {
+                power.colorValue -= attack.powerDamage.colorValue;
+                whitePower.colorValue += attack.powerDamage.colorValue;
+            }
+            else
+            {
+                whitePower.colorValue += power.colorValue;
+                power.colorValue = attack.powerDamage.colorValue - power.colorValue;
+                power.m_colorType = attack.powerDamage.m_colorType;
+                if (power.colorValue > whitePower.colorValue)
+                {
+                    whitePower.colorValue = 0;
+                    power.colorValue = whitePower.colorValue;
+                }
+                else
+                {
+                    whitePower.colorValue -= power.colorValue;
+                }
+            }
+        }
+        else if (attack.powerDamage.m_colorType == NSC_Color.colorType.black)
+        {
+            if (attack.powerDamage.colorValue >= power.colorValue)
+            {
+
+                if (whitePower.colorValue > attack.powerDamage.colorValue - power.colorValue)
+                {
+                    whitePower.colorValue -= attack.powerDamage.colorValue - power.colorValue;
+                }
+                else
+                {
+                    whitePower.colorValue = 0;
+                }
+                power.colorValue = 0;
+                power.m_colorType = NSC_Color.colorType.white;
+            }
+            else
+            {
+                power.colorValue -= attack.powerDamage.colorValue;
+            }
+        }
+        else if (attack.powerDamage.m_colorType == NSC_Color.colorType.white)
+        {
+            whitePower.colorValue += attack.powerDamage.colorValue;
+        }
+        else if (power.m_colorType == NSC_Color.colorType.white)
+        {
+            whitePower.colorValue -= attack.powerDamage.colorValue;
+            power.colorValue += attack.powerDamage.colorValue;
+            power.m_colorType = attack.powerDamage.m_colorType;
+        }
+    }
+    /// <summary>
+    /// 重写HPNormal
+    /// </summary>
+    public override void HPNormal()
+    {
+        base.HPNormal();
+        if (whitePower.colorValue <= 0)
+        {
+            whitePower.colorValue = 0;
+            whitePower.m_colorType = NSC_Color.colorType.white;
+        }
+        if (whitePower.colorValue >= powerMax)
+        {
+            whitePower.colorValue = powerMax;
+        }
+        if (power.colorValue + whitePower.colorValue > powerMax)
+        {
+            whitePower.colorValue += powerMax - power.colorValue - whitePower.colorValue;
+        }
+        if (power.colorValue <= 0)
+        {
+            power.m_colorType = NSC_Color.colorType.white;
+        }
+    }
 
     // Update is called once per frame
-    void Update () {
-        if (!animator.GetBool("stop") && !animator.GetBool("rolling") && !animator.IsInTransition(0))
+    void Update()
+    {
+        //翻滚
+        if (!animator.GetBool("stop") && !animator.GetBool("rolling") && !animator.IsInTransition(0) && !rollingCD)
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -52,15 +172,110 @@ public class Player : NSC_Character {
                 animator.SetBool("rolling", true);
             }
         }
-		
-	}
+        //近战or远程攻击
+        if (move && Input.GetButton("Fire2") && !animator.IsInTransition(0))
+        {
+            aimLineStart();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                move = false;
+                animator.SetBool("moving", false);
+                animator.SetBool("rangeAttack", true);
+            }
+        }
+        else if (move && Input.GetButtonDown("Fire1") && !animator.IsInTransition(0))
+        {
+            move = false;
+            animator.SetBool("moving", false);
+            animator.SetBool("nearAttack", true);
+        }
+        if (Input.GetButtonUp("Fire2") && !animator.IsInTransition(0))
+        {
+            aimLine.enabled = false;
+        }
+
+        if (comboNow)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                comboNow = false;
+                animator.SetBool("combo", true);
+            }
+        }
+
+    }
+    /// <summary>
+    /// 连击启动
+    /// </summary>
+    public void comboStart()
+    {
+        animator.SetBool("combo", false);
+        comboNow = true;
+    }
+    /// <summary>
+    /// 连击结束
+    /// </summary>
+    public void comboEnd()
+    {
+        animator.SetBool("combo", false);
+        comboNow = false;
+        animatorEnd();
+    }
+    /// <summary>
+    /// 连击移动
+    /// </summary>
+    public void nearAttackMove()
+    {
+        this.transform.position += transform.forward * m_nearattackMove;
+    }
+    /// <summary>
+    /// 结束所有动作
+    /// </summary>
+    public void animatorEnd()
+    {
+        animator.SetBool("rolling", false);
+        animator.SetBool("nearAttack", false);
+        animator.SetBool("rangeAttack", false);
+        animator.SetBool("combo", false);
+
+    }
+    /// <summary>
+    /// 开启瞄准线
+    /// </summary>
+    void aimLineStart()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        LayerMask mouseMask = 1 << layerMouse;
+        if (Physics.Raycast(ray, out hit, 100f, mouseMask))
+        {
+            Vector3 offset = new Vector3((hit.point - transform.position).x, 0, (hit.point - transform.position).z);
+            if (offset.magnitude > 0.7)
+            {
+                transform.forward = new Vector3(offset.x, transform.forward.y, offset.z).normalized;
+            }
+            aimLine.size = new Vector2((hit.point - this.transform.position).magnitude, aimLine.size.y);
+            aimLine.enabled = true;
+        }
+    }
     /// <summary>
     /// 翻滚结束Event。
     /// </summary>
     public void rollingEnd()
     {
-        move = true;
         animator.SetBool("rolling", false);
+        animator.SetBool("moving", false);
+        rollingCD = true;
+        StartCoroutine("rollingCDNow");
+    }
+    /// <summary>
+    /// 翻滚CD。
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator rollingCDNow()
+    {
+        yield return new WaitForSeconds(rollCD);
+        rollingCD = false;
     }
 
     /// <summary>
@@ -68,11 +283,17 @@ public class Player : NSC_Character {
     /// </summary>
     public void allReady()
     {
-        move = true;
-        animator.SetBool("rolling", false);
-        animator.SetBool("nearAttack", false);
-        animator.SetBool("rangeAttack", false);
-        animator.SetBool("combo", false);
+        if (!animator.IsInTransition(0))
+        {
+            move = true;
+            animator.SetBool("rolling", false);
+            animator.SetBool("nearAttack", false);
+            animator.SetBool("rangeAttack", false);
+            animator.SetBool("combo", false);
+
+        }
+
+
     }
     private void FixedUpdate()
     {
@@ -100,7 +321,7 @@ public class Player : NSC_Character {
     void moving()
     {
         Vector3 moveV3 = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * speed;
-        if(moveV3 != Vector3.zero)
+        if (moveV3 != Vector3.zero)
         {
             transform.forward = moveV3;
             characterController.SimpleMove(moveV3);

@@ -183,7 +183,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.098265894
+      - time: 0.15606937
         functionName: allReady
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -275,7 +275,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.80120593
-        functionName: startNearDamage
+        functionName: startNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -289,7 +289,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: endNearDamage
+        functionName: stopNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -345,14 +345,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.6744868
-        functionName: startNearDamage
+        functionName: startNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.85337245
-        functionName: endNearDamage
+        functionName: stopNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -429,14 +429,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.56109375
-        functionName: startNearDamage
+        functionName: startNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.9621082
-        functionName: endNearDamage
+        functionName: stopNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -513,7 +513,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.10301829
-        functionName: startNearDamage
+        functionName: startNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -527,14 +527,14 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.38637176
-        functionName: endNearDamage
+        functionName: stopNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: endNearAttack
+        functionName: animatorEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -653,7 +653,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: shootEnd
+        functionName: NewEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(Rigidbody))]
 public class NSC_Character : MonoBehaviour
 {
     public enum CharacterType
@@ -16,7 +16,7 @@ public class NSC_Character : MonoBehaviour
     public int HP;
     [Tooltip("血量上限")]
     public int HPMax;
-    [Tooltip("主角的能量，或者怪物当前的颜色类型")]
+    [Tooltip("主角的异常能量，或者怪物当前的颜色类型")]
     public NSC_Color power;
     [Tooltip("能量槽上限")]
     public float powerMax;
@@ -58,9 +58,9 @@ public class NSC_Character : MonoBehaviour
     protected Animator animator;
     protected void Awake()
     {
-        power = GetComponent<NSC_Color>();
+        GetComponent<Rigidbody>().isKinematic = true;
         animator = GetComponent<Animator>();
-        for(int i = 0; i < nearAttackCollider.Length; i++)
+        for (int i = 0; i < nearAttackCollider.Length; i++)
         {
             if (nearAttackCollider[i].GetComponent<Collider>())
             {
@@ -69,11 +69,12 @@ public class NSC_Character : MonoBehaviour
             else
             {
 
-                
+
                 Debug.LogError("武器丢失碰撞盒");
                 Debug.Break();
             }
         }
+        stopNearAttack();
     }
 
     /// <summary>
@@ -127,6 +128,18 @@ public class NSC_Character : MonoBehaviour
         {
             power.colorValue = 0;
         }
+        if (power.colorValue >= powerMax)
+        {
+            power.colorValue = powerMax;
+        }
+        if (HP > HPMax)
+        {
+            HP = HPMax;
+        }
+        if (power.colorValue > powerMax)
+        {
+            power.colorValue = powerMax;
+        }
 
     }
     /// <summary>
@@ -154,18 +167,19 @@ public class NSC_Character : MonoBehaviour
         Attack attack = nearAttackCollider[0];
         attack.damage = nearAttack[attackNub].damage;
         attack.powerDamage = nearAttack[attackNub].powerDamage;
+        attack.powerDamage.m_colorType = power.m_colorType;
         attack.m_characterType = characterType;
         attack.stopTime = nearAttack[attackNub].stopTime;
-        attack.enabled = true;
+        nearAttackCollider[0].GetComponent<Collider>().enabled = true;
     }
     /// <summary>
     /// 近战伤害关闭。
     /// </summary>
     virtual public void stopNearAttack()
     {
-        for(int i=0; i<nearAttackCollider.Length; i++)
+        for (int i = 0; i < nearAttackCollider.Length; i++)
         {
-            nearAttackCollider[i].enabled = false;
+            nearAttackCollider[i].GetComponent<Collider>().enabled = false;
         }
 
 
@@ -175,11 +189,11 @@ public class NSC_Character : MonoBehaviour
     /// </summary>
     virtual public void shoot()
     {
-        if(power.m_colorType == NSC_Color.colorType.white)
+        if (power.m_colorType == NSC_Color.colorType.white)
         {
             Instantiate(attackWhite.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = transform.forward;
         }
-        else if(power.m_colorType == NSC_Color.colorType.black)
+        else if (power.m_colorType == NSC_Color.colorType.black)
         {
             Instantiate(attackBlack.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = transform.forward;
         }
@@ -200,17 +214,17 @@ public class NSC_Character : MonoBehaviour
     /// <param name="other"></param>
     virtual public void deadDestory()
     {
-        Destroy(gameObject,deadDelay);
+        Destroy(gameObject, deadDelay);
     }
 
     protected void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Attack>() && other.GetComponent<Attack>().m_characterType != characterType)
         {
+           
             if (injured(other.GetComponent<Attack>()) && other.GetComponent<AttackRange>())
                 Destroy(other.gameObject);
         }
     }
-
 
 }
