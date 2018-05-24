@@ -226,7 +226,7 @@ public class Player : NSC_Character
     /// </summary>
     public void nearAttackMove()
     {
-        this.transform.position += transform.forward * m_nearattackMove;
+        characterController.Move(transform.forward * m_nearattackMove);
     }
     /// <summary>
     /// 结束所有动作

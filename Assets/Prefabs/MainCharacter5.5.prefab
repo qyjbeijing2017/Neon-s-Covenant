@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 95466985077570012}
   - component: {fileID: 114548354845036230}
   - component: {fileID: 143675527644604448}
-  - component: {fileID: 114304357612405986}
+  - component: {fileID: 54974175207643978}
   m_Layer: 0
   m_Name: MainCharacter5.5
   m_TagString: MainCharacter
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 95887231175679434}
   - component: {fileID: 65236949452175268}
   - component: {fileID: 82318250138828414}
-  - component: {fileID: 114440900116224508}
+  - component: {fileID: 114090525408485002}
   m_Layer: 0
   m_Name: Length_Axe
   m_TagString: Untagged
@@ -1934,6 +1934,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1247904944348798}
   m_Mesh: {fileID: 4300002, guid: 7e82b18c199127946b9735e4c0c39c66, type: 3}
+--- !u!54 &54974175207643978
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418407691182788}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65236949452175268
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1944,8 +1959,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 617.3614, y: 728.4388, z: 100}
-  m_Center: {x: 152.27077, y: -447.2625, z: 0.00008275611}
+  m_Size: {x: 617.3614, y: 1527.874, z: 100}
+  m_Center: {x: 152.27074, y: -846.97864, z: -0.00032701314}
 --- !u!82 &82318250138828414
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2060,20 +2075,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114304357612405986
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1418407691182788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a54934dfbe823e040b8103ef0edfc21d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorValue: 0
-  m_colorType: 0
---- !u!114 &114440900116224508
+--- !u!114 &114090525408485002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2081,13 +2083,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1653328552016554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2859621bfa74e45bb98997658c0e5f, type: 3}
+  m_Script: {fileID: 11500000, guid: e06a0591e8e4bc644ba8034fdfdb7bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axeDamege: 0
-  axeType: 0
+  damage: 1
+  powerDamage:
+    colorValue: 0
+    m_colorType: 0
+  m_characterType: 0
   stopTime: 0
-  playerAudio: {fileID: 0}
 --- !u!114 &114548354845036230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2099,11 +2103,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f32988d2c5dd3c4fb88936d9a50668c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
-  power: {fileID: 0}
+  HP: 8
+  HPMax: 8
+  power:
+    colorValue: 0
+    m_colorType: 0
+  powerMax: 100
   characterType: 0
-  nearAttack: []
-  nearAttackCollider: []
+  nearAttack:
+  - {fileID: 114090525408485002}
+  nearAttackCollider:
+  - {fileID: 114090525408485002}
   attackWhite: {fileID: 0}
   attackRed: {fileID: 0}
   attackCyan: {fileID: 0}
@@ -2114,6 +2124,13 @@ MonoBehaviour:
   dead: 0
   speed: 3
   rollingSpeed: 5
+  rollCD: 0.3
+  m_nearattackMove: 0.8
+  whitePower:
+    colorValue: 100
+    m_colorType: 0
+  aimLine: {fileID: 212318240599426362}
+  layerMouse: 9
 --- !u!135 &135889997524141602
 SphereCollider:
   m_ObjectHideFlags: 1
