@@ -323,13 +323,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: comboNex
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.08128605
         functionName: comboStart
         data: 
@@ -408,7 +401,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: comboNex
+        functionName: startWeakBoss
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -416,6 +409,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.040499974
         functionName: comboStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.10467646
+        functionName: nearAttackMove
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -435,29 +435,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9621082
-        functionName: stopNearAttack
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.10467646
-        functionName: nearAttackMove
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.030349486
-        functionName: startWeakBoss
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.9145198
         functionName: endWeakBoss
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9621082
+        functionName: stopNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -491,13 +477,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: comboNex
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.024770834
         functionName: startWeakBoss
         data: 

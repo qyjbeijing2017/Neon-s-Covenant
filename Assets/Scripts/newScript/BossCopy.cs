@@ -2,13 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossALL : MonoBehaviour {
-
-    public int HP;
-    public NSC_Color.colorType color;
-    public Attack near1 = new Attack();
-
-
+public class BossCopy : NSC_Character {
 
 	// Use this for initialization
 	void Start () {

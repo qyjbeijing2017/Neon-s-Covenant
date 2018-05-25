@@ -55,7 +55,7 @@ public class NSC_Character : MonoBehaviour
     [Tooltip("角色是否死亡")]
     public bool dead;
 
-    protected Animator animator;
+    [HideInInspector]public Animator animator;
     protected void Awake()
     {
         GetComponent<Rigidbody>().isKinematic = true;

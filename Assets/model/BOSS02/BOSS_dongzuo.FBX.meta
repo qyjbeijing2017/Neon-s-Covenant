@@ -352,7 +352,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: laser_end
+        functionName: allReady
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -513,7 +513,7 @@ ModelImporter:
         intParameter: 2
         messageOptions: 0
       - time: 0.9824047
-        functionName: nearAttack_end
+        functionName: allReady
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -569,7 +569,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -687,8 +687,8 @@ ModelImporter:
         floatParameter: 0
         intParameter: 3
         messageOptions: 0
-      - time: 1
-        functionName: rangeAttack_end
+      - time: 0.936255
+        functionName: allReady
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -721,7 +721,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.40239045
+        functionName: detectRandom
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
