@@ -27,6 +27,7 @@ public class Player : NSC_Character
     bool move;//角色是否可移动
     bool rollingCD;
     bool comboNow;
+    bool weakBoss;
 
     // Use this for initialization
     void Start()
@@ -36,6 +37,7 @@ public class Player : NSC_Character
         rollingCD = false;
         aimLine.enabled = false;
         comboNow = false;
+        weakBoss = false;
     }
     /// <summary>
     /// 角色受伤重写
@@ -44,7 +46,10 @@ public class Player : NSC_Character
     /// <returns></returns>
     public override bool injured(Attack attack)
     {
-
+        if (weakBoss && NSC_Color.colorContrary(power, attack.powerDamage) && attack.GetComponent<Boss>().animator.GetBool("nearAttack"))
+        {
+            FindObjectOfType<Boss>().weak();
+        }
         if (!animator.GetBool("rolling"))
         {
             move = false;
@@ -167,6 +172,7 @@ public class Player : NSC_Character
         {
             if (Input.GetButtonDown("Jump"))
             {
+                endWeakBoss();
                 move = false;
                 animator.Play("Roll");
                 animator.SetBool("rolling", true);
@@ -237,6 +243,7 @@ public class Player : NSC_Character
         animator.SetBool("nearAttack", false);
         animator.SetBool("rangeAttack", false);
         animator.SetBool("combo", false);
+        endWeakBoss();
 
     }
     /// <summary>
@@ -312,6 +319,7 @@ public class Player : NSC_Character
     /// </summary>
     void rolling()
     {
+        
         characterController.SimpleMove(transform.forward * rollingSpeed);
     }
 
@@ -330,8 +338,22 @@ public class Player : NSC_Character
         else
         {
             animator.SetBool("moving", false);
-
+            characterController.SimpleMove(moveV3);
         }
 
+    }
+    /// <summary>
+    /// 虚弱boss
+    /// </summary>
+    public void startWeakBoss()
+    {
+        weakBoss = true;
+    }
+    /// <summary>
+    /// 虚弱boss结束；
+    /// </summary>
+    public void endWeakBoss()
+    {
+        weakBoss = false;
     }
 }

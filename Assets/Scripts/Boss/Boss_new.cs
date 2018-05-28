@@ -546,7 +546,7 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("rangeAttack", false);
         boss_start();
     }
-
+    
     IEnumerator boss_laser()
     {
 
