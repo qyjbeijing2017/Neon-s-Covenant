@@ -17,6 +17,8 @@ public class Player : NSC_Character
     [Header("特殊状态")]
     [Tooltip("白颜色槽")]
     public NSC_Color whitePower;
+    [Tooltip("远程消耗")]
+    public Attack rangeAttackPower;
     [Header("需求组件")]
     [Tooltip("射击准线")]
     [SerializeField] private SpriteRenderer aimLine;
@@ -39,6 +41,14 @@ public class Player : NSC_Character
         comboNow = false;
         weakBoss = false;
     }
+
+    public override void shoot()
+    {
+        base.shoot();
+        injured(rangeAttackPower);
+
+
+    }
     /// <summary>
     /// 角色受伤重写
     /// </summary>
@@ -49,15 +59,17 @@ public class Player : NSC_Character
         if (weakBoss && NSC_Color.colorContrary(power, attack.powerDamage) && attack.GetComponent<Boss>().animator.GetBool("nearAttack"))
         {
             FindObjectOfType<Boss>().weak();
+            return false;
         }
         if (!animator.GetBool("rolling"))
         {
-            move = false;
+
             HP -= attack.damage;
             powerInjured(attack);
             HPNormal();
             if (!dead && characterType != CharacterType.boss && attack.stopTime > 0.0f)
             {
+                move = false;
                 StopCoroutine("characterStop");
                 StartCoroutine("characterStop", attack);
             }
@@ -71,6 +83,7 @@ public class Player : NSC_Character
     /// <param name="attack"></param>
     void powerInjured(Attack attack)
     {
+        print(3);
         if (NSC_Color.colorSame(attack.powerDamage, power) && power.m_colorType != NSC_Color.colorType.white)
         {
             if (attack.powerDamage.colorValue > whitePower.colorValue)
@@ -164,52 +177,6 @@ public class Player : NSC_Character
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //翻滚
-        if (!animator.GetBool("stop") && !animator.GetBool("rolling") && !animator.IsInTransition(0) && !rollingCD)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                endWeakBoss();
-                move = false;
-                animator.Play("Roll");
-                animator.SetBool("rolling", true);
-            }
-        }
-        //近战or远程攻击
-        if (move && Input.GetButton("Fire2") && !animator.IsInTransition(0))
-        {
-            aimLineStart();
-            if (Input.GetButtonDown("Fire1"))
-            {
-                move = false;
-                animator.SetBool("moving", false);
-                animator.SetBool("rangeAttack", true);
-            }
-        }
-        else if (move && Input.GetButtonDown("Fire1") && !animator.IsInTransition(0))
-        {
-            move = false;
-            animator.SetBool("moving", false);
-            animator.SetBool("nearAttack", true);
-        }
-        if (Input.GetButtonUp("Fire2") && !animator.IsInTransition(0))
-        {
-            aimLine.enabled = false;
-        }
-
-        if (comboNow)
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                comboNow = false;
-                animator.SetBool("combo", true);
-            }
-        }
-
-    }
     /// <summary>
     /// 连击启动
     /// </summary>
@@ -218,6 +185,7 @@ public class Player : NSC_Character
         animator.SetBool("combo", false);
         comboNow = true;
     }
+
     /// <summary>
     /// 连击结束
     /// </summary>
@@ -227,6 +195,7 @@ public class Player : NSC_Character
         comboNow = false;
         animatorEnd();
     }
+
     /// <summary>
     /// 连击移动
     /// </summary>
@@ -234,6 +203,7 @@ public class Player : NSC_Character
     {
         characterController.Move(transform.forward * m_nearattackMove);
     }
+
     /// <summary>
     /// 结束所有动作
     /// </summary>
@@ -246,6 +216,7 @@ public class Player : NSC_Character
         endWeakBoss();
 
     }
+
     /// <summary>
     /// 开启瞄准线
     /// </summary>
@@ -265,6 +236,7 @@ public class Player : NSC_Character
             aimLine.enabled = true;
         }
     }
+
     /// <summary>
     /// 翻滚结束Event。
     /// </summary>
@@ -275,6 +247,7 @@ public class Player : NSC_Character
         rollingCD = true;
         StartCoroutine("rollingCDNow");
     }
+
     /// <summary>
     /// 翻滚CD。
     /// </summary>
@@ -302,18 +275,7 @@ public class Player : NSC_Character
 
 
     }
-    private void FixedUpdate()
-    {
-        if (move)
-        {
-            moving();
-        }
-        if (animator.GetBool("rolling"))
-        {
-            rolling();
-        }
 
-    }
     /// <summary>
     /// 翻滚位移
     /// </summary>
@@ -356,4 +318,68 @@ public class Player : NSC_Character
     {
         weakBoss = false;
     }
+
+
+    private void FixedUpdate()
+    {
+        if (move)
+        {
+            moving();
+        }
+        if (animator.GetBool("rolling"))
+        {
+            rolling();
+        }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //翻滚
+        if (!animator.GetBool("stop") && !animator.GetBool("rolling") && !animator.IsInTransition(0) && !rollingCD)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                moving();
+                animatorEnd();
+                endWeakBoss();
+                move = false;
+                animator.Play("Roll");
+                animator.SetBool("rolling", true);
+            }
+        }
+        //近战or远程攻击
+        if (move && Input.GetButton("Fire2") && !animator.IsInTransition(0))
+        {
+            aimLineStart();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                move = false;
+                animator.SetBool("moving", false);
+                animator.SetBool("rangeAttack", true);
+            }
+        }
+        else if (move && Input.GetButtonDown("Fire1") && !animator.IsInTransition(0))
+        {
+            move = false;
+            animator.SetBool("moving", false);
+            animator.SetBool("nearAttack", true);
+        }
+        if (Input.GetButtonUp("Fire2") && !animator.IsInTransition(0))
+        {
+            aimLine.enabled = false;
+        }
+
+        if (comboNow)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                comboNow = false;
+                animator.SetBool("combo", true);
+            }
+        }
+
+    }
+
 }

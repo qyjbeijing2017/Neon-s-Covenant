@@ -162,6 +162,10 @@ Prefab:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1231546642626766, guid: 35abea28456a10b488a2d079e2fdf33a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114124486922965890, guid: 35abea28456a10b488a2d079e2fdf33a, type: 2}
     - {fileID: 120986188192958088, guid: 35abea28456a10b488a2d079e2fdf33a, type: 2}
@@ -465,6 +469,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114548354845036230, guid: 27819d1b7afecd941bc57d5dc65a25b3,
+        type: 2}
+      propertyPath: rangeAttackPower
+      value: 
+      objectReference: {fileID: 114050658587970800, guid: 52266721ea26e8140ae46110cb2f5568,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27819d1b7afecd941bc57d5dc65a25b3, type: 2}
   m_IsPrefabParent: 0
@@ -740,7 +750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &1380346093
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1004,6 +1014,8 @@ MonoBehaviour:
   angleRange: 19
   bossCopy: {fileID: 0}
   flashDisBoss2: 8
+  tornado: {fileID: 0}
+  skillLast: 0
 --- !u!54 &1751431639
 Rigidbody:
   m_ObjectHideFlags: 0

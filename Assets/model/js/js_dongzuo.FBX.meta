@@ -561,8 +561,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
+      - time: 0.9800797
         functionName: rollingEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9960159
+        functionName: animatorEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -632,7 +639,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: NewEvent
+        functionName: animatorEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

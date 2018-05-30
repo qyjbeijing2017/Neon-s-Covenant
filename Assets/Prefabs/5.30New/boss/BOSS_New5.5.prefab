@@ -3913,7 +3913,7 @@ MonoBehaviour:
   shield_blue: {fileID: 1809622907790962}
   nubRangeAttack: 20
   follow: 1
-  attack: 0
+  attack: 1
   Dead: 0
   laserDamaged: 0
   specialAttack: 0

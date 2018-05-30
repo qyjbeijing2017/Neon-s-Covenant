@@ -1023,7 +1023,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418407691182788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.37858, y: 1.655, z: -0.20170106}
+  m_LocalPosition: {x: 9.95, y: 0.8, z: 2.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4170508141342384}
@@ -2114,17 +2114,21 @@ MonoBehaviour:
   - {fileID: 114090525408485002}
   nearAttackCollider:
   - {fileID: 114090525408485002}
-  attackWhite: {fileID: 0}
-  attackRed: {fileID: 0}
-  attackCyan: {fileID: 0}
+  attackWhite: {fileID: 114309526874137064, guid: 650db1cc65c8b47498a541f9c7aa7208,
+    type: 2}
+  attackRed: {fileID: 114257150967214432, guid: 547c8318b0fc92b48bf5dbb39c2a4c90,
+    type: 2}
+  attackCyan: {fileID: 114556586198495492, guid: 53dc91029d4f5a546bbe15989e23b952,
+    type: 2}
   attackBlack: {fileID: 0}
-  shootPoint: {fileID: 0}
+  shootPoint: {fileID: 4564583639441108}
   damageIn: 0
   damageDe: 0
   dead: 0
+  animator: {fileID: 0}
   speed: 3
-  rollingSpeed: 5
-  rollCD: 0.3
+  rollingSpeed: 8
+  rollCD: 0
   m_nearattackMove: 0.8
   whitePower:
     colorValue: 100
