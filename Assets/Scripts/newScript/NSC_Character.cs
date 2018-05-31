@@ -122,6 +122,7 @@ public class NSC_Character : MonoBehaviour
         {
             dead = true;
             HP = 0;
+            animator.speed = 1;
             animator.Play("die");
         }
         if (power.colorValue <= 0)
@@ -187,7 +188,7 @@ public class NSC_Character : MonoBehaviour
     /// <summary>
     /// 远程射击。boss的弹幕需要重写。
     /// </summary>
-    virtual public void shoot()
+    virtual public void shoot(int typeRange)
     {
 
         if (power.m_colorType == NSC_Color.colorType.white)

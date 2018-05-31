@@ -55,9 +55,8 @@ GameObject:
   - component: {fileID: 33565950689567032}
   - component: {fileID: 135985747045047816}
   - component: {fileID: 23866890523030008}
-  - component: {fileID: 114464630073337776}
   - component: {fileID: 54000296037147326}
-  - component: {fileID: 114830126267495800}
+  - component: {fileID: 114547075515597260}
   m_Layer: 0
   m_Name: boss_attack_red 3
   m_TagString: Untagged
@@ -942,25 +941,6 @@ MonoBehaviour:
   LastClientPos: {x: -154.0687, y: 154.9435, z: -50.853966}
   Owner: {fileID: 114543084172842280}
   mStopped: 0
---- !u!114 &114464630073337776
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1579452876390970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db441d7c05c160b45b5912381f4b9319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myType: 3
-  damageHP: 1
-  damagePower: 15
-  colorType: 1
-  speed: 0
-  destoryTime: 5
-  stopTime: 0.1
-  bulletVelocity: 5
 --- !u!114 &114543084172842280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1009,7 +989,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
---- !u!114 &114830126267495800
+--- !u!114 &114547075515597260
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1017,17 +997,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1579452876390970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db441d7c05c160b45b5912381f4b9319, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ae0d5b287fc2f7468b3321c5fd87bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myType: 1
-  damageHP: 1
-  damagePower: 10
-  colorType: 2
+  damage: 0
+  powerDamage:
+    colorValue: 0
+    m_colorType: 1
+  m_characterType: 1
+  stopTime: 0
   speed: 0
-  destoryTime: 5
-  stopTime: 0.1
-  bulletVelocity: 5
+  destoryLater: 10
 --- !u!135 &135985747045047816
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -286,9 +286,9 @@ GameObject:
   - component: {fileID: 114182809711302780}
   - component: {fileID: 82217930428749976}
   - component: {fileID: 54466164175579134}
-  - component: {fileID: 114621788969456850}
+  - component: {fileID: 114502170310590256}
   m_Layer: 0
-  m_Name: BOSS_New5.5
+  m_Name: BOSS_New5.6
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2653,7 +2653,7 @@ Animator:
   m_GameObject: {fileID: 1231546642626766}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6bc1668979b76724b8a0e6bc505de586, type: 3}
-  m_Controller: {fileID: 9100000, guid: da86144ba01fe174f85a40c5dc4ba3b2, type: 2}
+  m_Controller: {fileID: 9100000, guid: ebfb4fa93521ed248ba45748f2c37454, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2684,6 +2684,50 @@ MonoBehaviour:
   boss_range: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
   rangeVolume: 0.518
   bossAudio: {fileID: 82217930428749976}
+--- !u!114 &114502170310590256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231546642626766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9010565b9e3e93d439a44a2313eedd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  HPMax: 0
+  power:
+    colorValue: 0
+    m_colorType: 0
+  powerMax: 0
+  characterType: 1
+  nearAttack: []
+  nearAttackCollider: []
+  attackWhite: {fileID: 0}
+  attackRed: {fileID: 114547075515597260, guid: 7c76fe55bf308e249a673f5d94e5bd7b,
+    type: 2}
+  attackCyan: {fileID: 114375814304095456, guid: 7ab53d1ff65aec14e869bf440359d63a,
+    type: 2}
+  attackBlack: {fileID: 114292899662298482, guid: 6e65f3c7becc41c4aa692799ff2cea59,
+    type: 2}
+  shootPoint: {fileID: 4781034236738254}
+  damageIn: 0
+  damageDe: 0
+  dead: 0
+  animator: {fileID: 0}
+  mode2HP: 0
+  nearFlashDis: 0
+  nubRangeAttack: 20
+  angleRange: 10
+  bossCopy: {fileID: 0}
+  flashDisBoss2: 0
+  tornadoRed: {fileID: 114332985043387714, guid: 7a06779b1fce9b748a3defb9a401d7c4,
+    type: 2}
+  tornadoCyan: {fileID: 114332985043387714, guid: f28ce117e755d444a833e8c35fedd3f4,
+    type: 2}
+  skillLast: 0
+  bossName: BOSS_New5.5
 --- !u!114 &114531153738007760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2701,52 +2745,6 @@ MonoBehaviour:
     m_colorType: 0
   m_characterType: 0
   stopTime: 0
---- !u!114 &114621788969456850
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1231546642626766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9b354f11d23c847b9ad5596f7c789a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 100
-  HPMax: 100
-  power:
-    colorValue: 0
-    m_colorType: 0
-  powerMax: 0
-  characterType: 0
-  nearAttack:
-  - {fileID: 114354025997771466, guid: 61f14bd0b12003f46a550b6c95df4e13, type: 2}
-  nearAttackCollider:
-  - {fileID: 114531153738007760}
-  - {fileID: 114787807504662254}
-  attackWhite: {fileID: 0}
-  attackRed: {fileID: 114194323529819472, guid: a4e77ca164323b44ea2b1e69ecbc3a05,
-    type: 2}
-  attackCyan: {fileID: 114901569827938422, guid: df0d231cbd9729343a57d3eed7a2a18e,
-    type: 2}
-  attackBlack: {fileID: 114290255579615902, guid: a732e3f751c7a9c4baa3b6d550b01bb5,
-    type: 2}
-  shootPoint: {fileID: 4781034236738254}
-  damageIn: 0
-  damageDe: 0
-  dead: 0
-  animator: {fileID: 0}
-  mode2HP: 100
-  nearFlashDis: 1.5
-  nubRangeAttack: 20
-  angleRange: 19
-  bossCopy: {fileID: 0}
-  flashDisBoss2: 8
-  tornadoRed: {fileID: 114332985043387714, guid: 7a06779b1fce9b748a3defb9a401d7c4,
-    type: 2}
-  tornadoCyan: {fileID: 114332985043387714, guid: f28ce117e755d444a833e8c35fedd3f4,
-    type: 2}
-  skillLast: 0
 --- !u!114 &114787807504662254
 MonoBehaviour:
   m_ObjectHideFlags: 1

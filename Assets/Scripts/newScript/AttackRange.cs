@@ -30,4 +30,6 @@ public class AttackRange : Attack {
 	void Update () {
 		
 	}
+
+
 }

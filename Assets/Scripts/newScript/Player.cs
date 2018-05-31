@@ -42,9 +42,9 @@ public class Player : NSC_Character
         weakBoss = false;
     }
 
-    public override void shoot()
+    public override void shoot(int typeRange)
     {
-        base.shoot();
+        base.shoot(typeRange);
         injured(rangeAttackPower);
 
 

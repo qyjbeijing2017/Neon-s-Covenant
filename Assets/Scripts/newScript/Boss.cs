@@ -45,10 +45,12 @@ public class Boss : NSC_Character
         skillLast = SkillBoss.tornado;
     }
 
+    public override bool injured(Attack attack)
+    {
+        return base.injured(attack);
+    }
 
-
-
-    public void tornadoShoot()
+    virtual public void tornadoShoot()
     {
         if (power.m_colorType == NSC_Color.colorType.red)
             Instantiate(tornadoRed.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Tornado>().attack.powerDamage.m_colorType = power.m_colorType;
@@ -69,7 +71,6 @@ public class Boss : NSC_Character
             case 2: changeNearAttack(0, 0); changeNearAttack(1, 0); break;
         }
 
-        Debug.Break();
     }
 
 
@@ -92,7 +93,7 @@ public class Boss : NSC_Character
     {
         HidePosition = transform.position;
         transform.position = new Vector3(0, 0, -1000);
-        animator.StopPlayback();
+        animator.speed = 0;
         GameObject boss1 = Instantiate(bossCopy.gameObject);
         boss1.transform.position = player.transform.position + (player.transform.right * flashDisBoss2);
         boss1.transform.forward = player.transform.position - boss1.transform.position;
@@ -107,7 +108,9 @@ public class Boss : NSC_Character
         else
         {
             boss1.GetComponent<BossCopy>().animator.SetBool("tornado", true);
+            boss1.GetComponent<BossCopy>().power.m_colorType = NSC_Color.colorType.cyan;
             boss2.GetComponent<BossCopy>().animator.SetBool("tornado", true);
+            boss2.GetComponent<BossCopy>().power.m_colorType = NSC_Color.colorType.red;
         }
 
     }
@@ -120,7 +123,16 @@ public class Boss : NSC_Character
         if (bossCopyNub >= 2)
         {
             this.transform.position = HidePosition;
-            animator.Play("Idle");
+            animator.speed = 1;
+            if (HP < 0)
+            {
+                animator.Play("die");
+            }
+            else
+            {
+                animator.Play("Idle");
+            }
+
         }
     }
     /// <summary>
@@ -158,14 +170,14 @@ public class Boss : NSC_Character
         {
             a = Random.Range(0, 3);
         }
-        if (mode2HP > HP)
+        if (mode2HP >= HP)
         {
 
             switch (a)
             {
                 case 0: animator.SetBool("nearAttack", true); skillLast = SkillBoss.nearAttack; break;
-                case 1: bossHide(1); skillLast = SkillBoss.rangeAttack; break;
-                case 2: bossHide(2); skillLast = SkillBoss.tornado; break;
+                case 1: skillLast = SkillBoss.rangeAttack; bossHide(1); break;
+                case 2: skillLast = SkillBoss.tornado; bossHide(2); break;
             }
         }
         else
@@ -182,7 +194,7 @@ public class Boss : NSC_Character
     /// boss射击
     /// </summary>
     /// <param name="typeRange"></param>
-    public void shoot(int typeRange)
+    override public void shoot(int typeRange)
     {
         for (int i = 0; i < nubRangeAttack; i++)
         {
@@ -212,7 +224,7 @@ public class Boss : NSC_Character
     /// <summary>
     /// 随机改变颜色
     /// </summary>
-    public void changeColorRandom()
+    public virtual void changeColorRandom()
     {
         if (Random.Range(0, 2) < 1)
         {
@@ -228,10 +240,9 @@ public class Boss : NSC_Character
     /// 变回白色
     /// </summary>
     /// <param name="i_colorType"></param>
-    public void changeColor(int i_colorType)
+    public virtual void changeColor(int i_colorType)
     {
         power.m_colorType = NSC_Color.colorType.white;
     }
-    // Update is called once per frame
-
+    
 }
