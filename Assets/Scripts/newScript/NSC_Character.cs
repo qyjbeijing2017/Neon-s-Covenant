@@ -189,6 +189,7 @@ public class NSC_Character : MonoBehaviour
     /// </summary>
     virtual public void shoot()
     {
+
         if (power.m_colorType == NSC_Color.colorType.white)
         {
             Instantiate(attackWhite.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = transform.forward;

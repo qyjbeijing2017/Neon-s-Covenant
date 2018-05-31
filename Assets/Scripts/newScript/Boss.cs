@@ -25,8 +25,10 @@ public class Boss : NSC_Character
     [SerializeField] BossCopy bossCopy;
     [Tooltip("bossf复制体间隔距离")]
     [SerializeField] float flashDisBoss2;
-    [Tooltip("旋风")]
-    [SerializeField] Tornado tornado;
+    [Tooltip("旋风红")]
+    [SerializeField] Tornado tornadoRed;
+    [Tooltip("旋风青")]
+    [SerializeField] Tornado tornadoCyan;
     Player player;
     [HideInInspector] bool m_allReady;
     [HideInInspector] int bossCopyNub;
@@ -48,7 +50,10 @@ public class Boss : NSC_Character
 
     public void tornadoShoot()
     {
-        Instantiate(tornado.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Tornado>().attack.powerDamage.m_colorType = power.m_colorType;
+        if (power.m_colorType == NSC_Color.colorType.red)
+            Instantiate(tornadoRed.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Tornado>().attack.powerDamage.m_colorType = power.m_colorType;
+        else if (power.m_colorType == NSC_Color.colorType.cyan)
+            Instantiate(tornadoCyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Tornado>().attack.powerDamage.m_colorType = power.m_colorType;
     }
     /// <summary>
     /// boss近战碰撞盒重写数组0为第一个攻击的手，数组1为第二个攻击的手，数组2为双手。
@@ -59,13 +64,30 @@ public class Boss : NSC_Character
 
         switch (attackNub)
         {
-            case 0: nearAttackCollider[attackNub].enabled = true; break;
-            case 1: nearAttackCollider[attackNub].enabled = true; break;
-            case 2: nearAttackCollider[0].enabled = true; nearAttackCollider[1].enabled = true; break;
+            case 0: changeNearAttack(0, 0); break;
+            case 1: changeNearAttack(1, 0); break;
+            case 2: changeNearAttack(0, 0); changeNearAttack(1, 0); break;
         }
 
-
+        Debug.Break();
     }
+
+
+    void changeNearAttack(int attackCollider, int attackNub)
+    {
+        stopNearAttack();
+        Attack attack = nearAttackCollider[attackCollider];
+        attack.damage = nearAttack[attackNub].damage;
+        attack.powerDamage = nearAttack[attackNub].powerDamage;
+        attack.powerDamage.m_colorType = power.m_colorType;
+        attack.m_characterType = characterType;
+        attack.stopTime = nearAttack[attackNub].stopTime;
+        nearAttackCollider[attackCollider].GetComponent<Collider>().enabled = true;
+    }
+    /// <summary>
+    /// boss隐藏
+    /// </summary>
+    /// <param name="a"></param>
     public void bossHide(int a)
     {
         HidePosition = transform.position;
@@ -143,7 +165,7 @@ public class Boss : NSC_Character
             {
                 case 0: animator.SetBool("nearAttack", true); skillLast = SkillBoss.nearAttack; break;
                 case 1: bossHide(1); skillLast = SkillBoss.rangeAttack; break;
-                case 3: bossHide(2); skillLast = SkillBoss.tornado; break;
+                case 2: bossHide(2); skillLast = SkillBoss.tornado; break;
             }
         }
         else
@@ -152,7 +174,7 @@ public class Boss : NSC_Character
             {
                 case 0: animator.SetBool("nearAttack", true); skillLast = SkillBoss.nearAttack; break;
                 case 1: animator.SetBool("rangeAttack", true); skillLast = SkillBoss.rangeAttack; break;
-                case 3: animator.SetBool("tornado", true); skillLast = SkillBoss.tornado; break;
+                case 2: animator.SetBool("tornado", true); skillLast = SkillBoss.tornado; break;
             }
         }
     }

@@ -30,6 +30,7 @@ public class Tornado : MonoBehaviour
         {
             attack = GetComponent<Attack>();
         }
+        Destroy(gameObject, existTime);
     }
 
     // Update is called once per frame

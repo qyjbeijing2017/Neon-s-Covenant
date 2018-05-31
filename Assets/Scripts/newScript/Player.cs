@@ -83,7 +83,6 @@ public class Player : NSC_Character
     /// <param name="attack"></param>
     void powerInjured(Attack attack)
     {
-        print(3);
         if (NSC_Color.colorSame(attack.powerDamage, power) && power.m_colorType != NSC_Color.colorType.white)
         {
             if (attack.powerDamage.colorValue > whitePower.colorValue)
@@ -304,6 +303,7 @@ public class Player : NSC_Character
         }
 
     }
+
     /// <summary>
     /// 虚弱boss
     /// </summary>
@@ -311,6 +311,7 @@ public class Player : NSC_Character
     {
         weakBoss = true;
     }
+
     /// <summary>
     /// 虚弱boss结束；
     /// </summary>
@@ -319,6 +320,24 @@ public class Player : NSC_Character
         weakBoss = false;
     }
 
+    /// <summary>
+    /// 改变人物方向
+    /// </summary>
+    public void changeForward()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        LayerMask mouseMask = 1 << layerMouse;
+        if (Physics.Raycast(ray, out hit, 100f, mouseMask))
+        {
+            Vector3 offset = new Vector3((hit.point - transform.position).x, 0, (hit.point - transform.position).z);
+            if (offset.magnitude > 0.7)
+            {
+                transform.forward = new Vector3(offset.x, transform.forward.y, offset.z).normalized;
+            }
+            aimLine.size = new Vector2((hit.point - this.transform.position).magnitude, aimLine.size.y);
+        }
+    }
 
     private void FixedUpdate()
     {
