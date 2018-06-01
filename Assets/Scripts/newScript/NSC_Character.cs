@@ -55,6 +55,12 @@ public class NSC_Character : MonoBehaviour
     [Tooltip("角色是否死亡")]
     public bool dead;
 
+    [Space(20)]
+    [Header("声音相关")]
+    [Tooltip("击中音效数组位置，击中音效数组位置要一致")]
+    int attackSoundNum;
+
+
     [HideInInspector]public Animator animator;
     protected void Awake()
     {
@@ -223,9 +229,11 @@ public class NSC_Character : MonoBehaviour
     {
         if (other.GetComponent<Attack>() && other.GetComponent<Attack>().m_characterType != characterType)
         {
-           
+
             if (injured(other.GetComponent<Attack>()) && other.GetComponent<AttackRange>())
                 Destroy(other.gameObject);
+            else
+                other.GetComponent<AudioPlay>().playAudio(attackSoundNum);
         }
     }
 

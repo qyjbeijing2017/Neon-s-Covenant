@@ -168,6 +168,10 @@ Prefab:
       propertyPath: characterType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1231546642626766, guid: 35abea28456a10b488a2d079e2fdf33a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35abea28456a10b488a2d079e2fdf33a, type: 2}
   m_IsPrefabParent: 0
@@ -413,7 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   powerDamage:
-    colorValue: 0
+    colorValue: 10
     m_colorType: 0
   m_characterType: 0
   stopTime: 3
