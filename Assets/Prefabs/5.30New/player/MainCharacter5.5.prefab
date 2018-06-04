@@ -448,6 +448,7 @@ GameObject:
   - component: {fileID: 114548354845036230}
   - component: {fileID: 143675527644604448}
   - component: {fileID: 54974175207643978}
+  - component: {fileID: 320271538994535690}
   m_Layer: 0
   m_Name: MainCharacter5.5
   m_TagString: MainCharacter
@@ -1022,9 +1023,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418407691182788}
-  m_LocalRotation: {x: 0, y: -0.76017886, z: 0, w: 0.6497139}
-  m_LocalPosition: {x: 10.909629, y: 0.8200001, z: 2.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0.76017886, z: -0, w: 0.6497139}
+  m_LocalPosition: {x: -11.83, y: 1.6800001, z: -105.85231}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4170508141342384}
   - {fileID: 4949935585053728}
@@ -2113,8 +2114,7 @@ MonoBehaviour:
   - {fileID: 114090525408485002}
   nearAttackCollider:
   - {fileID: 114090525408485002}
-  attackWhite: {fileID: 114309526874137064, guid: 650db1cc65c8b47498a541f9c7aa7208,
-    type: 2}
+  attackWhite: {fileID: 0}
   attackRed: {fileID: 114257150967214432, guid: 547c8318b0fc92b48bf5dbb39c2a4c90,
     type: 2}
   attackCyan: {fileID: 114556586198495492, guid: 53dc91029d4f5a546bbe15989e23b952,
@@ -2125,10 +2125,10 @@ MonoBehaviour:
   damageDe: 0
   dead: 0
   animator: {fileID: 95466985077570012}
-  speed: 3
-  rollingSpeed: 8
-  rollCD: 0
-  m_nearattackMove: 0.8
+  speed: 2
+  rollingSpeed: 4.5
+  rollCD: 0.8
+  m_nearattackMove: 0.3
   whitePower:
     colorValue: 85
     m_colorType: 0
@@ -2136,6 +2136,7 @@ MonoBehaviour:
     type: 2}
   aimLine: {fileID: 212318240599426362}
   layerMouse: 9
+  weakBoss: 0
 --- !u!135 &135889997524141602
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2435,3 +2436,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!320 &320271538994535690
+PlayableDirector:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418407691182788}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []

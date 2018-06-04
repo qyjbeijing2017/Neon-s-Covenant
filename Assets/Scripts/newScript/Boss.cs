@@ -141,7 +141,7 @@ public class Boss : NSC_Character
     public void weak()
     {
         animator.Play("weak");
-        stopNearAttack();
+        stopNearAttack();   
     }
     /// <summary>
     /// 可以做下次决策。

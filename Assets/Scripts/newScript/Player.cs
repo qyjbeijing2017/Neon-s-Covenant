@@ -26,7 +26,7 @@ public class Player : NSC_Character
     [SerializeField] int layerMouse;
 
     CharacterController characterController;
-    bool move;//角色是否可移动
+    [HideInInspector]public bool move;//角色是否可移动
     bool rollingCD;
     bool comboNow;
     [SerializeField]bool weakBoss;
@@ -295,11 +295,13 @@ public class Player : NSC_Character
             transform.forward = moveV3;
             characterController.SimpleMove(moveV3);
             animator.SetBool("moving", true);
+            animator.Play("Running");
         }
         else
         {
             animator.SetBool("moving", false);
             characterController.SimpleMove(moveV3);
+            animator.Play("Idle");
         }
 
     }
@@ -348,6 +350,7 @@ public class Player : NSC_Character
         else
         {
             animator.SetBool("moving", false);
+            //animator.Play("Idle");
         }
         if (animator.GetBool("rolling"))
         {

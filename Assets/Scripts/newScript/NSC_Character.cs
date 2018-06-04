@@ -129,6 +129,7 @@ public class NSC_Character : MonoBehaviour
             dead = true;
             HP = 0;
             animator.speed = 1;
+            animator.SetBool("dying", true);
             animator.Play("die");
         }
         if (power.colorValue <= 0)
