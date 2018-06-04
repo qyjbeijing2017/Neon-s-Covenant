@@ -283,7 +283,6 @@ GameObject:
   - component: {fileID: 95514389057135898}
   - component: {fileID: 136488440628585014}
   - component: {fileID: 195011168179929848}
-  - component: {fileID: 114182809711302780}
   - component: {fileID: 82217930428749976}
   - component: {fileID: 54466164175579134}
   - component: {fileID: 114621788969456850}
@@ -1341,7 +1340,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1231546642626766}
   m_LocalRotation: {x: -0, y: -0.93897337, z: -0, w: 0.34398994}
-  m_LocalPosition: {x: 3.8, y: 0.54, z: 6.924263}
+  m_LocalPosition: {x: -72.37859, y: 2.499302, z: -10.830578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4041106755163870}
@@ -2661,29 +2660,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114182809711302780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1231546642626766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 745a9a9a370af9e4ebf88d6f3404e900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boss_weaponEmpty: {fileID: 8300000, guid: f18817987f4b1d64e9dea8e1fa59a7f3, type: 3}
-  emptyVolume: 0.549
-  boss_weaponPowerfulEmpty: {fileID: 8300000, guid: f1120591acaded74ea7388b85178b243,
-    type: 3}
-  powerfulEmptyVolume: 0.718
-  boss_weaponPlayer: {fileID: 8300000, guid: c8ea7f1a9507c3e4eb12ea617e1e7e97, type: 3}
-  playerVolume: 0.636
-  boss_laser: {fileID: 8300000, guid: c83e0cbc85fe9ff41b2b319d50d150ea, type: 3}
-  laserVolume: 0.698
-  boss_range: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
-  rangeVolume: 0.518
-  bossAudio: {fileID: 82217930428749976}
 --- !u!114 &114531153738007760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2718,7 +2694,7 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 0
   powerMax: 0
-  characterType: 0
+  characterType: 1
   nearAttack:
   - {fileID: 114354025997771466, guid: 61f14bd0b12003f46a550b6c95df4e13, type: 2}
   nearAttackCollider:
@@ -2736,11 +2712,11 @@ MonoBehaviour:
   damageDe: 0
   dead: 0
   animator: {fileID: 0}
-  mode2HP: 100
+  mode2HP: 30
   nearFlashDis: 1.5
   nubRangeAttack: 20
   angleRange: 19
-  bossCopy: {fileID: 0}
+  bossCopy: {fileID: 114502170310590256, guid: 024cbe160b502ac4d96f28f8c5d8e31a, type: 2}
   flashDisBoss2: 8
   tornadoRed: {fileID: 114332985043387714, guid: 7a06779b1fce9b748a3defb9a401d7c4,
     type: 2}

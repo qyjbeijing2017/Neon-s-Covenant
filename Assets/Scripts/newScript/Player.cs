@@ -29,7 +29,7 @@ public class Player : NSC_Character
     bool move;//角色是否可移动
     bool rollingCD;
     bool comboNow;
-    bool weakBoss;
+    [SerializeField]bool weakBoss;
 
     // Use this for initialization
     void Start()
@@ -56,14 +56,14 @@ public class Player : NSC_Character
     /// <returns></returns>
     public override bool injured(Attack attack)
     {
-        if (weakBoss && NSC_Color.colorContrary(power, attack.powerDamage) && attack.GetComponent<Boss>().animator.GetBool("nearAttack"))
+        if (weakBoss && NSC_Color.colorContrary(power, attack.powerDamage) && FindObjectOfType<Boss>().animator.GetBool("nearAttack"))
         {
             FindObjectOfType<Boss>().weak();
             return false;
         }
         if (!animator.GetBool("rolling"))
         {
-
+            animatorEnd();
             HP -= attack.damage;
             powerInjured(attack);
             HPNormal();
@@ -224,7 +224,7 @@ public class Player : NSC_Character
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         LayerMask mouseMask = 1 << layerMouse;
-        if (Physics.Raycast(ray, out hit, 100f, mouseMask))
+        if (Physics.Raycast(ray, out hit, 1000f, mouseMask))
         {
             Vector3 offset = new Vector3((hit.point - transform.position).x, 0, (hit.point - transform.position).z);
             if (offset.magnitude > 0.7)
@@ -344,6 +344,10 @@ public class Player : NSC_Character
         if (move)
         {
             moving();
+        }
+        else
+        {
+            animator.SetBool("moving", false);
         }
         if (animator.GetBool("rolling"))
         {

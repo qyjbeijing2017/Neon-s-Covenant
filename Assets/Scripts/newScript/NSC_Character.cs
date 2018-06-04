@@ -232,8 +232,8 @@ public class NSC_Character : MonoBehaviour
 
             if (injured(other.GetComponent<Attack>()) && other.GetComponent<AttackRange>())
                 Destroy(other.gameObject);
-            else
-                other.GetComponent<AudioPlay>().playAudio(attackSoundNum);
+            //else
+                //other.GetComponent<AudioPlay>().playAudio(attackSoundNum);
         }
     }
 

@@ -4,36 +4,45 @@ using UnityEngine;
 
 public class BossMaterialSwitcher : MonoBehaviour
 {
-    [SerializeField] SkinnedMeshRenderer bossHead;
-    [SerializeField] SkinnedMeshRenderer bossBody;
-    [SerializeField] SkinnedMeshRenderer bossSkirt;
-    public NSC_Color t;
+    [SerializeField] SkinnedMeshRenderer[] targetMesh;
+
+    NSC_Color t;
     [SerializeField] Material matRed;
     [SerializeField] Material matCyan;
     [SerializeField] Material matNormal;
+
+
+    private void Start()
+    {
+        t = GetComponent<NSC_Character>().power;
+    }
+
     void Update()
     {
         switch (t.m_colorType.GetHashCode())
         {
             case 0://白色~
                 {
-                    bossHead.material = matNormal;
-                    bossBody.material = matNormal;
-                    bossSkirt.material = matNormal;
+                    for(int i = 0; i < targetMesh.Length; i++)
+                    {
+                        targetMesh[i].material = matNormal;
+                    }
                 }
                 break;
             case 1://红色~
                 {
-                    bossHead.material = matRed;
-                    bossBody.material = matRed;
-                    bossSkirt.material = matRed;
+                    for (int i = 0; i < targetMesh.Length; i++)
+                    {
+                        targetMesh[i].material =matRed;
+                    }
                 }
                 break;
             case 2://青色~
                 {
-                    bossHead.material = matCyan;
-                    bossBody.material = matCyan;
-                    bossSkirt.material = matCyan;
+                    for (int i = 0; i < targetMesh.Length; i++)
+                    {
+                        targetMesh[i].material = matCyan;
+                    }
                 }
                 break;
         }

@@ -1006,8 +1006,8 @@ MonoBehaviour:
     m_colorType: 1
   m_characterType: 1
   stopTime: 0
-  speed: 0
-  destoryLater: 10
+  speed: 10
+  destoryLater: 1.5
 --- !u!135 &135985747045047816
 SphereCollider:
   m_ObjectHideFlags: 1

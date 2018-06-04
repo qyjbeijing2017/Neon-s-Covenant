@@ -92,7 +92,7 @@ public class Boss : NSC_Character
     public void bossHide(int a)
     {
         HidePosition = transform.position;
-        transform.position = new Vector3(0, 0, -1000);
+        transform.position = new Vector3(0, 106, 0);
         animator.speed = 0;
         GameObject boss1 = Instantiate(bossCopy.gameObject);
         boss1.transform.position = player.transform.position + (player.transform.right * flashDisBoss2);
@@ -141,6 +141,7 @@ public class Boss : NSC_Character
     public void weak()
     {
         animator.Play("weak");
+        stopNearAttack();
     }
     /// <summary>
     /// 可以做下次决策。
