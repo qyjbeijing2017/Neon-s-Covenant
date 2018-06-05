@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//用来处理圆形双层UI的简单脚本
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +16,13 @@ public class PLAYERUI : MonoBehaviour
     [SerializeField] Image colorPower;
 
     int hpCache = 0;
+    float pMax = 0;
 
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("MainCharacter").GetComponent<Player>();
+    }
+    
     void Start()
     {
         hpCache = player.HP;
@@ -27,6 +35,11 @@ public class PLAYERUI : MonoBehaviour
         {
             HP[i].enabled = true;
         }
+
+        //修改血条上限
+        pMax = player.powerMax;
+        powerOther.maxValue = pMax;
+        powerWhite.maxValue = pMax;
 
         //这个地方的max是白色吗？
         powerOther.value = player.power.colorValue;
@@ -42,27 +55,19 @@ public class PLAYERUI : MonoBehaviour
 
     void Update()
     {
-        //稍微处理了一下，不用全部都刷新一遍
-        if (hpCache < player.HP)
+        if (hpCache != player.HP)
         {
-            for (int i = hpCache; i < player.HP; i++)
+            for (int i = 0; i < HP.Length; i++)
             {
-                HP[i + 1].enabled = true;
+                HP[i].enabled = false;
             }
-        }
-        else if (hpCache == player.HP)
-        {
-
-        }
-        else
-        {
-            for (int i = player.HP; i < hpCache; i++)
+            for (int i = 0; i < player.HP; i++)
             {
-                HP[i + 1].enabled = false;
+                HP[i].enabled = true;
             }
         }
 
-        powerWhite.value = player.whitePower.colorValue;
+        powerWhite.value = player.whitePower.colorValue + player.power.colorValue;  //白色血条值是目前总能量值
         powerOther.value = player.power.colorValue;
 
         if (player.power.m_colorType == NSC_Color.colorType.red)
