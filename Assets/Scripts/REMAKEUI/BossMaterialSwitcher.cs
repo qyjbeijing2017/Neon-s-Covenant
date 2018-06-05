@@ -1,4 +1,18 @@
-﻿using System.Collections;
+﻿/*
+ * File: BossMaterialSwitcher.cs
+ * Project: REMAKEUI
+ * File Created: Monday, 4th June 2018 3:56:25 pm
+ * Author: shpkng (shpkng@gmail.com)
+ * -----
+ * Last Modified: Monday, 4th June 2018 9:04:08 pm
+ * Modified By: shpkng (shpkng@gmail.com>)
+ * -----
+ * loving the lovely sunshine in autumn.♥
+ */
+
+//这个代码是用来控制boss的材质的
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
