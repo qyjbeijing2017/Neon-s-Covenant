@@ -10,10 +10,10 @@ public class PLAYERUI : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] Slider powerWhite;
     [SerializeField] Slider powerOther;
-    [SerializeField] Color cyan = Color.cyan;
-    [SerializeField] Color red = Color.red;
     [SerializeField] Image[] HP;
     [SerializeField] Image colorPower;
+    [SerializeField] Sprite red;
+    [SerializeField] Sprite cyan;
 
     int hpCache = 0;
     float pMax = 0;
@@ -47,10 +47,10 @@ public class PLAYERUI : MonoBehaviour
 
         if (player.power.m_colorType == NSC_Color.colorType.red)
         {
-            colorPower.color = red;
+            colorPower.sprite = red;
         }
         else
-            colorPower.color = cyan;
+            colorPower.sprite = cyan;
     }
 
     void Update()
@@ -72,10 +72,10 @@ public class PLAYERUI : MonoBehaviour
 
         if (player.power.m_colorType == NSC_Color.colorType.red)
         {
-            colorPower.color = red;
+            colorPower.sprite = red;
         }
         else
-            colorPower.color = cyan;
+            colorPower.sprite = cyan;
 
     }
 
