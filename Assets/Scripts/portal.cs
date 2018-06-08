@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class portal : MonoBehaviour {
-    [SerializeField] string s;
+    [SerializeField] int nextSceneNo;
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(s);
+        SceneManager.LoadScene(nextSceneNo);
     }
 }

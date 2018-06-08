@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Boss_new : MonoBehaviour
 {
+    enum colorType
+    {
+        white = 0,
+        red = 1,
+        cyan = 2,
+        black = 3
+    }
+
     public Player_new player;
     public float HP;
     public float maxHP;
@@ -29,27 +37,31 @@ public class Boss_new : MonoBehaviour
     public float laserTime;
     public float laserSpeed;
     public float laserdis;
+    public float laserdis1;
     public int laserDamage;
     public float laserPowerDamage;
     public Color laserRed;
     public Color laserCyan;
     public float laserStopTime;
     [SerializeField] float weakTime;
-    [SerializeField] float weakDamageDeep;
+    public float colorDamagein;
+    public float colorDamagede;
+
     [SerializeField] float mode2Hp;
     [SerializeField] float flashDisBoss2;
     [SerializeField] Boss_copy bossCopy;
     [SerializeField] Renderer[] renderer;
     [SerializeField] Collider collider;
-    [SerializeField] Material laserMaterialCyan;
-    [SerializeField] Material laserMaterialRed;
+    public Material laserMaterialCyan;
+    public Material laserMaterialRed;
     [SerializeField] SkinnedMeshRenderer meshRenderer;
-    [SerializeField] Material bossRed;
-    [SerializeField] Material bossCyan;
-    [SerializeField] Material bossNormal;
+    public Material bossRed;
+    public Material bossCyan;
+    public Material bossNormal;
 
     [SerializeField] GameObject shield_red;
     [SerializeField] GameObject shield_blue;
+    public int nubRangeAttack;
 
 
 
@@ -68,13 +80,18 @@ public class Boss_new : MonoBehaviour
     int laserType;
     [SerializeField] bool laserDamaged;
     bool mode2;
-    [HideInInspector] public bool specialAttack;
+    public bool specialAttack;
     int specialType;
     GameObject boss1;
     GameObject boss2;
 
 
-    [SerializeField] public int bossCopyNub;
+
+    public int bossCopyNub;
+
+    public float angleRange;
+
+    int lastAttack;
 
     void hideMesh()
     {
@@ -122,51 +139,34 @@ public class Boss_new : MonoBehaviour
         specialAttack = false;
         Dead = false;
         boss_copy = false;
+        lastAttack = 4;
     }
 
     public void injured(int damage, int damageType)
     {
-        if (specialAttack && specialType != 3)
+        if (damageType == shieldType && damageType != 0 && damageType != 3)
         {
-            if (damageType != specialType)
-            {
-                specialAttack = false;
-                specialType = 3;
-                shield = 0;
-                boss_stopImmediately();
-                boss_weakStop();
-                StartCoroutine(weakNow());
-            }
+            HP -= colorDamagede * damage;
         }
-
-        if (shield > 0)
+        else if (damageType != shieldType && damageType != 0 && damageType != 3)
         {
-            if (shieldType == damageType || damageType == 0)
-            {
-                shield = shieldMax;
-            }
-            else
-            {
-                shield--;
-                if (shieldType == 1)
-                    shieldType = 2;
-                else if (shieldType == 2)
-                    shieldType = 1;
-            }
-            if (shield <= 0)
-            {
-                boss_stopImmediately();
-                boss_weakStop();
-                StartCoroutine(weakNow());
-
-            }
+            HP -= colorDamagein * damage;
         }
         else
         {
-            HP -= damage * weakDamageDeep;
+            HP -= damage;
         }
+    }
+
+
+    public void boss_weakNow()
+    {
+        boss_stopImmediately();
+        boss_weakStop();
+        StartCoroutine(weakNow());
 
     }
+
 
     // Update is called once per frame
     void Update()
@@ -187,30 +187,15 @@ public class Boss_new : MonoBehaviour
             boss_dead();
         }
 
-        if (shield > 0 && !specialAttack && !boss_copy)
-        {
-            if (shieldType == 1)
-            {
-                shield_red.SetActive(true);
-                shield_blue.SetActive(false);
 
-            }
-            else if (shieldType == 2)
-            {
-                shield_red.SetActive(false);
-                shield_blue.SetActive(true);
-            }
-            else
-            {
-                shield_red.SetActive(false);
-                shield_blue.SetActive(false);
-            }
-        }
+
+        if (shieldType == 1)
+            meshRenderer.material = bossRed;
+        else if (shieldType == 2)
+            meshRenderer.material = bossCyan;
         else
-        {
-            shield_red.SetActive(false);
-            shield_blue.SetActive(false);
-        }
+            meshRenderer.material = bossNormal;
+
 
 
         if (!follow)
@@ -218,7 +203,6 @@ public class Boss_new : MonoBehaviour
             animator.Play("Idle");
             clearAnimator();
             GetComponent<AudioSource>().Stop();
-            meshRenderer.material = bossNormal;
             shield = 2;
             bossCopyNub = 0;
             showMesh();
@@ -242,21 +226,20 @@ public class Boss_new : MonoBehaviour
         {
 
             nav.isStopped = false;
-            if (attack && !animator.GetBool("nearAttack"))
-            {
-                StopAllCoroutines();
-                boss_weakStop();
-                clearAnimator();
-                nav.isStopped = true;
-                yield return StartCoroutine(boss_nearAttack());
+            //if (attack && !animator.GetBool("nearAttack"))
+            //{
+            //    StopAllCoroutines();
+            //    clearAnimator();
+            //    nav.isStopped = true;
+            //    yield return StartCoroutine(boss_nearAttack());
 
 
-            }
+            //}
 
             if (follow)
             {
-                nav.SetDestination(player.transform.position);
-                animator.SetBool("moving", true);
+                //nav.SetDestination(player.transform.position);
+                //animator.SetBool("moving", true);
             }
             else
             {
@@ -271,58 +254,75 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_Detect()
     {
-        while (true)
+        yield return new WaitForSeconds(detectTime);
+        clearAnimator();
+        boss_stopImmediately();
+
+        int a = Random.Range(0, 3);
+
+        while (a == lastAttack)
         {
-            yield return new WaitForSeconds(detectTime);
-            clearAnimator();
-            boss_stopImmediately();
+            a = Random.Range(0, 3);
+        }
 
-            int a = Random.Range(0, 3);
-            StopAllCoroutines();
-            if (!attack)
+        StopAllCoroutines();
+        if (!animator.GetBool("nearAttack"))
+        {
+            if (a == 0 && lastAttack != 0)
             {
-                if (a == 0)
+                if (mode2)
                 {
-                    if (mode2)
-                    {
-                        yield return StartCoroutine(boss_nearAttack1());
-                    }
-                    else
-                    {
-                        yield return StartCoroutine(boss_nearAttack());
-                    }
+                    lastAttack = 0;
+                    yield return StartCoroutine(boss_nearAttack());
 
-                }
-                else if (a == 1)
-                {
-                    if (mode2)
-                    {
-                        boss_copy = true;
-                        yield return StartCoroutine(boss_rangeAttack1());
-                        boss_copy = false;
-                    }
-                    else
-                    {
-                        yield return StartCoroutine(boss_rangeAttack());
-                    }
                 }
                 else
                 {
-                    if (mode2)
-                    {
-                        boss_copy = true;
-                        yield return StartCoroutine(boss_laser1());
-                        boss_copy = false;
-                    }
-                    else
-                    {
-                        yield return StartCoroutine(boss_laser());
-                    }
+                    lastAttack = 0;
+                    yield return StartCoroutine(boss_nearAttack());
+
+                }
+
+            }
+            else if (a == 1 && lastAttack != 1)
+            {
+                if (mode2)
+                {
+                    lastAttack = 1;
+                    boss_copy = true;
+                    yield return StartCoroutine(boss_rangeAttack1());
+                    boss_copy = false;
+
+                }
+                else
+                {
+                    lastAttack = 1;
+                    yield return StartCoroutine(boss_rangeAttack());
 
                 }
             }
+            else if (a == 2 && lastAttack != 2)
+            {
+                if (mode2)
+                {
+                    lastAttack = 2;
+                    boss_copy = true;
+                    yield return StartCoroutine(boss_laser1());
+                    boss_copy = false;
+
+                }
+                else
+                {
+                    lastAttack = 2;
+                    yield return StartCoroutine(boss_laser());
+
+                }
+
+            }
 
         }
+
+
     }
 
     public void boss_start()
@@ -344,6 +344,8 @@ public class Boss_new : MonoBehaviour
     public void boss_stopImmediately()
     {
         nav.isStopped = true;
+        bossLeftHand.enabled = false;
+        bossRightHand.enabled = false;
 
     }
     public void boss_weakStop()
@@ -359,25 +361,13 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("nowWeak", false);
         animator.Play("Idle");
         laser.enabled = false;
-        meshRenderer.material = bossNormal;
     }
 
     IEnumerator boss_nearAttack()
     {
         boss_stopImmediately();
-        if (!attack)
-        {
-            transform.position = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
-        }
-
-        transform.forward = player.transform.position - transform.position;
-
-        //Debug.Break();
-        yield return new WaitForSeconds(flashWaitTime);
-        //Debug.Break();
+        StopAllCoroutines();
         animator.SetBool("nearAttack", true);
-        transform.forward = player.transform.position - transform.position;
-        //Debug.Break();
         while (animator.GetBool("nearAttack"))
         {
             yield return 0;
@@ -390,7 +380,7 @@ public class Boss_new : MonoBehaviour
         clearAnimator();
         boss_stopImmediately();
         transform.position = player.transform.position + player.transform.forward * nearFlashDis;
-        transform.forward = player.transform.position - transform.position;
+        transform.forward = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
 
         yield return new WaitForSeconds(flashWaitTime);
         animator.SetBool("nearAttack", true);
@@ -403,47 +393,49 @@ public class Boss_new : MonoBehaviour
     }
     public void nearAttack1_start()
     {
+
         specialAttack = true;
         specialType = 1;
         bossRightHand.GetComponent<Collider>().enabled = true;
         bossRightHand.attackValue = nearDamage;
         bossRightHand.attackPower = nearPowerDamage;
         bossRightHand.stopTime = stoptimeDamage;
-        bossRightHand.attackType = specialType;
+        bossRightHand.attackType = shieldType;
 
-        meshRenderer.material = bossRed;
+
     }
     public void nearAttack1_end()
     {
         specialAttack = false;
         bossRightHand.GetComponent<Collider>().enabled = false;
-        meshRenderer.material = bossNormal;
+
     }
     public void nearAttack2_start()
     {
+
         specialAttack = true;
         specialType = 2;
         bossLeftHand.GetComponent<Collider>().enabled = true;
         bossLeftHand.attackValue = nearDamage;
         bossLeftHand.attackPower = nearPowerDamage;
         bossLeftHand.stopTime = stoptimeDamage;
-        bossLeftHand.attackType = specialType;
-        meshRenderer.material = bossCyan;
+        bossLeftHand.attackType = shieldType;
+
     }
     public void nearAttack2_end()
     {
         specialAttack = false;
         bossLeftHand.GetComponent<Collider>().enabled = false;
-        meshRenderer.material = bossNormal;
     }
     public void nearAttack3_start()
     {
+
         bossRightHand.GetComponent<Collider>().enabled = true;
         bossLeftHand.GetComponent<Collider>().enabled = true;
         bossRightHand.attackValue = nearDamagePowerful / 2;
         bossRightHand.attackPower = nearPowerDamagePowerful / 2;
         bossRightHand.stopTime = stoptimeDamage;
-        bossRightHand.attackType = 3;
+        bossRightHand.attackType = shieldType;
         bossLeftHand.attackValue = nearDamagePowerful / 2;
         bossLeftHand.attackPower = nearPowerDamagePowerful / 2;
         bossLeftHand.stopTime = stoptimeDamage;
@@ -460,6 +452,14 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("nearAttack", false);
         animator.SetBool("moving", true);
         boss_start();
+    }
+
+    public void nearAttack_flash()
+    {
+        Vector3 positionNew = player.transform.position + (transform.position - player.transform.position).normalized * nearFlashDis;
+        transform.position = new Vector3(positionNew.x, transform.position.y, positionNew.z);
+        transform.forward = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
+
     }
 
 
@@ -489,19 +489,32 @@ public class Boss_new : MonoBehaviour
         boss2.GetComponent<Boss_copy>().shield = shield;
         boss1.GetComponent<Boss_copy>().star_rangeAttack();
         boss2.GetComponent<Boss_copy>().star_rangeAttack();
+
+        if (Random.Range(0.0f, 1.0f) > 0.5)
+        {
+            boss1.GetComponent<Boss_copy>().laserType = 1;
+            boss2.GetComponent<Boss_copy>().laserType = 2;
+        }
+        else
+        {
+            boss1.GetComponent<Boss_copy>().laserType = 2;
+            boss2.GetComponent<Boss_copy>().laserType = 1;
+        }
+
+
         while (bossCopyNub < 2)
         {
             yield return 0;
         }
         shield = Mathf.Max(boss1.GetComponent<Boss_copy>().shield, boss2.GetComponent<Boss_copy>().shield);
-        if (boss1.GetComponent<Boss_copy>().shieldType == boss2.GetComponent<Boss_copy>().shieldType)
-        {
-            shieldType = boss1.GetComponent<Boss_copy>().shieldType;
-        }
-        else
-        {
-            shieldType = Random.Range(1, 3);
-        }
+        //if (boss1.GetComponent<Boss_copy>().shieldType == boss2.GetComponent<Boss_copy>().shieldType)
+        //{
+        //    shieldType = boss1.GetComponent<Boss_copy>().shieldType;
+        //}
+        //else
+        //{
+        //    shieldType = Random.Range(1, 3);
+        //}
 
         showMesh();
         Destroy(boss1);
@@ -509,22 +522,22 @@ public class Boss_new : MonoBehaviour
         boss_copy = false;
         boss_start();
     }
-    public void rangeAttack_shoot()
+    public void rangeAttack_shoot(int typeRange)
     {
-        transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
-        GameObject bullet = Instantiate(boss_red.gameObject, shootPoint.position, shootPoint.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
 
-        transform.localEulerAngles -= new Vector3(0, rangeDispersed, 0) * 2;
-        Instantiate(boss_cyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
-
-        transform.localEulerAngles += new Vector3(0, rangeDispersed, 0);
-        Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
-        if (shieldType == 1)
-            shieldType = 2;
-        else if (shieldType == 2)
-            shieldType = 1;
-
+        for (int i = 0; i < nubRangeAttack; i++)
+        {
+            transform.localEulerAngles += new Vector3(0, angleRange * typeRange, 0);
+            float M_angle = 360 / nubRangeAttack;
+            if (typeRange == 1)
+                Instantiate(boss_red.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            else if (typeRange == 2)
+                Instantiate(boss_cyan.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            else if (typeRange == 3)
+                Instantiate(boss_black.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Rigidbody>().velocity = shootPoint.forward * 6;
+            transform.localEulerAngles += new Vector3(0, M_angle, 0);
+            transform.localEulerAngles -= new Vector3(0, angleRange * typeRange, 0);
+        }
 
     }
     public void rangeAttack_end()
@@ -535,14 +548,29 @@ public class Boss_new : MonoBehaviour
 
     IEnumerator boss_laser()
     {
+
         laserDamaged = false;
         animator.SetBool("laser", true);
         boss_stopImmediately();
+        if (Random.Range(0.0f, 1.0f) > 0.5)
+        {
+            laserType = 1;
+            shieldType = 1;
+            laser.material = laserMaterialRed;
+        }
+        else
+        {
+            laserType = 2;
+            shieldType = 2;
+            laser.material = laserMaterialCyan;
+        }
+
         while (animator.GetBool("laser"))
         {
             if (laserStart)
             {
                 transform.forward = laserTargetPoint - transform.position;
+
                 Ray ray = new Ray(shootPoint.position, shootPoint.forward);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100f))
@@ -575,6 +603,7 @@ public class Boss_new : MonoBehaviour
                 transform.forward = laserTargetPoint - transform.position;
 
             }
+
             yield return 0;
         }
 
@@ -614,14 +643,14 @@ public class Boss_new : MonoBehaviour
         }
 
         shield = Mathf.Max(boss1.GetComponent<Boss_copy>().shield, boss2.GetComponent<Boss_copy>().shield);
-        if (boss1.GetComponent<Boss_copy>().shieldType == boss2.GetComponent<Boss_copy>().shieldType)
-        {
-            shieldType = boss1.GetComponent<Boss_copy>().shieldType;
-        }
-        else
-        {
-            shieldType = Random.Range(1, 3);
-        }
+        //if (boss1.GetComponent<Boss_copy>().shieldType == boss2.GetComponent<Boss_copy>().shieldType)
+        //{
+        //    shieldType = boss1.GetComponent<Boss_copy>().shieldType;
+        //}
+        //else
+        //{
+        //    shieldType = Random.Range(1, 3);
+        //}
 
         showMesh();
         Destroy(boss1);
@@ -633,21 +662,11 @@ public class Boss_new : MonoBehaviour
     public void laser_start()
     {
         laserStart = true;
-        laserTargetPoint = player.transform.position - transform.right * laserdis;
+        transform.forward = player.transform.position - transform.position;
+        laserTargetPoint = player.transform.position - transform.right * laserdis + transform.forward * laserdis;
         laserdir = transform.right;
         laser.enabled = true;
-        if (Random.Range(0.0f, 1.0f) > 0.5)
-        {
-            laser.material = laserMaterialRed;
-            laserType = 1;
-            shieldType = 1;
-        }
-        else
-        {
-            laser.material = laserMaterialCyan;
-            laserType = 2;
-            shieldType = 2;
-        }
+
         laserDamaged = false;
         StartCoroutine(laser_time());
 
@@ -664,6 +683,7 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("laserEnd", false);
         animator.SetBool("laser", false);
         laserDamaged = false;
+        changeColor(colorType.white.GetHashCode());
         boss_start();
     }
 
@@ -679,23 +699,15 @@ public class Boss_new : MonoBehaviour
         animator.SetBool("weak", true);
         animator.SetBool("nowWeak", true);
         yield return new WaitForSeconds(weakTime);
-
+        
         animator.SetBool("weak", false);
+        shieldType = 0;
 
 
     }
 
     public void shieldAdd()
     {
-        shield = 2;
-        if (Random.Range(0, 1) < 0.5)
-        {
-            shieldType = 1;
-        }
-        else
-        {
-            shieldType = 2;
-        }
 
         boss_start();
     }
@@ -719,6 +731,41 @@ public class Boss_new : MonoBehaviour
     {
         boss_stopImmediately();
 
+    }
+
+
+
+    public void changeColor(int i_colorType)
+    {
+        shieldType = i_colorType;
+    }
+
+    public void changeColor(string s_colorType)
+    {
+        if (s_colorType == colorType.cyan.ToString())
+            shieldType = colorType.cyan.GetHashCode();
+
+        else if (s_colorType == colorType.red.ToString())
+            shieldType = colorType.red.GetHashCode();
+    }
+    public void changeColor()
+    {
+        if (shieldType == colorType.cyan.GetHashCode())
+            shieldType = colorType.red.GetHashCode();
+
+        else if (shieldType == colorType.red.GetHashCode())
+            shieldType = colorType.cyan.GetHashCode();
+    }
+    public void changeColorRandom()
+    {
+        if (Random.Range(0, 2) < 1)
+        {
+            shieldType = 1;
+        }
+        else
+        {
+            shieldType = 2;
+        }
     }
 
 
@@ -753,12 +800,7 @@ public class Boss_new : MonoBehaviour
     }
     public void test_bossWeak()
     {
-        StopAllCoroutines();
-        boss_stopImmediately();
-        shield = 0;
-        boss_stopImmediately();
-        boss_weakStop();
-        StartCoroutine(weakNow());
+        boss_weakNow();
     }
     public void test_bossMode2()
     {

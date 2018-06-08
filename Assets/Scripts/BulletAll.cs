@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletAll : MonoBehaviour {
+public class BulletAll : MonoBehaviour
+{
 
-	// Use this for initialization
+    // Use this for initialization
 
     public enum type
     {
@@ -27,18 +28,20 @@ public class BulletAll : MonoBehaviour {
     public float stopTime;
     [SerializeField] private float bulletVelocity;
 
-    void Start () {
-        
+    void Start()
+    {
+
         Destroy(gameObject, destoryTime);
         GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * bulletVelocity;
         transform.right = -GetComponent<Rigidbody>().velocity;
         //print(GetComponent<Rigidbody>().velocity);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -53,27 +56,26 @@ public class BulletAll : MonoBehaviour {
             if (other.tag == "Boss" && myType.ToString() != "BossCopy")
             {
                 other.GetComponent<Boss_new>().injured(damageHP, colorType);
- 
+
                 Destroy(gameObject);
             }
             if (other.tag == "MainCharacter")
             {
-                other.GetComponent<Player_new>().inJured(damageHP, damagePower, colorType, stopTime);
-
-                Destroy(gameObject);
+                if (other.GetComponent<Player_new>().inJured(damageHP, damagePower, colorType, stopTime))
+                    Destroy(gameObject);
             }
-            if(other.tag == "scene")
+            if (other.tag == "scene")
             {
                 Destroy(gameObject);
 
             }
-            if(other.tag == "Enemy")
+            if (other.tag == "Enemy")
             {
                 other.GetComponent<Enemy>().injured(damageHP, colorType, stopTime);
 
                 Destroy(gameObject);
             }
-            
+
         }
     }
 }

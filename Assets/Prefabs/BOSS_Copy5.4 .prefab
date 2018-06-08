@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 120630044687869150}
   m_Layer: 0
   m_Name: 'BOSS_Copy5.4 '
-  m_TagString: Untagged
+  m_TagString: BossCopy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2359,6 +2359,7 @@ MonoBehaviour:
   laserTime: 0
   laserSpeed: 0
   laserdis: 0
+  laserdis1: 0
   laserDamage: 0
   laserPowerDamage: 0
   laserRed: {r: 0, g: 0, b: 0, a: 0}
@@ -2366,6 +2367,7 @@ MonoBehaviour:
   laserStopTime: 0
   laserMaterialCyan: {fileID: 2100000, guid: 54b093536c1d948b2aa71e30504f8072, type: 2}
   laserMaterialRed: {fileID: 2100000, guid: 26ec1684fa1ad46a19bfb442415a4d3e, type: 2}
+  meshRenderer: {fileID: 137254121812064582}
   animator: {fileID: 95646605657904510}
   laserType: 0
 --- !u!120 &120630044687869150
@@ -2407,7 +2409,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:

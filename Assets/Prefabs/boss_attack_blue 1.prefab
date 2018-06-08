@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 1803182134862568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -167, y: 170.2, z: -51.351387}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4098374598047408}
   m_Father: {fileID: 0}
@@ -1001,13 +1001,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 3
-  damageHP: 0
-  damagePower: 0
+  damageHP: 1
+  damagePower: 15
   colorType: 2
   speed: 0
   destoryTime: 5
-  stopTime: 0
-  bulletVelocity: 10
+  stopTime: 0.1
+  bulletVelocity: 5
 --- !u!135 &135857708120888804
 SphereCollider:
   m_ObjectHideFlags: 1

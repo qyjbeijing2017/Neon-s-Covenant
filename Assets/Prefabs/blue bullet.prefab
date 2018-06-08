@@ -1920,7 +1920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 0
-  damageHP: 0
+  damageHP: 3
   damagePower: 0
   colorType: 0
   speed: 0

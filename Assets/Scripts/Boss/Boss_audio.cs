@@ -34,7 +34,10 @@ public class Boss_audio : MonoBehaviour
 
     void Start()
     {
-
+        if(bossAudio == null)
+        {
+            bossAudio = FindObjectOfType<Boss_new>().GetComponent<AudioSource>();
+        }
 
     }
 
