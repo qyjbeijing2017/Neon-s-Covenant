@@ -67,8 +67,8 @@ public class PLAYERUI : MonoBehaviour
             }
         }
 
-        powerWhite.value = player.whitePower.colorValue + player.power.colorValue;  //白色血条值是目前总能量值
-        powerOther.value = player.power.colorValue;
+        powerWhite.value = player.whitePower.colorValue;  //白色血条值是目前总能量值
+        powerOther.value = player.power.colorValue + player.whitePower.colorValue;
 
         if (player.power.m_colorType == NSC_Color.colorType.red)
         {
