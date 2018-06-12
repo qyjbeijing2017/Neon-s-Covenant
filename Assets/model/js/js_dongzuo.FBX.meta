@@ -274,12 +274,12 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.73579043
-        functionName: playerAudio_weaponEmpty
+      - time: 0.47646368
+        functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
       - time: 0.80120593
         functionName: startNearAttack
@@ -359,11 +359,11 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.4398827
-        functionName: playerAudio_weaponEmpty
+        functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
       - time: 0.6744868
         functionName: startNearAttack
@@ -443,11 +443,11 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.37033683
-        functionName: playerAudio_weaponEmpty
+        functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
       - time: 0.56109375
         functionName: startNearAttack
@@ -506,11 +506,11 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.04641954
-        functionName: playerAudio_weaponEmpty
+        functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 1
         messageOptions: 0
       - time: 0.10301829
         functionName: startNearAttack

@@ -44,6 +44,7 @@ public class FollowCapsule : MonoBehaviour
     {
         player.transform.position = transform.position;
         player.animator.Play("ReFall");
+        player.animator.SetBool("Fall", true);
         player.move = false;
     }
 }

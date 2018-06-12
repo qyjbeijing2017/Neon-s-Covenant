@@ -1044,6 +1044,11 @@ Transform:
   m_Father: {fileID: 536784583}
   m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: -226.53499, z: 0}
+--- !u!137 &60721609 stripped
+SkinnedMeshRenderer:
+  m_PrefabParentObject: {fileID: 13700000, guid: 7898663b8a9ba7d4e913ee8db8374808,
+    type: 3}
+  m_PrefabInternal: {fileID: 1431030345}
 --- !u!1 &85922567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,8 +1176,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 4.64
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -1369,8 +1374,8 @@ MonoBehaviour:
   m_Range: 4
   m_Radius: 0.21
   m_Length: 2.1
-  m_Sphere: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  m_Capsule: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Sphere: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 3}
+  m_Capsule: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2e6fd90941a3e3c458d01f851dca21ed, type: 3}
   m_RenderSource: 1
   m_ShadowPlanes:
@@ -1503,8 +1508,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -1614,6 +1619,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bee35be4a7dbe54ea0c9d82b07927db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &121312897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 121312902}
+  - component: {fileID: 121312901}
+  - component: {fileID: 121312900}
+  - component: {fileID: 121312899}
+  - component: {fileID: 121312898}
+  m_Layer: 0
+  m_Name: RightHandSword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &121312898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121312897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06a0591e8e4bc644ba8034fdfdb7bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  powerDamage:
+    colorValue: 0
+    m_colorType: 0
+  m_characterType: 2
+  stopTime: 0.3
+--- !u!23 &121312899
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121312897}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &121312900
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121312897}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &121312901
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121312897}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &121312902
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121312897}
+  m_LocalRotation: {x: -0.091183744, y: 0.011004222, z: -0.015305517, w: 0.99565566}
+  m_LocalPosition: {x: -0.12, y: 0.131, z: 0.426}
+  m_LocalScale: {x: 0.21359585, y: 0.11641262, z: 1.4611559}
+  m_Children: []
+  m_Father: {fileID: 1431030347}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -10.442, y: 1.439, z: -1.8930001}
 --- !u!1 &142619126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,8 +2403,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -4450,8 +4557,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -4946,8 +5053,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -5367,8 +5474,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -7007,8 +7114,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -7521,8 +7628,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -7683,8 +7790,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -8175,8 +8282,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -9668,8 +9775,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -9801,8 +9908,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -10405,8 +10512,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -10740,8 +10847,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -11014,8 +11121,8 @@ MonoBehaviour:
   m_Range: 4
   m_Radius: 0.06
   m_Length: 0.42
-  m_Sphere: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  m_Capsule: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Sphere: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 3}
+  m_Capsule: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2e6fd90941a3e3c458d01f851dca21ed, type: 3}
   m_RenderSource: 1
   m_ShadowPlanes:
@@ -11864,9 +11971,9 @@ MeshFilter:
   m_Mesh: {fileID: 4300022, guid: 366e823137a65a94c8012bdafdf52bda, type: 3}
 --- !u!20 &1123228809 stripped
 Camera:
-  m_PrefabParentObject: {fileID: 20851839507397148, guid: a1e44540f6bbe4a4d82a71dbe2b42dca,
+  m_PrefabParentObject: {fileID: 20023986644354910, guid: 5ec40edecc23e6740bb3874c4bf6162f,
     type: 2}
-  m_PrefabInternal: {fileID: 2001812401}
+  m_PrefabInternal: {fileID: 1654979246}
 --- !u!1 &1126649079
 GameObject:
   m_ObjectHideFlags: 0
@@ -12614,8 +12721,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -14204,8 +14311,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -14780,6 +14887,171 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418066641}
   m_Mesh: {fileID: 4300002, guid: 366e823137a65a94c8012bdafdf52bda, type: 3}
+--- !u!1001 &1431030345
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9461839
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32362935
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6aa299792adf9f84583e0f29f7240f3d, type: 2}
+    - target: {fileID: 400068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -142.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 100068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_Name
+      value: Monster_test_near
+      objectReference: {fileID: 0}
+    - target: {fileID: 100068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+  m_IsPrefabParent: 0
+--- !u!1 &1431030346 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100068, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+  m_PrefabInternal: {fileID: 1431030345}
+--- !u!4 &1431030347 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400054, guid: 7898663b8a9ba7d4e913ee8db8374808, type: 3}
+  m_PrefabInternal: {fileID: 1431030345}
+--- !u!136 &1431030348
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431030346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2730603
+  m_Height: 1.2293587
+  m_Direction: 1
+  m_Center: {x: 0.017603517, y: 0.5881038, z: -3.6604386e-11}
+--- !u!114 &1431030349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431030346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3723e2819414234797460984127d997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 100
+  HPMax: 100
+  power:
+    colorValue: 0
+    m_colorType: 0
+  powerMax: 0
+  characterType: 2
+  nearAttack:
+  - {fileID: 121312898}
+  nearAttackCollider:
+  - {fileID: 121312898}
+  attackWhite: {fileID: 0}
+  attackRed: {fileID: 0}
+  attackCyan: {fileID: 0}
+  attackBlack: {fileID: 0}
+  shootPoint: {fileID: 0}
+  damageIn: 0
+  damageDe: 0
+  dead: 0
+  attackSoundNum: 0
+  animator: {fileID: 0}
+  FollowPlayer: 5
+  attackDis: 2
+--- !u!54 &1431030350
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431030346}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!195 &1431030351
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431030346}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.24
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1431030352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431030346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb98ce675f2fed64b913b59cc935ec4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMesh:
+  - {fileID: 60721609}
+  matRed: {fileID: 2100000, guid: d9a496ae64e9043eebc69d95f8c48ed6, type: 2}
+  matCyan: {fileID: 2100000, guid: e50b80a753f598a4ead5062c40813111, type: 2}
+  matNormal: {fileID: 2100000, guid: ac9209e92b56c4441aa54333a10c4af9, type: 2}
 --- !u!1 &1443135977
 GameObject:
   m_ObjectHideFlags: 0
@@ -16489,6 +16761,83 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1643451712}
   m_Mesh: {fileID: 4300000, guid: 0922735118443054ea58e55cbd370418, type: 3}
+--- !u!1001 &1654979246
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114222125592523974, guid: 5ec40edecc23e6740bb3874c4bf6162f,
+        type: 2}
+      propertyPath: audios.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955351496924306, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955351496924306, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955351496924306, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 93.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955351496924306, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955351496924306, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955351496924306, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955351496924306, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955351496924306, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222125592523974, guid: 5ec40edecc23e6740bb3874c4bf6162f,
+        type: 2}
+      propertyPath: audios.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: fe74e01b28269ee4c969714fe8a0acfa, type: 3}
+    - target: {fileID: 114222125592523974, guid: 5ec40edecc23e6740bb3874c4bf6162f,
+        type: 2}
+      propertyPath: audios.Array.data[0].volume
+      value: 0.654
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222125592523974, guid: 5ec40edecc23e6740bb3874c4bf6162f,
+        type: 2}
+      propertyPath: audios.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 61f60ee3ab0a2cf46a8bcebb92021f90, type: 3}
+    - target: {fileID: 114222125592523974, guid: 5ec40edecc23e6740bb3874c4bf6162f,
+        type: 2}
+      propertyPath: audios.Array.data[1].volume
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222125592523974, guid: 5ec40edecc23e6740bb3874c4bf6162f,
+        type: 2}
+      propertyPath: audios.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d7ae7a264b876147b07a9d735470b1b, type: 3}
+    - target: {fileID: 114222125592523974, guid: 5ec40edecc23e6740bb3874c4bf6162f,
+        type: 2}
+      propertyPath: audios.Array.data[2].volume
+      value: 0.452
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1675620125 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4973934402848704, guid: 0ae1c16184a4b3149a8520cd3e9fe1cd,
@@ -17516,8 +17865,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -18673,8 +19022,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -19969,53 +20318,11 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300050, guid: e12d5a3d6b695ee47bdaa778058bc82c, type: 3}
---- !u!1001 &2001812401
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4194935604787856, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 7.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194935604787856, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -2.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194935604787856, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 93.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194935604787856, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194935604787856, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194935604787856, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194935604787856, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194935604787856, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a1e44540f6bbe4a4d82a71dbe2b42dca, type: 2}
-  m_IsPrefabParent: 0
 --- !u!114 &2001812402 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114493864990188262, guid: a1e44540f6bbe4a4d82a71dbe2b42dca,
+  m_PrefabParentObject: {fileID: 114107446679356672, guid: 5ec40edecc23e6740bb3874c4bf6162f,
     type: 2}
-  m_PrefabInternal: {fileID: 2001812401}
+  m_PrefabInternal: {fileID: 1654979246}
   m_Script: {fileID: 11500000, guid: 1f32988d2c5dd3c4fb88936d9a50668c, type: 3}
 --- !u!1 &2012327958
 GameObject:
@@ -20144,8 +20451,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 4.64
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -20277,8 +20584,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -20821,8 +21128,8 @@ MonoBehaviour:
   m_LightNearSize: 0
   m_LightFarSize: 13.14
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,
@@ -20954,8 +21261,8 @@ MonoBehaviour:
   m_LightNearSize: 4
   m_LightFarSize: 22
   m_ShadowBias: 0.0396
-  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
+  m_Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 3}
   m_ProxyShader: {fileID: 4800000, guid: 2b28be3523d190a41910088d1ee68ef7, type: 3}
   m_ShadowmapShader: {fileID: 4800000, guid: 2c4cd42b134f7864fa579350e9cf6896, type: 3}
   m_BlurShadowmapShader: {fileID: 4800000, guid: 701192b62a7678549918bc87434699fe,

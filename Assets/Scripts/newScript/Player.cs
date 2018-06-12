@@ -26,10 +26,10 @@ public class Player : NSC_Character
     [SerializeField] int layerMouse;
 
     CharacterController characterController;
-    [HideInInspector]public bool move;//角色是否可移动
+    [HideInInspector] public bool move;//角色是否可移动
     bool rollingCD;
     bool comboNow;
-    [SerializeField]bool weakBoss;
+    [SerializeField] bool weakBoss;
 
     // Use this for initialization
     void Start()
@@ -61,7 +61,7 @@ public class Player : NSC_Character
             FindObjectOfType<Boss>().weak();
             return false;
         }
-        if (!animator.GetBool("rolling"))
+        if (!animator.GetBool("rolling") && !animator.GetBool("Fall"))
         {
             animatorEnd();
             HP -= attack.damage;
@@ -212,6 +212,7 @@ public class Player : NSC_Character
         animator.SetBool("nearAttack", false);
         animator.SetBool("rangeAttack", false);
         animator.SetBool("combo", false);
+        animator.SetBool("Fall", false);
         endWeakBoss();
 
     }
@@ -280,7 +281,7 @@ public class Player : NSC_Character
     /// </summary>
     void rolling()
     {
-        
+
         characterController.SimpleMove(transform.forward * rollingSpeed);
     }
 
