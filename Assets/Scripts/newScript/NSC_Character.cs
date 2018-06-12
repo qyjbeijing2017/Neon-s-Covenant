@@ -230,10 +230,10 @@ public class NSC_Character : MonoBehaviour
     {
         if (other.GetComponent<Attack>() && other.GetComponent<Attack>().m_characterType != characterType)
         {
-
-            if (injured(other.GetComponent<Attack>()) && other.GetComponent<AttackRange>())
+            bool injuredSu = injured(other.GetComponent<Attack>());
+            if (injuredSu && other.GetComponent<AttackRange>())
                 Destroy(other.gameObject);
-            else
+            else if(injuredSu)
                 GetComponent<AudioPlay>().playAudio(attackSoundNum);
         }
     }
