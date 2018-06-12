@@ -25,6 +25,7 @@ public class Player_save : MonoBehaviour
         {
             MonsterStartPosition[i] = monsters[i].transform.position;
         }
+        SavePlayer();
 
     }
 
@@ -77,6 +78,12 @@ public class Player_save : MonoBehaviour
         player.power.colorValue = playerOtherPower.colorValue;
         player.power.m_colorType = playerOtherPower.m_colorType;
         player.whitePower.colorValue = whitePower;
+    }
+
+    public void ReadGame()
+    {
+        ReadPlayer();
+        ReadMonster();
     }
 
 }
