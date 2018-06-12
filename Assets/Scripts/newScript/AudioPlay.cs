@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
-public class AudioPlay : MonoBehaviour {
-    AudioAdd[] audios;
+public class AudioPlay : MonoBehaviour
+{
+    [SerializeField] AudioAdd[] audios;
     AudioSource audioSource;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void playAudio(int audioNub)
     {
         audioSource.Stop();

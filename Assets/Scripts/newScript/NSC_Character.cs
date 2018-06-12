@@ -57,7 +57,7 @@ public class NSC_Character : MonoBehaviour
 
     [Space(20)]
     [Header("声音相关")]
-    [Tooltip("击中音效数组位置，击中音效数组位置要一致")]
+    [Tooltip("击中音效数组位置，击中音效数组位置要一致"),SerializeField]
     int attackSoundNum;
 
 
@@ -233,8 +233,8 @@ public class NSC_Character : MonoBehaviour
 
             if (injured(other.GetComponent<Attack>()) && other.GetComponent<AttackRange>())
                 Destroy(other.gameObject);
-            //else
-                //other.GetComponent<AudioPlay>().playAudio(attackSoundNum);
+            else
+                GetComponent<AudioPlay>().playAudio(attackSoundNum);
         }
     }
 
