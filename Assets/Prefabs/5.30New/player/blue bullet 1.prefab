@@ -1276,7 +1276,7 @@ MonoBehaviour:
     m_colorType: 2
   m_characterType: 0
   stopTime: 0
-  speed: 15
+  speed: 10
   destoryLater: 1.5
 --- !u!114 &114563355081925956
 MonoBehaviour:

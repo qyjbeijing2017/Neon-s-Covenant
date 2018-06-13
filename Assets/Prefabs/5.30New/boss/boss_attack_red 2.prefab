@@ -952,7 +952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae0d5b287fc2f7468b3321c5fd87bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   powerDamage:
     colorValue: 0
     m_colorType: 1

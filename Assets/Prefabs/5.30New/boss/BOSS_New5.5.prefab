@@ -286,6 +286,8 @@ GameObject:
   - component: {fileID: 82217930428749976}
   - component: {fileID: 54466164175579134}
   - component: {fileID: 114621788969456850}
+  - component: {fileID: 114733071613188538}
+  - component: {fileID: 114751652064625360}
   m_Layer: 0
   m_Name: BOSS_New5.5
   m_TagString: Boss
@@ -2573,7 +2575,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.518
   m_Pitch: 1
   Loop: 0
@@ -2711,6 +2713,7 @@ MonoBehaviour:
   damageIn: 0
   damageDe: 0
   dead: 0
+  attackSoundNum: 0
   animator: {fileID: 0}
   mode2HP: 30
   nearFlashDis: 1.5
@@ -2723,6 +2726,44 @@ MonoBehaviour:
   tornadoCyan: {fileID: 114332985043387714, guid: f28ce117e755d444a833e8c35fedd3f4,
     type: 2}
   skillLast: 0
+--- !u!114 &114733071613188538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231546642626766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb98ce675f2fed64b913b59cc935ec4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMesh:
+  - {fileID: 137410917364031720}
+  matRed: {fileID: 2100000, guid: 265ee46b1ab48f24abb57542361d3489, type: 2}
+  matCyan: {fileID: 2100000, guid: 499f9298a1496dc40bc6a4afa9c4ab3f, type: 2}
+  matNormal: {fileID: 2100000, guid: 341cf863b1b8cd341abc0e9550f59f14, type: 2}
+--- !u!114 &114751652064625360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231546642626766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1e1d7f9832eaf41b20b9e4efb9e64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - clip: {fileID: 8300000, guid: c8ea7f1a9507c3e4eb12ea617e1e7e97, type: 3}
+    volume: 0.429
+  - clip: {fileID: 8300000, guid: f18817987f4b1d64e9dea8e1fa59a7f3, type: 3}
+    volume: 0.6
+  - clip: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
+    volume: 0.667
+  - clip: {fileID: 8300000, guid: f1120591acaded74ea7388b85178b243, type: 3}
+    volume: 0.648
+  - clip: {fileID: 8300000, guid: c83e0cbc85fe9ff41b2b319d50d150ea, type: 3}
+    volume: 0.848
 --- !u!114 &114787807504662254
 MonoBehaviour:
   m_ObjectHideFlags: 1

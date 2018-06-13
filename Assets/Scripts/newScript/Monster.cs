@@ -32,6 +32,7 @@ public class Monster : NSC_Character
     {
         if (!animator.GetBool("stop") && !animator.GetBool("attack") && !dead && !animator.IsInTransition(0))
         {
+            power.m_colorType = NSC_Color.colorType.white;
             moving();
         }
         else
@@ -68,7 +69,8 @@ public class Monster : NSC_Character
         {
             animator.SetBool("move", false);
             animator.SetBool("attack", true);
-            transform.forward = player.transform.position - transform.position;
+
+           
         }
     }
     /// <summary>
@@ -76,8 +78,10 @@ public class Monster : NSC_Character
     /// </summary>
     public virtual void allReady()
     {
+        print(1);
         if (!animator.IsInTransition(0))
         {
+            
             power.m_colorType = NSC_Color.colorType.white;
             animator.SetBool("attack", false);
             animator.SetBool("stop", false);
@@ -100,5 +104,10 @@ public class Monster : NSC_Character
         {
             power.m_colorType = NSC_Color.colorType.cyan;
         }
+    }
+    //
+    public void AimToPlayer()
+    {
+        transform.forward = player.transform.position - transform.position;
     }
 }

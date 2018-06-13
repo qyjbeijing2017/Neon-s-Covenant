@@ -1,0 +1,327 @@
+fileFormatVersion: 2
+guid: cceec88b127a9a743a59d453eecebb75
+timeCreated: 1528874392
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Bone019
+    100002: Bone020
+    100004: Bone021
+    100006: Bone025
+    100008: Bone026
+    100010: Bone027
+    100012: Bone028
+    100014: Bone029
+    100016: Bone030
+    100018: Bone031
+    100020: Bone032
+    100022: Bone033
+    100024: Bone034
+    100026: Bone035
+    100028: Bone036
+    100030: Bone037
+    100032: Bone038
+    100034: Bone039
+    100036: Bone040
+    100038: Bone041
+    100040: Bone042
+    100042: Bone043
+    100044: Bone044
+    100046: Bone045
+    100048: Bone046
+    100050: Bone047
+    100052: Bone048
+    100054: Bone049
+    100056: Bone050
+    100058: Bone051
+    100060: Bone052
+    100062: Bone053
+    100064: Bone054
+    100066: Bone055
+    100068: Bone056
+    100070: Bone057
+    100072: Bone058
+    100074: Bone059
+    100076: Bone060
+    100078: Bone061
+    100080: Bone062
+    100082: Bone063
+    100084: Bone064
+    100086: Bone065
+    100088: Box001
+    100090: Box002
+    100092: Box004
+    100094: Box007
+    100096: Box014
+    100098: Box015
+    100100: Box016
+    100102: Box037
+    100104: Box052
+    100106: Box053
+    100108: Box054
+    100110: Box055
+    100112: Box056
+    100114: Box057
+    100116: Cylinder001
+    100118: Cylinder003
+    100120: Dummy001
+    100122: Plane006
+    100124: //RootNode
+    100126: "\u3000\uE813\uE811"
+    100128: "\uE814\uE812"
+    400000: Bone019
+    400002: Bone020
+    400004: Bone021
+    400006: Bone025
+    400008: Bone026
+    400010: Bone027
+    400012: Bone028
+    400014: Bone029
+    400016: Bone030
+    400018: Bone031
+    400020: Bone032
+    400022: Bone033
+    400024: Bone034
+    400026: Bone035
+    400028: Bone036
+    400030: Bone037
+    400032: Bone038
+    400034: Bone039
+    400036: Bone040
+    400038: Bone041
+    400040: Bone042
+    400042: Bone043
+    400044: Bone044
+    400046: Bone045
+    400048: Bone046
+    400050: Bone047
+    400052: Bone048
+    400054: Bone049
+    400056: Bone050
+    400058: Bone051
+    400060: Bone052
+    400062: Bone053
+    400064: Bone054
+    400066: Bone055
+    400068: Bone056
+    400070: Bone057
+    400072: Bone058
+    400074: Bone059
+    400076: Bone060
+    400078: Bone061
+    400080: Bone062
+    400082: Bone063
+    400084: Bone064
+    400086: Bone065
+    400088: Box001
+    400090: Box002
+    400092: Box004
+    400094: Box007
+    400096: Box014
+    400098: Box015
+    400100: Box016
+    400102: Box037
+    400104: Box052
+    400106: Box053
+    400108: Box054
+    400110: Box055
+    400112: Box056
+    400114: Box057
+    400116: Cylinder001
+    400118: Cylinder003
+    400120: Dummy001
+    400122: Plane006
+    400124: //RootNode
+    400126: "\u3000\uE813\uE811"
+    400128: "\uE814\uE812"
+    2100000: 03 - Default
+    2300000: Box004
+    2300002: Box007
+    2300004: Box052
+    2300006: Box053
+    2300008: Box054
+    2300010: Box055
+    2300012: Box056
+    2300014: Box057
+    2300016: Cylinder001
+    2300018: Cylinder003
+    3300000: Box004
+    3300002: Box007
+    3300004: Box052
+    3300006: Box053
+    3300008: Box054
+    3300010: Box055
+    3300012: Box056
+    3300014: Box057
+    3300016: Cylinder001
+    3300018: Cylinder003
+    4300000: Box001
+    4300002: Box002
+    4300004: Box014
+    4300006: Box015
+    4300008: Plane006
+    4300010: Box037
+    4300012: Box016
+    4300014: Box004
+    4300016: Box007
+    4300018: Box052
+    4300020: Box053
+    4300022: Cylinder001
+    4300024: Box054
+    4300026: Box055
+    4300028: Box056
+    4300030: Box057
+    4300032: Cylinder003
+    7400000: monster_Range
+    9500000: //RootNode
+    13700000: Box001
+    13700002: Box002
+    13700004: Box014
+    13700006: Box015
+    13700008: Box016
+    13700010: Box037
+    13700012: Plane006
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: monster_Range
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.3888889
+        functionName: shoot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.43082994
+        functionName: playAudio
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8452381
+        functionName: allReady
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: changeColorRandom
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: AimToPlayer
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
