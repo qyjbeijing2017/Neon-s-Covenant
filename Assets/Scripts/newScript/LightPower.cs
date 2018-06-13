@@ -8,11 +8,12 @@ public class LightPower : MonoBehaviour {
     float height;
     [Tooltip("发射速度"),SerializeField]
     float speed;
-    [Tooltip("冲向玩家速度")]
+    [Tooltip("冲向玩家速度"),SerializeField]
     float speedFly;
-    [Tooltip("玩家吸收距离")]
+    [Tooltip("玩家吸收距离"),SerializeField]
     float dis;
-
+    [Tooltip("销毁距离"),SerializeField]
+    float AddDis;
     bool startToPlayer;
     Player player;
 
@@ -20,8 +21,10 @@ public class LightPower : MonoBehaviour {
 	void Start () {
         startToPlayer = false;
         player = FindObjectOfType<Player>();
-        Vector2 ground = new Vector2(Random.Range(0, 1), Random.Range(0, 1)).normalized;
+        Vector2 ground = new Vector2((float)Random.Range(-1.0f, 1.0f), (float)Random.Range(-1.0f, 1.0f)).normalized;
+
         GetComponent<Rigidbody>().velocity = speed * new Vector3(ground.x, height, ground.y).normalized;
+
         GetComponent<Rigidbody>().useGravity = true;
 	}
 	
@@ -44,16 +47,17 @@ public class LightPower : MonoBehaviour {
         {
             GetComponent<Rigidbody>().velocity = (player.transform.position - transform.position) * speedFly * Time.fixedDeltaTime;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<Player>())
+       
+        if ((player.transform.position - transform.position).magnitude < AddDis)
         {
-            collision.gameObject.GetComponent<Player>().injured(GetComponent<Attack>());
+              
+            FindObjectOfType<Player>().injured(GetComponent<Attack>());
             Destroy(gameObject);
         }
+
     }
+
+
 
 
 }
