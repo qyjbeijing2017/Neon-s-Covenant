@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterController))]
 public class NSC_Character : MonoBehaviour
 {
     public enum CharacterType
@@ -57,13 +58,39 @@ public class NSC_Character : MonoBehaviour
 
     [Space(20)]
     [Header("声音相关")]
-    [Tooltip("击中音效数组位置，击中音效数组位置要一致"),SerializeField]
+    [Tooltip("击中音效数组位置，击中音效数组位置要一致"), SerializeField]
     int attackSoundNum;
 
+    [Space(20)]
+    [Header("打击效果")]
+    [SerializeField, Tooltip("小击退")]
+    bool back = false;
+    [SerializeField, Tooltip("击退距离")]
+    float backDis = 5f;
+    [Space(5)]
+    [SerializeField, Tooltip("暂停动画")]
+    bool pauseAnimator = false;
+    [SerializeField, Tooltip("暂停时间")]
+    float pauseAnimatorTime = 0.1f;
+    [Space(5)]
+    [SerializeField, Tooltip("受击闪烁")]
+    bool flashAttack = false;
+    [SerializeField, Tooltip("闪烁时间")]
+    float flashTime = 0.1f;
+    [SerializeField, Tooltip("透明程度")]
+    float flashA = 0.6f;
+    [SerializeField, Tooltip("闪烁材质")]
+    Material materialFlash;
 
-    [HideInInspector]public Animator animator;
+
+    [HideInInspector] public Animator animator;
     protected void Awake()
     {
+        for (int i = 0; i < nearAttackCollider.Length; i++)
+        {
+            nearAttackCollider[i].character = this;
+        }
+
         GetComponent<Rigidbody>().isKinematic = true;
         animator = GetComponent<Animator>();
         for (int i = 0; i < nearAttackCollider.Length; i++)
@@ -233,9 +260,56 @@ public class NSC_Character : MonoBehaviour
             bool injuredSu = injured(other.GetComponent<Attack>());
             if (injuredSu && other.GetComponent<AttackRange>())
                 Destroy(other.gameObject);
-            else if(injuredSu)
-                GetComponent<AudioPlay>().playAudio(attackSoundNum);
+            else if (injuredSu)
+            {
+                if (GetComponent<AudioPlay>())
+                    GetComponent<AudioPlay>().playAudio(attackSoundNum);
+
+                SpecialAttack(other);
+
+
+            }
+
         }
+    }
+
+    /// <summary>
+    /// 特殊打击效果
+    /// </summary>
+    void SpecialAttack(Collider other)
+    {
+        if (back)
+        {
+
+            GetComponent<CharacterController>().SimpleMove(new Vector3(other.GetComponent<Attack>().character.transform.position.x - transform.position.x, 0, other.GetComponent<Attack>().character.transform.position.z - transform.position.z).normalized * -backDis);
+
+        }
+
+        if (pauseAnimator)
+        {
+            StartCoroutine(slowTime(other));
+        }
+        if (flashAttack)
+        {
+            StartCoroutine(Flash(other));
+        }
+    }
+
+    IEnumerator slowTime(Collider other)
+    {
+
+        other.GetComponent<Attack>().character.animator.speed = 0.0f;
+        yield return new WaitForSeconds(pauseAnimatorTime);
+        other.GetComponent<Attack>().character.animator.speed = 1;
+
+    }
+
+
+    IEnumerator Flash(Collider other)
+    {
+        materialFlash.color = new Color(1.0f, 1.0f, 1.0f, flashA);
+        yield return new WaitForSeconds(flashTime);
+        materialFlash.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
 }

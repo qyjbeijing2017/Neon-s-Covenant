@@ -9,6 +9,8 @@ public class Attack : MonoBehaviour {
     public NSC_Color powerDamage;
     [Tooltip("伤害发出者类型")]
     public NSC_Character.CharacterType m_characterType;
+    [Tooltip("伤害着")]
+    public NSC_Character character;
     [Tooltip("造成硬直的时间")]
     public float stopTime;
 
