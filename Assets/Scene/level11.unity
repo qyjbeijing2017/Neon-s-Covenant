@@ -21926,6 +21926,46 @@ Prefab:
       propertyPath: power.m_colorType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4078403304363506, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078403304363506, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078403304363506, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078403304363506, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2.7178357
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078403304363506, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.0029346
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078403304363506, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 2.7178369
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520154046688622, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2.267502
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520154046688622, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520154046688622, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -930
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520154046688622, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
   m_IsPrefabParent: 0
