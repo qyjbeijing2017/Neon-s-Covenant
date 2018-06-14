@@ -41,6 +41,7 @@ public class Tornado : MonoBehaviour
         nav.SetDestination(player.transform.position);
         if (timer > timeDamage && playerInTornado)
         {
+            //Debug.Break();
             addDamage(player);
             timer = 0;
         }

@@ -28,4 +28,4 @@ Material:
     - _Metallic: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _TintColor: {r: 0.60294116, g: 0.60294116, b: 0.60294116, a: 0.397}
+    - _TintColor: {r: 0.18382353, g: 0.17571366, b: 0.17571366, a: 0}

@@ -2181,6 +2181,7 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 0
   m_characterType: 2
+  character: {fileID: 0}
   stopTime: 0.3
 --- !u!23 &121312899
 MeshRenderer:
@@ -10601,6 +10602,7 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 0
   m_characterType: 2
+  character: {fileID: 0}
   stopTime: 0
 --- !u!23 &772084087
 MeshRenderer:
@@ -11002,6 +11004,7 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 0
   m_characterType: 2
+  character: {fileID: 0}
   stopTime: 0
 --- !u!23 &777527077
 MeshRenderer:
@@ -11828,6 +11831,16 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1123228809}
+    - target: {fileID: 224791824221579788, guid: 4f48cd23d89f04dec8a64ad773958ef7,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224791824221579788, guid: 4f48cd23d89f04dec8a64ad773958ef7,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224688442105579270, guid: 4f48cd23d89f04dec8a64ad773958ef7,
         type: 2}
       propertyPath: m_AnchorMax.x
@@ -11846,31 +11859,6 @@ Prefab:
     - target: {fileID: 224153002252843204, guid: 4f48cd23d89f04dec8a64ad773958ef7,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114878803747438300, guid: 4f48cd23d89f04dec8a64ad773958ef7,
-        type: 2}
-      propertyPath: m_Value
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 224688442105579270, guid: 4f48cd23d89f04dec8a64ad773958ef7,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224688442105579270, guid: 4f48cd23d89f04dec8a64ad773958ef7,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000008583069
-      objectReference: {fileID: 0}
-    - target: {fileID: 114718140797829730, guid: 4f48cd23d89f04dec8a64ad773958ef7,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSave
-      objectReference: {fileID: 0}
-    - target: {fileID: 114718140797829730, guid: 4f48cd23d89f04dec8a64ad773958ef7,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -19388,6 +19376,16 @@ MonoBehaviour:
   damageDe: 0
   dead: 0
   attackSoundNum: 0
+  back: 0
+  backDis: 5
+  pauseAnimator: 0
+  pauseAnimatorTime: 0.1
+  flashAttack: 0
+  flashTime: 0.1
+  flashA: 0.6
+  flashRender: []
+  materialFlash: {fileID: 0}
+  materialNormal: {fileID: 0}
   animator: {fileID: 0}
   FollowPlayer: 5
   attackDis: 2
@@ -21914,12 +21912,12 @@ Prefab:
     - target: {fileID: 114107446679356672, guid: 5ec40edecc23e6740bb3874c4bf6162f,
         type: 2}
       propertyPath: whitePower.colorValue
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114107446679356672, guid: 5ec40edecc23e6740bb3874c4bf6162f,
         type: 2}
       propertyPath: power.colorValue
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114107446679356672, guid: 5ec40edecc23e6740bb3874c4bf6162f,
         type: 2}
@@ -21965,6 +21963,11 @@ Prefab:
     - target: {fileID: 4520154046688622, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
       propertyPath: m_LocalPosition.z
       value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114107446679356672, guid: 5ec40edecc23e6740bb3874c4bf6162f,
+        type: 2}
+      propertyPath: powerMax
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ec40edecc23e6740bb3874c4bf6162f, type: 2}
@@ -23032,6 +23035,16 @@ MonoBehaviour:
   damageDe: 0.5
   dead: 0
   attackSoundNum: 0
+  back: 0
+  backDis: 5
+  pauseAnimator: 0
+  pauseAnimatorTime: 0.1
+  flashAttack: 0
+  flashTime: 0.1
+  flashA: 0.6
+  flashRender: []
+  materialFlash: {fileID: 0}
+  materialNormal: {fileID: 0}
   animator: {fileID: 0}
   FollowPlayer: 5
   attackDis: 1.8
@@ -27898,6 +27911,16 @@ MonoBehaviour:
   damageDe: 0.5
   dead: 0
   attackSoundNum: 0
+  back: 0
+  backDis: 5
+  pauseAnimator: 0
+  pauseAnimatorTime: 0.1
+  flashAttack: 0
+  flashTime: 0.1
+  flashA: 0.6
+  flashRender: []
+  materialFlash: {fileID: 0}
+  materialNormal: {fileID: 0}
   animator: {fileID: 0}
   FollowPlayer: 5
   attackDis: 3

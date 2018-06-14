@@ -56,4 +56,5 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 2
   m_characterType: 1
-  stopTime: 0.1
+  character: {fileID: 0}
+  stopTime: 0.08

@@ -318,8 +318,9 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 1
   m_characterType: 1
-  stopTime: 0
-  speed: 10
+  character: {fileID: 0}
+  stopTime: 0.2
+  speed: 5
   destoryLater: 1
 --- !u!114 &114867112366511514
 MonoBehaviour:

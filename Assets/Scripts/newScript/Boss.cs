@@ -29,6 +29,8 @@ public class Boss : NSC_Character
     [SerializeField] Tornado tornadoRed;
     [Tooltip("旋风青")]
     [SerializeField] Tornado tornadoCyan;
+    [Space(5)]
+    [SerializeField, Tooltip("boss角速度")] float AngularSpeed;
     Player player;
     [HideInInspector] bool m_allReady;
     [HideInInspector] int bossCopyNub;
@@ -43,6 +45,14 @@ public class Boss : NSC_Character
         player = FindObjectOfType<Player>();
         animator.StopPlayback();
         skillLast = SkillBoss.tornado;
+    }
+    private void Update()
+    {
+        if (!animator.GetBool("weak") && !dead)
+        {
+            //    print(1);
+            transform.localEulerAngles += Vector3.Cross(transform.forward, (player.transform.position - transform.position).normalized).normalized * AngularSpeed * Time.deltaTime;
+        }
     }
 
     public override bool injured(Attack attack)
@@ -141,7 +151,8 @@ public class Boss : NSC_Character
     public void weak()
     {
         animator.Play("weak");
-        stopNearAttack();   
+        animator.SetBool("weak", true);
+        stopNearAttack();
     }
     /// <summary>
     /// 可以做下次决策。
@@ -245,5 +256,5 @@ public class Boss : NSC_Character
     {
         power.m_colorType = NSC_Color.colorType.white;
     }
-    
+
 }

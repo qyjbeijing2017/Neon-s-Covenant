@@ -306,7 +306,7 @@ public class NSC_Character : MonoBehaviour
         other.GetComponent<Attack>().character.animator.speed = 0.0f;
         yield return new WaitForSeconds(pauseAnimatorTime);
         other.GetComponent<Attack>().character.animator.speed = 1;
-
+        
     }
 
 
