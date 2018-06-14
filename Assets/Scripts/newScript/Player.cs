@@ -63,7 +63,8 @@ public class Player : NSC_Character
         }
         if (!animator.GetBool("rolling") && !animator.GetBool("Fall"))
         {
-            animatorEnd();
+            if (attack.gameObject.layer != 11)
+                animatorEnd();
             HP -= attack.damage;
             powerInjured(attack);
             HPNormal();

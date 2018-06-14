@@ -79,8 +79,13 @@ public class NSC_Character : MonoBehaviour
     float flashTime = 0.1f;
     [SerializeField, Tooltip("透明程度")]
     float flashA = 0.6f;
+    [SerializeField, Tooltip("需要更换的材质")]
+    SkinnedMeshRenderer[] flashRender;
+
     [SerializeField, Tooltip("闪烁材质")]
     Material materialFlash;
+    [SerializeField, Tooltip("原本材质")]
+    Material materialNormal;
 
 
     [HideInInspector] public Animator animator;
@@ -262,7 +267,7 @@ public class NSC_Character : MonoBehaviour
                 Destroy(other.gameObject);
             else if (injuredSu)
             {
-                if (GetComponent<AudioPlay>())
+                if (GetComponent<AudioPlay>() && other.gameObject.layer != 11)
                     GetComponent<AudioPlay>().playAudio(attackSoundNum);
 
                 SpecialAttack(other);
@@ -307,9 +312,31 @@ public class NSC_Character : MonoBehaviour
 
     IEnumerator Flash(Collider other)
     {
-        materialFlash.color = new Color(1.0f, 1.0f, 1.0f, flashA);
+
+        if (materialNormal != null)
+        {
+            for (int i = 0; i < flashRender.Length; i++)
+            {
+                flashRender[i].material = materialFlash;
+            }
+        }
+        else
+        {
+            materialFlash.color = new Color(1.0f, 1.0f, 1.0f, flashA);
+        }
         yield return new WaitForSeconds(flashTime);
-        materialFlash.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+        if (materialNormal != null)
+        {
+            for (int i = 0; i < flashRender.Length; i++)
+            {
+                flashRender[i].material = materialNormal;
+            }
+        }
+        else
+        {
+            materialFlash.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        }
     }
 
 }
