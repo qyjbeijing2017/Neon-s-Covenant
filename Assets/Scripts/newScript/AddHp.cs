@@ -16,7 +16,7 @@ public class AddHp : MonoBehaviour {
         if (Input.GetKeyDown(key))
         {
             
-            if (player.move)
+            if (player.move && !player.dead)
             {
                 print(1);
                 if (player.HPMax >player.HP && player.whitePower.colorValue > needPower)

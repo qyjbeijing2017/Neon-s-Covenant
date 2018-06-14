@@ -308,14 +308,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.89516133
+      - time: 0.31678295
         functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 4
         messageOptions: 0
-      - time: 0.94
+      - time: 0.35621622
         functionName: tornadoShoot
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -525,6 +525,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
+      - time: 0.31227496
+        functionName: ShakeCamera
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -580,7 +587,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 1
+        functionName: allReady
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -283,10 +283,10 @@ GameObject:
   - component: {fileID: 95514389057135898}
   - component: {fileID: 136488440628585014}
   - component: {fileID: 195011168179929848}
-  - component: {fileID: 114182809711302780}
   - component: {fileID: 82217930428749976}
   - component: {fileID: 54466164175579134}
   - component: {fileID: 114502170310590256}
+  - component: {fileID: 114957971865083228}
   m_Layer: 0
   m_Name: BOSS_New5.6
   m_TagString: Boss
@@ -2661,29 +2661,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114182809711302780
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1231546642626766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 745a9a9a370af9e4ebf88d6f3404e900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boss_weaponEmpty: {fileID: 8300000, guid: f18817987f4b1d64e9dea8e1fa59a7f3, type: 3}
-  emptyVolume: 0.549
-  boss_weaponPowerfulEmpty: {fileID: 8300000, guid: f1120591acaded74ea7388b85178b243,
-    type: 3}
-  powerfulEmptyVolume: 0.718
-  boss_weaponPlayer: {fileID: 8300000, guid: c8ea7f1a9507c3e4eb12ea617e1e7e97, type: 3}
-  playerVolume: 0.636
-  boss_laser: {fileID: 8300000, guid: c83e0cbc85fe9ff41b2b319d50d150ea, type: 3}
-  laserVolume: 0.698
-  boss_range: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
-  rangeVolume: 0.518
-  bossAudio: {fileID: 82217930428749976}
 --- !u!114 &114502170310590256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2776,6 +2753,28 @@ MonoBehaviour:
   m_characterType: 0
   character: {fileID: 0}
   stopTime: 0
+--- !u!114 &114957971865083228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231546642626766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1e1d7f9832eaf41b20b9e4efb9e64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios:
+  - clip: {fileID: 8300000, guid: c8ea7f1a9507c3e4eb12ea617e1e7e97, type: 3}
+    volume: 0.429
+  - clip: {fileID: 8300000, guid: f18817987f4b1d64e9dea8e1fa59a7f3, type: 3}
+    volume: 0.6
+  - clip: {fileID: 8300000, guid: 8c25c898d49526b4dabdbd452062ca40, type: 3}
+    volume: 0.667
+  - clip: {fileID: 8300000, guid: f1120591acaded74ea7388b85178b243, type: 3}
+    volume: 0.648
+  - clip: {fileID: 8300000, guid: c83e0cbc85fe9ff41b2b319d50d150ea, type: 3}
+    volume: 0.848
 --- !u!135 &135081456716365770
 SphereCollider:
   m_ObjectHideFlags: 1
