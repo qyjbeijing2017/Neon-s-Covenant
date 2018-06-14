@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class TweenControl : MonoBehaviour
+[RequireComponent(typeof(FloatingZ))]
+public class TweenControlZ : MonoBehaviour
 {
     Tweener ft;
     Tweener merge;
-    [SerializeField] float relativeMergeY = -2.0f;
+    [SerializeField] float relativeMergeZ = 2.0f;
+    [SerializeField] float relativeScale;
     [SerializeField] float mergeTime = 1f;
-    [SerializeField] float relativeLoopY = -1.5f;
-    [SerializeField] float loopTime = 2.0f;
+	FloatingZ z;
     void Start()
     {
-        merge = transform.DOLocalMoveY(relativeMergeY, mergeTime);
+        z= GetComponent<FloatingZ>();
+        merge = transform.DOLocalMoveZ(transform.position.z + relativeMergeZ, mergeTime);
         merge.OnComplete(StartTweener);
     }
     public void StartTweener()
     {
-        ft = transform.DOLocalMoveY(relativeLoopY, loopTime).SetLoops(-1, LoopType.Yoyo);
+       z.enabled = true;
     }
 }

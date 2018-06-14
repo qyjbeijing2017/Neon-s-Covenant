@@ -1091,8 +1091,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1249738506477144}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000008183959, y: -0.00001277659, z: 0.00000005655405}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 19, y: -13, z: -33}
+  m_LocalScale: {x: 2.7178357, y: 1.0029346, z: 2.7178369}
   m_Children:
   - {fileID: 4471703884780740}
   - {fileID: 4661348808476646}
@@ -1544,8 +1544,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1514375901066420}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.021179, y: -824.8489, z: 0.0000898523}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.4, y: -930, z: -0.1}
+  m_LocalScale: {x: 1, y: 2.267502, z: 1}
   m_Children: []
   m_Father: {fileID: 4078403304363506}
   m_RootOrder: 2
@@ -2642,15 +2642,16 @@ MonoBehaviour:
   HP: 8
   HPMax: 8
   power:
-    colorValue: 10
-    m_colorType: 1
+    colorValue: 50
+    m_colorType: 0
   powerMax: 100
   characterType: 0
   nearAttack:
   - {fileID: 114987533082599900}
   nearAttackCollider:
   - {fileID: 114987533082599900}
-  attackWhite: {fileID: 0}
+  attackWhite: {fileID: 114139943466950976, guid: 650db1cc65c8b47498a541f9c7aa7208,
+    type: 2}
   attackRed: {fileID: 114257150967214432, guid: 547c8318b0fc92b48bf5dbb39c2a4c90,
     type: 2}
   attackCyan: {fileID: 114556586198495492, guid: 53dc91029d4f5a546bbe15989e23b952,
@@ -2661,13 +2662,23 @@ MonoBehaviour:
   damageDe: 0
   dead: 0
   attackSoundNum: 0
+  back: 0
+  backDis: 5
+  pauseAnimator: 0
+  pauseAnimatorTime: 0.1
+  flashAttack: 0
+  flashTime: 0.1
+  flashA: 0.6
+  flashRender: []
+  materialFlash: {fileID: 0}
+  materialNormal: {fileID: 0}
   animator: {fileID: 95896242873069598}
   speed: 2
   rollingSpeed: 4.5
   rollCD: 0.8
   m_nearattackMove: 0.3
   whitePower:
-    colorValue: 85
+    colorValue: 20
     m_colorType: 0
   rangeAttackPower: {fileID: 114050658587970800, guid: 52266721ea26e8140ae46110cb2f5568,
     type: 2}
@@ -2689,7 +2700,7 @@ MonoBehaviour:
   audios:
   - clip: {fileID: 8300000, guid: fe74e01b28269ee4c969714fe8a0acfa, type: 3}
     volume: 0.654
-  - clip: {fileID: 8300000, guid: 61f60ee3ab0a2cf46a8bcebb92021f90, type: 3}
+  - clip: {fileID: 8300000, guid: 5523cea960ee89a49985279f86419b14, type: 3}
     volume: 0.49
   - clip: {fileID: 8300000, guid: 6d7ae7a264b876147b07a9d735470b1b, type: 3}
     volume: 0.452
@@ -2786,12 +2797,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06a0591e8e4bc644ba8034fdfdb7bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
   powerDamage:
     colorValue: 0
     m_colorType: 1
   m_characterType: 0
-  stopTime: 0
+  character: {fileID: 0}
+  stopTime: 1
 --- !u!124 &124362921452735618
 Behaviour:
   m_ObjectHideFlags: 1
