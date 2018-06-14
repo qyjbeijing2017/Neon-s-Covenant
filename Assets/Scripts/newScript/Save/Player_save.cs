@@ -12,19 +12,21 @@ public class Player_save : MonoBehaviour
     float whitePower;
 
     [SerializeField] Monster[] monsters;
-    int[] MonstersHP;
-    Vector3[] MonsterStartPosition;
-    bool[] isDead;
+    List<Vector3> monstersSave = new List<Vector3>();
+
 
 
     // Use this for initialization
     void Start()
     {
         playerOtherPower = new NSC_Color();
+        monsters = FindObjectsOfType<Monster>();
+        player = FindObjectOfType<Player>();
         for (int i = 0; i < monsters.Length; i++)
         {
-            MonsterStartPosition[i] = monsters[i].transform.position;
+            monstersSave.Add(monsters[i].transform.position);
         }
+        SavePlayer();
 
     }
 
@@ -35,14 +37,15 @@ public class Player_save : MonoBehaviour
     }
 
 
-   public void ReadMonster()
+    public void ReadMonster()
     {
         for (int i = 0; i < monsters.Length; i++)
         {
             if (!monsters[i].dead)
             {
-                MonsterStartPosition[i] = monsters[i].transform.position;
+                monsters[i].transform.position = monstersSave[i];
                 monsters[i].HP = monsters[i].HPMax;
+                monsters[i].allReady();
                 monsters[i].animator.Play("Idle");
             }
 
@@ -77,6 +80,12 @@ public class Player_save : MonoBehaviour
         player.power.colorValue = playerOtherPower.colorValue;
         player.power.m_colorType = playerOtherPower.m_colorType;
         player.whitePower.colorValue = whitePower;
+    }
+
+    public void ReadGame()
+    {
+        ReadPlayer();
+        ReadMonster();
     }
 
 }

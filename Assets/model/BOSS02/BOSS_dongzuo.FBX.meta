@@ -241,7 +241,6 @@ ModelImporter:
       36.3 mm and maximum position error 63.5 mm at time 14: 4 (77.1%) Frame 424\n"
     animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
-    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -310,11 +309,18 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.89516133
+        functionName: playAudio
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 4
+        messageOptions: 0
+      - time: 0.94
         functionName: tornadoShoot
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 4
         messageOptions: 0
       transformMask: []
       maskType: 3
@@ -380,7 +386,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.00012193109
-        functionName: bossAudio_play
+        functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -429,7 +435,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.026392963
-        functionName: bossAudio_play
+        functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -478,18 +484,11 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: bossAudio_play
+        functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
-        messageOptions: 0
-      - time: 0.09513793
-        functionName: bossAudio_play
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 2
         messageOptions: 0
       - time: 0.12563886
         functionName: startNearAttack
@@ -498,15 +497,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.46563816
-        functionName: stopNearAttack
+      - time: 0.42313793
+        functionName: playAudio
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 2
+        intParameter: 3
         messageOptions: 0
-      - time: 0.9824047
-        functionName: allReady
+      - time: 0.46563816
+        functionName: stopNearAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -518,6 +517,13 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
+        messageOptions: 0
+      - time: 0.9824047
+        functionName: allReady
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
         messageOptions: 0
       transformMask: []
       maskType: 3
@@ -638,12 +644,26 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.04202191
+        functionName: playAudio
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
       - time: 0.108167775
         functionName: shoot
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
+        messageOptions: 0
+      - time: 0.396
+        functionName: playAudio
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
         messageOptions: 0
       - time: 0.45977855
         functionName: shoot
@@ -665,6 +685,13 @@ ModelImporter:
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
+        messageOptions: 0
+      - time: 0.7349289
+        functionName: playAudio
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
         messageOptions: 0
       transformMask: []
       maskType: 3

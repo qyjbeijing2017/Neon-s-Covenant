@@ -20,12 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4246500075670816}
   - component: {fileID: 33214082979786992}
-  - component: {fileID: 135439021999788412}
   - component: {fileID: 23056295247868866}
   - component: {fileID: 114332985043387714}
   - component: {fileID: 195037338798481384}
-  - component: {fileID: 114455307917604052}
   - component: {fileID: 54418833468255102}
+  - component: {fileID: 135966814899195910}
   m_Layer: 0
   m_Name: TordaoRed
   m_TagString: Untagged
@@ -113,27 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d516d80e76346f64bb2fc8204629261b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
+  playerInTornado: 0
   existTime: 5.01
-  attack: {fileID: 114455307917604052}
-  timeDamage: 3
---- !u!114 &114455307917604052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1788616355522784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e06a0591e8e4bc644ba8034fdfdb7bf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  powerDamage:
-    colorValue: 0
-    m_colorType: 1
-  m_characterType: 0
-  stopTime: 0
---- !u!135 &135439021999788412
+  attack: {fileID: 114731032251600310, guid: e0753a60f2bb3c445a410cf40f61b659, type: 2}
+  timeDamage: 1
+--- !u!135 &135966814899195910
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

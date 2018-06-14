@@ -344,7 +344,7 @@ public class Player : NSC_Character
 
     private void FixedUpdate()
     {
-        if (move)
+        if (move && !dead)
         {
             moving();
         }

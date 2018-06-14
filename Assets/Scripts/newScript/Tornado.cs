@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
-[RequireComponent(typeof(Attack))]
+//[RequireComponent(typeof(Attack))]
 [RequireComponent(typeof(Rigidbody))]
 public class Tornado : MonoBehaviour
 {
     UnityEngine.AI.NavMeshAgent nav;
     Player player;
-    float timer;
-    bool playerInTornado;
+    [SerializeField]float timer;
+    [SerializeField]bool playerInTornado;
     [Tooltip("旋风存在时间")]
     [SerializeField] float existTime;
     [Tooltip("旋风每一跳伤害")]
@@ -26,7 +26,7 @@ public class Tornado : MonoBehaviour
         player = FindObjectOfType<Player>();
         GetComponent<Rigidbody>().isKinematic = true;
         playerInTornado = false;
-        if(!attack)
+        if (!attack)
         {
             attack = GetComponent<Attack>();
         }
@@ -36,12 +36,20 @@ public class Tornado : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
         nav.SetDestination(player.transform.position);
         if (timer > timeDamage && playerInTornado)
         {
             addDamage(player);
+            timer = 0;
         }
+
+
+
     }
+
+
 
     /// <summary>
     /// 伤害
@@ -65,7 +73,7 @@ public class Tornado : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.name == player.name)
+        if (other.name == player.name)
         {
             playerInTornado = true;
         }
@@ -73,7 +81,7 @@ public class Tornado : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.name== player.name)
+        if (other.name == player.name)
         {
             playerInTornado = false;
         }
