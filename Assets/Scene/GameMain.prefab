@@ -2253,7 +2253,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2277,7 +2277,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!82 &82901003657526444
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2730,6 +2730,16 @@ MonoBehaviour:
   damageDe: 0
   dead: 0
   attackSoundNum: 0
+  back: 0
+  backDis: 5
+  pauseAnimator: 0
+  pauseAnimatorTime: 0.1
+  flashAttack: 0
+  flashTime: 0.1
+  flashA: 0.6
+  flashRender: []
+  materialFlash: {fileID: 0}
+  materialNormal: {fileID: 0}
   animator: {fileID: 95632408961060240}
   speed: 2
   rollingSpeed: 4.5
@@ -2774,6 +2784,7 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 0
   m_characterType: 0
+  character: {fileID: 0}
   stopTime: 0
 --- !u!114 &114637189693642334
 MonoBehaviour:
