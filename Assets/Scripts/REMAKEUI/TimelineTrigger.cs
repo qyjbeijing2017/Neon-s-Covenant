@@ -6,13 +6,10 @@ public class TimelineTrigger : MonoBehaviour
 {
 
     [SerializeField] UnityEngine.Playables.PlayableDirector d;
-    bool used 
-     =false;
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "MainCharacter" && !used)
+        if (other.tag == "MainCharacter")
         {
-            used = true;
             d.Play();
         }
     }

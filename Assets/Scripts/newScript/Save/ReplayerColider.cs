@@ -19,8 +19,6 @@ public class ReplayerColider : MonoBehaviour {
     {
         if (other.GetComponent<Player>())
         {
-            other.GetComponent<Player>().HP -= 2;
-            other.GetComponent<Player>().HPNormal();
             followCapsule.RePlayer();
         }
     }

@@ -12,7 +12,7 @@ public class StikeEffect : MonoBehaviour {
 
 
 	public void Reflash(int Num){
-		print(1);
+		
 		if(player.power.m_colorType == NSC_Color.colorType.white){
 			
 			Instantiate(Stickeffect[0], Cube[Num].transform.position, Cube[Num].transform.rotation);

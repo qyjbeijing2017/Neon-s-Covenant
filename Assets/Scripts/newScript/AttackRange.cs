@@ -24,8 +24,6 @@ public class AttackRange : Attack {
             rigidbody.velocity = rigidbody.velocity.normalized * speed;
         else
             rigidbody.velocity = transform.forward * speed;
-
-        Destroy(gameObject, destoryLater);
 	}
 	
 	// Update is called once per frame
