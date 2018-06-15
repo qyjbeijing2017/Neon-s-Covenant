@@ -1,4 +1,16 @@
-﻿using System.Collections;
+﻿/*
+ * File: CanvasShift.cs
+ * Project: REMAKEUI
+ * File Created: Tuesday, 5th June 2018 10:49:58 pm
+ * Author: shpkng (shpkng@gmail.com)
+ * -----
+ * Last Modified: Saturday, 16th June 2018 5:21:12 am
+ * Modified By: shpkng (shpkng@gmail.com>)
+ * -----
+ * loving the lovely sunshine in autumn.♥
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

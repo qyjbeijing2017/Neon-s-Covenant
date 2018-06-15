@@ -1,14 +1,15 @@
 ﻿/*
  * File: BossMaterialSwitcher.cs
  * Project: REMAKEUI
- * File Created: Monday, 4th June 2018 3:56:25 pm
+ * File Created: Tuesday, 5th June 2018 10:50:01 pm
  * Author: shpkng (shpkng@gmail.com)
  * -----
- * Last Modified: Monday, 4th June 2018 9:04:08 pm
+ * Last Modified: Saturday, 16th June 2018 5:21:06 am
  * Modified By: shpkng (shpkng@gmail.com>)
  * -----
  * loving the lovely sunshine in autumn.♥
  */
+
 
 //这个代码是用来控制boss的材质的
 

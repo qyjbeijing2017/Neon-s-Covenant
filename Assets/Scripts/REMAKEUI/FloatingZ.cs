@@ -1,4 +1,17 @@
-﻿using UnityEngine;
+﻿/*
+ * File: FloatingZ.cs
+ * Project: REMAKEUI
+ * File Created: Friday, 15th June 2018 3:10:56 am
+ * Author: shpkng (shpkng@gmail.com)
+ * -----
+ * Last Modified: Saturday, 16th June 2018 5:21:34 am
+ * Modified By: shpkng (shpkng@gmail.com>)
+ * -----
+ * loving the lovely sunshine in autumn.♥
+ */
+
+
+using UnityEngine;
 using System.Collections;
 
 public class FloatingZ : MonoBehaviour {

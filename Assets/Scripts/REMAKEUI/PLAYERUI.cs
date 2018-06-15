@@ -1,4 +1,15 @@
-﻿//用来处理圆形双层UI的简单脚本
+﻿/*
+ * File: PLAYERUI.cs
+ * Project: REMAKEUI
+ * File Created: Tuesday, 5th June 2018 10:50:01 pm
+ * Author: shpkng (shpkng@gmail.com)
+ * -----
+ * Last Modified: Saturday, 16th June 2018 5:22:00 am
+ * Modified By: shpkng (shpkng@gmail.com>)
+ * -----
+ * loving the lovely sunshine in autumn.♥
+ */
+//用来处理圆形双层UI的简单脚本
 
 using System.Collections;
 using System.Collections.Generic;

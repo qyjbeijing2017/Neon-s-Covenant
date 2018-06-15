@@ -29,6 +29,12 @@ public class Boss : NSC_Character
     [SerializeField] Tornado tornadoRed;
     [Tooltip("旋风青")]
     [SerializeField] Tornado tornadoCyan;
+    [Space(5)]
+    [SerializeField, Tooltip("boss角速度")] float AngularSpeed;
+    [SerializeField, Tooltip("boss位置固定")] bool BossCopyP;
+    [SerializeField, Tooltip("bossCopy的位置")] GameObject[] BossCopyPosition;
+
+
     Player player;
     [HideInInspector] bool m_allReady;
     [HideInInspector] int bossCopyNub;
@@ -43,6 +49,14 @@ public class Boss : NSC_Character
         player = FindObjectOfType<Player>();
         animator.StopPlayback();
         skillLast = SkillBoss.tornado;
+    }
+    private void Update()
+    {
+        if (!animator.GetBool("weak") && !dead)
+        {
+            //    print(1);
+            transform.localEulerAngles += Vector3.Cross(transform.forward, (player.transform.position - transform.position).normalized).normalized * AngularSpeed * Time.deltaTime;
+        }
     }
 
     public override bool injured(Attack attack)
@@ -95,10 +109,18 @@ public class Boss : NSC_Character
         transform.position = new Vector3(0, 106, 0);
         animator.speed = 0;
         GameObject boss1 = Instantiate(bossCopy.gameObject);
-        boss1.transform.position = player.transform.position + (player.transform.right * flashDisBoss2);
+        if (BossCopyP)
+        {
+            boss1.transform.position = BossCopyPosition[0].transform.position;
+        }
+        else
+            boss1.transform.position = player.transform.position + (player.transform.right * flashDisBoss2);
         boss1.transform.forward = player.transform.position - boss1.transform.position;
         GameObject boss2 = Instantiate(bossCopy.gameObject);
-        boss2.transform.position = player.transform.position - (player.transform.right * flashDisBoss2);
+        if (BossCopyP)
+            boss2.transform.position = BossCopyPosition[1].transform.position;
+        else
+            boss2.transform.position = player.transform.position - (player.transform.right * flashDisBoss2);
         boss2.transform.forward = player.transform.position - boss2.transform.position;
         if (a == 1)
         {
@@ -141,7 +163,8 @@ public class Boss : NSC_Character
     public void weak()
     {
         animator.Play("weak");
-        stopNearAttack();   
+        animator.SetBool("weak", true);
+        stopNearAttack();
     }
     /// <summary>
     /// 可以做下次决策。
@@ -245,5 +268,5 @@ public class Boss : NSC_Character
     {
         power.m_colorType = NSC_Color.colorType.white;
     }
-    
+
 }

@@ -63,7 +63,8 @@ public class Player : NSC_Character
         }
         if (!animator.GetBool("rolling") && !animator.GetBool("Fall"))
         {
-            animatorEnd();
+            if (attack.gameObject.layer != 11)
+                animatorEnd();
             HP -= attack.damage;
             powerInjured(attack);
             HPNormal();
@@ -364,7 +365,7 @@ public class Player : NSC_Character
     void Update()
     {
         //翻滚
-        if (!animator.GetBool("stop") && !animator.GetBool("rolling") && !animator.IsInTransition(0) && !rollingCD)
+        if (!animator.GetBool("stop") && !animator.GetBool("rolling") && !animator.IsInTransition(0) && !rollingCD && !dead)
         {
             if (Input.GetButtonDown("Jump"))
             {

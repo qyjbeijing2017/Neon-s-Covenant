@@ -78,10 +78,10 @@ public class Monster : NSC_Character
     /// </summary>
     public virtual void allReady()
     {
-        print(1);
+        
         if (!animator.IsInTransition(0))
         {
-            
+            print(1);
             power.m_colorType = NSC_Color.colorType.white;
             animator.SetBool("attack", false);
             animator.SetBool("stop", false);
