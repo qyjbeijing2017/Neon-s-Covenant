@@ -24,7 +24,10 @@ public class BossEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (boss.animator.GetBool("weak")||boss.dead)
+        {
+            OffEffect();
+        }
         
     }
 
