@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   powerDamage:
-    colorValue: 0
+    colorValue: 10
     m_colorType: 1
   m_characterType: 1
   character: {fileID: 0}

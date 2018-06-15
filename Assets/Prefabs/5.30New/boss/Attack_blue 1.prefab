@@ -328,13 +328,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   powerDamage:
-    colorValue: 0
+    colorValue: 5
     m_colorType: 2
   m_characterType: 1
   character: {fileID: 0}
   stopTime: 0.2
   speed: 5
-  destoryLater: 1
+  destoryLater: 1.5
 --- !u!135 &135208555227760640
 SphereCollider:
   m_ObjectHideFlags: 1

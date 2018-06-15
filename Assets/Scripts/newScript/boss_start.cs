@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class boss_start : MonoBehaviour {
     [SerializeField]Boss boss;
-    bool start;
+    public bool start;
 
 	// Use this for initialization
 	void Start () {

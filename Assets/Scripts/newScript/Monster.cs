@@ -9,8 +9,12 @@ public class Monster : NSC_Character
     [Space(20), Header("小怪需求")]
     [SerializeField, Tooltip("跟随玩家距离")]
     float FollowPlayer;
+
+    
     [SerializeField, Tooltip("攻击距离，近战/远程")]
     float attackDis;
+
+    [SerializeField, Tooltip("旋转速度")] float AngularSpeed;
     Vector3 startPosition;
     Player player;
 
@@ -38,6 +42,16 @@ public class Monster : NSC_Character
         else
         {
             nav.isStopped = true;
+        }
+
+
+        float disPlayer = (player.transform.position - transform.position).magnitude;
+        if (disPlayer < attackDis)
+        {
+            if (Vector3.Angle(transform.forward, (player.transform.position - transform.position)) > 0.3)
+                transform.localEulerAngles += Vector3.Cross(transform.forward, (player.transform.position - transform.position).normalized).normalized * AngularSpeed * Time.deltaTime;
+
+
         }
     }
 
@@ -69,8 +83,10 @@ public class Monster : NSC_Character
         {
             animator.SetBool("move", false);
             animator.SetBool("attack", true);
+            if (Vector3.Angle(transform.forward, (player.transform.position - transform.position)) > 0.3)
+                transform.localEulerAngles += Vector3.Cross(transform.forward, (player.transform.position - transform.position).normalized).normalized * AngularSpeed * Time.deltaTime;
 
-           
+
         }
     }
     /// <summary>
@@ -108,6 +124,6 @@ public class Monster : NSC_Character
     //
     public void AimToPlayer()
     {
-        transform.forward = player.transform.position - transform.position;
+        //transform.forward = player.transform.position - transform.position;
     }
 }

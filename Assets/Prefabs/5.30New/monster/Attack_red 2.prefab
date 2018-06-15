@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 135463463446290344}
   - component: {fileID: 114092567567358494}
   m_Layer: 0
-  m_Name: Attack_red 1
+  m_Name: Attack_red 2
   m_TagString: Fx
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

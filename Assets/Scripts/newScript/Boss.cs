@@ -52,10 +52,11 @@ public class Boss : NSC_Character
     }
     private void Update()
     {
-        if (!animator.GetBool("weak") && !dead)
+        if (!animator.GetBool("weak") && !dead && FindObjectOfType<boss_start>().start && !animator.GetBool("Hoooo"))
         {
             //    print(1);
-            transform.localEulerAngles += Vector3.Cross(transform.forward, (player.transform.position - transform.position).normalized).normalized * AngularSpeed * Time.deltaTime;
+            if (Vector3.Angle(transform.forward, (player.transform.position - transform.position)) > 0.3)
+                transform.localEulerAngles += Vector3.Cross(transform.forward, (player.transform.position - transform.position).normalized).normalized * AngularSpeed * Time.deltaTime;
         }
     }
 
@@ -103,7 +104,7 @@ public class Boss : NSC_Character
     /// boss隐藏
     /// </summary>
     /// <param name="a"></param>
-    public void bossHide(int a)
+    public void bossHide()
     {
         HidePosition = transform.position;
         transform.position = new Vector3(0, 106, 0);
@@ -122,7 +123,7 @@ public class Boss : NSC_Character
         else
             boss2.transform.position = player.transform.position - (player.transform.right * flashDisBoss2);
         boss2.transform.forward = player.transform.position - boss2.transform.position;
-        if (a == 1)
+        if (skillLast == SkillBoss.rangeAttack)
         {
             boss1.GetComponent<BossCopy>().animator.SetBool("rangeAttack", true);
             boss2.GetComponent<BossCopy>().animator.SetBool("rangeAttack", true);
@@ -144,7 +145,22 @@ public class Boss : NSC_Character
         bossCopyNub++;
         if (bossCopyNub >= 2)
         {
-            this.transform.position = HidePosition;
+            if (BossCopyP)
+            {
+                if (Random.Range(0, 2) > 1)
+                {
+                    this.transform.position = BossCopyPosition[1].transform.position;
+                    transform.forward = player.transform.position - transform.position;
+                }
+                else
+                {
+                    this.transform.position = BossCopyPosition[0].transform.position;
+                    transform.forward = player.transform.position - transform.position;
+                }
+            }
+            else
+                this.transform.position = HidePosition;
+
             animator.speed = 1;
             if (HP < 0)
             {
@@ -179,6 +195,7 @@ public class Boss : NSC_Character
             animator.SetBool("weak", false);
             animator.SetBool("nearAttack", false);
             animator.SetBool("rangeAttack", false);
+            animator.SetBool("Hoooo", false);
 
         }
 
@@ -200,8 +217,8 @@ public class Boss : NSC_Character
             switch (a)
             {
                 case 0: animator.SetBool("nearAttack", true); skillLast = SkillBoss.nearAttack; break;
-                case 1: skillLast = SkillBoss.rangeAttack; bossHide(1); break;
-                case 2: skillLast = SkillBoss.tornado; bossHide(2); break;
+                case 1: skillLast = SkillBoss.rangeAttack; animator.SetBool("Hoooo", true); break;
+                case 2: skillLast = SkillBoss.tornado; animator.SetBool("Hoooo", true); break;
             }
         }
         else

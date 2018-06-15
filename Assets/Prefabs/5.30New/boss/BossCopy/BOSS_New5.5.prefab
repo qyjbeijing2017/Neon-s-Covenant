@@ -2678,6 +2678,7 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 0
   m_characterType: 0
+  character: {fileID: 0}
   stopTime: 0
 --- !u!114 &114621788969456850
 MonoBehaviour:
@@ -2714,6 +2715,16 @@ MonoBehaviour:
   damageDe: 0
   dead: 0
   attackSoundNum: 0
+  back: 0
+  backDis: 5
+  pauseAnimator: 0
+  pauseAnimatorTime: 0.1
+  flashAttack: 0
+  flashTime: 0.1
+  flashA: 0.6
+  flashRender: []
+  materialFlash: {fileID: 0}
+  materialNormal: {fileID: 0}
   animator: {fileID: 0}
   mode2HP: 30
   nearFlashDis: 1.5
@@ -2725,6 +2736,9 @@ MonoBehaviour:
     type: 2}
   tornadoCyan: {fileID: 114332985043387714, guid: f28ce117e755d444a833e8c35fedd3f4,
     type: 2}
+  AngularSpeed: 0
+  BossCopyP: 0
+  BossCopyPosition: []
   skillLast: 0
 --- !u!114 &114733071613188538
 MonoBehaviour:
@@ -2780,6 +2794,7 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 0
   m_characterType: 0
+  character: {fileID: 0}
   stopTime: 0
 --- !u!135 &135081456716365770
 SphereCollider:

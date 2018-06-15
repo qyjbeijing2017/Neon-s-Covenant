@@ -9,7 +9,6 @@ public class BossShakeCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ShakeCamera();
 	}
 	
 	// Update is called once per frame

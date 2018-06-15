@@ -126,9 +126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   powerDamage:
-    colorValue: 10
+    colorValue: 1
     m_colorType: 0
   m_characterType: 2
+  character: {fileID: 0}
   stopTime: 0
 --- !u!114 &114913244693905580
 MonoBehaviour:
@@ -141,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c69f4fa831b84544972f3fe2023bcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 4
-  speed: 4
-  speedFly: 100
-  dis: 1
-  AddDis: 0.3
+  height: 3.5
+  speed: 8
+  speedFly: 500
+  dis: 1.4
+  AddDis: 0.5
