@@ -53,8 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   powerDamage:
-    colorValue: 10
+    colorValue: 0
     m_colorType: 1
   m_characterType: 1
-  character: {fileID: 0}
-  stopTime: 0.08
+  stopTime: 0.1

@@ -207,7 +207,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1497182512155364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -70.15885, y: 3.313, z: -14.110491}
+  m_LocalPosition: {x: -33.236652, y: -190.62462, z: 323.24634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4242397029867468}
@@ -315,13 +315,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   powerDamage:
-    colorValue: 5
+    colorValue: 0
     m_colorType: 3
   m_characterType: 1
   character: {fileID: 0}
-  stopTime: 0.2
-  speed: 5
-  destoryLater: 1.5
+  stopTime: 0
+  speed: 10
+  destoryLater: 1
 --- !u!114 &114981172337153132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,7 +407,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -208004583
+  randomSeed: -1370953226
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3768,7 +3768,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -914396025
+  randomSeed: -1571737231
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3834,7 +3834,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.27723143, g: 0, b: 0.5661765, a: 1}
+      maxColor: {r: 0.4934085, g: 0.007352948, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7081,7 +7081,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -546414508
+  randomSeed: -221948618
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -16972,7 +16972,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -273390654
+  randomSeed: 1621299771
   InitialModule:
     serializedVersion: 3
     enabled: 1
