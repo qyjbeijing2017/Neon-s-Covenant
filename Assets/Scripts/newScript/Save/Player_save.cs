@@ -6,6 +6,10 @@ public class Player_save : MonoBehaviour
 {
     [SerializeField] Player player;
 
+    [SerializeField] AudioAndText[] audioAndText;
+    public int audioNum = 0;
+    int saveAudioNum;
+
     Vector3 playerPosition;
     int playerHP;
     NSC_Color playerOtherPower;
@@ -19,6 +23,12 @@ public class Player_save : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        for(int i = 0; i < audioAndText.Length; i++)
+        {
+            audioAndText[i].Num = i;
+        }
+
+
         playerOtherPower = new NSC_Color();
         monsters = FindObjectsOfType<Monster>();
         player = FindObjectOfType<Player>();
@@ -62,6 +72,7 @@ public class Player_save : MonoBehaviour
         playerOtherPower.colorValue = player.power.colorValue;
         playerOtherPower.m_colorType = player.power.m_colorType;
         whitePower = player.whitePower.colorValue;
+        saveAudioNum = audioNum;
 
     }
 
@@ -80,6 +91,15 @@ public class Player_save : MonoBehaviour
         player.power.colorValue = playerOtherPower.colorValue;
         player.power.m_colorType = playerOtherPower.m_colorType;
         player.whitePower.colorValue = whitePower;
+
+
+        for (int i = 0; i < audioAndText.Length; i++)
+        {
+            if (i < saveAudioNum)
+                audioAndText[i].gameObject.SetActive(false);
+                audioAndText[i].gameObject.SetActive(true);
+        }
+
     }
 
     public void ReadGame()

@@ -7,12 +7,17 @@ public class UIPause : MonoBehaviour
 {
     [SerializeField] GameObject Pause;
     [SerializeField] KeyCode PauseKey;
+    [SerializeField] AudioPlay SoundOfText;
     bool pauseNow;
 
     // Use this for initialization
     void Start()
     {
-        Pause.SetActive(false);
+        if(Pause != null)
+        {
+            Pause.SetActive(false);
+        }
+
         pauseNow = false;
     }
 
@@ -34,12 +39,14 @@ public class UIPause : MonoBehaviour
             Time.timeScale = 1;
             Pause.SetActive(false);
             pauseNow = false;
+            SoundOfText.playContinue();
         }
         else
         {
             Time.timeScale = 0;
             Pause.SetActive(true);
             pauseNow = true;
+            SoundOfText.playPause();
         }
     }
 
@@ -47,6 +54,7 @@ public class UIPause : MonoBehaviour
     {
         FindObjectOfType<Player_save>().ReadGame();
         PauseSet(false);
+        SoundOfText.playStop();
     }
 
 

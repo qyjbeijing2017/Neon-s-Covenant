@@ -317,7 +317,7 @@ MonoBehaviour:
   powerDamage:
     colorValue: 5
     m_colorType: 1
-  m_characterType: 1
+  m_characterType: 2
   character: {fileID: 0}
   stopTime: 0.2
   speed: 5

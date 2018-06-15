@@ -14,6 +14,7 @@ public class AudioPlay : MonoBehaviour
     public void playAudio(int audioNub)
     {
         audioSource.Stop();
+        print(gameObject.name);
         audioSource.clip = audios[audioNub].clip;
         audioSource.volume = audios[audioNub].volume;
         audioSource.Play();
