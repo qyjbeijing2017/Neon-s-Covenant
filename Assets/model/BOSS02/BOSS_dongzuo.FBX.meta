@@ -322,6 +322,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.079845406
+        functionName: ONEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       - time: 0.31678295
         functionName: playAudio
         data: 
@@ -366,6 +373,13 @@ ModelImporter:
       events:
       - time: 0.9344598
         functionName: allReady
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6298798
+        functionName: OffEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -420,6 +434,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
+      - time: 0.9430817
+        functionName: OffEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -464,6 +485,13 @@ ModelImporter:
         messageOptions: 0
       - time: 1
         functionName: stopNearAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.9630642
+        functionName: OffEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -541,6 +569,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.31227496
         functionName: ShakeCamera
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.48993325
+        functionName: OffEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -819,6 +854,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.046452977
+        functionName: ONEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -861,6 +903,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.035258908
+        functionName: ONEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -889,15 +938,22 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.867052
-        functionName: nearAttack_flash
+      - time: 0
+        functionName: changeColorRandom
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: changeColorRandom
+      - time: 0.2270302
+        functionName: ONEffect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
+      - time: 0.867052
+        functionName: nearAttack_flash
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

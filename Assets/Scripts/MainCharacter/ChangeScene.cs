@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ReplayerColider : MonoBehaviour {
-    FollowCapsule followCapsule;
+public class ChangeScene : MonoBehaviour {
+    [SerializeField] int Scene;
 
 	// Use this for initialization
 	void Start () {
-        followCapsule = FindObjectOfType<FollowCapsule>();
+		
 	}
 	
 	// Update is called once per frame
@@ -19,9 +20,7 @@ public class ReplayerColider : MonoBehaviour {
     {
         if (other.GetComponent<Player>())
         {
-            other.GetComponent<Player>().HP -= 2;
-            other.GetComponent<Player>().HPNormal();
-            followCapsule.RePlayer();
+            SceneManager.LoadScene(Scene);
         }
     }
 }
