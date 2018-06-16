@@ -16,6 +16,7 @@ public class LightPower : MonoBehaviour {
     float AddDis;
     bool startToPlayer;
     Player player;
+    float timer;
 
 	// Use this for initialization
 	void Start () {
@@ -30,13 +31,14 @@ public class LightPower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        timer += Time.deltaTime;
+    }
 
 
     private void FixedUpdate()
     {
-        if((player.transform.position - transform.position).magnitude < dis)
+        
+        if((player.transform.position - transform.position).magnitude < dis && timer>0.6f)
         {
             startToPlayer = true;
             GetComponent<Rigidbody>().useGravity = false;
@@ -48,7 +50,7 @@ public class LightPower : MonoBehaviour {
             GetComponent<Rigidbody>().velocity = (player.transform.position - transform.position) * speedFly * Time.fixedDeltaTime;
         }
        
-        if ((player.transform.position - transform.position).magnitude < AddDis)
+        if ((player.transform.position - transform.position).magnitude < AddDis && timer > 0.6f)
         {
               
             FindObjectOfType<Player>().injured(GetComponent<Attack>());

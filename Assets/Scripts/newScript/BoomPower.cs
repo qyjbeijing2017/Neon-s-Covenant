@@ -33,6 +33,7 @@ public class BoomPower : MonoBehaviour {
                 for(int i = 0; i < nubOfLight; i++)
                 {
                     Instantiate(lightPower, transform.position, transform.rotation);
+                    Debug.Break();
                 }
                 NowNumber++;
             }

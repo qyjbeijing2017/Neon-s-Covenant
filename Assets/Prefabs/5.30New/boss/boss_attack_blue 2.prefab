@@ -1005,9 +1005,10 @@ MonoBehaviour:
     colorValue: 0
     m_colorType: 2
   m_characterType: 1
+  character: {fileID: 0}
   stopTime: 0
   speed: 10
-  destoryLater: 1
+  destoryLater: 1.5
 --- !u!135 &135857708120888804
 SphereCollider:
   m_ObjectHideFlags: 1
